@@ -1,0 +1,19 @@
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "[scss]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  },
+  "stylelint.validate": [
+    "css",
+    "less",
+    "sass",
+    "scss",
+    "styled-css",
+  ],
+  "eslint.enable": true
+}

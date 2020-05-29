@@ -1,0 +1,18 @@
+{%- comment -%}This is just a recommended starting point...customize away!{%- endcomment -%}
+<div class="PreHeader__icons">
+  <a class="PreHeader__icon" role="button" href="#anchor_modal"><i aria-label="anchor modal" class="{{ settings.fa }} fa-anchor"></i></a>
+  <a class="PreHeader__icon" role="button" data-open-modal="#no_anchor_modal" tabindex="0"><i aria-label="no anchor modal" class="{{ settings.fa }} fa-window-maximize"></i></a>
+  {%- if shop.customer_accounts_enabled -%}
+    <a class="PreHeader__icon" href="/account"><i aria-label="{% include 'INF-translation', translate: 'customer.account.title', default: 'My Account' %}" class="{{ settings.fa }} fa-user"></i></a>
+  {%- endif -%}
+  {%- if settings.header_buttons_placement == 'preheader' -%}
+    {%- capture search_label -%}
+      {% include 'INF-translation', translate: 'general.search.title', default: 'Search our store' %}
+    {%- endcapture -%}
+    {%- capture cart_label -%}
+      {% include 'INF-translation', translate: 'cart.general.title', default: 'Shopping cart' %}
+    {%- endcapture -%}
+    <a class="PreHeader__icon PreHeader__icon--search">{%- include 'INF-IconToggle', icon: 'fa-search', direction: 'down', data: 'data-search-toggle', aria_label: search_label -%}</a>
+    <a class="PreHeader__icon">{%- include 'INF-IconToggle', icon: settings.cart_icon, direction: 'right', data: 'data-cart-toggle', aria_label: cart_label -%}</a>
+  {%- endif -%}
+</div>

@@ -1,0 +1,34 @@
+
+.NavBar {
+  @include grid {
+    &__logo {
+      @include grid-item(2);
+    }
+
+    &__secondary,
+    &__icons,
+    &__search {
+      @include grid-item(2);
+    }
+
+    &--single-linklist {
+      .NavBar__primary {
+        @include grid-item(8);
+      }
+    }
+  }
+}
+
+.MobileLogo {
+  left: 10px;
+  transform: none;
+  transform: translateY(-50%);
+}
+
+.MobileBar__right {
+  margin-right: 10px;
+
+  .Button {
+    margin-bottom: 4px;
+  }
+}

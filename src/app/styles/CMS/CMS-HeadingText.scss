@@ -1,0 +1,35 @@
+.Module-HeadingText {
+  .Module-HeadingText {
+    &__Headings {
+      &--Alignment {
+        &-left {
+          text-align: left;
+
+          &--mobile {
+            @include media-query($mobile) {
+              text-align: left;
+            }
+          }
+        }
+        &-center {
+          text-align: center;
+
+          &--mobile {
+            @include media-query($mobile) {
+              text-align: center;
+            }
+          }
+        }
+        &-right {
+          text-align: right;
+
+          &--mobile {
+            @include media-query($mobile) {
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}

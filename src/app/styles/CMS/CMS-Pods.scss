@@ -1,0 +1,108 @@
+.Module-Pods {
+  .Module-Pods {
+    &__Headings {
+      &--Alignment {
+        &-left {
+          text-align: left;
+        }
+        &-center {
+          text-align: center;
+        }
+        &-right {
+          text-align: right;
+        }
+      }
+    }
+    &__Pods {
+      @include grid(12, 40px, 0);
+      @include media-query($tablet-down) {
+        @include grid(12, 10px, 0);
+      }
+      @include media-query($mobile) {
+        @include grid(12, 0, 20px);
+      }
+    }
+    &__Pod {
+      @include grid-item(4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__Image {
+      position: relative;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      .Module-Pods__Content {
+        bottom: 0;
+        color: #fff;
+      }
+      &--Overlay {
+        &:before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+        }
+        &-dark {
+          &:before {
+            background-color: rgba(0,0,0,0.75);
+          }
+          .Module-Pods__Content {
+            color: #fff;
+          }
+        }
+        &-light {
+          &:before {
+            background-color: rgba(255,255,255,0.75);
+          }
+          .Module-Pods__Content {
+            color: #000;
+          }
+        }
+      }
+      &--VAlignment {
+        display: table;
+        .Module-Pods__Content {
+          display: table-cell;
+        }
+        &-top .Module-Pods__Content {
+          vertical-align: top;
+        }
+        &-middle .Module-Pods__Content {
+          vertical-align: middle;
+        }
+        &-bottom .Module-Pods__Content {
+          vertical-align: bottom;
+        }
+      }
+    }
+    &__Content {
+      padding: 0 20px;
+      width: 100%;
+      &--Alignment {
+        &-left {
+          text-align: left;
+          .Module-Pods__Buttons {
+            margin-left: -10px;
+          }
+        }
+        &-center {
+          text-align: center;
+        }
+        &-right {
+          text-align: right;
+          .Module-Pods__Buttons {
+            margin-right: -10px;
+          }
+        }
+      }
+    }
+    &__Button {
+      margin: 20px 10px;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<footer class="Footer Section Section--{{ section.settings.width }} {{ extra_classes }}" {{ extra_attrs }} data-footer>
+  <div class="Section__container">
+    <div class="Footer__nav">
+    {% for block in section.blocks %}
+      <ul class="Footer__menu Footer__nav-list">
+        {% if block.settings.show_title %}
+          <li class="Footer__title">{{linklists[block.settings.linklist].title}}</li>
+        {% endif %}
+        {% for link in linklists[block.settings.linklist].links %}
+          <li class="Footer__link"><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+
+    {%- if section.settings.show_social -%}
+      {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+      <ul class="Footer__social Footer__nav-list">
+        {%- for social in social_accounts -%}
+          {%- assign social_handle = social | handleize -%}
+          {%- capture social_link -%}social_{{ social_handle }}_link{%- endcapture -%}
+          {%- capture social_icon -%}fa-{{ social_handle }}{%- endcapture -%}
+
+          {%- if settings[social_link] != blank -%}
+            <li class="Footer__social-icon">
+              <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}" target="_blank">
+                <i aria-hidden="true" class="fab {{ social_icon }}"></i>
+                <span class="icon-fallback-text">{{ social }}</span>
+              </a>
+            </li>
+          {%- endif %}
+
+        {% endfor %}
+      </ul>
+    {%- endif -%}
+    </div>
+
+    <div class="Footer__bottom">
+      <p class="Footer__copyright">
+        &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. All Rights Reserved.      
+        {%- assign linklist_copyright = section.settings.linklist_copyright -%}
+        {% if linklists[linklist_copyright].links.size > 0 %}
+          {% for link in linklists[linklist_copyright].links %}
+            <a class="Footer__terms-link" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+          {% endfor %}
+        {% endif %}
+      </p>
+      {% comment %} <p class="Footer__shout-out">{% include 'INF-translation', translate: 'layout.footer.digital_experience', default: 'Digital Experience By' %} <strong><a href="https://lucidfusion.com" target="_blank">Lucid Fusion</a></strong></p> {% endcomment %}
+    </div>
+  </div>
+</footer>

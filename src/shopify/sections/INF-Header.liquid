@@ -1,0 +1,1293 @@
+{% if template == 'password' %}
+  {% include 'ComingSoon' %}
+{% else %}
+  {%- include 'INF-Headroom-logic' -%}
+
+  <div class="Headroom--{{ headroom }} Headroom--{{ headroom--mobile }}-mobile" data-headroom="{{ headroom }}" data-headroom-mobile="{{ headroom--mobile }}">
+    {%- if settings.preheader_enabled or settings.preheader_enabled--mobile -%}
+      {% include 'INF-PreHeader' %}
+
+      <div class="PreHeaderPlaceholder">
+        {% if settings.preheader_enabled %}<div class="PreHeaderPlaceholder__desktop"></div>{% endif %}
+        {% if settings.preheader_enabled--mobile %}<div class="PreHeaderPlaceholder__mobile"></div>{% endif %}
+      </div>
+    {%- endif -%}
+    
+    <div data-section-id="{{ section.id }}" data-section-type="INF-Header" class="Header {% if settings.preheader_enabled %}Header--has-preheader{% endif %} {% if settings.preheader_enabled--mobile %}Header--has-preheader-mobile{% endif %} Header--buttons-placement-{{ settings.header_buttons_placement }}" data-header>
+      {% include 'Header' %}
+    </div>
+
+    <div class="HeaderPlaceholder">
+      <div class="HeaderPlaceholder__desktop"></div>
+      <div class="HeaderPlaceholder__mobile"></div>
+    </div>
+
+    {% include 'Header-placeholders' %}
+
+    {%- if section.blocks.size > 0 -%}
+      <div id="AnnouncementsBar" class="AnnouncementsBar {% if settings.preheader_enabled %}AnnouncementsBar--hide-desktop{% endif %} {% if settings.preheader_enabled--mobile %}AnnouncementsBar--hide-mobile{% endif %} Section Section--{{ section.settings.width }} Section--relative Section--side-gutters">
+        <div class="Section__container">
+          {% include 'INF-Announcements' %}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {% comment %} {% include 'MobileMenu' %} {% endcomment %}
+{% endif %}
+
+ <style>
+  {{ section.settings.nav_tier1_font | font_face }}
+  {{ section.settings.nav_tier2_font | font_face }}
+  {{ section.settings.nav_tier3_font | font_face }}
+  {{ section.settings.mobile_menu_tier1_font | font_face }}
+  {{ section.settings.mobile_menu_tier2_font | font_face }}
+  {{ section.settings.mobile_menu_tier3_font | font_face }}
+  {{ section.settings.announcement_font | font_face }}
+
+  .Header,
+  .ComingSoon {
+    background: {{ section.settings.header_background_color }};
+  }
+
+  .MobileBar {
+    background: {{ section.settings.header_background_color--mobile }};
+  }
+
+  .NavList__menu,
+  .NavList__dropdown > .NavList__sublist,
+  .SearchDrawer {
+    background: {{ section.settings.nav_background_color }};
+  }
+  .NavList__dropdown > .NavList__sublist:before {
+    border-bottom-color: {{ section.settings.nav_background_color }};
+  }
+
+  .NavBar__logo h1,
+  .NavBar__logo .h1,
+  .MobileLogo,
+  .ComingSoon__logo {
+    font-family: {{ section.settings.nav_logo_font.family }}, {{ section.settings.nav_logo_font.fallback_families }};
+    font-size: {{ section.settings.nav_logo_font_size }}px;
+    font-weight: {{ section.settings.nav_logo_font.weight }};
+    font-style: {{ section.settings.nav_logo_font.style }};
+    text-transform: {{ section.settings.nav_logo_text_capitalization }};
+  }
+  .MobileLogo {
+    font-size: {{ section.settings.mobile_nav_logo_font_size }}px;
+    width: {{ section.settings.mobile_logo_width }}px;
+  }
+
+  .NavBar__logo-image,
+  .ComingSoon__logo-image {
+    width: {{ section.settings.logo_width }}px;
+  }
+  .MobileLogo__image {
+    width: {{ section.settings.mobile_logo_width }}px;
+  }
+
+  .NavList__heading {
+    font-family: {{ section.settings.nav_tier1_font.family }}, {{ section.settings.nav_tier1_font.fallback_families }};
+    font-size: {{ section.settings.nav_tier1_font_size }}px;
+    font-weight: {{ section.settings.nav_tier1_font.weight }};
+    font-style: {{ section.settings.nav_tier1_font.style }};
+    text-transform: {{ section.settings.nav_tier1_text_capitalization }};
+  }
+
+  .NavBar a,
+  .NavBar a:visited,
+  .NavBar a:active {
+    color: {{ section.settings.nav_tier1_link_color }};
+  }
+  .NavBar a:hover,
+  .NavBar a:focus {
+    color: {{ section.settings.nav_tier1_link_color_hover }};
+  }
+
+  .NavBar__logo h1 a,
+  .NavBar__logo .h1 a {
+    color: {{ section.settings.nav_logo_color }};
+  }
+
+  .Header__mobile a,
+  .Header__mobile a:visited,
+  .Header__mobile a:active {
+    color: {{ section.settings.header_link_color--mobile }};
+  }
+
+  .Header__mobile a.MobileLogo__text {
+    color: {{ section.settings.nav_logo_color--mobile }};
+  }
+
+  .Header__mobile .Hamburger__icon span {
+    background: {{ section.settings.header_link_color--mobile }};
+  }
+
+  .IconToggle__count,
+  .IconToggle:hover .IconToggle__count,
+  .IconToggle:focus .IconToggle__count {
+    color: {{ settings.cart_count_color }};
+    background: {{ settings.cart_count_background }};
+  }
+
+  .NavList__subheading {
+    font-family: {{ section.settings.nav_tier2_font.family }}, {{ section.settings.nav_tier2_font.fallback_families }};
+    font-size: {{ section.settings.nav_tier2_font_size }}px;
+    font-weight: {{ section.settings.nav_tier2_font.weight }};
+    font-style: {{ section.settings.nav_tier2_font.style }};
+    text-transform: {{ section.settings.nav_tier2_text_capitalization }};
+  }
+
+  .NavList__subheading a,
+  .NavList__subheading a:visited,
+  .NavList__subheading a:active {
+    color: {{ section.settings.nav_tier2_link_color }};
+  }
+
+  .NavList__subheading a:hover,
+  .NavList__subheading a:focus {
+    color: {{ section.settings.nav_tier2_link_color_hover }};
+  }
+  
+  .NavList__item {
+    font-family: {{ section.settings.nav_tier3_font.family }}, {{ section.settings.nav_tier3_font.fallback_families }};
+    font-size: {{ section.settings.nav_tier3_font_size }}px;
+    font-weight: {{ section.settings.nav_tier3_font.weight }};
+    font-style: {{ section.settings.nav_tier3_font.style }};
+    text-transform: {{ section.settings.nav_tier3_text_capitalization }};
+  }
+
+  .NavList__item a,
+  .NavList__item a:visited,
+  .NavList__item a:active {
+    color: {{ section.settings.nav_tier3_link_color }};
+  }
+
+  .NavList__item a:hover,
+  .NavList__item a:focus {
+    color: {{ section.settings.nav_tier3_link_color_hover }};
+  }
+
+  .MobileMenu {
+    background: {{ section.settings.mobile_menu_background_color }};
+  }
+
+  .MobileMenu__list {
+    font-family: {{ section.settings.mobile_menu_tier1_font.family }}, {{ section.settings.mobile_menu_tier1_font.fallback_families }};
+    font-size: {{ section.settings.mobile_menu_tier1_font_size }}px;
+    font-weight: {{ section.settings.mobile_menu_tier1_font.weight }};
+    font-style: {{ section.settings.mobile_menu_tier1_font.style }};
+    text-transform: {{ section.settings.mobile_menu_tier1_text_capitalization }};
+    color: {{ section.settings.mobile_menu_tier1_link_color }};
+  }
+
+  .MobileMenu__list a,
+  .MobileMenu__list a:visited,
+  .MobileMenu__list a:active {
+    color: {{ section.settings.mobile_menu_tier1_link_color }};
+  }
+
+  .MobileMenu__list a:hover,
+  .MobileMenu__list a:focus {
+    color: {{ section.settings.mobile_menu_tier1_link_color_hover }};
+  }
+
+  .MobileMenu__list--tier2 {
+    font-family: {{ section.settings.mobile_menu_tier2_font.family }}, {{ section.settings.mobile_menu_tier2_font.fallback_families }};
+    font-size: {{ section.settings.mobile_menu_tier2_font_size }}px;
+    font-weight: {{ section.settings.mobile_menu_tier2_font.weight }};
+    font-style: {{ section.settings.mobile_menu_tier2_font.style }};
+    text-transform: {{ section.settings.mobile_menu_tier2_text_capitalization }};
+    color: {{ section.settings.mobile_menu_tier2_link_color }};
+  }
+
+  .MobileMenu__list--tier2 a,
+  .MobileMenu__list--tier2 a:visited,
+  .MobileMenu__list--tier2 a:active {
+    color: {{ section.settings.mobile_menu_tier2_link_color }};
+  }
+
+  .MobileMenu__list--tier2 .MobileMenu__icon-left {
+  {%- if section.settings.mobile_menu_tier2_bullets == '' -%}
+    display: none;
+  {%- else -%}
+    display: inline-block;
+  {%- endif -%}
+  }
+  
+  .MobileMenu__list--tier2 .MobileMenu__link {
+    padding-left: {{ section.settings.mobile_menu_tier2_indent }}px;
+  }
+
+  .MobileMenu__list--tier3 a:hover,
+  .MobileMenu__list--tier3 a:focus {
+    color: {{ section.settings.mobile_menu_tier3_link_color_hover }};
+  }
+
+  .MobileMenu__list--tier3 {
+    font-family: {{ section.settings.mobile_menu_tier3_font.family }}, {{ section.settings.mobile_menu_tier3_font.fallback_families }};
+    font-size: {{ section.settings.mobile_menu_tier3_font_size }}px;
+    font-weight: {{ section.settings.mobile_menu_tier3_font.weight }};
+    font-style: {{ section.settings.mobile_menu_tier3_font.style }};
+    text-transform: {{ section.settings.mobile_menu_tier3_text_capitalization }};
+    color: {{ section.settings.mobile_menu_tier3_link_color }};
+  }
+
+  .MobileMenu__list--tier3 a,
+  .MobileMenu__list--tier3 a:visited,
+  .MobileMenu__list--tier3 a:active {
+    color: {{ section.settings.mobile_menu_tier3_link_color }};
+  }
+
+  .MobileMenu__list--tier3 a:hover,
+  .MobileMenu__list--tier3 a:focus {
+    color: {{ section.settings.mobile_menu_tier3_link_color_hover }};
+  }
+
+  
+  .MobileMenu__list--tier3 .MobileMenu__icon-left {
+  {%- if section.settings.mobile_menu_tier3_bullets == '' -%}
+    display: none;
+  {%- else -%}
+    display: inline-block;
+  {%- endif -%}
+  }
+  
+  .MobileMenu__list--tier3 .MobileMenu__link {
+    padding-left: {{ section.settings.mobile_menu_tier3_indent }}px;
+  }
+  
+  .AnnouncementsBar {
+    {%- assign announcement_opacity = section.settings.announcement_background_opacity | divided_by: 100.0 -%}
+    background: {{ section.settings.announcement_background_color | color_modify: 'alpha', announcement_opacity }};
+  }
+
+  .Announcements {
+    max-width: {{ section.settings.announcement_max_width }}px;
+  }
+
+  .Announcements .Announcement {
+    color: {{ section.settings.announcement_link_color }};
+    font-family: {{ section.settings.announcement_font.family }}, {{ section.settings.announcement_font.fallback_families }};
+    font-size: {{ section.settings.announcement_font_size }}px;
+    font-weight: {{ section.settings.announcement_font.weight }};
+    font-style: {{ section.settings.announcement_font.style }};
+    text-transform: {{ section.settings.announcement_text_capitalization }};
+  }
+
+  .Announcements .Announcement,
+  .Announcements .Announcement a,
+  .Announcements .Announcement a:visited,
+  .Announcements .Announcement a:active {
+    color: {{ section.settings.announcement_link_color }};
+  }
+
+  .Announcements .Announcement a:hover,
+  .Announcements .Announcement a:focus {
+    color: {{ section.settings.announcement_link_color_hover }};
+  }
+
+  .Announcements .flickity-prev-next-button svg {
+    fill: {{ section.settings.announcement_link_color }};
+  }
+
+  @media only screen and (min-width: {{ settings.grid_laptop_min }}) {
+    .Announcements .flickity-prev-next-button:hover svg,
+    .Announcements .flickity-prev-next-button:focus svg {
+      fill: {{ section.settings.announcement_link_color_hover }};
+    }
+  }
+
+  @media only screen and (max-width: {{ settings.grid_tablet_max }}) {
+    .Announcements .Announcement,
+    .Announcements .Announcement a,
+    .Announcements .Announcement a:visited,
+    .Announcements .Announcement a:active,
+    .Announcements .Announcement a:hover,
+    .Announcements .Announcement a:focus {
+      color: {{ section.settings.announcement_link_color--mobile }};
+    }
+
+    .Announcements .flickity-prev-next-button svg {
+      fill: {{ section.settings.announcement_link_color--mobile }};
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Desktop Pre-Header"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enable/disable this in the global theme settings."
+      },
+      {
+        "type": "checkbox",
+        "id": "preheader_headroom",
+        "label": "Auto hide/show on scroll",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "preheader_width",
+        "label": "Content width",
+        "default": "full",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "preheader_background_color",
+        "label": "Background color",
+        "default": "#222"
+      },
+      {
+        "type": "color",
+        "id": "preheader_link_color",
+        "label": "Link color",
+        "default": "#ddd"
+      },
+      {
+        "type": "color",
+        "id": "preheader_link_color_hover",
+        "label": "Link hover color",
+        "default": "#aaa"
+      },
+      {
+        "type": "font_picker",
+        "id": "preheader_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "preheader_text_capitalization",
+        "label": "Text capitalization",
+        "default": "none",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "preheader_font_size",
+        "min": 10,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 13
+      },
+      {
+        "type": "header",
+        "content": "Mobile Pre-Header"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enable/disable this in the global theme settings."
+      },
+      {
+        "type": "checkbox",
+        "id": "preheader_headroom--mobile",
+        "label": "Auto hide/show on scroll",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "preheader_background_color--mobile",
+        "label": "Background color",
+        "default": "#222"
+      },
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Desktop logo",
+        "info": "For best results, upload a logo that is at least 3x the width selected below."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 290,
+        "step": 10,
+        "unit": "px",
+        "label": "Desktop logo width",
+        "default": 150
+      },
+      {
+        "type": "select",
+        "id": "logo_position",
+        "label": "Desktop logo position",
+        "default": "left",
+        "info": "A centered logo leaves less room for your primary navigation. Only recommended for sites with up to ~4 top level nav items. If using a pre-header bar, a secondary menu can also be used for additional items to help with this.",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "logo--mobile",
+        "label": "Mobile logo",
+        "info": "Leave blank to use desktop logo on mobile."
+      },
+      {
+        "type": "range",
+        "id": "mobile_logo_width",
+        "min": 30,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Mobile logo width",
+        "default": 100
+      },
+      {
+        "type": "header",
+        "content": "Logo Fallback"
+      },
+      {
+        "type": "paragraph",
+        "content": "This information is only used when a logo is not uploaded."
+      },
+      {
+        "type": "font_picker",
+        "id": "nav_logo_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "nav_logo_text_capitalization",
+        "label": "Text capitalization",
+        "default": "uppercase",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "nav_logo_font_size",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size (desktop)",
+        "default": 26
+      },
+      {
+        "type": "color",
+        "id": "nav_logo_color",
+        "label": "Color (desktop)",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "mobile_nav_logo_font_size",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size (mobile)",
+        "default": 20
+      },
+      {
+        "type": "color",
+        "id": "nav_logo_color--mobile",
+        "label": "Color (mobile)",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Desktop Header"
+      },
+      {
+        "type": "checkbox",
+        "id": "header_headroom",
+        "label": "Auto hide/show on scroll",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Content width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "header_background_color",
+        "label": "Background color",
+        "default": "#333"
+      },
+      {
+        "type": "header",
+        "content": "Desktop Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "primary_nav_linklist",
+        "label": "Primary menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "select",
+        "id": "primary_nav_alignment",
+        "label": "Primary menu alignment",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "link_list",
+        "id": "secondary_nav_linklist",
+        "label": "Secondary menu",
+        "info": "This is only shown if the pre-header bar is enabled."
+      },
+            {
+        "type": "select",
+        "id": "secondary_nav_alignment",
+        "label": "Secondary menu alignment",
+        "default": "right",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "nav_background_color",
+        "label": "Background color",
+        "default": "#fff",
+        "info": "Used for dropdowns, mega menus, search menus, etc."
+      },
+      {
+        "type": "header",
+        "content": "Desktop Navigation :: Tier 1"
+      },
+      {
+        "type": "color",
+        "id": "nav_tier1_link_color",
+        "label": "Link color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "nav_tier1_link_color_hover",
+        "label": "Link hover color",
+        "default": "#aaa"
+      },
+      {
+        "type": "font_picker",
+        "id": "nav_tier1_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "nav_tier1_text_capitalization",
+        "label": "Text capitalization",
+        "default": "uppercase",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "nav_tier1_font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 14
+      },
+      {
+        "type": "header",
+        "content": "Desktop Navigation :: Tier 2"
+      },
+      {
+        "type": "color",
+        "id": "nav_tier2_link_color",
+        "label": "Link color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "nav_tier2_link_color_hover",
+        "label": "Link hover color",
+        "default": "#666"
+      },
+      {
+        "type": "font_picker",
+        "id": "nav_tier2_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "nav_tier2_text_capitalization",
+        "label": "Text capitalization",
+        "default": "uppercase",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "nav_tier2_font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 14
+      },
+      {
+        "type": "header",
+        "content": "Desktop Navigation :: Tier 3"
+      },
+      {
+        "type": "color",
+        "id": "nav_tier3_link_color",
+        "label": "Link color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "nav_tier3_link_color_hover",
+        "label": "Link hover color",
+        "default": "#666"
+      },
+      {
+        "type": "font_picker",
+        "id": "nav_tier3_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "nav_tier3_text_capitalization",
+        "label": "Text capitalization",
+        "default": "none",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "nav_tier3_font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 14
+      },
+      {
+        "type": "text",
+        "id": "nav_tier3_bullets",
+        "label": "Bullets",
+        "default": "fa-angle-right",
+        "info": "Enter any Font Awesome class (fa-icon-name) or leave blank for no bullets."
+      },
+      {
+        "type": "header",
+        "content": "Mobile Header"
+      },
+      {
+        "type": "checkbox",
+        "id": "header_headroom--mobile",
+        "label": "Auto hide/show on scroll",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "header_background_color--mobile",
+        "label": "Background color",
+        "default": "#333"
+      },
+      {
+        "type": "color",
+        "id": "header_link_color--mobile",
+        "label": "Link color",
+        "default": "#fff",
+        "info": "For hamburger, cart icon, etc."
+      },
+      {
+        "type": "header",
+        "content": "Mobile Navigation"
+      },
+      {
+        "type": "paragraph",
+        "content": "By default, your desktop menu(s) will be automatically converted to a mobile menu. For extra control, you can choose a mobile-specific menu below. Note: this will create duplicate work when modifying your navigation links in the future!"
+      },
+      {
+        "type": "link_list",
+        "id": "mobile_menu_linklist",
+        "label": "Mobile menu",
+        "info": "Leave blank to use desktop."
+      },
+            {
+        "type": "color",
+        "id": "mobile_menu_background_color",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Mobile Navigation :: Tier 1"
+      },
+      {
+        "type": "color",
+        "id": "mobile_menu_tier1_link_color",
+        "label": "Link color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "mobile_menu_tier1_link_color_hover",
+        "label": "Link hover color",
+        "default": "#666"
+      },
+      {
+        "type": "font_picker",
+        "id": "mobile_menu_tier1_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "mobile_menu_tier1_text_capitalization",
+        "label": "Text capitalization",
+        "default": "uppercase",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "mobile_menu_tier1_font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 14
+      },
+      {
+        "type": "header",
+        "content": "Mobile Navigation :: Tier 2"
+      },
+      {
+        "type": "color",
+        "id": "mobile_menu_tier2_link_color",
+        "label": "Link color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "mobile_menu_tier2_link_color_hover",
+        "label": "Link hover color",
+        "default": "#666"
+      },
+      {
+        "type": "font_picker",
+        "id": "mobile_menu_tier2_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "mobile_menu_tier2_text_capitalization",
+        "label": "Text capitalization",
+        "default": "uppercase",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "mobile_menu_tier2_font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 13
+      },
+      {
+        "type": "range",
+        "id": "mobile_menu_tier2_indent",
+        "min": 0,
+        "max": 60,
+        "step": 5,
+        "unit": "px",
+        "label": "Indent",
+        "default": 0
+      },
+      {
+        "type": "text",
+        "id": "mobile_menu_tier2_bullets",
+        "label": "Bullets",
+        "info": "Enter any Font Awesome class (fa-icon-name) or leave blank for no bullets."
+      },
+      {
+        "type": "header",
+        "content": "Mobile Navigation :: Tier 3"
+      },
+      {
+        "type": "color",
+        "id": "mobile_menu_tier3_link_color",
+        "label": "Link color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "mobile_menu_tier3_link_color_hover",
+        "label": "Link hover color",
+        "default": "#666"
+      },
+      {
+        "type": "font_picker",
+        "id": "mobile_menu_tier3_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "mobile_menu_tier3_text_capitalization",
+        "label": "Text capitalization",
+        "default": "none",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "mobile_menu_tier3_font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "mobile_menu_tier3_indent",
+        "min": 0,
+        "max": 60,
+        "step": 5,
+        "unit": "px",
+        "label": "Indent",
+        "default": 10
+      },
+      {
+        "type": "text",
+        "id": "mobile_menu_tier3_bullets",
+        "label": "Bullets",
+        "default": "fa-angle-right",
+        "info": "Enter any Font Awesome class (fa-icon-name) or leave blank for no bullets."
+      },
+      {
+        "type": "header",
+        "content": "Announcements"
+      },
+      {
+        "type": "paragraph",
+        "content": "Announcements can be added at the bottom of this panel in the 'content' area. They will appear in the pre-header bar if enabled, otherwise a dedicated bar will appear below the main header."
+      },
+      {
+        "type": "color",
+        "id": "announcement_background_color",
+        "label": "Background color",
+        "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "announcement_background_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Background opacity",
+        "default": 85
+      },
+      {
+        "type": "color",
+        "id": "announcement_link_color",
+        "label": "Text color (desktop)",
+        "default": "#ddd"
+      },
+      {
+        "type": "color",
+        "id": "announcement_link_color_hover",
+        "label": "Text hover color (desktop)",
+        "default": "#aaa"
+      },
+      {
+        "type": "color",
+        "id": "announcement_link_color--mobile",
+        "label": "Text color (mobile)",
+        "default": "#ddd"
+      },
+      {
+        "type": "font_picker",
+        "id": "announcement_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "announcement_text_capitalization",
+        "label": "Text capitalization",
+        "default": "none",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "announcement_font_size",
+        "min": 10,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 13
+      },
+      {
+        "type": "range",
+        "id": "announcement_max_width",
+        "min": 300,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Width",
+        "default": 450,
+        "info": "Only used for announcements shown in the pre-header bar on desktop. All other views are full-width."
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_autoplay",
+        "label": "Enable auto play",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "previousAriaLabel",
+        "label": "Previous button ARIA label",
+        "default": "Previous announcement"
+      },
+      {
+        "type": "text",
+        "id": "nextAriaLabel",
+        "label": "Next button ARIA label",
+        "default": "Next announcement"
+      },
+      {
+        "type": "text",
+        "id": "pageDotAriaLabel",
+        "label": "Page got ARIA label",
+        "default": "Announcement"
+      },
+      {
+        "type": "range",
+        "id": "announcement_autoplay_speed",
+        "min": 3,
+        "max": 15,
+        "step": 1,
+        "unit": "sec",
+        "label": "Change slides every",
+        "default": 7
+      }
+    ],
+    "blocks": [
+      {
+        "type": "announcement",
+        "name": "Announcement",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Desktop text"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Desktop button text (optional)"
+          },
+          {
+            "type": "text",
+            "id": "mobile_text",
+            "label": "Mobile text (optional)"
+          },
+          {
+            "type": "text",
+            "id": "button_text--mobile",
+            "label": "Mobile button text (optional)"
+          },
+          {
+            "type": "text",
+            "id": "button_aria_label",
+            "label": "Button ARIA label (optional)"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link (optional)"
+          },          
+          {
+            "label": "Button Style",
+            "id": "button_style",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append:'x' %}
+    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+  {% endif %}
+  "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_pinterest_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_tumblr_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "{{ settings.social_vimeo_link }}"
+  ],
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>
+
+{% if template.name == 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+{% endif %}

@@ -1,0 +1,11 @@
+<div class="CollectionGrid CollectionGrid--columns-{{ section.settings.columns }} CollectionGrid--mobile-columns-{{ section.settings.columns--mobile }}">
+  {% for product in collection.products %}
+    {% include 'ProductTile' %}
+  {% else %}
+    <p class="Collection__no-results">{{ 'collections.general.no_matches' | t }}</p>
+  {% endfor %}
+</div>
+
+{% if section.settings.enable_pagination and paginate.pages > 1 %}
+  {% include 'pagination', aria_label: collection.title %}
+{% endif %}

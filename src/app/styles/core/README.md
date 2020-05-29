@@ -1,0 +1,1 @@
+In the unlikely event that you need to update core SCSS functionality (like layout, typography, etc.) you can do that here.

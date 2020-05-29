@@ -1,0 +1,39 @@
+.Module-HeroEvent {
+  .Module-HeroEvent {
+    &__Details {
+      padding: 20px;
+      @include grid(12, 0,0);
+      &--Alignment {
+        &-left {
+          text-align: left;
+        }
+        &-center {
+          text-align: center;
+        }
+        &-right {
+          text-align: right;
+        }
+      }
+      &--Style {
+        &-dark {
+          color: #fff;
+          background-color: #000;
+          .Module-HeroEvent__Detail--Section:not(:last-child) {
+            border-right: 1px solid #fff;
+          }
+        }
+        &-light {
+          color: #000;
+          background-color: #fff;
+          .Module-HeroEvent__Detail--Section:not(:last-child) {
+            border-right: 1px solid #000;
+          }
+        }
+      }
+    }
+    &__Detail--Section {
+      @include grid-item(4);
+      padding: 0 10px;
+    }
+  }
+}

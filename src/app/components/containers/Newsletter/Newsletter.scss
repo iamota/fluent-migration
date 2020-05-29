@@ -1,0 +1,138 @@
+@import '~@INF/styles';
+
+$submit-width: 180px;
+$submit-width-mobile: 120px;
+$input-height: 48px;
+$button-border-radius: 53px;
+
+.Newsletter {
+  height: 600px;
+
+  @include media-query($mobile) {
+    --background-image: none !important;
+
+    height: auto;
+  }
+
+  .Section__container {
+    img {
+      display: none;
+    }
+
+    @include media-query($mobile) {
+      padding: 0;
+
+      img {
+        display: block;
+      }
+
+      .Overlay__background {
+        display: none;
+      }
+
+      .Overlay__content {
+        position: static;
+      }
+
+      .Overlay__placeholder {
+        display: none;
+      }
+    }
+  }
+
+  &__heading,
+  &__form {
+    margin: 0 5% 0 auto;
+    width: var(--content-width);
+    max-width: 100%;
+    text-align: left;
+
+    @include media-query($mobile) {
+      text-align: center;
+    }
+  }
+
+  &__form {
+    height: 80px;
+
+    @include media-query($mobile) {
+      height: initial;
+    }
+
+    .Form__body {
+      overflow: visible;
+    }
+  }
+
+  &__input-wrapper {
+    &--nested {
+      --input-horizontal-padding: 22px;
+
+      position: relative;
+
+
+      .Input__control {
+        border-radius: $button-border-radius;
+        width: calc(100% - 30px);
+
+        @include media-query($mobile) {
+          width: 100%;
+        }
+      }
+
+      .Input__field {
+        padding-right: $submit-width - 20px;
+        height: $input-height - 24px;
+
+        @include media-query($mobile) {
+          padding-right: $submit-width-mobile - 20px;
+        }
+      }
+
+      .Input__error {
+        font-weight: 600;
+        font-style: italic;
+      }
+
+      .Button {
+        padding: 0;
+        height: $input-height;
+        line-height: $input-height;
+
+        @include media-query($mobile) {
+          --button-horizontal-padding--mobile: 20px;
+        }
+      }
+
+      .Form__submit-group {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        width: $submit-width;
+        height: 100%;
+
+        @include media-query($mobile) {
+          position: relative;
+          margin: 0 auto;
+          margin-bottom: 10px;
+        }
+      }
+
+      a.Newsletter__terms {
+        position: absolute;
+        top: 50px;
+        right: 15px;
+        text-decoration: underline;
+        color: #ababac;
+        font-size: 14px;
+        font-weight: 600;
+        font-style: italic;
+
+        @include media-query($mobile) {
+          position: static;
+        }
+      }
+    }
+  }
+}

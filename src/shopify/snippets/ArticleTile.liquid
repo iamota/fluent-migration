@@ -1,0 +1,63 @@
+{%- capture heading_type -%}
+  {%- if section.settings.heading != '' -%}
+    h3
+  {%- else -%}
+    h2
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- unless button_text -%}
+  {%- assign button_text = 'blogs.article.read_more' | t -%}
+{%- endunless -%}
+
+{%- comment -%}Doing responsive images based on aspect ratio and number of columns...{%- endcomment -%}
+{%- if aspect_ratio -%}
+  {%- assign aspect_ratio = aspect_ratio | times: 1.00 -%}
+{%- else -%}
+  {%- assign aspect_ratio = 1.5 -%}
+{%- endif -%}
+{%- assign gutters = columns | plus: 1 -%}
+{%- assign gutter_width = settings.grid_gutters | remove: 'px' | times: gutters -%}
+{%- assign width_available = settings.grid_page_width | remove: 'px' | times: 1 | minus: gutter_width -%}
+{%- assign img_width = width_available | divided_by: columns | times: 2 | round -%}
+{%- assign img_height = img_width | divided_by: aspect_ratio | round -%}
+{%- capture img_size -%}{{ img_width }}x{{ img_height }}{%- endcapture -%}
+
+<div class="ArticleTile AnimateOnHover {% if animation and animation != 'none' %}Animate Animate--{{ animation }}{% endif %}" 
+  onanimationend="triggerResize();"
+  data-article-tile
+>
+  <div class="ArticleTile__image" data-article-tile-image>
+    <a href="{{ article.url }}">
+      <img 
+        src="{{ article.image | img_url: img_size, crop: 'center' }}" 
+        alt="{{ article.image.alt | escape }}" 
+        class="AnimateOnHover--{{ animation_hover }}"
+        width="{{ img_width }}"
+        height="{{ img_height }}"
+        onload="elementLoaded(this); triggerResize();"
+      >
+    </a>
+  </div>
+ 
+  <{{ heading_type | strip_newlines }} class="{{ heading_class }} ArticleTile__title" data-article-tile-title><a href="{{ article.url }}">{{ article.title }}</a></{{ heading_type | strip_newlines }}>
+  
+  {%- if show_dates -%}
+    <div class="h5 ArticleTile__date">{{ article.published_at | date: "%B %d, %Y" }}</div>
+  {%- endif -%}
+
+  <div class="ArticleTile__excerpt rte" data-article-tile-excerpt>
+    {% if article.excerpt.size > 0 %}
+      {{ article.excerpt }}
+    {% else %}
+      <p>{{ article.content | strip_html | truncatewords: max_words }}</p>
+    {% endif %}
+  </div>
+  
+  {%- if button_enabled -%}
+  <a href="{{ article.url }}" class="Button Button--primary ArticleTile__button">
+    {% if button_icon != '' %}<i aria-hidden="true" class="{{ settings.fa }} {{ button_icon }}"></i>{% endif %}
+    {{ button_text }}
+  </a>
+  {%- endif -%}
+</div>

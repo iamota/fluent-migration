@@ -1,0 +1,19 @@
+<div class="ProductHeading ProductHeading--{{ breakpoint }}">
+  <h1 class="ProductHeading__title" data-product-title>{{ product.title }}</h1>
+  
+  <div class="ProductHeading__price" data-price-wrapper>
+    <span data-product-price>
+      {{ current_variant.price | money }}
+    </span>
+    {% if settings.show_currency %} <span class="ProductHeading__currency">{{ shop.currency }}</span>{% endif %}
+    
+    {% if product.compare_at_price_max > product.price %}
+      <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+      <s class="ProductHeading__compare-at" data-compare-price>
+        {% if current_variant.compare_at_price > current_variant.price %}
+          {{ current_variant.compare_at_price | money }}
+        {% endif %}
+      </s>
+    {% endif %}
+  </div>
+</div>

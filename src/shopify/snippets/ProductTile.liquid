@@ -1,0 +1,92 @@
+{%- assign product_url = product.url | within: collection -%}
+{%- if variant_id -%}
+  {%- assign product_url = product_url | append: '?variant=' | append: variant_id -%}
+{%- endif -%}
+
+{%- assign should_animate = false -%}
+{%- if section.settings.animation != 'none' -%}
+  {%- unless carousel or prevent_animation -%}
+    {%- assign should_animate = true -%}
+  {%- endunless -%}
+{%- endif -%}
+<div 
+  class="ProductTile 
+  {% if carousel %} 
+    CollectionCarousel__slide
+  {% endif %} 
+  AnimateOnHover 
+  {% if should_animate %}
+    Animate Animate--{{ section.settings.animation }}
+  {% endif %}"
+  data-product-tile 
+  onanimationend="triggerResize();"
+  {% if shoppable %}data-slide{% endif %}
+  {% if shoppable and variant_id %} data-variant="{{variant_id}}" {% endif %}
+  {% if carousel %}data-collection-carousel-slide{% endif %}
+>
+  {% if product.featured_image != blank %}
+    {%- assign featured_image = product.featured_image -%}
+    {%- if shoppable and variant_id -%}
+      {%- for variant in product.variants -%}
+        {%- if variant.id == variant_id -%}
+          {%- if variant.featured_image -%}
+            {%- assign featured_image = variant.featured_image -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    <a class="ProductTile__image" role="presentation" href="{{ product_url }}" data-product-tile-image>
+      <img 
+        src="{{ featured_image.src | img_url: '480x480' }}"
+        alt="{{ featured_image.alt | escape }}"
+        class="AnimateOnHover--{{ section.settings.animation--hover }}"
+        onload="triggerResize();"
+      >
+      {% if settings.quickview_enabled and disable_quickview != true %}
+        <div class="QuickView__button Button Button--{{ settings.quickview_cta_style }}" aria-label="{{ product.title }} {{ settings.quickview_cta }}" tabindex="0" role="button" data-quick-view-button>
+          {% if settings.quickview_icon != blank %}<i aria-hidden="true" class="{{ settings.fa }} {{ settings.quickview_icon }}"></i>{% endif %}
+          {{ settings.quickview_cta }}
+        </div>
+      {% endif %}
+    </a>
+  {% endif %}
+
+  <p class="ProductTile__title" data-product-tile-title>
+    <a href="{{ product_url }}">{{ product.title }}</a>
+  </p>
+  <p class="ProductTile__price" data-product-tile-price>{% include 'product-pricing-logic' %}</p>
+
+  {%- if section.settings.enable_button -%}
+    {%- if product.variants.size > 1 -%}
+      {%- if section.settings.cta != blank -%}
+        <a href="{{ product_url }}" class="ProductTile__button Button Button--primary">
+          {%- if section.settings.icon != blank -%}<i aria-hidden="true" class="{{ settings.fa }} {{ section.settings.icon }}"></i>{%- endif -%}
+          {{ section.settings.cta }}
+        </a>
+      {%- endif -%}
+    {%- else -%}
+      <form class="ProductInfo__form" action="/cart/add" method="post" enctype="multipart/form-data">
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" />
+        <input type="hidden" name="quantity" value="1" />
+        <button 
+          type="submit" 
+          name="add" 
+          class="ProductTile__button Button Button--primary" 
+          data-add-to-cart 
+          {% unless current_variant.available %}disabled="disabled"{% endunless %}
+        >
+          <i aria-hidden="true" class="{{ settings.fa }} {{ settings.cart_icon }}"></i>
+          <span data-add-to-cart-text>
+            {% if current_variant.available %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </span>
+        </button>
+      </form>
+    {%- endif -%}
+  {%- endif -%}
+</div>

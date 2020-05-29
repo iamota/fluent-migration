@@ -1,0 +1,57 @@
+{% form 'customer_login', class: 'LoginForm Form' %}
+  <h2 class="LoginForm__title">{{ 'customer.login.title' | t }}</h2>
+  <div class="Form__instructions">{{section.settings.login_instructions}}</div>
+
+  {{ form.errors | default_errors }}
+
+  <div class="Form__input-group">
+    <div class="Form__input-item">
+      <label for="CustomerEmail" class="Form__label Form__required{% unless section.settings.show_labels %} label-hidden{% endunless%}">
+        {{ 'customer.login.email' | t }}
+      </label>
+      <div class="Form__input-wrapper">
+        <input type="email"
+        name="customer[email]"
+        id="CustomerEmail"
+        class="Form__input{% if form.errors contains 'email' %} input-error{% endif %}"
+        placeholder="{{ 'customer.login.email' | t }}"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+        autofocus>
+      </div>
+
+    </div>
+  </div>
+
+  {% if form.password_needed %}
+    <div class="Form__input-group">
+      <div class="Form__input-item">
+          <label for="CustomerPassword" class="Form__label Form__required{% unless section.settings.show_labels %} label-hidden{% endunless%}">
+            {{ 'customer.login.password' | t }}
+          </label>
+          <div class="Form__input-wrapper">
+            <input type="password"
+                  name="customer[password]"
+                  id="CustomerPassword"
+                  class="Form__input{% if form.errors contains 'password' %} input-error{% endif %}"
+                  placeholder="{{ 'customer.login.password' | t }}">
+          </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="Form__submit-group">
+    {% unless section.settings.required_fields_message == blank %}
+      <div class="Form__required-fields-message">
+        <span class="Form__required"></span>{{ section.settings.required_fields_message }}
+      </div> 
+    {% endunless %}
+    <input type="submit" class="LoginForm__button Button Button--{{section.settings.login_button_style}}" value="{{ 'customer.login.sign_in' | t }}">
+
+    {% if form.password_needed %}
+      <a href="#recover" role="button" class="LoginForm__forgot-link">{{ 'customer.login.forgot_password' | t }}</a>
+    {% endif %}
+  </div>
+
+{% endform %}

@@ -1,0 +1,18 @@
+{%- comment -%}
+This is just a recommended starting point...customize away!
+Note: this is only used when the pre-header is disabled. If you have a pre-header, you'll want to modify snippets/PreHeader__icons.liquid instead.
+{%- endcomment -%}
+<div class="NavBar__icons">
+  <a class="Button Button--primary" href="">Take the quiz</a>
+  {% comment %} {%- if shop.customer_accounts_enabled and settings.preheader_enabled == false -%}
+    <a class="NavBar__icon" href="/account"><i aria-label="{{ 'customer.account.title' | t }}" class="{{ settings.fa }} fa-user"></i></a>
+  {%- endif -%}
+  {%- capture search_label -%}
+    {% include 'INF-translation', translate: 'general.search.title', default: 'Search our store' %}
+  {%- endcapture -%}
+  {%- capture cart_label -%}
+    {% include 'INF-translation', translate: 'cart.general.title', default: 'Shopping cart' %}
+  {%- endcapture -%}
+  <a class="NavBar__icon NavBar__icon--search">{%- include 'INF-IconToggle', icon: 'fa-search', direction: 'down', data: 'data-search-toggle', aria_label: search_label -%}</a>
+  <a class="NavBar__icon">{%- include 'INF-IconToggle', icon: settings.cart_icon, direction: 'right', data: 'data-cart-toggle', aria_label: cart_label -%}</a> {% endcomment %}
+</div>

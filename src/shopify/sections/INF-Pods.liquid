@@ -1,0 +1,1136 @@
+{%- assign image_size = '1920x' -%}
+{%- if section.blocks.size == 3 -%}
+  {%- assign image_size = '1280x' -%}
+{%- endif -%}
+
+{%- assign container_class = 'Pods' -%}
+{%- if section.settings.carousel_enabled -%}
+  {%- assign container_class = 'PodsCarousel' -%}
+{%- endif -%}
+
+<section 
+  id="section{{ section.id }}" 
+  data-section-id="{{ section.id }}" 
+  data-section-type="INF-Pods" 
+  class="Section Section--{{ section.settings.width }} Section--{{ section.settings.width--mobile }}" 
+  style="{% if section.settings.use_background %}background: {{ section.settings.background }};{% endif %}">
+
+  <div class="Section__container {% if section.settings.animation != 'none' %}Animate Animate--{{ section.settings.animation }}{% endif %}">
+    {% if section.settings.heading != '' %}<h2 class="Section__heading {{ section.settings.heading_class }}">{{ section.settings.heading }}</h2>{% endif %}
+    {% if section.settings.subheading != '' %}<p class="Section__subheading {{ section.settings.subheading_class }}">{{ section.settings.subheading }}</p>{% endif %}
+    <div class="{{ container_class }} 
+      {% unless section.settings.gutters %}{{ container_class }}--no-gutters{% endunless %} 
+      {% if section.settings.carousel_enabled %}
+        PodsCarousel--{{ section.settings.per_page }}-column
+        {% if section.settings.animation != 'none' %}AnimateOnLoad Animate--{{ section.settings.animation }}{% endif %}
+      {% endif %}"
+      {% if section.settings.carousel_enabled %}
+        id="PodsCarousel{{ section.id }}"
+        data-pods-carousel
+        data-prev-next-buttons="{{ section.settings.prevNextButtons }}"
+        data-prev-next-buttons-mobile="{{ section.settings.prevNextButtons--mobile }}"
+        data-page-dots="{{ section.settings.pageDots }}"
+        data-page-dots-mobile="{{ section.settings.pageDots--mobile }}"
+        data-draggable="{{ section.settings.draggable }}"
+        data-draggable-mobile="{{ section.settings.draggable--mobile }}"
+        data-wrap-around="{{ section.settings.wrapAround }}"
+        data-wrap-around-mobile="{{ section.settings.wrapAround--mobile }}"
+        data-cell-align="{{ section.settings.cellAlign }}"
+        data-cell-align-mobile="{{ section.settings.cellAlign--mobile }}"
+        data-group-cells="{{ section.settings.groupCells }}"
+        data-group-cells-mobile="false"
+        data-page-dot-aria-label="{{ section.settings.pageDotAriaLabel }}"
+        data-page-dot-aria-label-mobile="{{ section.settings.pageDotAriaLabel--mobile }}"
+        data-previous-aria-label="{{ section.settings.previousAriaLabel }}"
+        data-previous-aria-label-mobile="{{ section.settings.previousAriaLabel--mobile }}"
+        data-next-aria-label="{{ section.settings.nextAriaLabel }}"
+        data-next-aria-label-mobile="{{ section.settings.nextAriaLabel--mobile }}"
+      {% endif %}
+    >
+    {% for block in section.blocks %}
+      {%- unless section.settings.carousel_enabled -%}
+        {%- if forloop.index == 4 -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endunless -%}
+      <div id="Pod{{ block.id }}"
+        class="Pod {% unless section.settings.carousel_enabled %}{% if block.settings.animation != 'none' %}AnimateOnLoad Animate--{{ block.settings.animation }}{% endif %}{% endunless %}" 
+        {% unless block.settings.pageDotAriaLabel == blank %}
+          data-page-dot-aria-label="{{ block.settings.pageDotAriaLabel }}"
+        {% endunless %}
+        {% unless block.settings.pageDotAriaLabel--mobile == blank %}
+          data-page-dot-aria-label-mobile="{{ block.settings.pageDotAriaLabel--mobile }}"
+        {% endunless %}
+        {{ block.shopify_attributes }}
+      >
+        <a href="{{ block.settings.url | default: 'javascript:void(0);' }}" class="Pod__link" {% unless block.settings.cta_aria_label == blank %} aria-label="{{ block.settings.cta_aria_label }}"{% endunless %}>
+          <div class="Pod__image">
+            <div class="Overlay Overlay--{{ block.settings.alignment }} Overlay--{{ block.settings.overlay }}">
+              <div class="Overlay__background"></div>
+              {% include 'INF-Pod__content' %}
+            </div>
+            <img src="{{ block.settings.image | img_url: image_size }}" alt="{{ block.settings.image.alt | escape }}" onLoad="elementLoaded(this);">
+            {% if block.settings.alignment contains 'outside-bottom' %}
+              {% include 'INF-Pod__content', extra_classes: 'Pod__content--placeholder', extra_attrs: 'data-prevent-tab aria-hidden="true"' %}
+            {% endif %}
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    #section{{ section.id }} .Section__container {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    @media only screen and (max-width: {{ settings.grid_mobile_max }}) {
+      #section{{ section.id }} .Section__container {
+        padding-top: {{ section.settings.padding_top--mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom--mobile }}px;
+      }      
+    }    
+    @media only screen and (max-width: {{ settings.grid_mobile_max }}) {
+      #section{{ section.id }} .Pod {
+        padding-top: {{ section.settings.vertical_spacing--mobile }}px;
+        padding-bottom: {{ section.settings.vertical_spacing--mobile }}px; 
+      }
+    }
+  </style>
+
+</section>
+
+
+{% schema %}
+  {
+    "name": "Pods",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "label": "Heading",
+        "id": "heading",
+        "type": "text"
+      },
+      {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Heading style",
+        "default": "h3",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          },
+          {
+            "value": "h6",
+            "label": "H6"
+          },
+          {
+            "value": "h7",
+            "label": "H7"
+          },
+          {
+            "value": "h8",
+            "label": "H8"
+          },
+          {
+            "value": "p",
+            "label": "Paragraph"
+          },
+          {
+            "value": "pbold",
+            "label": "Paragraph (Bold)"
+          }
+        ]
+      },
+      {
+        "label": "SubHeading",
+        "id": "subheading",
+        "type": "text"
+      },
+      {
+        "type": "select",
+        "id": "subheading_class",
+        "label": "subHeading style",
+        "default": "h3",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          },
+          {
+            "value": "h6",
+            "label": "H6"
+          },
+          {
+            "value": "h7",
+            "label": "H7"
+          },
+          {
+            "value": "h8",
+            "label": "H8"
+          },
+          {
+            "value": "p",
+            "label": "Paragraph"
+          },
+          {
+            "value": "pbold",
+            "label": "Paragraph (Bold)"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "use_background",
+        "label": "Use background color",
+        "default": false,
+        "info": "Check this to use a custom section background color."
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "select",
+        "id": "animation",
+        "label": "Animation",
+        "default": "slide-up",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-up",
+            "label": "Fade in & slide up"
+          },
+          {
+            "value": "slide-down",
+            "label": "Fade in & slide down"
+          },          
+          {
+            "value": "slide-left",
+            "label": "Fade in & slide left"
+          },
+          {
+            "value": "slide-right",
+            "label": "Fade in & slide right"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          },
+                    {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Padding",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Padding",
+        "default": 30
+      },
+      {
+        "type": "checkbox",
+        "id": "gutters",
+        "label": "Use gutters",
+        "default": true,
+        "info": "Uncheck this to remove the spacing between your pods."
+      },
+      {
+        "type": "checkbox",
+        "id": "carousel_enabled",
+        "label": "Enable carousel",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Carousel"
+      },
+      {
+        "type": "paragraph",
+        "content": "These settings are only applicable if the carousel is enabled. Otherwise, a maximum of 3 pods will be displayed."
+      },      
+      {
+        "type": "select",
+        "id": "per_page",
+        "label": "Pods per page",
+        "default": "3",
+        "options": [
+          {
+            "label": "2",
+            "value": "2"
+          },
+          {
+            "label": "3",
+            "value": "3"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "groupCells",
+        "label": "Slide pods",
+        "default": "false",
+        "options": [
+          {
+            "label": "Individually",
+            "value": "false"
+          },
+          {
+            "label": "As a group/page",
+            "value": "true"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable",
+        "label": "Allow dragging & flicking",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "wrapAround",
+        "label": "Wrap-around in an infinite loop",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "cellAlign",
+        "label": "Cell alignment",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Arrows"
+      },
+      {
+        "type": "checkbox",
+        "id": "prevNextButtons",
+        "label": "Show previous & next buttons",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "arrow_color",
+        "label": "Arrow color",
+        "default": "#333"
+      },
+      {
+        "type": "range",
+        "id": "arrow_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "arrow_bg_color",
+        "label": "Arrow background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "arrow_bg_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow background opacity",
+        "default": 75
+      },
+      {
+        "type": "text",
+        "id": "previousAriaLabel",
+        "label": "Previous button ARIA label",
+        "default": "Previous content"
+      },
+      {
+        "type": "text",
+        "id": "nextAriaLabel",
+        "label": "Next button ARIA label",
+        "default": "Next content"
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Page Dots"
+      },
+      {
+        "type": "checkbox",
+        "id": "pageDots",
+        "label": "Show page dots",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "dot_location",
+        "label": "Page dot location",
+        "default": "20px",
+        "options": [
+          {
+            "label": "Inside",
+            "value": "20px"
+          },
+          {
+            "label": "Outside",
+            "value": "-35px"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "dot_color_active",
+        "label": "Active page dot color",
+        "default": "#fff",
+        "info": "The color of the active slide's dot."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity_active",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Active page dot opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "dot_color",
+        "label": "Inactive page dot color",
+        "default": "#fff",
+        "info": "The color of all other dots."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Inactive page dot opacity",
+        "default": 50
+      },
+      {
+        "type": "text",
+        "id": "pageDotAriaLabel",
+        "label": "Page dot ARIA label",
+        "default": "Content"
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Auto Play"
+      },
+      {
+        "type": "paragraph",
+        "content": "Automatically cycles through slides until a user interacts with the carousel (clicks an arrow or page dot, drags, flicks, etc.)"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoPlay",
+        "label": "Enable auto play",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "pauseAutoPlayOnHover",
+        "label": "Pause when hovering",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "autoPlay_speed",
+        "min": 3,
+        "max": 15,
+        "step": 1,
+        "unit": "sec",
+        "label": "Change slides every",
+        "default": 7
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width--mobile",
+        "label": "Width",
+        "default": "mobile-full",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "mobile-full"
+          },
+          {
+            "label": "Fixed",
+            "value": "mobile-fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Padding",
+        "default": 15
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Padding",
+        "default": 15
+      },
+      {
+        "type": "range",
+        "id": "vertical_spacing--mobile",
+        "min": 0,
+        "max": 30,
+        "step": 5,
+        "unit": "px",
+        "label": "Vertical spacing",
+        "default": 15
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Carousel"
+      },
+      {
+        "type": "paragraph",
+        "content": "These settings are only applicable if the carousel is enabled. Otherwise, a maximum of 3 pods will be displayed in a stacked orientation."
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable--mobile",
+        "label": "Allow dragging & flicking",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "wrapAround--mobile",
+        "label": "Wrap-around in an infinite loop",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "cellAlign--mobile",
+        "label": "Cell alignment",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Arrows"
+      },
+      {
+        "type": "checkbox",
+        "id": "prevNextButtons--mobile",
+        "label": "Show previous & next buttons",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "arrow_color--mobile",
+        "label": "Arrow color",
+        "default": "#333"
+      },
+      {
+        "type": "range",
+        "id": "arrow_opacity--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "arrow_bg_color--mobile",
+        "label": "Arrow background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "arrow_bg_opacity--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow background opacity",
+        "default": 75
+      },
+      {
+        "type": "text",
+        "id": "previousAriaLabel--mobile",
+        "label": "Previous button ARIA label",
+        "default": "Previous content"
+      },
+      {
+        "type": "text",
+        "id": "nextAriaLabel--mobile",
+        "label": "Next button ARIA label",
+        "default": "Next content"
+      },
+      {
+        "type": "header",
+        "content": "Mobile:: Page Dots"
+      },
+      {
+        "type": "checkbox",
+        "id": "pageDots--mobile",
+        "label": "Show page dots",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "dot_location--mobile",
+        "label": "Page dot location",
+        "default": "20px",
+        "options": [
+          {
+            "label": "Inside",
+            "value": "20px"
+          },
+          {
+            "label": "Outside",
+            "value": "-35px"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "dot_color_active--mobile",
+        "label": "Active page dot color",
+        "default": "#fff",
+        "info": "The color of the active slide's dot."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity_active--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Active page dot opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "dot_color--mobile",
+        "label": "Inactive page dot color",
+        "default": "#fff",
+        "info": "The color of all other dots."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Inactive page dot opacity",
+        "default": 50
+      },
+      {
+        "type": "text",
+        "id": "pageDotAriaLabel--mobile",
+        "label": "Page dot ARIA label",
+        "default": "Content"
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Auto Play"
+      },
+      {
+        "type": "paragraph",
+        "content": "Automatically cycles through slides until a user interacts with the carousel (clicks an arrow or page dot, drags, flicks, etc.)"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoPlay--mobile",
+        "label": "Enable auto play",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "pauseAutoPlayOnHover--mobile",
+        "label": "Pause when hovering",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "autoPlay_speed--mobile",
+        "min": 3,
+        "max": 15,
+        "step": 1,
+        "unit": "sec",
+        "label": "Change slides every",
+        "default": 7
+      }
+    ],
+    "blocks": [
+      {
+        "type": "pod",
+        "name": "Pod",
+        "settings": [
+          {
+            "label": "Image",
+            "id": "image",
+            "type": "image_picker"
+          },
+          {
+            "type": "select",
+            "id": "animation",
+            "label": "Animation",
+            "default": "slide-up",
+            "options": [
+              {
+                "value": "fade-in",
+                "label": "Fade in"
+              },
+              {
+                "value": "slide-up",
+                "label": "Fade in & slide up"
+              },
+              {
+                "value": "slide-down",
+                "label": "Fade in & slide down"
+              },          
+              {
+                "value": "slide-left",
+                "label": "Fade in & slide left"
+              },
+              {
+                "value": "slide-right",
+                "label": "Fade in & slide right"
+              },
+              {
+                "value": "zoom-fade-in",
+                "label": "Fade in & zoom out"
+              },
+                        {
+                "value": "none",
+                "label": "None"
+              }
+            ]
+          },
+          {
+            "label": "Heading",
+            "id": "heading",
+            "type": "text",
+            "default": "Pod Heading"
+          },
+          {
+            "type": "select",
+            "id": "heading_class",
+            "label": "Heading style",
+            "default": "h3",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "pageDotAriaLabel",
+            "label": "Page dot ARIA label"
+          },
+          {
+            "type": "text",
+            "id": "pageDotAriaLabel--mobile",
+            "label": "Page dot ARIA label (mobile)"
+          },
+          {
+            "label": "Subheading",
+            "id": "sub-heading",
+            "type": "textarea",
+            "default": "Pod Subheading"
+          },
+          {
+            "type": "select",
+            "id": "subheading_class",
+            "label": "Subheading style",
+            "default": "pbold",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "label": "CTA",
+            "id": "cta",
+            "type": "text",
+            "default": "CTA text"
+          },
+          {
+            "label": "CTA ARIA label",
+            "id": "cta_aria_label",
+            "type": "text",
+            "default": "Descriptive CTA text, understood without context"
+          },
+          {
+            "label": "Link",
+            "id": "url",
+            "type": "url"
+          },
+          {
+            "label": "Text alignment",
+            "id": "alignment",
+            "type": "select",
+            "options": [
+              {
+                "group": "Inside: Top", 
+                "value": "top-left",
+                "label": "Left"
+              },
+              {
+                "group": "Inside: Top", 
+                "value": "top-center",
+                "label": "Center"
+              },
+              {
+                "group": "Inside: Top", 
+                "value": "top-right",
+                "label": "Right"
+              },
+              {
+                "group": "Inside: Center", 
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Inside: Center", 
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Inside: Center", 
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Inside: Bottom", 
+                "value": "bottom-left",
+                "label": "Left"
+              },
+              {
+                "group": "Inside: Bottom", 
+                "value": "bottom-center",
+                "label": "Center"
+              },
+              {
+                "group": "Inside: Bottom", 
+                "value": "bottom-right",
+                "label": "Right"
+              },
+              {
+                "group": "Outside: Top", 
+                "value": "outside-top-left",
+                "label": "Left"
+              },
+              {
+                "group": "Outside: Top", 
+                "value": "outside-top-center",
+                "label": "Center"
+              },
+              {
+                "group": "Outside: Top", 
+                "value": "outside-top-right",
+                "label": "Right"
+              },
+              {
+                "group": "Outside: Bottom", 
+                "value": "outside-bottom-left",
+                "label": "Left"
+              },
+              {
+                "group": "Outside: Bottom", 
+                "value": "outside-bottom-center",
+                "label": "Center"
+              },
+              {
+                "group": "Outside: Bottom", 
+                "value": "outside-bottom-right",
+                "label": "Right"
+              }
+            ],
+            "default": "bottom-center"
+          },
+          {
+            "label": "Overlay style",
+            "id": "overlay",
+            "type": "select",
+            "options": [
+              {
+                "group": "No Overlay",
+                "value": "light-text",
+                "label": "Light Text"
+              },
+              {
+                "group": "No Overlay", 
+                "value": "dark-text",
+                "label": "Dark Text"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "light-overlay",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "dark-overlay",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "branded-overlay",
+                "label": "Branded"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "light-gradient",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "dark-gradient",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "branded-gradient",
+                "label": "Branded"
+              }
+            ],
+            "default": "dark-gradient",
+            "info": "Note: overlays will not be shown if you choose an 'outside' text alignment"
+          },
+          {
+            "type": "select",
+            "id": "cta_style",
+            "label": "CTA style",
+            "options": [
+              { 
+                "value": "primary", 
+                "label": "Button (primary)" 
+              },
+              { 
+                "value": "secondary", 
+                "label": "Button (secondary)" 
+              },
+              { 
+                "value": "on-image", 
+                "label": "Button (on-image)" 
+              },
+              { 
+                "value": "text", 
+                "label": "Text Link" 
+              }
+            ],
+            "default": "on-image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Pods",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "pod"
+          },
+          {
+            "type": "pod"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

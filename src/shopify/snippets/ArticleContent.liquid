@@ -1,0 +1,16 @@
+<article class="ArticleContent" role="article">
+  <div class="ArticleContent__body rte">
+    {%- if section.settings.show_date -%}
+      <div class="ArticleContent__date-container">
+        <div class="h5 ArticleContent__date">{{ article.published_at | date: "%B %d, %Y" }}</div>
+      </div>      
+    {%- endif -%}
+
+    {%- include 'INF-CMSModules', object: article -%}
+  </div>
+
+  {% if settings.social_sharing_blog %}
+    {% include 'SocialSharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+  {% endif %}
+
+</article>

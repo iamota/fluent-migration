@@ -1,0 +1,13 @@
+{%- if enabled -%}
+  {%- assign short_description = product.metafields[section.settings.short_description_namespace][section.settings.short_description_key] -%}
+  {%- capture desktop_description -%}
+    {%- if short_description and short_description != '' -%}
+      {{ short_description }}
+    {%- elsif section.settings.use_truncated_description -%}
+      <div class="rte">{{ product.description | truncatewords: 100, '...' }}</div>
+    {%- endif -%}
+  {%- endcapture -%}
+  <div class="ProductInfo__short-description ProductInfo__short-description--{{ breakpoint }} QuickView--hide">
+    {{ desktop_description }}
+  </div>
+{%- endif -%}

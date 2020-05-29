@@ -1,0 +1,29 @@
+@charset 'UTF-8';
+
+@import '~infinite/styles.scss';
+
+/**
+ * Use this to override styles for existing Infinite components or to define global styles.
+ * Do not put your custom component styles here!
+ */
+
+// Containers
+// @import './components/containers/MyContainer';
+
+// Groups
+// @import './components/groups/MyGroup';
+
+// Units
+@import './components/units/Button';
+
+// Components
+// @import './components/MobileMenu';
+// @import './components/ShoppableImage';
+// @import './components/Keen-ui-overrides';
+
+// Sections
+@import './sections/Header';
+@import './sections/Footer';
+
+// Templates
+@import './templates/Homepage';

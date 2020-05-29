@@ -1,0 +1,11 @@
+{%- capture custom_pagination -%}
+  <div role="navigation" aria-label="{{ aria_label }}" class="Pagination">
+    {{ paginate | default_pagination }}
+  </div>
+{%- endcapture -%}
+
+{%- assign current_page_item = '<span class="page current">' | append: paginate.current_page | append: '</span>' -%}
+{%- assign accessible_current_page_item = '<span class="page current"><a aria-current="page" aria-disabled="true" tabindex="0" role="link" title="">' | append: paginate.current_page | append: '</a></span>' -%}
+{%- assign custom_pagination = custom_pagination | replace: current_page_item, accessible_current_page_item -%}
+
+{{ custom_pagination }}

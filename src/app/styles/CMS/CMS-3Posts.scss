@@ -1,0 +1,68 @@
+.Module-3Posts {
+  .Module-3Posts {
+    &__Posts {
+      @include grid(12, 40px, 0);
+      @include media-query($tablet-down) {
+        @include grid(12, 10px, 0);
+      }
+      @include media-query($mobile) {
+        @include grid(12, 0, 20px);
+      }
+    }
+    &__Column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &__Primary {
+      @include grid-item(8);
+    }
+    &__Secondary {
+      flex-direction: column;
+      @include grid-item(4);
+      .Module-3Posts__Post:not(:last-child) {
+        margin-bottom: 40px;
+        @include media-query($tablet-down) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    &__Post {
+      padding: 10px;
+      width: 100%;
+      a {
+        color: #000;
+      }
+      &--Thumb {
+        position: relative;
+      }
+    }
+    &__TitleBlock {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    &__Title {
+      margin: 0;
+    }
+    &__Block {
+      &--Image {
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        @include media-query($tablet) {
+          max-height: 700px;
+        }
+        @include media-query($mobile) {
+          max-height: 300px;
+        }
+        img {
+          display: none;
+        }
+      }
+    }
+  }
+}

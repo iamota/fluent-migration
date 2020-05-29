@@ -1,0 +1,12 @@
+development:
+  api_key: my-api-key
+  password: my-api-password
+  theme_id: my-dev-theme-id
+  store: ignitehealth.myshopify.com
+  plus: false
+  auto_open:
+    website: true
+    browsersync_ui: false
+    ngrok_ui: false
+  ignore_files:
+  - config/settings_data.json

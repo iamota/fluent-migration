@@ -1,0 +1,22 @@
+<div id="ShoppableImage" class="Modal ShoppableImage__modal" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-shoppable-image-modal>
+  <div class="Modal__overlay" data-modal-overlay data-close-modal></div>
+  <div class="Modal__content ShoppableImage__content" data-modal-content>
+    <div class="ShoppableImage__Drawer" data-bottom-view>
+      <div class="ShoppableImage__Drawer-inner" data-will-animate>
+        <div class="ShoppableImage__Loader" data-shoppable-image-loader><i class="{{ settings.fa }} fa-spinner fa-spin"></i></div>
+        <div class="ShoppableImage__Controls">
+          <div class="ShoppableImage__Back" tabindex="0" role="button" data-shoppable-image-back>
+            <i class="{{ settings.fa }} fa-arrow-left"></i>
+            Back
+          </div>
+          <div class="ShoppableImage__Close" role="button" tabindex="0" data-shoppable-image-close data-close-modal>
+            <i class="{{ settings.fa }} fa-times"></i>
+          </div>
+        </div>
+        <div data-products-content>
+          {% comment %} populated by js {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

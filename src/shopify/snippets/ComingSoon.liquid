@@ -1,0 +1,36 @@
+{% assign logo_width = 180 %}
+
+<div class="ComingSoon">
+  <div class="ComingSoon__wrapper">
+    <div class="ComingSoon__logo">
+      {%- if section.settings.logo != blank -%}
+        {%- assign image_size = logo_width | times: 2 | append: 'x' -%}
+        <img 
+          src="{{ section.settings.logo | img_url: image_size }}"
+          alt="{{ section.settings.logo.alt | default: shop.name }}"
+          itemprop="logo"
+        >
+      {%- else -%}
+        {{ shop.name }}
+      {%- endif -%}
+    </div>
+    <div class="ComingSoon__box" id="Login">
+      <div class="h5">{{ 'general.password_page.login_form_heading' | t }}</div>
+      {% form 'storefront_password' %}
+        {{ form.errors | default_errors }}
+        <input 
+          class="Form__input"
+          type="password"
+          name="password"
+          id="Password"
+          placeholder="{{ 'general.password_page.login_form_password_placeholder' | t }}"
+        >
+        <div class="ComingSoon__button">
+          <button type="submit" name="commit" class="Button">
+            {{ 'general.password_page.login_form_submit' | t }}
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+.template-index {
+  #section1590711776325 {
+    .ContentBlock {
+      &__preheading {
+        color: #5a6b80;
+      }
+
+      &__heading {
+        color: #020e2b;
+      }
+    }
+  }
+
+  #section1590713223642 {
+    .Section {
+      &__heading {
+        color: #020e2b;
+      }
+
+      &__subheading {
+        margin-bottom: 70px;
+        text-align: center;
+        color: #5a6b80;
+      }
+    }
+
+    .Pod {
+      &__image {
+        img {
+          margin: 0 auto;
+          margin-bottom: 30px;
+          width: auto;
+          max-height: 100px;
+        }
+      }
+
+      &__heading {
+        color: #006468;
+      }
+
+      &__sub-heading {
+        margin-top: 20px;
+        color: #5a6b80;
+      }
+    }
+  }
+
+  .ContentArea__content {
+    .Section__container {
+      padding: 0;
+    }
+
+    .ContentBlock__text .ContentBlock__wrapper {
+      @include media-query($mobile) {
+        padding: 0 20px;
+      }
+    }
+
+    .ContentBlock--right .ContentBlock__image {
+      @include media-query($mobile) {
+        grid-row-start: initial;
+      }
+    }
+  }
+}

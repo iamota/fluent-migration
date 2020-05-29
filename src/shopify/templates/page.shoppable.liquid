@@ -1,0 +1,40 @@
+{% layout none %}
+{%- capture body_content -%}
+  {%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+  {%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |
+    replace:'\/','/' |
+    replace:'%20',' ' |
+    replace:'\u0026','&' |
+  -%}
+  {%- for i in (1..1) -%}
+    {%- comment -%} If the string doesn't contain a ? then we have no querystring. Go no further {%- endcomment -%}
+    {%- unless pageUrl contains "?" -%}{% break %}{%- endunless -%}
+
+    {%- comment -%} Only work when the cache qs is used. Be aware of the perf issues with using cache=false {%- endcomment -%}
+    {%- unless pageUrl contains "cache=false" -%}{% break %}{%- endunless -%}
+
+    {%- comment -%} Split the url at the ? to get all values after it {%- endcomment -%}
+    {%- assign pageQuerystring = pageUrl | split:'?' | last -%}
+
+    {%- comment -%} Split the remaining string at & to get the list of keys and values (if any) {%- endcomment -%}
+    {%- assign parts = pageQuerystring | split:'&' -%}
+
+    {%- comment -%} Loop over them... {%- endcomment -%}
+    {%- for part in parts -%}
+
+      {%- comment -%} Split the part at the =. Not all querystrings will be in pairs so we need to account for that {%- endcomment -%}
+      {%- assign keyAndValue = part | split:'=' -%}
+
+      {%- if keyAndValue.size > 1 -%}
+        {% if keyAndValue[0] == "products" %}
+          {%- assign products = keyAndValue[1] | split: ', ' | join: ',' | split: ',' -%}
+          {%- include 'ShoppableImage__Products', products: products -%}
+        {% endif %}
+      {%- endif -%}
+
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{{ body_content }}
+

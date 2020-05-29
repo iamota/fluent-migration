@@ -1,0 +1,10 @@
+{% include 'INF-modal-examples' %}
+
+{% include 'INF-RegionRedirect' %}
+
+{% include 'QuickView__modal' %}
+{% include 'ShoppableImage__modal' %}
+
+{%- if template.name == 'login' or template.name == 'account' -%}
+  {% include 'INF-AccountPasswordForgotModal' %}
+{%- endif -%}

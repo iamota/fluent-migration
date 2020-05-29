@@ -1,0 +1,47 @@
+// Just some example styles for the top and bottom placeholders in the mobile menu
+.MobileMenu {
+  &__top {
+    
+  }
+
+  &__buttons {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__button {
+    width: 100%;
+    border-radius: 0;
+    line-height: 1;
+    padding: 20px $item-padding;
+    text-align: left;
+
+    &--special {
+      background-color: #444;
+      border-color: #444;
+      color: #fff;
+    }
+  }
+
+  &__bottom {
+    padding: 40px $grid-gutter;
+  }
+
+  &__social {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  
+  &__social-icon {
+    display: inline-block;
+    font-size: 20px;
+    padding: 0 5px;
+    
+    a {
+      color: #999;
+    }
+  }
+}

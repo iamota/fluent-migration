@@ -1,0 +1,10 @@
+{%- assign primary_linklist = section.settings.mobile_menu_linklist | default: section.settings.primary_nav_linklist -%}
+
+<div class="MobileMenu" role="navigation" data-prevent-tab aria-hidden="true" data-mobile-menu>
+  {%- include 'MobileMenu__top' -%}
+  {%- include 'INF-MobileMenu__list', linklist: linklists[primary_linklist], tier: 1 -%}
+  {%- if section.settings.mobile_menu_linklist == blank and section.settings.secondary_nav_linklist -%}
+    {%- include 'INF-MobileMenu__list', linklist: linklists[section.settings.secondary_nav_linklist], tier: 1 -%}
+  {%- endif -%}
+  {%- include 'MobileMenu__bottom' -%}
+</div>

@@ -1,0 +1,156 @@
+.ShoppableImage {
+  $si: &;
+  position: relative;
+  overflow: hidden;
+  
+  &--full {
+    height: 100%;
+    width: 100%;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+
+    img {
+      display: none !important; // this is fighting the rte img block style... should just fix that...
+    }
+  }
+
+  &[data-shoppable-image] {
+    cursor: pointer;
+  }
+  &[data-shoppable-image-lock] {
+    cursor: auto;
+    #{$si}__Button {
+      opacity: 0;
+    }
+  }
+  &__Button {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 0.2s;
+    @include media-query($mobile) {
+      padding: 10px;
+    }
+    span {
+      background: #fff;
+      padding: 5px 10px;
+    }
+  }
+  &__Image {
+    width: 100%;
+  }
+  &__Loader {
+    z-index: -1;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include transition(opacity 0.5s, z-index 0.5s step-end);
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__Controls {
+    display: flex;
+    justify-content: flex-end;
+    #{$si}__Back,
+    #{$si}__Close {
+      cursor: pointer;
+      font-size: 15px;
+      padding: 10px;
+    }
+    #{$si}__Back {
+      display: none;
+    }
+  }
+  &__Drawer {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: transparentize(#fff, $amount: .1);
+    #{$si}__Products {
+      .ProductTile {
+        img {
+          display: block;
+        }
+      }
+    }
+    &-inner {
+      height: 100%;
+    }
+  }
+  &__Products {
+    padding-bottom: 10px;
+    opacity: 1;
+    transition: opacity 0.5s;
+    .ProductTile {
+      margin: 0;
+    }
+  }
+
+  &__content {
+    cursor: auto;
+    position: absolute;
+    max-width: none;
+    transform: translateY(0);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+  }
+  &__modal {
+    cursor: pointer;
+    max-height: none;
+    &--loading {
+      #{$si}__Controls {
+        display: none;
+      }
+      #{$si}__Drawer {
+        height: 100%;
+        background: transparentize(#fff, .5)
+      }
+      #{$si}__Loader {
+        opacity: 1;
+        z-index: 2;
+        @include transition(opacity 0s, z-index 0s);
+      }
+      #{$si}__Products {
+        opacity: 0;
+      }
+    }
+
+    &--open {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      z-index: 999;
+      opacity: 1;
+      @include transition(z-index 0s step-start, opacity 0s step-start);
+  
+      .Modal__overlay {
+        height: 100%;
+        opacity: 1;
+        @include transition(opacity 0.5s, height 0.5s);
+      }
+  
+      .ShoppableImage__content {
+        opacity: 1;
+        @include transition(opacity 0.5s);
+        background-position: center;
+        background-size: cover;
+        display: block;
+      }
+    }
+  }
+}

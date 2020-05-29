@@ -1,0 +1,25 @@
+<div class="ShoppableImage__Products" 
+  data-products-content
+  data-simple-carousel
+  data-cell-align="left"
+  data-dynamic-min-slides="true"
+  data-prev-next-buttons="false"
+  data-adaptive-height="false"
+  data-page-dots="false"
+  data-page-dot-aria-label="{{ 'cart.label.product' | t }}"
+  >
+  {%- for initial_handle in products -%}
+    {% assign variant_id = null %}
+    {%- if initial_handle contains ':' -%}
+      {% assign handle_arr = initial_handle | split: ':' %}
+      {% assign variant_id = handle_arr | last | plus: 0 %}
+      {% assign handle = handle_arr | first %}
+    {%- else -%}
+      {% assign handle = initial_handle %}
+    {%- endif -%}
+    {%- assign product = all_products[handle] -%}
+    {% if product != empty %}
+      {% include 'ProductTile', carousel: true, shoppable: true, disable_quickview: true %}
+    {% endif %}
+  {%- endfor -%}
+</div>

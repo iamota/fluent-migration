@@ -1,0 +1,29 @@
+{%- if product.compare_at_price > product.price -%}
+
+  {%- if product.price_varies -%}
+    {%- assign sale_price = product.price | money -%}
+    {{ 'products.product.on_sale_from_html' | t: price: sale_price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+  {%- else -%}
+    {{ 'products.product.on_sale' | t }}
+    {{ product.price | money }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+  {%- endif -%}
+
+{%- else -%}
+
+  {%- if product.price_varies -%}
+    {%- assign price = product.price | money -%}
+    {{ 'products.product.from_text_html' | t: price: price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+  {%- else -%}
+    {{ product.price | money }}{% if settings.show_currency %}  <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+  {%- endif -%}
+  
+{%- endif -%}
+
+{%- if product.compare_at_price > product.price -%}
+  <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+  <s class="Price__compare-at">{{ product.compare_at_price | money }}</s>
+{%- endif -%}
+
+{%- unless product.available -%}
+  {{ 'products.product.sold_out' | t }}
+{%- endunless -%}

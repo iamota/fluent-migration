@@ -1,0 +1,91 @@
+{%- comment -%} Name is optional{%- endcomment -%}
+<div class="Form__input-group">
+  <div class="Form__input-item">
+    <label for="FirstName" class="Form__label{% unless section.settings.show_labels %} label-hidden{% endunless %}">
+      {{ 'customer.register.first_name' | t }}
+    </label>
+    <div class="Form__input-wrapper">
+      <input type="text"
+        name="customer[first_name]"
+        id="FirstName"
+        class="Form__input"
+        placeholder="{{ 'customer.register.first_name' | t }}"
+        autofocus
+        {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+    </div>
+  </div>
+  <div class="Form__input-item">
+    <label for="LastName" class="Form__label{% unless section.settings.show_labels %} label-hidden{% endunless %}">
+      {{ 'customer.register.last_name' | t }}
+    </label>
+    <div class="Form__input-wrapper">
+      <input type="text"
+        name="customer[last_name]"
+        id="LastName"
+        class="Form__input"
+        placeholder="{{ 'customer.register.last_name' | t }}"
+        {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+    </div>
+  </div>
+</div>
+
+<div class="Form__input-group">
+  {%- comment -%} Email is required by Shopify{%- endcomment -%}
+  <div class="Form__input-item">
+    <label for="Email" class="Form__label{% unless section.settings.show_labels %} label-hidden{% endunless %}">
+      {{ 'customer.register.email' | t }}
+    </label>
+    <div class="Form__input-wrapper">
+      <input type="email"
+        name="customer[email]"
+        id="Email"
+        class="Form__input{% if form.errors contains 'email' %} input-error{% endif %}"
+        placeholder="{{ 'customer.register.email' | t }}"
+        value="{% if form.email %}{{ form.email }}{% endif %}"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off">
+    </div>
+  </div>
+  {%- comment -%}DON'T REMOVE THIS{%- endcomment -%}
+  {%- if odd_field -%}
+    {{ odd_field }}
+  {%- endif -%}
+   {%- comment -%}DON'T REMOVE THIS{%- endcomment -%}
+</div>
+
+{%- comment -%}DON'T REMOVE THIS{%- endcomment -%}
+{%- if custom_fields -%}
+  {{ custom_fields }}
+{%- endif -%}
+{%- comment -%}DON'T REMOVE THIS{%- endcomment -%}
+
+<div class="Form__input-group">
+  {%- comment -%} Password is require by Shopify {%- endcomment -%}
+  <div class="Form__input-item">
+    <label for="CreatePassword" class="Form__label{% unless section.settings.show_labels %} label-hidden{% endunless %}">
+      {{ 'customer.register.password' | t }}
+    </label>
+    <div class="Form__input-wrapper">
+      <input type="password"
+        name="customer[password]"
+        class="Form__input"
+        id="CreatePassword"
+        class="{% if form.errors contains 'password' %}input-error{% endif %}"
+        placeholder="{{ 'customer.register.password' | t }}">
+    </div>
+  </div>
+  {%- comment -%} This is technically optional, Shopify doesn't care {%- endcomment -%}
+  <div class="Form__input-item">
+    <label for="ConfirmPassword" class="Form__label{% unless section.settings.show_labels %} label-hidden{% endunless %}">
+      Confirm {{ 'customer.register.password' | t }}
+    </label>
+    <div class="Form__input-wrapper">
+      <input type="password"
+        name="customer[confirm-password]"
+        class="Form__input"
+        id="ConfirmPassword"
+        placeholder="Confirm {{ 'customer.register.password' | t }}">
+    </div>
+  </div>
+</div>

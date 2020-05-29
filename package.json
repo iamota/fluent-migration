@@ -1,0 +1,22 @@
+{
+  "name": "ignite-health",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "inf start",
+    "watch": "inf watch",
+    "dev": "webpack-dev-server --config node_modules/infinite/webpack.config.js",
+    "build": "webpack --config node_modules/infinite/webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-infinite": "git+https://gitlab.lucidfusion.com/lucidfusion/open-source/eslint-config-infinite.git"
+  },
+  "dependencies": {
+    "infinite": "git+ssh://git@gitlab.lucidfusion.com:lucidfusion/infinite-v3/framework.git"
+  }
+}

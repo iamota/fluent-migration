@@ -1,0 +1,15 @@
+.Module-ImageFullWidth {
+  &__Content {
+    text-align: center;
+  }
+  &__Block {
+    &--Image {
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      img {
+        display: none;
+      }
+    }
+  }
+}

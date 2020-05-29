@@ -1,0 +1,24 @@
+image: gcr.io/lucid-fusion/infinite-v3-deployment:latest
+
+deploy-production:
+  stage: deploy
+  environment: 
+    name: production
+  only:
+    - master
+  script:
+    - bash /usr/src/app/deploy.sh
+
+deploy-qa:
+  stage: deploy
+  environment: 
+    name: qa
+  only:
+    refs:
+      - develop
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[deploy\]/
+  variables:
+    QA_THEME_ID: my-qa-theme-id
+  script:
+    - bash /usr/src/app/deploy.sh

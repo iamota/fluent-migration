@@ -1,0 +1,13 @@
+<div id="QuickView" class="Modal {% if settings.preheader_enabled %}Modal--has-preheader{% endif %} QuickView__modal" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-modal>
+  <div class="Modal__close Modal__close--outside" role="button" tabindex="0" data-close-modal>
+    {% include 'CloseIcon' %}
+  </div>
+  <div class="Modal__overlay" data-modal-overlay data-close-modal></div>
+  <div class="Modal__content" data-modal-content role="document">
+    <div class="Modal__close Modal__close--inside" role="button" tabindex="0" data-close-modal>
+      {% include 'CloseIcon' %}
+    </div>
+    <div class="QuickView__loader"><i aria-label="{% include 'INF-translation', translate: 'products.product.loading', default: 'Loading' %}" class="{{ settings.fa }} fa-spinner fa-spin"></i></div>
+    <div class="QuickView__content" data-quick-view-content data-section-id="QuickView" data-section-type="product"></div>
+  </div>
+</div>

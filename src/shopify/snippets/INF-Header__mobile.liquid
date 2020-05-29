@@ -1,0 +1,46 @@
+{%- assign logo = section.settings.logo--mobile | default: section.settings.logo -%}
+
+<header class="Header__mobile" role="banner">
+  <div class="MobileBar">
+
+    <div class="MobileLogo" {% if template.name == 'index' %} role="heading" aria-level="1"{% endif %}>
+      <a href="/" aria-label="{{ shop.name }} - {% include 'INF-translation', translate: 'layout.navigation.home', default: 'Home' %}" itemprop="url" class="MobileLogo__{% if logo == blank %}text{% else %}image{% endif %}">
+        {%- if logo != blank -%}
+          {%- assign image_size = section.settings.mobile_logo_width | times: 3 | append: 'x' -%}
+          <img src="{{ logo | img_url: image_size }}" alt="{{ logo.alt | default: shop.name }}" itemprop="logo">
+        {%- else -%}
+          {{ shop.name }}
+        {%- endif -%}
+      </a>
+    </div>
+
+    {% comment %} <div class="MobileBar__left" data-mobile-bar-left>
+      <div class="MobileBar__icon Hamburger" tabindex="0" role="button" 
+        aria-label="{% include 'INF-translation', translate: 'layout.navigation.title', default: 'Navigation' %}" 
+        data-aria-label-closed="{% include 'INF-translation', translate: 'layout.navigation.title', default: 'Navigation' %}" 
+        data-aria-label-open="{% include 'INF-translation', translate: 'layout.navigation.close', default: 'Close navigation' %}"
+        data-hamburger
+      >
+        <span class="Hamburger__icon" data-hamburger-icon>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+    </div> {% endcomment %}
+
+    <div class="MobileBar__right">
+      <a class="Button Button--primary" href="">Take the quiz</a>
+      {% comment %} {%- capture search_label -%}
+        {% include 'INF-translation', translate: 'general.search.title', default: 'Search our store' %}
+      {%- endcapture -%}
+      {%- capture cart_label -%}
+        {% include 'INF-translation', translate: 'cart.general.title', default: 'Shopping cart' %}
+      {%- endcapture -%}
+      <span class="MobileBar__icon MobileBar__icon--search">{%- include 'INF-IconToggle', icon: 'fa-search', direction: 'down', data: 'data-search-toggle', aria_label: search_label -%}</span>
+      <span class="MobileBar__icon">{%- include 'INF-IconToggle', icon: settings.cart_icon, direction: 'right', data: 'data-cart-toggle', aria_label: cart_label -%}</span> {% endcomment %}
+    </div>
+    
+  </div>
+</header>

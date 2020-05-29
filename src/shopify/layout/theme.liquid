@@ -1,0 +1,51 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}" data-state> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap" rel="stylesheet">
+
+  {% include 'INF-meta-tags' %}
+  {% include 'INF-fontawesome' %}
+  <style id="navDropdowns"></style>
+
+  {% include 'GTM-head' %}
+  {% include '@INF-liquid-to-js' %}
+  {% include '@liquid-to-js' %}
+  {% include 'INF-preload-js' %}
+  {% include 'INF-locales' %}
+  {% include '@INF-css-variables' %}
+  {% include '@css-variables' %}
+  <!--PRODUCTION_CSS-->
+  <script src="__DYNAMIC_APP_JS__"></script>
+
+  {{ content_for_header }}
+  
+  {% include 'INF-bugherd' %}
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template | handle }}">
+
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent" data-skip-to-main>{{ 'general.accessibility.skip_to_content' | t }}</a>
+  {% include 'GTM-body' %}
+  {% section 'INF-Header' %}
+  {% section 'INF-SliderCart' %}
+  {% include 'modals' %}
+
+  <div class="SiteOverlay" data-site-overlay>
+    <div class="Overlay"></div>
+  </div>
+
+  {% section 'Newsletter' %}
+
+  <main role="main" id="MainContent">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'INF-Footer' %}
+</body>
+</html>

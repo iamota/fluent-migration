@@ -1,0 +1,22 @@
+<div class="ProductOverview" data-quick-view-container>
+  {%- include 'ProductHeading', breakpoint: 'mobile' -%}
+
+  {%- capture carousel_classes -%}AnimateOnLoad Animate--{{ section.settings.carousel_animation }}{%- endcapture -%}
+  {%- include 'INF-ProductImages', classes: carousel_classes -%}
+  
+  <div class="ProductInfo {% if section.settings.info_animation != 'none' %}Animate Animate--{{ section.settings.info_animation }}{% endif %}">
+    {%- include 'ProductHeading', breakpoint: 'desktop' -%}
+    {%- include 'ProductInfo__short-description', breakpoint: 'desktop', enabled: section.settings.short_description_enabled -%}
+    {%- include 'ProductInfo__short-description', breakpoint: 'mobile', enabled: section.settings.short_description_enabled--mobile -%}
+
+    <form class="ProductInfo__form" action="/cart/add" method="post" enctype="multipart/form-data">
+      {%- include 'INF-ProductInfo__shopify-system' -%}
+      {%- include 'INF-ProductInfo__options' -%}
+      {%- include 'ProductInfo__add-to-cart' -%}
+    </form>
+
+    {%- if section.settings.show_share_buttons -%}
+      {% include 'SocialSharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+    {%- endif -%}
+  </div>
+</div>

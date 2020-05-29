@@ -1,0 +1,48 @@
+{%- capture general_search_heading -%}
+  {{ 'general.search.heading' | t: count: search.results_count }}
+{%- endcapture -%}
+
+{% comment %} NOTE: If a search banner is NOT used, or the banner heading is being hidden, be sure to remove aria-hidden="true" from the <h1> below for ADA compliance. 
+{% endcomment %}
+<h1 aria-hidden="true" class="{% if section.settings.animation != 'none'%}Animate Animate--{{ section.settings.animation }}{% endif %}">
+  {{ 'general.search.results_with_count' | t: terms: raw_query, count: search.results_count }}
+</h1>
+
+<div class="visually-hidden" role="heading" aria-level="2">{{ general_search_heading }}</div>
+
+{%- if search.results_count == 0 -%}
+  <p class="{% if section.settings.animation != 'none'%}Animate Animate--{{ section.settings.animation }}{% endif %}">
+    {{ 'general.search.no_results_html' | t: terms: search.terms }}
+  </p>
+{%- else -%}
+  <div class="SearchResults">
+  {%- for item in search.results -%}
+    <div class="SearchResult {% if section.settings.animation != 'none'%}Animate Animate--{{ section.settings.animation }}{% endif %}">
+      <div class="SearchResult__container">
+        <div class="SearchResult__image">
+          <a href="{{ item.url | within: collection }}">
+            {% assign featured_image = item.image | default: item.featured_image %}
+            {% if featured_image != blank %}
+              {{ featured_image | img_url: '240x' | img_tag }}
+            {% endif %}
+          </a>
+        </div>
+        <div class="SearchResult__description">
+          <h3 class="SearchResult__title"><a href="{{ item.url | within: collection }}">{{ item.title }}</a></h3>      
+          {%- if item.object_type == 'product' -%}
+            <p class="SearchResult__price">{% include 'product-pricing-logic', product: item %}</p>
+          {%- endif -%}
+          <p class="SearchResult__content">{{ item.content | strip_html | truncatewords: section.settings.max_words }}</p>
+          <div class="SearchResult__link">
+            <a href="{{ item.url }}">{{ item.url }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{% if paginate.pages > 1 %}
+  {% include 'pagination', aria_label: general_search_heading %}
+{% endif %}

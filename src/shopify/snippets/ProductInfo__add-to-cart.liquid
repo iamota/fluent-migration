@@ -1,0 +1,48 @@
+<div class="ProductInfo__quantity ProductOption">
+  <div class="ProductOption__name">{{ 'cart.label.quantity' | t }}</div>
+  {% if settings.quantity_ui == 'input' %}
+    <div class="Quantity__button Quantity__button--left" tabindex="0" role="button" data-quantity-minus><i aria-label="{% include 'INF-translation', translate: 'cart.label.decrease_quantity', default: 'Decrease quantity' %}" class="{{ settings.fa }} fa-minus }}"></i></div>
+    <input 
+      class="Quantity__input {% unless settings.quantity_input_allowed %}Quantity__input--readonly{% endunless %}" 
+      type="number" 
+      name="quantity" 
+      value="1" 
+      min="1"
+      aria-label="{% include 'INF-translation', translate: 'cart.general.item_quantity', default: 'Item quantity' %}"
+      data-quantity-input 
+      {% unless settings.quantity_input_allowed %}readonly tabindex="-1" role="presentation" {% endunless %}
+    >
+    <div class="Quantity__button Quantity__button--right" tabindex="0" role="button" data-quantity-plus><i aria-label="{% include 'INF-translation', translate: 'cart.label.increase_quantity', default: 'Increase quantity' %}" class="{{ settings.fa }} fa-plus }}"></i></div>
+  {% else %}
+    <select id="Quantity" name="quantity" class="ProductInfo__quantity-select">
+    {% for i in (1..10) %}
+      <option value="{{ i }}">{{ i }}</option>
+    {% endfor %}
+    </select>
+  {% endif %}
+</div>
+
+<div class="ProductInfo__add-to-cart">
+  {% comment %} 
+  <span class="ProductInfo__quantity-buttons">
+    <span class="ProductInfo__quantity-button">-</span>
+    <input class="ProductInfo__quantity-input" id="Quantity" name="quantity" type="number" min="1" step="1" value="1" readonly>
+    <span class="ProductInfo__quantity-button">+</span>
+  </span> 
+  {% endcomment %}
+  <button
+    type="submit"
+    name="add"
+    class="ProductInfo__button Button Button--primary"
+    data-add-to-cart
+    {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+      <i class="{{ settings.fa }} {{ settings.cart_icon }}"></i>
+      <span data-add-to-cart-text>
+        {% if current_variant.available %}
+          {{ 'products.product.add_to_cart' | t }}
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      </span>
+  </button>
+</div>

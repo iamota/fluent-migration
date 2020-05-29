@@ -1,0 +1,20 @@
+.Module-Blockquote {
+  .Module-Blockquote {
+    &__Blockquote {
+      &--Alignment {
+        &-left {
+          text-align: left;
+        }
+        &-center {
+          text-align: center;
+        }
+        &-right {
+          text-align: right;
+        }
+      }
+    }
+    &__Source {
+      margin: 20px 0;
+    }
+  }
+}

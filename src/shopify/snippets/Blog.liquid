@@ -1,0 +1,36 @@
+{%- comment -%}
+Do something with tags later
+
+  {% if blog.all_tags.size > 0 %}
+    <h2>{{ 'blogs.general.categories' | t }}</h2>
+
+    <ul>
+      {% for tag in blog.all_tags %}
+
+        {% if current_tags contains tag %}
+          <li>{{ tag }}</li>
+        {% else %}
+          <li>{{ tag | link_to_tag: tag }}</li>
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+  {% endif %}
+{%- endcomment -%}
+
+<div class="ArticleGrid ArticleGrid--columns-{{ section.settings.columns }}">
+  {%- for article in blog.articles -%}
+    {%- include 'ArticleTile', 
+      columns: section.settings.columns,
+      aspect_ratio: section.settings.aspect_ratio,
+      show_dates: section.settings.show_dates, 
+      max_words: section.settings.max_words,
+      button_enabled: section.settings.button_enabled,
+      button_text: section.settings.button_text,
+      button_icon: section.settings.button_icon,
+      animation: section.settings.animation,
+      animation_hover: section.settings.animation--hover,
+      heading_class: section.settings.article_heading_class
+    -%}
+  {%- endfor -%}
+</div>

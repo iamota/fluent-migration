@@ -1,0 +1,10 @@
+{% include 'INF-Header__desktop' %}
+{% include 'INF-Header__mobile' %}
+
+{%- if settings.preheader_enabled -%}
+  {%- assign width = section.settings.preheader_width -%}
+{%- else -%}
+  {%- assign width = section.settings.width -%}
+{%- endif -%}
+
+{% include 'INF-SearchDrawer', width: width %}

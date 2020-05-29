@@ -1,0 +1,141 @@
+$box-top-position: 50px;
+$box-bottom-position: 50px;
+$box-right-position: 50px;
+$box-left-position: 50px;
+$box-mobile-top-position: 40px;
+$box-mobile-bottom-position: 40px;
+$box-mobile-right-position: 10px;
+$box-mobile-left-position: 10px;
+
+.Module-Banner {
+  $banner: &;
+  .Section__container {
+    height: 100%;
+  }
+  .Module-Banner {
+
+    &__Block {
+      &--Content {
+        height: 100%;
+        width: 100%;
+      }
+      &--Content-Inner {
+        width: 100%;
+      }
+      &--Media {
+        img {
+          @include tablet-down-only;
+        }
+      }
+    }
+
+    &__Bg {
+      &--Desktop {
+        @include media-query($medium-down) {
+          display: none;
+        }
+      }
+      &--Mobile {
+        display: none;
+        @include media-query($medium-down) {
+          display: block;
+        }
+      }
+    }
+
+    &__Bg-color {
+      width: 100%;
+      background-color: white;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      @include media-query($medium-down) {
+        position: relative;
+      }
+    }
+
+    &__Content {
+      height: 100%;
+      font-size: 22px;
+      position: relative;
+
+      @include media-query($medium-down) {
+        font-size: 14px;
+      }
+
+      &--theme-light {
+        h1, h2, h3, h4, h5, h6, p, a, span, ul, li, ol {
+          color: white;
+        }
+      }
+    }
+
+    &__Slide {
+      height: 100%;
+      width: 100%;
+
+      @include media-query($medium-down) {
+        height: auto;
+      }
+      &--split_content {
+        #{$banner}__Columns {
+          height: 100%;
+          @include media-query($medium-down) {
+            grid-auto-rows: 1fr;
+          }
+        }
+      }
+      &--text_heading {
+        width: 100%;
+      }
+    }
+
+    &__Columns {
+      @include grid(12, 0, 0);
+      grid-auto-flow: dense;
+    }
+
+    &__Column {
+      position: relative;
+      overflow: hidden;
+
+      &--left {
+        @include grid-item(6, null, 1);
+      }
+      &--right {
+        @include grid-item(6, null, 7);
+      }
+      &--top {
+        @include media-query($medium-down) {
+          grid-row-start: 1;
+        }
+      }
+      &--hide {
+        @include media-query($medium-down) {
+          display: none;
+        }
+      }
+    }
+
+    &__Overlay {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+
+      &--dark {
+        background: rgba(0,0,0,.3);
+      }
+      &--light {
+        background: rgba(255,255,255,.6);
+      }
+    }
+  }
+  .flickity {
+    &-viewport {
+      transition: height 0.2s;
+    }
+  }
+}

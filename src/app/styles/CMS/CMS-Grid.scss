@@ -1,0 +1,126 @@
+.Grid {
+  &--1 {
+    @include grid(12, 0, 0) {
+      .Grid_item {
+        &-column {
+          &--1 { @include grid-item(12); }
+          &--2 { @include grid-item(12); }
+          &--3 { @include grid-item(12); }
+        }
+      }
+    }
+    &--mobile {
+      @include grid(12, 0, 0) {
+        .Grid_item {
+          &-column {
+            &--1--mobile { @include grid-item(12, $mobile); }
+            &--2--mobile { @include grid-item(12, $mobile); }
+            &--3--mobile { @include grid-item(12, $mobile); }
+          }
+        }
+      }
+    }
+  }
+
+  &--2 {
+    @include grid(12, 0, 0) {
+      .Grid_item {
+        &-column {
+          &--1 { @include grid-item(6); }
+          &--2 { @include grid-item(12); }
+          &--3 { @include grid-item(12); }
+        }
+      }
+    }
+    &--mobile {
+      @include grid(12, 0, 0) {
+        .Grid_item {
+          &-column {
+            &--1--mobile { @include grid-item(6, $mobile); }
+            &--2--mobile { @include grid-item(12, $mobile); }
+            &--3--mobile { @include grid-item(12, $mobile); }
+          }
+        }
+      }
+    }
+  }
+
+  &--3 {
+    @include grid(12, 0, 0) {
+      .Grid_item {
+        &-column {
+          &--1 { @include grid-item(4); }
+          &--2 { @include grid-item(8); }
+          &--3 { @include grid-item(12); }
+        }
+      }
+    }
+    &--mobile {
+      @include grid(12, 0, 0) {
+        .Grid_item {
+          &-column {
+            &--1--mobile { @include grid-item(4, $mobile); }
+            &--2--mobile { @include grid-item(8, $mobile); }
+            &--3--mobile { @include grid-item(12, $mobile); }
+          }
+        }
+      }
+    }
+  }
+
+  &--1--mobile {
+    @include grid(12, 0, 0) {
+      .Grid_item {
+        &-column {
+          &--1--mobile { @include grid-item(12, $mobile); }
+          &--2--mobile { @include grid-item(12, $mobile); }
+          &--3--mobile { @include grid-item(12, $mobile); }
+        }
+      }
+    }
+  }
+
+  &--2--mobile {
+    @include grid(12, 0, 0) {
+      .Grid_item {
+        &-column {
+          &--1--mobile { @include grid-item(6, $mobile); }
+          &--2--mobile { @include grid-item(12, $mobile); }
+          &--3--mobile { @include grid-item(12, $mobile); }
+        }
+      }
+    }
+  }
+
+  &--3--mobile {
+    @include grid(12, 0, 0) {
+      .Grid_item {
+        &-column {
+          &--1--mobile { @include grid-item(4, $mobile); }
+          &--2--mobile { @include grid-item(8, $mobile); }
+          &--3--mobile { @include grid-item(12, $mobile); }
+        }
+      }
+    }
+  }
+
+  &--mosaic-supported {
+    grid-auto-flow: dense;
+  }
+
+  &--use-gutters {
+    grid-column-gap: $grid-gutter;
+    grid-row-gap: $grid-gutter;
+  }
+  
+  .Grid_item {
+    &-row {
+        &--1 { grid-row: span 1; }
+        &--2 { grid-row: span 2; }
+        @include media-query($mobile) {
+          &--1--mobile { grid-row: span 1; }
+          &--2--mobile { grid-row: span 2; }
+        }
+    }
+  }
+}

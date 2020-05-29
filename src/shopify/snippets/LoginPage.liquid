@@ -1,0 +1,19 @@
+<div class="LoginPage">
+  <div class="LoginPanel">
+    {% include 'LoginForm' %}
+  </div>
+  <div class="CreateAccountPanel">
+    {% include 'INF-CreateAccountPanel' %}
+  </div>
+</div>
+
+{%- comment -%}
+This is basically a hack that lets our JS know that a password was reset successfully so we can trigger a modal to open.
+{%- endcomment -%}
+<div style="display: none;">
+  {% form 'recover_customer_password' %}
+    {%- if form.posted_successfully? -%}
+      <span data-reset-password-success></span>
+    {%- endif -%}
+  {% endform %}
+</div>
