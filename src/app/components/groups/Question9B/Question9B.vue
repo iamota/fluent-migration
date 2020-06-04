@@ -1,0 +1,43 @@
+<template>
+  <div class="Question9B">
+    <h3>What is this family member’s gender?</h3>
+    <Grid desktop="4">
+      <Radio 
+        name="family_gender" 
+        label="Male" 
+        value="male"
+        inline 
+      />
+      <Radio 
+        name="family_gender" 
+        label="Female" 
+        value="female" 
+        inline
+      />
+      <Radio 
+        name="family_gender" 
+        label="Other" 
+        value="other" 
+        inline 
+      />
+      <Radio 
+        name="family_gender" 
+        label="I'd prefer not to say" 
+        value="not-say" 
+        inline 
+      />
+    </Grid>
+    <button :class="`Button Button__Primary`" @click="back">back</button>
+    <button 
+      class="Button Button__Primary" 
+      :class="{ 'noHover': isDisabled }" 
+      :disabled="isDisabled" 
+      @click="next"
+    >
+      continue
+    </button>
+  </div>
+</template>
+
+<script src="./Question9B.ts"></script>
+<style src="./Question9B.scss"></style>

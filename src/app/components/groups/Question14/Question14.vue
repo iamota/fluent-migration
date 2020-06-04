@@ -1,0 +1,183 @@
+<template>
+  <div class="Question14 Radio--longtext">
+    <h3 v-if="isMyself">Were you given the following while there?</h3>   
+    <h3 v-if="!isMyself">Was your given the following while there?</h3>  
+    <div>
+      <p>A flu test</p>
+      <div class="Radio__group">
+        <Radio 
+          name="flu_test" 
+          label="Yes" 
+          value="yes"
+          inline 
+        />
+        <Radio 
+          name="flu_test" 
+          label="No" 
+          value="no" 
+          inline
+        /> 
+        <Radio 
+          name="flu_test" 
+          label="Don't Remember" 
+          value="dont_remember" 
+          inline
+        /> 
+      </div>
+    </div>
+    <div>
+      <p>A Prescription for an Antiviral (TAMIFLU®, RELENZA®)</p>
+      <div class="Radio__group">
+        <Radio 
+          name="antiviral_prescription" 
+          label="Yes" 
+          value="yes"
+          inline 
+        />
+        <Radio 
+          name="antiviral_prescription" 
+          label="No" 
+          value="no" 
+          inline
+        /> 
+        <Radio 
+          name="antiviral_prescription" 
+          label="Don't Remember" 
+          value="dont_remember" 
+          inline
+        /> 
+      </div>
+    </div>
+    <div>
+      <p>A Prescription for an Antibiotic</p>
+      <div class="Radio__group">
+        <Radio 
+          name="antibiotic_prescription" 
+          label="Yes" 
+          value="yes"
+          inline 
+        />
+        <Radio 
+          name="antibiotic_prescription" 
+          label="No" 
+          value="no" 
+          inline
+        /> 
+        <Radio 
+          name="antibiotic_prescription" 
+          label="Don't Remember" 
+          value="dont_remember" 
+          inline
+        /> 
+      </div>
+    </div>
+    <div>
+      <p>A recommendation for an Over-the-counter fever reducer</p>
+      <div class="Radio__group">
+        <Radio 
+          name="fever_reducer" 
+          label="Yes" 
+          value="yes"
+          inline 
+        />
+        <Radio 
+          name="fever_reducer" 
+          label="No" 
+          value="no" 
+          inline
+        /> 
+        <Radio 
+          name="fever_reducer" 
+          label="Don't Remember" 
+          value="dont_remember" 
+          inline
+        /> 
+      </div>
+      <transition name="slide-fade">
+        <div v-if="isFeverReducerYes" class="ExtraQuestion">
+          <p>Did you purchase?</p>
+          <div class="Radio__group">
+            <Radio 
+              name="fever_reducer_purchase" 
+              label="Yes" 
+              value="yes"
+              inline 
+            />
+            <Radio 
+              name="fever_reducer_purchase" 
+              label="No" 
+              value="no" 
+              inline
+            /> 
+            <Radio 
+              name="fever_reducer_purchase" 
+              label="Don't Remember" 
+              value="dont_remember" 
+              inline
+            /> 
+          </div>
+        </div>
+      </transition>
+    </div>
+    <div>
+      <p>A recommendation for an Over-the-Counter cold & flu medicine</p>
+      <div class="Radio__group">
+        <Radio 
+          name="cold_medicine" 
+          label="Yes" 
+          value="yes"
+          inline 
+        />
+        <Radio 
+          name="cold_medicine" 
+          label="No" 
+          value="no" 
+          inline
+        /> 
+        <Radio 
+          name="cold_medicine" 
+          label="Don't Remember" 
+          value="dont_remember" 
+          inline
+        /> 
+      </div>
+      <transition name="slide-fade">
+        <div v-if="isColdMedicineYes" class="ExtraQuestion">
+          <p>Did you purchase?</p>
+          <div class="Radio__group">
+            <Radio 
+              name="cold_medicine_purchase" 
+              label="Yes" 
+              value="yes"
+              inline 
+            />
+            <Radio 
+              name="cold_medicine_purchase" 
+              label="No" 
+              value="no" 
+              inline
+            /> 
+            <Radio 
+              name="cold_medicine_purchase" 
+              label="Don't Remember" 
+              value="dont_remember" 
+              inline
+            /> 
+          </div>
+        </div>
+      </transition>
+    </div>
+    <button :class="`Button Button__Primary`" @click="back">back</button>
+    <button 
+      class="Button Button__Primary" 
+      :class="{ 'noHover': isDisabled }" 
+      :disabled="isDisabled" 
+      @click="next"
+    >
+      continue
+    </button>
+  </div>
+</template>
+
+<script src="./Question14.ts"></script>
+<style src="./Question14.scss"></style>

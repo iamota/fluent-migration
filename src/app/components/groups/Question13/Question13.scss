@@ -1,0 +1,39 @@
+@import '~@INF/styles';
+
+.Question13 {
+  margin: 0 auto;
+  max-width: 750px;
+
+  .Grid {
+    position: relative;
+
+    & > input {
+      position: absolute;
+      bottom: 30px;
+      left: 15%;
+      border: 0;
+      border-bottom: 1px solid;
+      border-radius: 0;
+      background: #fff;
+      width: 30%;
+    }
+
+    .Radio:nth-child(5) {
+      input {
+        &:checked + label::after {
+          top: -35px;
+          height: 90px;
+        }
+      }
+    }
+
+    .Radio:nth-child(7) {
+      input {
+        &:checked + label::after {
+          top: -25px;
+          height: 90px;
+        }
+      }
+    }
+  }
+}

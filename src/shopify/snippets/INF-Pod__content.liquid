@@ -1,0 +1,25 @@
+{%- capture heading_type -%}
+  {%- if section.settings.heading != '' -%}
+    h3
+  {%- else -%}
+    h2
+  {%- endif -%}
+{%- endcapture -%}
+
+<div class="Pod__content Overlay__content {{ extra_classes }}" {{ extra_attrs }}>
+  {% if block.settings.heading %}<{{ heading_type | strip_newlines }} class="Pod__heading {{ block.settings.heading_class }}" data-pod-heading>{{ block.settings.heading }}</{{ heading_type | strip_newlines }}>{% endif %}
+  {% if block.settings.sub-heading %}<p class="Pod__sub-heading {{ block.settings.subheading_class }}" data-pod-subheading>{{ block.settings.sub-heading }}</p>{% endif %}
+  {% if block.settings.cta != '' %}
+    {%- comment -%} Backwards compatability...option used to be 'button' {%- endcomment -%}
+    {%- assign cta_style = block.settings.cta_style -%}
+    {%- if cta_style == 'button' -%}
+      {%- assign cta_style = 'on-image' -%}
+    {%- endif -%}
+
+    {% unless cta_style == 'text' %}
+      <div class="Pod__button Button Button--{{ cta_style }}">{{ block.settings.cta }}</div>
+    {% else %}
+      <p class="Pod__cta">{{ block.settings.cta }}</p>
+    {% endunless %}
+  {% endif %}   
+</div>

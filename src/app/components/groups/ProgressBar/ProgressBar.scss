@@ -1,0 +1,20 @@
+@import '~@INF/styles';
+
+.ProgressBar {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  z-index: 5;
+  background-color: #dbdde0;
+  width: 100%;
+  height: 3px;
+
+  @include grid(17, 0, 0) {
+    .ProgressBar__step {
+      @include grid-item(1);
+
+      background-color: #00ade1;
+      height: 100%;
+    }
+  }
+}

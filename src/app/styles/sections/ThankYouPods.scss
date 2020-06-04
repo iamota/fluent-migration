@@ -1,0 +1,48 @@
+.template-page-thank-you {
+  .Pod {
+    &__heading {
+      margin: 20px 0 0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #f5b542 !important;
+      font-family: 'Roboto Condensed';
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    &__content {
+      background-color: #fff;
+      padding: 0 25px 20px !important;
+    }
+
+    &__sub-heading {
+      margin: 0;
+      color: #000;
+      font-size: 23px;
+    }
+  }
+
+  .flickity-prev-next-button {
+    background: transparent;
+
+    &.next {
+      right: -50px;
+    }
+
+    &.previous {
+      left: -50px;
+    }
+  }
+
+  .flickity-page-dots {
+    bottom: -50px;
+  }
+}
+
+#sectionThankYouPods {
+  .Section__heading {
+    margin: 0 auto;
+    max-width: 700px;
+    color: #006468;
+  }
+}

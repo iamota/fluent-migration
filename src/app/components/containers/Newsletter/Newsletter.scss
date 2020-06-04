@@ -95,12 +95,14 @@ $button-border-radius: 53px;
       }
 
       .Button {
-        padding: 0;
+        padding: 0 15px;
         height: $input-height;
         line-height: $input-height;
 
         @include media-query($mobile) {
           --button-horizontal-padding--mobile: 20px;
+
+          padding: 0 10px;
         }
       }
 

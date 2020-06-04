@@ -1,0 +1,49 @@
+@import '~@INF/styles';
+
+.Question14 {
+  margin: 0 auto;
+  max-width: 750px;
+
+  > div {
+    font-size: 0;
+
+    .ExtraQuestion {
+      p {
+        margin-top: -10px;
+        margin-left: 10%;
+        width: 25%;
+      }
+
+      .Radio__group {
+        margin-top: -10px;
+      }
+    }
+  }
+
+  p {
+    display: inline-block;
+    width: 35%;
+    vertical-align: middle;
+    text-align: left;
+  }
+
+  .Radio__group {
+    display: inline-block;
+    margin: 20px 0;
+    width: 65%;
+    vertical-align: middle;
+
+    .Radio {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 20px;
+      padding-left: 50px;
+
+      input {
+        &:checked + label::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.template-page-thank-you {
+  .ContentBlock {
+    &__preheading {
+      text-transform: uppercase;
+      color: #00ade1;
+      font-family: 'Roboto Condensed';
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    &__paragraph {
+      a {
+        text-decoration: underline;
+        color: #00ade1;
+      }
+    }
+  }
+}

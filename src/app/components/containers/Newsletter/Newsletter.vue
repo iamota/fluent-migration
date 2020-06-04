@@ -9,7 +9,6 @@
         method="post" 
         class="Newsletter__form"
       >
-        <Input type="hidden" name="contact[tags]" value="newsletter" />
         <div :class="placement_class">
           <Input 
             name="contact[email]" 

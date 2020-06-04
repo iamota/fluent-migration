@@ -1,0 +1,17 @@
+@import '~@INF/styles';
+
+.Question5 {
+  margin: 0 auto;
+  max-width: 500px;
+
+  .Radio {
+    width: initial;
+
+    label {
+      &::before {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}

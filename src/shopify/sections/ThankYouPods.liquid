@@ -62,6 +62,7 @@
           data-page-dot-aria-label-mobile="{{ block.settings.pageDotAriaLabel--mobile }}"
         {% endunless %}
         {{ block.shopify_attributes }}
+        data-pod-tile
       >
         <a href="{{ block.settings.url | default: 'javascript:void(0);' }}" class="Pod__link" {% unless block.settings.cta_aria_label == blank %} aria-label="{{ block.settings.cta_aria_label }}"{% endunless %}>
           <div class="Pod__image">
