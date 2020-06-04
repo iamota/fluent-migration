@@ -8,10 +8,11 @@ const child_selectors = [
 
 export default () => {
   const $grid_item_selector = $(`[data-pod-tile]`);
+  
   setTimeout(() => {
     standardizeHeights($grid_item_selector, child_selectors); 
-  }, 500);
-
+    window.dispatchEvent(new CustomEvent(`resize`));
+  }, 100);
 };
 
 
