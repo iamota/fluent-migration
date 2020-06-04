@@ -2,8 +2,7 @@ import { defineActions } from 'direct-vuex';
 
 export default defineActions({
   nextStep({ commit }, step): void {
-    const new_url = `${window.location.protocol}//${window.location.host}${window.location.pathname}#${step}`;    
-    window.history.pushState({ path: new_url }, ``, new_url);
+    window._gaq.push([`_trackEvent`, `Step`, step]);
     commit(`setStep`, step);
   },
   back({ commit }, step): void {
