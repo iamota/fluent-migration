@@ -2,29 +2,29 @@
   <Section v-bind="$props" :css_variables="cssVariables">
     <img :src="background_image_mobile">
     <Overlay v-bind="$props">
-      <Heading v-bind="$props" class="Newsletter__heading" />      
+      <Heading v-bind="$props" class="Newsletter__heading" />     
+      
       <Form
-        :id="form_id"
-        action="#"
+        id="201555005195045"
+        action="https://submit.jotform.com/submit/201555005195045/"
         method="post" 
         class="Newsletter__form"
+        name="form_201555005195045" 
+        target="form-newsletter"
       >
         <div :class="placement_class">
           <Input 
-            name="contact[email]" 
+            name="q3_email" 
             :label="`general.newsletter_form.email_placeholder` | t" 
             autocorrect="off"
             autocapitalize="off"
             spellcheck="false"
             rules="email" 
           />
-          <template v-if="success_from_shopify">
-            <div>{{ `general.newsletter_form.confirmation` | t }}</div>
-          </template>
+          <div v-if="formSubmitted" class="Form__successMessage">{{ `general.newsletter_form.confirmation` | t }}</div>          
           <div class="Form__submit-group">
-            <Button class="Button Button--primary" name="commit" submit>
-              <Loader v-if="show_loader" color="white" size="24" />
-              <span v-else>{{ submit_label_with_default }}</span>
+            <Button class="Button Button--primary" :class="{ 'noHover': formSubmitted }" name="commit" submit>
+              <span>{{ submit_label_with_default }}</span>
             </Button>
           </div>
           <a class="Newsletter__terms" href="">TERMS & CONDITIONS</a>

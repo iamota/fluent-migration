@@ -11,8 +11,9 @@ export default Vue.extend({
   },
   data() {
     return {
-      form_id: `Newsletter` as string,
+      form_id: `201555005195045` as string,
       loading: false,
+      success: false,
     };
   },
   computed: {
@@ -22,7 +23,7 @@ export default Vue.extend({
         '--content-width': `${this.content_width}px`,
       };
     },
-    show_loader(): boolean {
+    formSubmitted(): boolean {
       return this.$store.state.Forms[this.form_id] ? this.$store.state.Forms[this.form_id]._status.submitted : false;
     },
     placement_class(): string {
@@ -43,8 +44,5 @@ export default Vue.extend({
       if (mutation.type.indexOf(`Forms/${this.$data.form_id}/submit`) !== 0) { return; }
       this.$data.loading = true;
     });
-  },
-  methods: {
-    
   },
 });

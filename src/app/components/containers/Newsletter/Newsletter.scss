@@ -19,6 +19,11 @@ $button-border-radius: 53px;
       display: none;
     }
 
+    .Overlay__content {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     @include media-query($mobile) {
       padding: 0;
 
@@ -62,6 +67,22 @@ $button-border-radius: 53px;
     .Form__body {
       overflow: visible;
     }
+
+    .Form__successMessage {
+      position: absolute;
+      top: 50px;
+      left: 20px;
+      color: #f5b542;
+      font-weight: 700;
+    }
+  }
+
+  .Input--material-filled.Input--filled label,
+  .Input--material-filled.Input--active label,
+  .Input--material-filled.Input--filled input,
+  .Input--material-filled.Input--active input {
+    background-color: #e8f0fe;
+    color: #000;
   }
 
   &__input-wrapper {
@@ -136,5 +157,9 @@ $button-border-radius: 53px;
         }
       }
     }
+  }
+
+  .noHover {
+    pointer-events: none;
   }
 }
