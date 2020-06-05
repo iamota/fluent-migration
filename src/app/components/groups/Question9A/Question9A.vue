@@ -34,13 +34,13 @@
         inline
       />      
       <Radio 
-        name="visit" 
+        name="family_member_age" 
         label="Adult (25 – 65 years)" 
         value="adult" 
         inline
       />    
       <Radio 
-        name="visit" 
+        name="family_member_age" 
         label="Senior (65 and over)" 
         value="senior" 
         inline

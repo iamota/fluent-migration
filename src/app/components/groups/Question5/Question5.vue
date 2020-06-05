@@ -4,26 +4,26 @@
     <h4>Adults</h4>
     <Grid desktop="4">
       <Radio 
-        name="household.adults" 
+        name="household_adults" 
         label="1" 
         value="1"
         inline 
         checked 
       />
       <Radio 
-        name="household.adults" 
+        name="household_adults" 
         label="2" 
         value="2" 
         inline
       />   
       <Radio 
-        name="household.adults" 
+        name="household_adults" 
         label="3" 
         value="3" 
         inline 
       />
       <Radio 
-        name="household.adults" 
+        name="household_adults" 
         label="4+" 
         value="4+" 
         inline 
@@ -32,25 +32,25 @@
     <h4>Children (under age 18)</h4>
     <Grid desktop="4">
       <Radio 
-        name="household.children" 
+        name="household_children" 
         label="1" 
         value="1"
         inline 
       />
       <Radio 
-        name="household.children" 
+        name="household_children" 
         label="2" 
         value="2" 
         inline
       />   
       <Radio 
-        name="household.children" 
+        name="household_children" 
         label="3" 
         value="3" 
         inline 
       />
       <Radio 
-        name="household.children" 
+        name="household_children" 
         label="4+" 
         value="4+" 
         inline 

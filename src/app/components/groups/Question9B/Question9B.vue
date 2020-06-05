@@ -23,7 +23,7 @@
       <Radio 
         name="family_gender" 
         label="I'd prefer not to say" 
-        value="not-say" 
+        value="I'd prefer not to say" 
         inline 
       />
     </Grid>

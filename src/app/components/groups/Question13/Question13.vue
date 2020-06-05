@@ -6,25 +6,25 @@
       <Radio 
         name="visit" 
         label="Doctor’s office" 
-        value="doctor_office"
+        value="Doctor’s office"
         inline 
       />
       <Radio 
         name="visit" 
         label="Retail Health Clinic" 
-        value="retail_health" 
+        value="Retail Health Clinic" 
         inline
       /> 
       <Radio 
         name="visit" 
         label="Urgent Care Clinic" 
-        value="urgent_care" 
+        value="Urgent Care Clinic" 
         inline
       /> 
       <Radio 
         name="visit" 
         label="Emergency Room" 
-        value="emergency_room" 
+        value="Emergency Room" 
         inline
       /> 
       <Radio 
@@ -37,7 +37,7 @@
       <Radio 
         name="visit" 
         label="I did not visit any health facility in person" 
-        value="no_visit" 
+        value="No visit" 
         inline
       /> 
     </Grid> 

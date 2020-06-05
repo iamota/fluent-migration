@@ -18,7 +18,7 @@
       <Radio 
         name="vaccine" 
         label="I don't remember" 
-        value="dont_remember" 
+        value="I don't remember" 
         inline
       /> 
     </Grid>   

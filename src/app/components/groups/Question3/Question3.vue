@@ -2,7 +2,7 @@
   <div class="Question3">
     <h3>In what year were you born?</h3>    
     <Select 
-      name="birthyear"
+      name="birthday"
       label="Year of birth"
       :options="getYears" 
       required

@@ -9,34 +9,34 @@
     </ul>
     <div class="Slider">
       <Radio 
-        name="interested_product" 
+        name="interest_product" 
         label="Definitely not interested" 
-        value="definitely_not"
+        value="Definitely not interested"
         inline 
       />
       <Radio 
-        name="interested_product" 
+        name="interest_product" 
         label="Probably not interested" 
-        value="probably_not" 
+        value="Probably not interested" 
         inline
       /> 
       <Radio 
-        name="interested_product" 
+        name="interest_product" 
         label="Unsure" 
-        value="unsure"
+        value="Unsure"
         inline 
         checked 
       />
       <Radio 
-        name="interested_product" 
+        name="interest_product" 
         label="Somewhat interested" 
-        value="interested" 
+        value="Somewhat interested" 
         inline
       />
       <Radio 
-        name="interested_product" 
+        name="interest_product" 
         label="Definitely interested" 
-        value="definitely_interested" 
+        value="Definitely interested" 
         inline
       />
     </div> 

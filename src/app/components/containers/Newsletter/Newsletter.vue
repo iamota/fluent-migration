@@ -23,7 +23,12 @@
           />
           <div v-if="formSubmitted" class="Form__successMessage">{{ `general.newsletter_form.confirmation` | t }}</div>          
           <div class="Form__submit-group">
-            <Button class="Button Button--primary" :class="{ 'noHover': formSubmitted }" name="commit" submit>
+            <Button 
+              class="Button Button--primary" 
+              :class="{ 'noHover': formSubmitted }" 
+              name="commit" 
+              submit
+            >
               <span>{{ submit_label_with_default }}</span>
             </Button>
           </div>

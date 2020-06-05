@@ -11,7 +11,7 @@
       <Radio 
         name="focus" 
         label="Answering for a Family Member" 
-        value="family_member" 
+        value="family member" 
         inline
       /> 
     </Grid>    

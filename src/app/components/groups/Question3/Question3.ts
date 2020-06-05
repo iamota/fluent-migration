@@ -11,7 +11,7 @@ export default Vue.extend({
       return years;
     },
     isDisabled(): boolean {
-      return !store.state.Forms.quiz.birthyear || store.state.Forms.quiz.birthyear.value === `` || store.state.Forms.quiz.birthyear.errors.length > 0;
+      return !store.state.Forms.quiz.birthday || store.state.Forms.quiz.birthday.value === `` || store.state.Forms.quiz.birthday.errors.length > 0;
     },
   },
   methods: {

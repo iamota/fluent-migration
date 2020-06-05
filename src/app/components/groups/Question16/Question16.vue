@@ -20,7 +20,7 @@
         <Radio 
           name="flu_test_online" 
           label="Don't Remember" 
-          value="dont_remember" 
+          value="Don't Remember" 
           inline
         /> 
       </div>
@@ -43,7 +43,7 @@
             <Radio 
               name="flu_test_purchase_online" 
               label="Don't Remember" 
-              value="dont_remember" 
+              value="Don't Remember" 
               inline
             /> 
           </div>
@@ -68,7 +68,7 @@
         <Radio 
           name="antiviral_prescription_online" 
           label="Don't Remember" 
-          value="dont_remember" 
+          value="Don't Remember" 
           inline
         /> 
       </div>
@@ -91,7 +91,7 @@
         <Radio 
           name="antibiotic_prescription_online" 
           label="Don't Remember" 
-          value="dont_remember" 
+          value="Don't Remember" 
           inline
         /> 
       </div>
@@ -114,7 +114,7 @@
         <Radio 
           name="fever_reducer_online" 
           label="Don't Remember" 
-          value="dont_remember" 
+          value="Don't Remember" 
           inline
         /> 
       </div>
@@ -137,7 +137,7 @@
             <Radio 
               name="fever_reducer_purchase_online" 
               label="Don't Remember" 
-              value="dont_remember" 
+              value="Don't Remember" 
               inline
             /> 
           </div>
@@ -162,7 +162,7 @@
         <Radio 
           name="cold_medicine_online" 
           label="Don't Remember" 
-          value="dont_remember" 
+          value="Don't Remember" 
           inline
         /> 
       </div>
@@ -185,7 +185,7 @@
             <Radio 
               name="cold_medicine_purchase_online" 
               label="Don't Remember" 
-              value="dont_remember" 
+              value="Don't Remember" 
               inline
             /> 
           </div>
