@@ -5,6 +5,6 @@ export default Vue.extend({
   mounted(): void {
     setTimeout(() => {
       store.dispatch.Quiz.nextStep(`question1`);
-    }, 1000);
+    }, 8000);
   },
 });
