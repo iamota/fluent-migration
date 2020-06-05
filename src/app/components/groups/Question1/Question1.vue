@@ -7,6 +7,7 @@
       design="legacy" 
       placeholder="First Name"
       required 
+      :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]"
     />
     <button 
       class="Button Button__Primary" 

@@ -13,11 +13,13 @@ export default Vue.extend({
   watch: {
     isDisabled(): void {
       if (store.state.Forms.quiz.take_temperature && store.state.Forms.quiz.take_temperature.value !== `` && store.state.Forms.quiz.take_temperature.errors.length === 0) {
-        if (store.state.Forms.quiz.take_temperature.value === `yes`) {
-          store.dispatch.Quiz.nextStep(`question12`);
-        } else {
-          store.dispatch.Quiz.nextStep(`question13`);
-        }
+        setTimeout(() => {
+          if (store.state.Forms.quiz.take_temperature.value === `yes`) {
+            store.dispatch.Quiz.nextStep(`question12`);
+          } else {
+            store.dispatch.Quiz.nextStep(`question13`);
+          }
+        }, 1000);       
       }
     },
   }, 

@@ -10,7 +10,9 @@ export default Vue.extend({
   watch: {
     isDisabled(): void {
       if (store.state.Forms.quiz.times_sick && store.state.Forms.quiz.times_sick.value !== `` && store.state.Forms.quiz.times_sick.errors.length === 0) {
-        store.dispatch.Quiz.nextStep(`question8`);
+        setTimeout(() => {
+          store.dispatch.Quiz.nextStep(`question8`);
+        }, 1000);  
       }
     },
   }, 

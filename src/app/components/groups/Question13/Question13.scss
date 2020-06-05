@@ -7,15 +7,25 @@
   .Grid {
     position: relative;
 
-    & > input {
+    & > .Input {
       position: absolute;
       bottom: 30px;
       left: 15%;
       border: 0;
-      border-bottom: 1px solid;
       border-radius: 0;
       background: #fff;
       width: 30%;
+
+      .Input__field {
+        border: 0;
+        border-bottom: 1px solid;
+        border-radius: 0;
+        text-align: left;
+      }
+
+      .Input__errors {
+        position: absolute;
+      }
 
       @include media-query($mobile) {
         bottom: 24%;

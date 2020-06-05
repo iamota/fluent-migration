@@ -30,10 +30,15 @@
       <Radio 
         name="visit" 
         label="Other" 
-        :value="`other-${other_value}`" 
+        :value="`other: ${otherValue}`" 
         inline
       />      
-      <input type="text" @input="updateRadioInput">
+      <Input 
+        name="othe_value"
+        type="text" 
+        :rules="[`maxLength(50)`]" 
+        design="legacy"
+      />
       <Radio 
         name="visit" 
         label="I did not visit any health facility in person" 

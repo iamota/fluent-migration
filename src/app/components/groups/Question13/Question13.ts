@@ -1,25 +1,19 @@
 import Vue from 'vue';
 import store from 'infinite/src/app/store';
   
-export default Vue.extend({
-  data() {
-    return {
-      other_value: ``,
-    };
-  },
+export default Vue.extend({  
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quiz.visit || store.state.Forms.quiz.visit.value === ``;
+      return (!store.state.Forms.quiz.visit || store.state.Forms.quiz.visit.value === ``) || (!store.state.Forms.quiz.othe_value || store.state.Forms.quiz.othe_value.errors.length > 0);
     },      
     isMyself(): boolean {
       return store.state.Forms.quiz.focus.value === `myself`;
-    },  
+    }, 
+    otherValue(): string {
+      return store.state.Forms.quiz.othe_value ? store.state.Forms.quiz.othe_value.value : ``;
+    }, 
   },  
   methods: {
-    updateRadioInput(e: Event): void {
-      const value = (e.target as HTMLInputElement).value;
-      this.other_value = value.split(` `).join(`_`);
-    },
     back(): void {
       store.dispatch.Quiz.nextStep(`question12`);
     },

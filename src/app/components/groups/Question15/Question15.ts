@@ -13,11 +13,13 @@ export default Vue.extend({
   watch: {
     isDisabled(): void {
       if (store.state.Forms.quiz.contact_online && store.state.Forms.quiz.contact_online.value !== ``) {      
-        if (store.state.Forms.quiz.contact_online.value === `yes`) {
-          store.dispatch.Quiz.nextStep(`question16`);
-        } else {
-          store.dispatch.Quiz.nextStep(`question17`);
-        }
+        setTimeout(() => {
+          if (store.state.Forms.quiz.contact_online.value === `yes`) {
+            store.dispatch.Quiz.nextStep(`question16`);
+          } else {
+            store.dispatch.Quiz.nextStep(`question17`);
+          }
+        }, 1000);       
       }
     },
   },  

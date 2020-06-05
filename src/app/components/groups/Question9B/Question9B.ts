@@ -10,7 +10,9 @@ export default Vue.extend({
   watch: {
     isDisabled(): void {
       if (store.state.Forms.quiz.family_gender && store.state.Forms.quiz.family_gender.value !== `` && store.state.Forms.quiz.family_gender.errors.length === 0) {
-        store.dispatch.Quiz.nextStep(`question9`);
+        setTimeout(() => {
+          store.dispatch.Quiz.nextStep(`question9`);
+        }, 1000);  
       }
     },
   }, 

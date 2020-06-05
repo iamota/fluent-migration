@@ -32,3 +32,33 @@
     margin-bottom: 4px;
   }
 }
+
+.template-page-quiz,
+.template-page-thank-you {
+  .NavBar__icons,
+  .NavBar__primary {
+    display: none;
+  }
+
+  .NavBar__logo {
+    grid-column: span 12;
+    text-align: center;
+
+    &-image {
+      width: 250px;
+    }
+  }
+
+  .MobileBar__right {
+    display: none;
+  }
+
+  .MobileLogo {
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__image {
+      width: 250px;
+    }
+  }
+}

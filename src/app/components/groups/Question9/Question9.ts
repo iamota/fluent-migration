@@ -13,7 +13,9 @@ export default Vue.extend({
   watch: {
     isDisabled(): void {
       if (store.state.Forms.quiz.vaccine && store.state.Forms.quiz.vaccine.value !== `` && store.state.Forms.quiz.vaccine.errors.length === 0) {      
-        store.dispatch.Quiz.nextStep(`question10`);        
+        setTimeout(() => {
+          store.dispatch.Quiz.nextStep(`question10`);   
+        }, 1000);       
       }
     },
   }, 
