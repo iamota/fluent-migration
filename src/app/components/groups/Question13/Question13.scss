@@ -16,6 +16,12 @@
       border-radius: 0;
       background: #fff;
       width: 30%;
+
+      @include media-query($mobile) {
+        bottom: 24%;
+        left: 40%;
+        width: 50%;
+      }
     }
 
     .Radio:nth-child(5) {

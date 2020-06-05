@@ -35,7 +35,6 @@ export default Vue.extend({
       return !store.state.Forms.quiz.q35_email || store.state.Forms.quiz.q35_email.value === `` || store.state.Forms.quiz.q35_email.errors.length > 0;
     },
     submited(): boolean {
-      debugger;
       const submited = store.state.Forms.quiz && store.state.Forms.quiz._status.submitted;
       if (submited) {
         window.location.href = `/pages/thankyou`;

@@ -22,6 +22,12 @@
     }
   }
 
+  .Button {
+    @include media-query($mobile) {
+      min-width: 140px;
+    }
+  }
+
   button:disabled {
     opacity: 0.5;
   }
@@ -64,6 +70,18 @@
 
   button {
     margin: 40px 20px 0;
+
+    @include media-query($mobile) {
+      margin: 40px 10px 0;
+    }
+  }
+
+  .Overlay__placeholder {
+    @include media-query($mobile) {
+      .Section__container {
+        padding: 0;
+      }
+    }
   }
 }
 
@@ -77,8 +95,29 @@
   min-height: 150px;
   line-height: 150px;
 
+  @include media-query($mobile) {
+    margin: 0 10px;
+    width: 140px;
+    min-height: 140px;
+    line-height: 140px;
+  }
+
+  &--inline label {
+    @include media-query($mobile) {
+      margin-right: 0;
+    }
+  }
+
   &__group {
     margin: 40px 0;
+  }
+
+  &:last-child label {
+    margin-right: 30px;
+
+    @include media-query($mobile) {
+      margin-right: 0;
+    }
   }
 
   input {
@@ -150,6 +189,10 @@
       background: transparent;
       width: 365px;
       height: 70px;
+
+      @include media-query($mobile) {
+        width: 335px;
+      }
     }
   }
 

@@ -2,16 +2,13 @@
 
 .Question5 {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 750px;
 
   .Radio {
     width: initial;
+  }
 
-    label {
-      &::before {
-        width: 100px;
-        height: 100px;
-      }
-    }
+  .Grid {
+    margin-bottom: 40px;
   }
 }

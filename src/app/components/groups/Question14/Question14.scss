@@ -7,10 +7,14 @@
   > div {
     font-size: 0;
 
+    @include media-query($mobile) {
+      margin-right: -20px;
+    }
+
     .ExtraQuestion {
       p {
         margin-top: -10px;
-        margin-left: 10%;
+        margin-left: 5%;
         width: 25%;
       }
 
@@ -22,7 +26,7 @@
 
   p {
     display: inline-block;
-    width: 35%;
+    width: 30%;
     vertical-align: middle;
     text-align: left;
   }
@@ -30,7 +34,7 @@
   .Radio__group {
     display: inline-block;
     margin: 20px 0;
-    width: 65%;
+    width: 70%;
     vertical-align: middle;
 
     .Radio {
@@ -38,6 +42,10 @@
       margin-right: 10px;
       padding: 20px;
       padding-left: 50px;
+
+      @include media-query($mobile) {
+        margin-top: 10px;
+      }
 
       input {
         &:checked + label::after {

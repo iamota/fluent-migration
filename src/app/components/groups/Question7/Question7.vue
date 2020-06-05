@@ -1,7 +1,7 @@
 <template>
   <div class="Question7">
     <h3>How many times have you or your household members had a cold or the flu in the past 12 months?</h3>
-    <Grid desktop="4">
+    <Grid desktop="4" tablet="4" mobile="2">
       <Radio 
         name="times_sick" 
         label="0" 

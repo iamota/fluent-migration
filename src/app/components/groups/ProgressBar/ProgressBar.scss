@@ -9,9 +9,14 @@
   width: 100%;
   height: 3px;
 
+  @include media-query($tablet-down) {
+    top: 60px;
+  }
+
   @include grid(17, 0, 0) {
     .ProgressBar__step {
       @include grid-item(1);
+      @include grid-item(1, $mobile);
 
       background-color: #00ade1;
       height: 100%;

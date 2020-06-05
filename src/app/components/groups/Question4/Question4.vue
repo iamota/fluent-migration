@@ -1,7 +1,7 @@
 <template>
   <div class="Question4">
     <h3>What is your gender?</h3>
-    <Grid desktop="4">
+    <Grid desktop="4" tablet="4" mobile="2">
       <Radio 
         name="gender" 
         label="Male" 

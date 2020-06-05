@@ -2,7 +2,7 @@
   <div class="Question9">
     <h3 v-if="isMyself">Have you gotten a flu vaccine in the past 12 months?</h3> 
     <h3 v-if="!isMyself">Had your family member gotten a flu vaccine in the past 12 months?</h3>     
-    <Grid expand desktop="3">
+    <Grid expand desktop="3" tablet="3" mobile="2">
       <Radio 
         name="vaccine" 
         label="Yes" 

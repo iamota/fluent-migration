@@ -2,7 +2,7 @@
   <div class="Question5">
     <h3>How many people live in your household, including you?</h3>
     <h4>Adults</h4>
-    <Grid desktop="4">
+    <Grid desktop="4" tablet="4" mobile="2">
       <Radio 
         name="household_adults" 
         label="1" 
@@ -30,7 +30,7 @@
       />
     </Grid>
     <h4>Children (under age 18)</h4>
-    <Grid desktop="4">
+    <Grid desktop="4" tablet="4" mobile="2">
       <Radio 
         name="household_children" 
         label="1" 

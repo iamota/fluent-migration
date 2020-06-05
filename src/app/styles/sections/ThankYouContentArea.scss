@@ -14,5 +14,21 @@
         color: #00ade1;
       }
     }
+
+    &__text {
+      @include media-query($mobile) {
+        grid-row-start: 1;
+
+        .ContentBlock__wrapper {
+          padding: 0 20px;
+        }
+      }
+    }
+
+    &__image {
+      @include media-query($mobile) {
+        grid-row-start: 2;
+      }
+    }
   }
 }
