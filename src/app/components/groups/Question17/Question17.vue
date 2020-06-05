@@ -1,11 +1,11 @@
 <template>
   <div class="Question17">
     <h4>Thank you for helping us better understand your cold and flu experiences. We have just one more question.</h4>
-    <h3>How interested would you be in an at-home cold/flu service that includes:</h3>
+    <h3>How interested would you be in an at-home testing service that includes:</h3>
     <ul>
-      <li>An at-home flu test kit with immediate results </li>
-      <li>A video consultation with a doctor</li>
-      <li>The right medicines delivered to your door</li>
+      <li>A Bluetooth-enabled nasal swab reader to test for cold or flu</li>
+      <li>Test results sent privately and securely to your mobile device within minutes</li>
+      <li>Home delivery of the medicine you need within 24 hours</li>
     </ul>
     <div class="Slider">
       <Radio 

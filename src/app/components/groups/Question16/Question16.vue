@@ -26,7 +26,7 @@
       </div>
       <transition name="slide-fade">
         <div v-if="isFluTestYes" class="ExtraQuestion">
-          <p>Did you get the test?</p>
+          <p>{{ getTestCopy }}</p>
           <div class="Radio__group">
             <Radio 
               name="flu_test_purchase_online" 
@@ -120,7 +120,7 @@
       </div>
       <transition name="slide-fade">
         <div v-if="isFeverReducerYes" class="ExtraQuestion">
-          <p>Did you purchase?</p>
+          <p>{{ purchaseCopy }}</p>
           <div class="Radio__group">
             <Radio 
               name="fever_reducer_purchase_online" 
@@ -168,7 +168,7 @@
       </div>
       <transition name="slide-fade">
         <div v-if="isColdMedicineYes" class="ExtraQuestion">
-          <p>Did you purchase?</p>
+          <p>{{ purchaseCopy }}</p>
           <div class="Radio__group">
             <Radio 
               name="cold_medicine_purchase_online" 

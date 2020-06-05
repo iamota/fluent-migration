@@ -19,6 +19,12 @@ export default Vue.extend({
           }
           return ``;
         },
+        validAge: (age: string): string => {          
+          if (age === `Under 18`) {
+            return `We can not accept input from someone who is a minor. Thank you for your interest!`;
+          }
+          return ``;
+        },
       },
     };
   },
@@ -44,8 +50,8 @@ export default Vue.extend({
     getFirstName(): string {
       return store.state.Forms.quiz && store.state.Forms.quiz.first_name ? store.state.Forms.quiz.first_name.value : ``;
     },
-    getBirthday(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.birthday ? store.state.Forms.quiz.birthday.value : ``;
+    getage(): string {
+      return store.state.Forms.quiz && store.state.Forms.quiz.age ? store.state.Forms.quiz.age.value : ``;
     },
     getGender(): string {
       return store.state.Forms.quiz && store.state.Forms.quiz.gender ? store.state.Forms.quiz.gender.value : ``;
@@ -74,51 +80,9 @@ export default Vue.extend({
     getFamilyGender(): string {
       return store.state.Forms.quiz && store.state.Forms.quiz.family_gender ? store.state.Forms.quiz.family_gender.value : ``;
     },
-    getSymptomFever(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_fever ? store.state.Forms.quiz.symptoms_fever.value : ``;
-    },
-    getSymptomChills(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_chills ? store.state.Forms.quiz.symptoms_chills.value : ``;
-    },
-    getSymptomRunnyNose(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_runny_nose ? store.state.Forms.quiz.symptoms_runny_nose.value : ``;
-    },
-    getSymptomSneezing(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_sneezing ? store.state.Forms.quiz.symptoms_sneezing.value : ``;
-    },
-    getSymptomSoreThroat(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_sore_throat ? store.state.Forms.quiz.symptoms_sore_throat.value : ``;
-    },
-    getSymptomCough(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_cough ? store.state.Forms.quiz.symptoms_cough.value : ``;
-    },
-    getSymptomMucus(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_mucus ? store.state.Forms.quiz.symptoms_mucus.value : ``;
-    },
-    getSymptomShortness(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_shortness ? store.state.Forms.quiz.symptoms_shortness.value : ``;
-    },
-    getSymptomHeadache(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_headache ? store.state.Forms.quiz.symptoms_headache.value : ``;
-    },
-    getSymptomJointPain(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_joint_pain ? store.state.Forms.quiz.symptoms_joint_pain.value : ``;
-    },
-    getSymptomExhausted(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_exhausted ? store.state.Forms.quiz.symptoms_exhausted.value : ``;
-    },
-    getSymptomLostAppetite(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_lost_appetite ? store.state.Forms.quiz.symptoms_lost_appetite.value : ``;
-    },
-    getSymptomNausea(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_nausea ? store.state.Forms.quiz.symptoms_nausea.value : ``;
-    },
-    getSymptomVomiting(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_vomiting ? store.state.Forms.quiz.symptoms_vomiting.value : ``;
-    },
-    getSymptomDiarrhea(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.symptoms_diarrhea ? store.state.Forms.quiz.symptoms_diarrhea.value : ``;
-    },
+    getSymptoms(): string {
+      return store.state.Forms.quiz && store.state.Forms.quiz[`symptoms[]`] ? store.state.Forms.quiz[`symptoms[]`].value : [];
+    },    
     getTakeTemperature(): string {
       return store.state.Forms.quiz && store.state.Forms.quiz.take_temperature ? store.state.Forms.quiz.take_temperature.value : ``;
     },

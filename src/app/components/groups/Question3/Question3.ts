@@ -4,14 +4,14 @@ import store from 'infinite/src/app/store';
 export default Vue.extend({
   computed: {
     getYears(): Array<string> {
-      const years = [];
-      for (let index = 2020; index > 1919; index--) {
+      const years = [`Under 18`];
+      for (let index = 18; index < 106; index++) {
         years.push(String(index));        
       }
       return years;
     },
     isDisabled(): boolean {
-      return !store.state.Forms.quiz.birthday || store.state.Forms.quiz.birthday.value === `` || store.state.Forms.quiz.birthday.errors.length > 0;
+      return !store.state.Forms.quiz.age || store.state.Forms.quiz.age.value === `` || store.state.Forms.quiz.age.errors.length > 0;
     },
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <div class="Question10">
-    <h4 v-if="isMyself">Now think about the most recent time you were sick with the cold or flu…</h4>
+    <h4 v-if="isMyself">Now think about the most recent time you were sick with a cold or the flu...</h4>
     <h3 v-if="isMyself">Which symptoms did you experience? (Select all that apply)</h3>
     <h4 v-if="!isMyself">Now think about the most recent time you cared for this family member when they were sick with a cold or the flu...</h4>
     <h3 v-if="!isMyself">Which symptoms did your family member experience? (Select all that apply)</h3>
@@ -12,105 +12,105 @@
     >
       <Checkbox 
         class="Checkbox--Fever"
-        name="symptoms_fever" 
+        name="symptoms[]" 
         label="Fever" 
         value="Fever"
         inline          
       />
       <Checkbox 
         class="Checkbox--Chills"
-        name="symptoms_chills" 
+        name="symptoms[]" 
         label="Chills" 
         value="Chills"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Runny"
-        name="symptoms_runny_nose" 
+        name="symptoms[]" 
         value="Runny Nose"
         label="Runny or stuffy nose" 
         inline
       /> 
       <Checkbox 
         class="Checkbox--Sneezing"
-        name="symptoms_sneezing" 
+        name="symptoms[]" 
         label="Sneezing" 
         value="Sneezing"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Sore"
-        name="symptoms_sore_throat" 
+        name="symptoms[]" 
         label="Sore throat" 
         value="Sore throat" 
         inline          
       />
       <Checkbox 
         class="Checkbox--Cough"
-        name="symptoms_cough" 
+        name="symptoms[]" 
         label="Cough" 
         value="Cough"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Mucus"
-        name="symptoms_mucus" 
+        name="symptoms[]" 
         label="Colored mucus or phlegm" 
         value="Mucus"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Shortness"
-        name="symptoms_shortness" 
+        name="symptoms[]" 
         label="Shortness of breath" 
         value="Shortness"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Headache"
-        name="symptoms_headache" 
+        name="symptoms[]" 
         label="Headache" 
         value="Headache"         
         inline
       /> 
       <Checkbox 
         class="Checkbox--Joint"
-        name="symptoms_joint_pain" 
+        name="symptoms[]" 
         label="Muscle or joint pain" 
         value="Joint Pain"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Exhausted"
-        name="symptoms_exhausted" 
+        name="symptoms[]" 
         label="Feeling tired or exhausted" 
         value="Exhausted"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Appetite"
-        name="symptoms_lost_appetite" 
+        name="symptoms[]" 
         label="Loss of appetite" 
         value="Lost Appetite"
         inline          
       />
       <Checkbox 
         class="Checkbox--Nausea"
-        name="symptoms_nausea" 
+        name="symptoms[]" 
         label="Nausea" 
         value="Nausea"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Vomiting"
-        name="symptoms_vomiting" 
+        name="symptoms[]" 
         label="Vomiting" 
         value="Vomiting"
         inline
       /> 
       <Checkbox 
         class="Checkbox--Diarrhea"
-        name="symptoms_diarrhea" 
+        name="symptoms[]" 
         label="Diarrhea" 
         value="Diarrhea"
         inline

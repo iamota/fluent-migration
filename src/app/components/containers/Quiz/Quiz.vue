@@ -50,7 +50,7 @@
         <!-- </transition> -->
 
         <input type="hidden" name="q3_first_name" :value="getFirstName">
-        <input type="hidden" name="q4_birthday" :value="getBirthday">
+        <input type="hidden" name="q4_age" :value="getage">
         <input type="hidden" name="q5_gender" :value="getGender">
         <input type="hidden" name="q6_household_adults" :value="getHouseholdAdults">
         <input type="hidden" name="q7_household_children" :value="getHouseholdChildren">
@@ -60,21 +60,7 @@
         <input type="hidden" name="q11_vaccine" :value="getVaccine">
         <input type="hidden" name="q12_family_member_age" :value="getFamilyMemberAge">
         <input type="hidden" name="q13_family_gender" :value="getFamilyGender">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomFever">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomChills">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomRunnyNose">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomSneezing">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomSoreThroat">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomCough">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomMucus">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomShortness">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomHeadache">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomJointPain">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomExhausted">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomLostAppetite">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomNausea">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomVomiting">
-        <input type="hidden" name="q14_symptoms[]" :value="getSymptomDiarrhea">
+        <input type="hidden" name="q14_symptoms[]" :value="getSymptoms">
         <input type="hidden" name="q15_take_temperature]" :value="getTakeTemperature">
         <input type="hidden" name="q16_temperature" :value="getTemperature">
         <input type="hidden" name="q17_visit" :value="getVisit">

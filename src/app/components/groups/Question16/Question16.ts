@@ -24,6 +24,20 @@ export default Vue.extend({
     }, 
     isMyself(): boolean {
       return store.state.Forms.quiz.focus.value === `myself`;
+    },  
+    getTestCopy(): string {
+      if (store.state.Forms.quiz.focus.value === `myself`) {
+        return `Did you get the test?`;
+      } else {
+        return `Did they get the test?`;
+      }
+    },       
+    purchaseCopy(): string {
+      if (store.state.Forms.quiz.focus.value === `myself`) {
+        return `Did you purchase?`;
+      } else {
+        return `Did they purchase?`;
+      }
     },
   },
   methods: {
