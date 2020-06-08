@@ -13,18 +13,19 @@
 
     label {
       position: absolute;
-      top: 80px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
       margin: 0;
-      padding: 0;
-      width: 125px;
+      padding: 95px 5px 0;
+      width: 150px;
+      height: 150px;
       text-align: center;
       line-height: 20px;
       letter-spacing: 0.04em;
 
       &::before {
-        top: -40px;
+        top: 50px;
         left: 50%;
         transform: translate(-50%, -50%);
         border: 0;
@@ -46,13 +47,8 @@
         content: '\f00c';
       }
 
-      &:checked + label::after {
-        top: -99px;
-        left: -13px;
-        transform: initial;
+      &:checked + label {
         border: 2px solid #006468;
-        width: 150px;
-        height: 150px;
       }
     }
   }

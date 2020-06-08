@@ -30,11 +30,12 @@
       <Radio 
         name="visit" 
         label="Other" 
-        :value="`other: ${otherValue}`" 
+        :value="`other: `" 
         inline
       />      
       <Input 
-        name="othe_value"
+        name="other_value"
+        label="Other" 
         type="text" 
         :rules="[`maxLength(50)`]" 
         design="legacy"

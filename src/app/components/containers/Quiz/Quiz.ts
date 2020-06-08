@@ -90,7 +90,10 @@ export default Vue.extend({
       return store.state.Forms.quiz && store.state.Forms.quiz.temperature ? store.state.Forms.quiz.temperature.value : ``;
     },
     getVisit(): string {
-      return store.state.Forms.quiz && store.state.Forms.quiz.visit ? store.state.Forms.quiz.visit.value : ``;
+      if (store.state.Forms.quiz && store.state.Forms.quiz.visit) {
+        return store.state.Forms.quiz.visit.label === `Other` ? `Other: ${store.state.Forms.quiz.other_value.value}` : store.state.Forms.quiz.visit.value;
+      }
+      return ``;
     },
     getFluTest(): string {
       return store.state.Forms.quiz && store.state.Forms.quiz.flu_test ? store.state.Forms.quiz.flu_test.value : ``;
