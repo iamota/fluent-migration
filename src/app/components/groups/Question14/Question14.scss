@@ -18,7 +18,7 @@
         width: 25%;
 
         @include media-query($mobile) {
-          width: 35%;
+          width: 32%;
         }
       }
 
@@ -35,7 +35,7 @@
     text-align: left;
 
     @include media-query($mobile) {
-      width: 40%;
+      width: 37%;
     }
   }
 
@@ -46,7 +46,7 @@
     vertical-align: middle;
 
     @include media-query($mobile) {
-      width: 60%;
+      width: 63%;
       text-align: left;
     }
 
