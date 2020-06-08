@@ -7,6 +7,9 @@ export default defineActions({
     } catch (error) {
       console.error(`Ga error: `, error);
     }
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: `smooth` });
+    }, 1);
     commit(`setStep`, step);
   },
   back({ commit }, step): void {

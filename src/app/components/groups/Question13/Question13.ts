@@ -12,7 +12,11 @@ export default Vue.extend({
   },
   methods: {
     back(): void {
-      store.dispatch.Quiz.nextStep(`question12`);
+      if (store.state.Forms.quiz.take_temperature.value === `yes`) {
+        store.dispatch.Quiz.nextStep(`question12`);
+      } else {
+        store.dispatch.Quiz.nextStep(`question11`);
+      }
     },
     next(): void {      
       store.dispatch.Quiz.nextStep(`question14`);      
