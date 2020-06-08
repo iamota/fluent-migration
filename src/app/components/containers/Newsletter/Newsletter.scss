@@ -8,7 +8,7 @@ $button-border-radius: 53px;
 .Newsletter {
   height: 600px;
 
-  @include media-query($mobile) {
+  @include media-query($tablet-down) {
     --background-image: none !important;
 
     height: auto;
@@ -19,11 +19,17 @@ $button-border-radius: 53px;
       display: none;
     }
 
-    @include media-query($mobile) {
+    .Overlay__content {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @include media-query($tablet-down) {
       padding: 0;
 
       img {
         display: block;
+        width: 100%;
       }
 
       .Overlay__background {
@@ -32,6 +38,7 @@ $button-border-radius: 53px;
 
       .Overlay__content {
         position: static;
+        transform: initial;
       }
 
       .Overlay__placeholder {
@@ -47,7 +54,8 @@ $button-border-radius: 53px;
     max-width: 100%;
     text-align: left;
 
-    @include media-query($mobile) {
+    @include media-query($tablet-down) {
+      margin: 0 auto;
       text-align: center;
     }
   }
@@ -55,13 +63,29 @@ $button-border-radius: 53px;
   &__form {
     height: 80px;
 
-    @include media-query($mobile) {
+    @include media-query($tablet-down) {
       height: initial;
     }
 
     .Form__body {
       overflow: visible;
     }
+
+    .Form__successMessage {
+      position: absolute;
+      top: 50px;
+      left: 20px;
+      color: #f5b542;
+      font-weight: 700;
+    }
+  }
+
+  .Input--material-filled.Input--filled label,
+  .Input--material-filled.Input--active label,
+  .Input--material-filled.Input--filled input,
+  .Input--material-filled.Input--active input {
+    background-color: #e8f0fe;
+    color: #000;
   }
 
   &__input-wrapper {
@@ -75,7 +99,7 @@ $button-border-radius: 53px;
         border-radius: $button-border-radius;
         width: calc(100% - 30px);
 
-        @include media-query($mobile) {
+        @include media-query($tablet-down) {
           width: 100%;
         }
       }
@@ -84,7 +108,7 @@ $button-border-radius: 53px;
         padding-right: $submit-width - 20px;
         height: $input-height - 24px;
 
-        @include media-query($mobile) {
+        @include media-query($tablet-down) {
           padding-right: $submit-width-mobile - 20px;
         }
       }
@@ -95,12 +119,14 @@ $button-border-radius: 53px;
       }
 
       .Button {
-        padding: 0;
+        padding: 0 15px;
         height: $input-height;
         line-height: $input-height;
 
-        @include media-query($mobile) {
+        @include media-query($tablet-down) {
           --button-horizontal-padding--mobile: 20px;
+
+          padding: 0 10px;
         }
       }
 
@@ -112,10 +138,9 @@ $button-border-radius: 53px;
         width: $submit-width;
         height: 100%;
 
-        @include media-query($mobile) {
+        @include media-query($tablet-down) {
           position: relative;
-          margin: 0 auto;
-          margin-bottom: 10px;
+          margin: 30px auto 10px;
         }
       }
 
@@ -129,10 +154,14 @@ $button-border-radius: 53px;
         font-weight: 600;
         font-style: italic;
 
-        @include media-query($mobile) {
+        @include media-query($tablet-down) {
           position: static;
         }
       }
     }
+  }
+
+  .noHover {
+    pointer-events: none;
   }
 }

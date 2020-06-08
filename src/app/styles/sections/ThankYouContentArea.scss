@@ -1,0 +1,34 @@
+.template-page-thank-you {
+  .ContentBlock {
+    &__preheading {
+      text-transform: uppercase;
+      color: #00ade1;
+      font-family: 'Roboto Condensed';
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    &__paragraph {
+      a {
+        text-decoration: underline;
+        color: #00ade1;
+      }
+    }
+
+    &__text {
+      @include media-query($mobile) {
+        grid-row-start: 1;
+
+        .ContentBlock__wrapper {
+          padding: 0 20px;
+        }
+      }
+    }
+
+    &__image {
+      @include media-query($mobile) {
+        grid-row-start: 2;
+      }
+    }
+  }
+}

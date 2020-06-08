@@ -1,0 +1,59 @@
+<header class="Header__desktop Section Section--{{ section.settings.width }} Section--side-gutters" role="banner">
+  <div class="Section__container">
+    <div class="
+      NavBar 
+      {% if section.settings.logo_position == 'center' %}NavBar--center-logo{% endif %}
+      {% if settings.preheader_enabled %}NavBar--has-preheader{% endif %}
+      {% if section.settings.secondary_nav_linklist == '' %}NavBar--single-linklist{% endif %}
+    ">
+
+    {%- capture logo -%}
+      <div class="NavBar__logo NavBar__logo--{{ section.settings.logo_position }}">
+      {%- if template.name == 'index' -%}
+        <h1 itemscope itemtype="http://schema.org/Organization">
+      {%- else -%}
+        <div class="h1" itemscope itemtype="http://schema.org/Organization">
+      {%- endif -%}
+          <a href="/" aria-label="{{ shop.name }} - {% include 'INF-translation', translate: 'layout.navigation.home', default: 'Home' %}" itemprop="url" class="{% if section.settings.logo != blank %}NavBar__logo-image{% endif %}">
+            {%- if section.settings.logo != blank -%}
+              {%- assign image_size = section.settings.logo_width | times: 3 | append: 'x' -%}
+              <img src="{{ section.settings.logo | img_url: image_size }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
+            {%- else -%}
+              {{ shop.name }}
+            {%- endif -%}
+          </a>
+      {%- if template.name == 'index' -%}
+        </h1>
+      {%- else -%}
+        </div>
+      {%- endif -%}
+      </div>
+    {%- endcapture -%}
+
+    {%- assign sublist_number = 0 -%}
+
+    {%- if section.settings.logo_position == 'left' -%}
+      {{ logo }}
+      <nav class="NavBar__primary NavBar__primary--{{ section.settings.primary_nav_alignment }}" role="navigation">
+        {% include 'INF-NavList' linklist: section.settings.primary_nav_linklist %}
+      </nav>
+    {%- else -%}
+      <nav class="NavBar__primary NavBar__primary--{{ section.settings.primary_nav_alignment }}" role="navigation">
+        {% include 'INF-NavList' linklist: section.settings.primary_nav_linklist %}
+      </nav>
+      {{ logo }}
+    {%- endif -%}
+
+    {%- if settings.preheader_enabled and settings.header_buttons_placement == 'preheader' -%}
+      {%- unless section.settings.secondary_nav_linklist == '' -%}
+        <nav class="NavBar__secondary NavBar__secondary--{{ section.settings.secondary_nav_alignment }}" role="navigation">
+          {% include 'INF-NavList' linklist: section.settings.secondary_nav_linklist %}
+        </nav>
+      {%- endunless -%}
+    {%- else -%}
+      {% include 'NavBar__icons' %}
+    {%- endif -%}
+
+    </div>
+  </div>
+</header>

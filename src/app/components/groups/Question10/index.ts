@@ -1,0 +1,1 @@
+export { default as Question10 } from './Question10.vue';

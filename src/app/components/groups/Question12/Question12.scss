@@ -1,0 +1,77 @@
+@import '~@INF/styles';
+
+.Question12 {
+  margin: 0 auto;
+  max-width: 750px;
+
+  .Slider {
+    position: relative;
+    margin-top: 70px;
+    font-size: 0;
+
+    @include media-query($mobile) {
+      margin: 70px -10px 0;
+    }
+
+    &::before {
+      position: absolute;
+      left: 12%;
+      transform: translateY(-50%);
+      z-index: 0;
+      background: #b0bac6;
+      width: 75%;
+      height: 2px;
+      content: '';
+
+      @include media-query($mobile) {
+        top: -9px;
+      }
+    }
+  }
+
+  .Radio {
+    margin: 0;
+    width: 25%;
+    min-height: 70px;
+    line-height: 70px;
+
+    label {
+      width: 95%;
+
+      &::before {
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 0;
+        background: #b0bac6;
+        width: 10px;
+        height: 10px;
+      }
+
+      &::after {
+        z-index: 1;
+      }
+    }
+
+    input {
+      &:checked + label {
+        color: initial;
+      }
+
+      &:checked + label::before {
+        z-index: 2;
+        background: #fff;
+      }
+
+      &:checked + label::after {
+        display: block;
+        top: -38px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #006468;
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+}

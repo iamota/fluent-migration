@@ -11,7 +11,7 @@
     }
   }
 
-  #section1590713223642 {
+  #section1591256997016 {
     .Section {
       &__heading {
         color: #020e2b;
@@ -54,6 +54,10 @@
       @include media-query($mobile) {
         padding: 0 20px;
       }
+
+      @include media-query($tablet) {
+        padding: 0 0 20px 20px;
+      }
     }
 
     .ContentBlock--right .ContentBlock__image {
@@ -62,4 +66,8 @@
       }
     }
   }
+}
+
+.hide {
+  display: none;
 }

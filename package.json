@@ -17,6 +17,7 @@
     "eslint-config-infinite": "git+https://gitlab.lucidfusion.com/lucidfusion/open-source/eslint-config-infinite.git"
   },
   "dependencies": {
+    "@types/google.analytics": "0.0.40",
     "infinite": "git+ssh://git@gitlab.lucidfusion.com:lucidfusion/infinite-v3/framework.git"
   }
 }

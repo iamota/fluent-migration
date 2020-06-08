@@ -1,0 +1,259 @@
+@import '~@INF/styles';
+
+.Quiz {
+  min-height: calc(100vh - 130px);
+
+  .Heading {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .Overlay__content {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+  }
+
+  &__form {
+    margin: 0 auto;
+
+    .Form__body {
+      overflow: visible;
+    }
+  }
+
+  .Button {
+    @include media-query($mobile) {
+      min-width: 140px;
+    }
+  }
+
+  button:disabled {
+    opacity: 0.5;
+  }
+
+  .noHover {
+    pointer-events: none;
+  }
+
+  .Select {
+    &--legacy {
+      .Select__label {
+        display: none;
+      }
+
+      .Select__field {
+        border: 2px solid #318185;
+        background-color: #fff;
+      }
+    }
+  }
+
+  .Input {
+    &--legacy {
+      .Input__label {
+        display: none;
+      }
+
+      .Input__field {
+        border: 2px solid #318185;
+        background-color: #fff;
+        text-align: center;
+      }
+    }
+  }
+
+  h3 {
+    margin-bottom: 50px;
+    color: #006468;
+  }
+
+  button {
+    margin: 40px 20px 0;
+
+    @include media-query($mobile) {
+      margin: 40px 10px 0;
+    }
+  }
+
+  .Overlay__placeholder {
+    @include media-query($mobile) {
+      .Section__container {
+        padding: 0;
+      }
+    }
+  }
+
+  .Form__submit-group .Button:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+
+.Grid {
+  margin-bottom: 60px;
+}
+
+.Radio {
+  margin: 0 20px;
+  width: 150px;
+  min-height: 150px;
+  line-height: 150px;
+
+  @include media-query($mobile) {
+    margin: 0 10px;
+    width: 140px;
+    min-height: 140px;
+    line-height: 140px;
+  }
+
+  &--inline label {
+    @include media-query($mobile) {
+      margin-right: 0;
+    }
+  }
+
+  &__group {
+    margin: 40px 0;
+  }
+
+  &:last-child label {
+    margin-right: 30px;
+
+    @include media-query($mobile) {
+      margin-right: 0;
+    }
+  }
+
+  input {
+    &:checked + label {
+      color: #fff;
+    }
+
+    &:checked + label::before {
+      z-index: -1;
+      background-color: #006468;
+    }
+  }
+
+  label {
+    padding-left: 0;
+    width: 95px;
+
+    &::before {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-color: #006468 !important;
+      width: 150px;
+      height: 150px;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.Radio--longtext .Radio,
+.Radio--longtext .Checkbox {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  background-color: #fff;
+  padding: 25px;
+  padding-left: 60px;
+  width: auto;
+  min-height: initial;
+  text-align: left;
+  line-height: initial;
+
+  input {
+    &:checked + label {
+      color: initial;
+    }
+
+    &:checked + label::before {
+      z-index: initial;
+      background-color: #006468;
+      padding-top: 2px;
+      color: #fff;
+      font-family: 'Font Awesome 5 Pro';
+      font-size: 18px;
+      font-weight: 400;
+      content: '\f00c';
+    }
+
+    &:checked + label::after {
+      display: block;
+      top: -25px;
+      left: -60px;
+      transform: initial;
+      border: 2px solid #006468;
+      border-radius: 0;
+      background: transparent;
+      width: 365px;
+      height: 70px;
+
+      @include media-query($mobile) {
+        width: 335px;
+      }
+    }
+  }
+
+  label {
+    padding-left: initial;
+    width: initial;
+    text-align: left;
+
+    &::before {
+      top: 50%;
+      left: -40px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      border-color: #006468 !important;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+    }
+  }
+}
+
+.Radio--longtext .Checkbox {
+  input {
+    &:checked + label::before {
+      padding-top: 5px;
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active,
+.fade2-enter-active,
+.fade2-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to,
+.fade2-enter,
+.fade2-leave-to {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.5s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slide-fade-enter {
+  transform: translateY(-10px);
+  opacity: 1;
+}
+
+.slide-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}

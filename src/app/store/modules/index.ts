@@ -1,2 +1,2 @@
 export {};
-export { Cart } from './Cart';
+export { Quiz } from './Quiz';

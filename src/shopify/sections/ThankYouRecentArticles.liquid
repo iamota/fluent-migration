@@ -1,0 +1,443 @@
+{% comment %} data-section-type below is "INF-Blog" on purpose to inherit the title/excerpt JS resizing from normal blog grid {% endcomment %}
+<section
+  id="section{{ section.id }}" 
+  data-section-id="{{ section.id }}" 
+  data-section-type="INF-Blog"
+  class="Section Section--{{ section.settings.width }} Section--{{ section.settings.width--mobile }}"
+  style="{% if section.settings.use_background %}background: {{ section.settings.background }};{% endif %}"
+> 
+  <div class="Section__container {% if section.settings.section_animation != 'none' %}Animate Animate--{{ section.settings.section_animation }}{% endif %}">
+    {% if section.settings.heading != '' %}<h3 class="Section__heading {{ section.settings.heading_class }}">{{ section.settings.heading }}</h3>{% endif %}
+    {%- assign blog = blogs[section.settings.blog] -%}
+    <div class="RecentArticles" data-recent-articles-carousel>
+      {%- for article in blog.articles limit: section.settings.limit -%}
+        {%- include 'ArticleTile', 
+          columns: section.settings.limit,
+          aspect_ratio: section.settings.aspect_ratio,
+          show_dates: section.settings.show_dates, 
+          max_words: section.settings.max_words,
+          button_enabled: section.settings.button_enabled,
+          button_text: section.settings.button_text,
+          button_icon: section.settings.button_icon,
+          animation: section.settings.animation,
+          animation_hover: section.settings.animation--hover,
+          heading_class: section.settings.article_heading_class
+        -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #section{{ section.id }} .Section__container {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media only screen and (max-width: {{ settings.grid_mobile_max }}) {
+    #section{{ section.id }} .Section__container {
+      padding-top: {{ section.settings.padding_top--mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom--mobile }}px;
+    }      
+  }
+  #section{{ section.id }} .RecentArticles {
+    text-align: {{ section.settings.text_alignment }};
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Recent Articles",
+    "settings": [
+      {
+        "label": "Heading",
+        "id": "heading",
+        "type": "text",
+        "default": "Recent Artices"
+      },
+      {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Heading style",
+        "default": "h3",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          },
+          {
+            "value": "h6",
+            "label": "H6"
+          },
+          {
+            "value": "h7",
+            "label": "H7"
+          },
+          {
+            "value": "h8",
+            "label": "H8"
+          },
+          {
+            "value": "p",
+            "label": "Paragraph"
+          },
+          {
+            "value": "pbold",
+            "label": "Paragraph (Bold)"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "use_background",
+        "label": "Use background color",
+        "default": false,
+        "info": "Check this to use a custom section background color."
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "select",
+        "id": "section_animation",
+        "label": "Intro animation",
+        "default": "slide-up",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-up",
+            "label": "Fade in & slide up"
+          },
+          {
+            "value": "slide-down",
+            "label": "Fade in & slide down"
+          },          
+          {
+            "value": "slide-left",
+            "label": "Fade in & slide left"
+          },
+          {
+            "value": "slide-right",
+            "label": "Fade in & slide right"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          },
+                    {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "range",
+        "id": "limit",
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "label": "Articles to show",
+        "default": 6
+      },
+      {
+        "type": "header",
+        "content": "Article Tile"
+      },
+      {
+        "type": "select",
+        "id": "animation",
+        "label": "Intro animation",
+        "default": "slide-up",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-up",
+            "label": "Fade in & slide up"
+          },
+          {
+            "value": "slide-down",
+            "label": "Fade in & slide down"
+          },          
+          {
+            "value": "slide-left",
+            "label": "Fade in & slide left"
+          },
+          {
+            "value": "slide-right",
+            "label": "Fade in & slide right"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          },
+                    {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "animation--hover",
+        "label": "Hover animation",
+        "default": "none",
+        "options": [
+          {
+            "value": "zoom",
+            "label": "Zoom"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "aspect_ratio",
+        "label": "Thumbnail aspect ratio",
+        "default": "1.5",
+        "options": [
+          {
+            "label": "1:1",
+            "value": "1"
+          },
+          {
+            "label": "4:3",
+            "value": "1.33"
+          },
+          {
+            "label": "3:2",
+            "value": "1.5"
+          },
+          {
+            "label": "16:9",
+            "value": "1.77"
+          },
+          {
+            "label": "2:1",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "article_heading_class",
+        "label": "Heading Style",
+        "default": "h4",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          },
+          {
+            "value": "h6",
+            "label": "H6"
+          },
+          {
+            "value": "h7",
+            "label": "H7"
+          },
+          {
+            "value": "h8",
+            "label": "H8"
+          },
+          {
+            "value": "p",
+            "label": "Paragraph"
+          },
+          {
+            "value": "pbold",
+            "label": "Paragraph (Bold)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "max_words",
+        "min": 10,
+        "max": 200,
+        "step": 5,
+        "label": "Content preview max words",
+        "default": 50,
+        "info": "Only applied if article excerpt is missing"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_dates",
+        "label": "Show dates",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "button_enabled",
+        "label": "Show button",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text",
+        "default": "Read more"
+      },
+      {
+        "type": "text",
+        "id": "button_icon",
+        "label": "Icon",
+        "default": "fa-book",
+        "info": "Font Awesome icon class (fa-icon-name)"
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Padding",
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Padding",
+        "default": 50
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width--mobile",
+        "label": "Width",
+        "default": "mobile-fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "mobile-full"
+          },
+          {
+            "label": "Fixed",
+            "value": "mobile-fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Padding",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Padding",
+        "default": 40
+      }     
+    ],
+    "presets": [
+      {
+        "name": "Recent Articles",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

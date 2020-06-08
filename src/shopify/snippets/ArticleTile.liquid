@@ -40,24 +40,27 @@
     </a>
   </div>
  
-  <{{ heading_type | strip_newlines }} class="{{ heading_class }} ArticleTile__title" data-article-tile-title><a href="{{ article.url }}">{{ article.title }}</a></{{ heading_type | strip_newlines }}>
-  
-  {%- if show_dates -%}
-    <div class="h5 ArticleTile__date">{{ article.published_at | date: "%B %d, %Y" }}</div>
-  {%- endif -%}
+  <div class="ArticleTile__content">
+    <p class="ArticleTile__author">from {{ article.author }}</p>
+    <{{ heading_type | strip_newlines }} class="{{ heading_class }} ArticleTile__title" data-article-tile-title><a href="{{ article.url }}">{{ article.title }}</a></{{ heading_type | strip_newlines }}>
+    
+    {%- if show_dates -%}
+      <div class="h5 ArticleTile__date">{{ article.published_at | date: "%B %d, %Y" }}</div>
+    {%- endif -%}
 
-  <div class="ArticleTile__excerpt rte" data-article-tile-excerpt>
-    {% if article.excerpt.size > 0 %}
-      {{ article.excerpt }}
-    {% else %}
-      <p>{{ article.content | strip_html | truncatewords: max_words }}</p>
-    {% endif %}
+    {% comment %} <div class="ArticleTile__excerpt rte" data-article-tile-excerpt>
+      {% if article.excerpt.size > 0 %}
+        {{ article.excerpt }}
+      {% else %}
+        <p>{{ article.content | strip_html | truncatewords: max_words }}</p>
+      {% endif %}
+    </div> {% endcomment %}
+    
+    {%- if button_enabled -%}
+    <a href="{{ article.url }}" class="Button Button--primary ArticleTile__button">
+      {% if button_icon != '' %}<i aria-hidden="true" class="{{ settings.fa }} {{ button_icon }}"></i>{% endif %}
+      {{ button_text }}
+    </a>
+    {%- endif -%}
   </div>
-  
-  {%- if button_enabled -%}
-  <a href="{{ article.url }}" class="Button Button--primary ArticleTile__button">
-    {% if button_icon != '' %}<i aria-hidden="true" class="{{ settings.fa }} {{ button_icon }}"></i>{% endif %}
-    {{ button_text }}
-  </a>
-  {%- endif -%}
 </div>

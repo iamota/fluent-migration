@@ -18,7 +18,10 @@ import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
 
 import RteVideo from '../components/rte-video';
 import ShoppableImage from '../components/ShoppableImage';
+import RecentArticlesCarosuel from '../components/RecentArticlesCarousel';
 import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
+
+import ThankYouPods from '../sections/ThankYouPods';
 
 import youtubeIframeApi from '../utils/youtubeIframeApi';
 import flickityiOS13Fix from '../utils/flickityiOS13Fix';
@@ -48,6 +51,8 @@ $(document).ready(() => {
   RteVideo();
   ShoppableImage();
   SimpleCarousel();
+  RecentArticlesCarosuel();
+  ThankYouPods();
 
   _.each(Infinite, (component) => {
     component();
