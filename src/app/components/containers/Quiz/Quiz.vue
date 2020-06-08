@@ -37,6 +37,7 @@
         <Question17 v-if="currentStep === `question17`" key="question17" />
         <Email v-if="currentStep === `email`" key="email" />
         <div v-if="currentStep === `email`" class="Form__submit-group">
+          <button class="Button Button__Primary" @click="back">back</button>
           <Button 
             class="Button Button--primary" 
             :class="{ 'noHover': isDisabled }" 

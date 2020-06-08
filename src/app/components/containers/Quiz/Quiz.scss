@@ -83,6 +83,10 @@
       }
     }
   }
+
+  .Form__submit-group .Button:not(:last-child) {
+    margin-bottom: 0;
+  }
 }
 
 .Grid {

@@ -147,10 +147,10 @@ export default Vue.extend({
       return store.state.Forms.quiz && store.state.Forms.quiz.interest_product ? store.state.Forms.quiz.interest_product.value : ``;
     },
   },
-  watch: {
-    
-  },
   methods: {
+    back(): void {
+      store.dispatch.Quiz.nextStep(`question17`);
+    },
     startQuiz(): void {
       store.dispatch.Quiz.nextStep(`introduction`);
     },    

@@ -7,9 +7,12 @@ export default Vue.extend({
       return this.$store.state.Forms.quiz.first_name.value;
     },   
   },
-  mounted(): void {
-    setTimeout(() => {
+  methods: {
+    back(): void {
+      store.dispatch.Quiz.nextStep(`question1`);
+    },
+    next(): void {
       store.dispatch.Quiz.nextStep(`question3`);
-    }, 8000);
-  },  
+    },
+  },
 });

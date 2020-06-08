@@ -9,6 +9,7 @@
       design="legacy"
       rules="validAge"
     />
+    <button class="Button Button__Primary" @click="back">back</button>
     <button 
       class="Button Button__Primary" 
       :class="{ 'noHover': isDisabled }" 

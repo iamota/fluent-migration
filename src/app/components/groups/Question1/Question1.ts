@@ -8,6 +8,9 @@ export default Vue.extend({
     },
   },
   methods: {
+    back(): void {
+      store.dispatch.Quiz.nextStep(`introduction`);
+    },
     next(): void {
       store.dispatch.Quiz.nextStep(`question2`);
     },

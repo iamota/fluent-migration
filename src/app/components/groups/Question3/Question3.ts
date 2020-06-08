@@ -15,6 +15,9 @@ export default Vue.extend({
     },
   },
   methods: {
+    back(): void {
+      store.dispatch.Quiz.nextStep(`question2`);
+    },
     next(): void {
       store.dispatch.Quiz.nextStep(`question4`);
     },

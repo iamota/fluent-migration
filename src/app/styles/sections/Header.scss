@@ -2,13 +2,13 @@
 .NavBar {
   @include grid {
     &__logo {
-      @include grid-item(2);
+      @include grid-item(3);
     }
 
     &__secondary,
     &__icons,
     &__search {
-      @include grid-item(2);
+      @include grid-item(1);
     }
 
     &--single-linklist {

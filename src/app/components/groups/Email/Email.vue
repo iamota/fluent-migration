@@ -10,7 +10,7 @@
       rules="email" 
       design="legacy"
       placeholder="Email address"
-    />    
+    />   
   </div>
 </template>
 

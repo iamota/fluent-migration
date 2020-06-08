@@ -9,6 +9,7 @@
       required 
       :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]"
     />
+    <button class="Button Button__Primary" @click="back">back</button>
     <button 
       class="Button Button__Primary" 
       :class="{ 'noHover': isDisabled }" 
