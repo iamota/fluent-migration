@@ -11,6 +11,11 @@
     width: 150px;
     height: 150px;
 
+    @include media-query($mobile) {
+      width: 140px;
+      height: 140px;
+    }
+
     label {
       position: absolute;
       top: -18px;
@@ -23,6 +28,11 @@
       text-align: center;
       line-height: 20px;
       letter-spacing: 0.04em;
+
+      @include media-query($mobile) {
+        width: 140px;
+        height: 140px;
+      }
 
       &::before {
         top: 50px;
