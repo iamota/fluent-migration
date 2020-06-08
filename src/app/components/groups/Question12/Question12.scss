@@ -10,7 +10,7 @@
     font-size: 0;
 
     @include media-query($mobile) {
-      margin: 70px -10px 0;
+      margin: 70px -20px 0;
     }
 
     &::before {

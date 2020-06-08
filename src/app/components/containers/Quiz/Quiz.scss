@@ -24,7 +24,7 @@
 
   .Button {
     @include media-query($mobile) {
-      min-width: 140px;
+      min-width: 40%;
     }
   }
 
@@ -72,7 +72,7 @@
     margin: 40px 20px 0;
 
     @include media-query($mobile) {
-      margin: 40px 10px 0;
+      margin: 40px 3% 20px;
     }
   }
 
@@ -93,6 +93,11 @@
   margin-bottom: 60px;
 }
 
+.Input__errors,
+.Select__errors {
+  position: absolute;
+}
+
 .Radio {
   margin: 0 20px;
   width: 150px;
@@ -100,7 +105,7 @@
   line-height: 150px;
 
   @include media-query($mobile) {
-    margin: 0 10px;
+    margin: 10px;
     width: 140px;
     min-height: 140px;
     line-height: 140px;
@@ -146,6 +151,11 @@
       border-color: #006468 !important;
       width: 150px;
       height: 150px;
+
+      @include media-query($mobile) {
+        width: 140px;
+        height: 140px;
+      }
     }
 
     &::after {
@@ -195,7 +205,7 @@
       height: 70px;
 
       @include media-query($mobile) {
-        width: 335px;
+        display: none;
       }
     }
   }

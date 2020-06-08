@@ -16,6 +16,10 @@
         margin-top: -10px;
         margin-left: 5%;
         width: 25%;
+
+        @include media-query($mobile) {
+          width: 30%;
+        }
       }
 
       .Radio__group {
@@ -29,6 +33,10 @@
     width: 30%;
     vertical-align: middle;
     text-align: left;
+
+    @include media-query($mobile) {
+      width: 35%;
+    }
   }
 
   .Radio__group {
@@ -36,6 +44,10 @@
     margin: 20px 0;
     width: 70%;
     vertical-align: middle;
+
+    @include media-query($mobile) {
+      width: 65%;
+    }
 
     .Radio {
       display: inline-block;
