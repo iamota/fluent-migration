@@ -12,6 +12,16 @@
     max-width: 500px;
   }
 
+  h3.Quiz__heading {
+    color: #5a6b80;
+  }
+
+  &__preheading,
+  &__subheading {
+    color: #006468;
+    font-size: 40px;
+  }
+
   .Overlay__content {
     top: 50%;
     transform: translateY(-50%);
@@ -52,6 +62,7 @@
 
       .Select__field {
         border: 2px solid #318185;
+        border-radius: 30px;
         background-color: #fff;
       }
     }
@@ -65,6 +76,7 @@
 
       .Input__field {
         border: 2px solid #318185;
+        border-radius: 30px;
         background-color: #fff;
         text-align: center;
       }
@@ -81,6 +93,10 @@
 
     @include media-query($mobile) {
       margin: 0 3%;
+    }
+
+    &.Quiz__startButton {
+      margin-top: 40px;
     }
   }
 

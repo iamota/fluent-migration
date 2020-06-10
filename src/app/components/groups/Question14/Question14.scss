@@ -66,6 +66,12 @@
         margin-left: 10px;
       }
 
+      &:last-of-type {
+        @include media-query($mobile) {
+          width: 100%;
+        }
+      }
+
       label {
         @include media-query($mobile) {
           font-size: 15px;

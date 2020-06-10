@@ -4,7 +4,7 @@ import store from 'infinite/src/app/store';
 export default Vue.extend({
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quiz.family_member_age || store.state.Forms.quiz.family_member_age.value === ``;
+      return !store.state.Forms.quizForm.family_member_age || store.state.Forms.quizForm.family_member_age.value === ``;
     },  
   },  
   methods: {

@@ -4,10 +4,10 @@ import store from 'infinite/src/app/store';
 export default Vue.extend({
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quiz.take_temperature || store.state.Forms.quiz.take_temperature.value === `` || store.state.Forms.quiz.take_temperature.errors.length > 0;
+      return !store.state.Forms.quizForm.take_temperature || store.state.Forms.quizForm.take_temperature.value === `` || store.state.Forms.quizForm.take_temperature.errors.length > 0;
     },
     isMyself(): boolean {
-      return store.state.Forms.quiz.focus.value === `myself`;
+      return store.state.Forms.quizForm.focus.value === `myself`;
     },
   },  
   methods: {
@@ -15,7 +15,7 @@ export default Vue.extend({
       store.dispatch.Quiz.nextStep(`question10`);
     },
     next(): void {
-      if (store.state.Forms.quiz.take_temperature.value === `yes`) {
+      if (store.state.Forms.quizForm.take_temperature.value === `yes`) {
         store.dispatch.Quiz.nextStep(`question12`);
       } else {
         store.dispatch.Quiz.nextStep(`question13`);
