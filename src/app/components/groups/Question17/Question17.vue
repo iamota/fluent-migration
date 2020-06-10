@@ -1,47 +1,50 @@
 <template>
-  <div class="Question17">
-    <h4>Thank you for helping us better understand your cold and flu experiences. We have just one more question.</h4>
-    <h3>How interested would you be in an at-home testing service that includes:</h3>
-    <ul>
-      <li>A Bluetooth-enabled nasal swab reader to test for cold or flu</li>
-      <li>Test results sent privately and securely to your mobile device within minutes</li>
-      <li>Home delivery of the medicine you need within 24 hours</li>
-    </ul>
-    <div class="Slider">
-      <Radio 
-        name="interest_product" 
-        label="Definitely not interested" 
-        value="Definitely not interested"
-        inline 
-      />
-      <Radio 
-        name="interest_product" 
-        label="Probably not interested" 
-        value="Probably not interested" 
-        inline
-      /> 
-      <Radio 
-        name="interest_product" 
-        label="Unsure" 
-        value="Unsure"
-        inline 
-        checked 
-      />
-      <Radio 
-        name="interest_product" 
-        label="Somewhat interested" 
-        value="Somewhat interested" 
-        inline
-      />
-      <Radio 
-        name="interest_product" 
-        label="Definitely interested" 
-        value="Definitely interested" 
-        inline
-      />
-    </div> 
-    <button :class="`Button Button__Primary`" @click="back">back</button>
-    <button :class="`Button Button__Primary`" @click="next">continue</button>
+  <div class="Quiz__slide Question17">
+    <div class="Quiz__content">
+      <h3>Thank you for helping us better understand your cold and flu experiences. We have just one more question.<br>How interested would you be in an at-home testing service that includes:</h3>
+      <ul>
+        <li>A Bluetooth-enabled nasal swab reader to test for cold or flu</li>
+        <li>Test results sent privately and securely to your mobile device within minutes</li>
+        <li>Home delivery of the medicine you need within 24 hours</li>
+      </ul>
+      <div class="Slider">
+        <Radio 
+          name="interest_product" 
+          label="Definitely not interested" 
+          value="Definitely not interested"
+          inline 
+        />
+        <Radio 
+          name="interest_product" 
+          label="Probably not interested" 
+          value="Probably not interested" 
+          inline
+        /> 
+        <Radio 
+          name="interest_product" 
+          label="Unsure" 
+          value="Unsure"
+          inline 
+          checked 
+        />
+        <Radio 
+          name="interest_product" 
+          label="Somewhat interested" 
+          value="Somewhat interested" 
+          inline
+        />
+        <Radio 
+          name="interest_product" 
+          label="Definitely interested" 
+          value="Definitely interested" 
+          inline
+        />
+      </div> 
+    </div>
+    <div class="Quiz__buttons">
+      <button :class="`Button Button__Primary`" @click="back">back</button>
+      <button :class="`Button Button__Primary`" @click="next">continue</button>
+    </div>
   </div>
 </template>
 

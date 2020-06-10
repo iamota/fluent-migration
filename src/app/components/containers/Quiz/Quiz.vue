@@ -36,7 +36,7 @@
         <Question16 v-if="currentStep === `question16`" key="question16" />
         <Question17 v-if="currentStep === `question17`" key="question17" />
         <Email v-if="currentStep === `email`" key="email" />
-        <div v-if="currentStep === `email`" class="Form__submit-group">
+        <div v-if="currentStep === `email`" class="Quiz__buttons">
           <button class="Button Button__Primary" @click="back">back</button>
           <Button 
             class="Button Button--primary" 

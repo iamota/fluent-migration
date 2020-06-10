@@ -3,6 +3,10 @@
 .Quiz {
   min-height: calc(100vh - 130px);
 
+  @include media-query($mobile) {
+    min-height: auto;
+  }
+
   .Heading {
     margin: 0 auto;
     max-width: 500px;
@@ -16,6 +20,10 @@
 
   &__form {
     margin: 0 auto;
+
+    @include media-query($mobile) {
+      min-height: calc(100vh - 130px);
+    }
 
     .Form__body {
       overflow: visible;
@@ -69,10 +77,10 @@
   }
 
   button {
-    margin: 40px 20px 0;
+    margin: 0 20px;
 
     @include media-query($mobile) {
-      margin: 40px 3% 20px;
+      margin: 0 3%;
     }
   }
 
@@ -86,6 +94,44 @@
 
   .Form__submit-group .Button:not(:last-child) {
     margin-bottom: 0;
+  }
+
+  &__slide {
+    position: relative;
+
+    @include media-query($mobile) {
+      height: calc(100vh - 135px);
+    }
+  }
+
+  &__content {
+    @include media-query($mobile) {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-bottom: 90px;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      -ms-overflow-style: none;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__buttons {
+    padding: 40px 0;
+
+    @include media-query($mobile) {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: #cde5f2;
+      padding: 20px 0;
+      width: 100%;
+    }
   }
 }
 
