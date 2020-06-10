@@ -5,7 +5,6 @@
       <Input 
         name="zip_code" 
         label="Zip Code" 
-        type="number" 
         design="legacy"
         placeholder="Zip Code"
         required

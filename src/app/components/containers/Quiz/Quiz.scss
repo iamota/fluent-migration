@@ -153,6 +153,19 @@
 
 .Grid {
   margin-bottom: 60px;
+
+  .Radio,
+  .Radio:last-child {
+    label {
+      margin-right: 0;
+    }
+  }
+
+  @include media-query($mobile) {
+    .Radio:last-child:nth-child(odd) {
+      grid-column: span 6;
+    }
+  }
 }
 
 .Input__errors,
@@ -167,7 +180,7 @@
   line-height: 150px;
 
   @include media-query($mobile) {
-    margin: 10px;
+    margin: 10px auto;
     width: 140px;
     min-height: 140px;
     line-height: 140px;

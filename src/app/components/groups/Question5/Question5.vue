@@ -34,6 +34,13 @@
       <Grid desktop="4" tablet="4" mobile="2">
         <Radio 
           name="household_children" 
+          label="None" 
+          value="0"
+          inline 
+          checked 
+        />
+        <Radio 
+          name="household_children" 
           label="1" 
           value="1"
           inline 
@@ -46,14 +53,8 @@
         />   
         <Radio 
           name="household_children" 
-          label="3" 
-          value="3" 
-          inline 
-        />
-        <Radio 
-          name="household_children" 
-          label="4+" 
-          value="4+" 
+          label="3+" 
+          value="3+" 
           inline 
         />
       </Grid>

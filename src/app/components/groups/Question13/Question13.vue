@@ -40,6 +40,7 @@
           type="text" 
           :rules="[`maxLength(50)`]" 
           design="legacy"
+          placeholder="Please describe"
         />
         <Radio 
           name="visit" 

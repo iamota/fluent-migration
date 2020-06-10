@@ -4,8 +4,6 @@
   margin: 0 auto;
   max-width: 750px;
 
-
-
   ul {
     margin: 0 auto;
     width: 70%;
@@ -37,7 +35,7 @@
 
       @include media-query($mobile) {
         top: 45px;
-        left: 10%;
+        left: 37px;
       }
     }
 

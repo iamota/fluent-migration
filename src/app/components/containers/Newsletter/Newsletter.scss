@@ -76,7 +76,8 @@ $button-border-radius: 53px;
       top: 50px;
       left: 20px;
       color: #f5b542;
-      font-weight: 700;
+      font-weight: 500;
+      font-style: italic;
     }
   }
 
@@ -107,6 +108,7 @@ $button-border-radius: 53px;
       .Input__field {
         padding-right: $submit-width - 20px;
         height: $input-height - 24px;
+        font-size: 16px;
 
         @include media-query($tablet-down) {
           padding-right: $submit-width-mobile - 20px;
