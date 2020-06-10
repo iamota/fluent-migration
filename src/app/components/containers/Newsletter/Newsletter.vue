@@ -28,6 +28,7 @@
               :class="{ 'noHover': formSubmitted }" 
               name="commit" 
               submit
+              @click.native="submitForm"
             >
               <span>{{ submit_label_with_default }}</span>
             </Button>

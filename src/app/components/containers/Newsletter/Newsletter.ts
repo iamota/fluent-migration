@@ -24,7 +24,7 @@ export default Vue.extend({
       };
     },
     formSubmitted(): boolean {
-      return this.$store.state.Forms[this.form_id] ? this.$store.state.Forms[this.form_id]._status.submitted : false;
+      return this.$store.state.Forms[this.form_id] ? this.$store.state.Forms[this.form_id]._status.submitted : false;      
     },
     placement_class(): string {
       const classes = [`Newsletter__input-wrapper`];
@@ -44,5 +44,15 @@ export default Vue.extend({
       if (mutation.type.indexOf(`Forms/${this.$data.form_id}/submit`) !== 0) { return; }
       this.$data.loading = true;
     });
+  },
+  methods: {
+    submitForm(): void {
+      setTimeout(() => {
+        this.$store.dispatch(`Forms/${this.form_id}/clear`);
+      }, 200);
+      setTimeout(() => {
+        this.$store.state.Forms[this.form_id]._status.submitted = false;
+      }, 3500);
+    },
   },
 });

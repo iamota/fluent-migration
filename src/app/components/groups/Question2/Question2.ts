@@ -4,7 +4,7 @@ import store from 'infinite/src/app/store';
 export default Vue.extend({
   computed: {
     getName(): string {
-      return this.$store.state.Forms.quiz.first_name.value;
+      return this.$store.state.Forms.quizForm.first_name.value;
     },   
   },
   methods: {

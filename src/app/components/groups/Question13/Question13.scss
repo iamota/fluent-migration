@@ -4,6 +4,8 @@
   margin: 0 auto;
   max-width: 750px;
 
+
+
   .Grid {
     position: relative;
 
@@ -20,7 +22,9 @@
         border: 0;
         border-bottom: 1px solid;
         border-radius: 0;
+        height: 38px;
         text-align: left;
+        font-size: 16px;
       }
 
       .Input__errors {
@@ -49,6 +53,12 @@
           top: -25px;
           height: 90px;
         }
+      }
+    }
+
+    .Radio:last-child:nth-child(odd) {
+      @include media-query($mobile) {
+        grid-column: span 2;
       }
     }
   }

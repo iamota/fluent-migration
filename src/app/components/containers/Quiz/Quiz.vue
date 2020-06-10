@@ -3,7 +3,7 @@
     <ProgressBar />
     <Overlay v-bind="$props">
       <Form
-        id="quiz"        
+        id="quizForm"        
         action="https://submit.jotform.com/submit/201556818723055/"
         name="form_201556818723055"
         method="post" 
@@ -12,7 +12,7 @@
         target="form-quiz"
       >
         <Heading v-if="currentStep === `starter`" v-bind="$props" />     
-        <button v-if="currentStep === `starter` && cta !== ``" :class="`Button Button__${cta_style}`" @click="startQuiz">{{ cta }}</button>
+        <button v-if="currentStep === `starter` && cta !== ``" :class="`Quiz__startButton Button Button__${cta_style}`" @click="startQuiz">{{ cta }}</button>
         <!-- <transition> -->
         <introduction v-if="currentStep === `introduction`" key="introduction" />
         <Question1 v-if="currentStep === `question1`" key="question1" />
@@ -36,7 +36,7 @@
         <Question16 v-if="currentStep === `question16`" key="question16" />
         <Question17 v-if="currentStep === `question17`" key="question17" />
         <Email v-if="currentStep === `email`" key="email" />
-        <div v-if="currentStep === `email`" class="Form__submit-group">
+        <div v-if="currentStep === `email`" class="Quiz__buttons">
           <button class="Button Button__Primary" @click="back">back</button>
           <Button 
             class="Button Button--primary" 

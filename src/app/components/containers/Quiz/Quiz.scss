@@ -3,9 +3,23 @@
 .Quiz {
   min-height: calc(100vh - 130px);
 
+  @include media-query($mobile) {
+    min-height: auto;
+  }
+
   .Heading {
     margin: 0 auto;
     max-width: 500px;
+  }
+
+  h3.Quiz__heading {
+    color: #5a6b80;
+  }
+
+  &__preheading,
+  &__subheading {
+    color: #006468;
+    font-size: 40px;
   }
 
   .Overlay__content {
@@ -16,6 +30,10 @@
 
   &__form {
     margin: 0 auto;
+
+    @include media-query($mobile) {
+      min-height: calc(100vh - 130px);
+    }
 
     .Form__body {
       overflow: visible;
@@ -44,6 +62,7 @@
 
       .Select__field {
         border: 2px solid #318185;
+        border-radius: 30px;
         background-color: #fff;
       }
     }
@@ -57,6 +76,7 @@
 
       .Input__field {
         border: 2px solid #318185;
+        border-radius: 30px;
         background-color: #fff;
         text-align: center;
       }
@@ -69,10 +89,14 @@
   }
 
   button {
-    margin: 40px 20px 0;
+    margin: 0 20px;
 
     @include media-query($mobile) {
-      margin: 40px 3% 20px;
+      margin: 0 3%;
+    }
+
+    &.Quiz__startButton {
+      margin-top: 40px;
     }
   }
 
@@ -87,10 +111,61 @@
   .Form__submit-group .Button:not(:last-child) {
     margin-bottom: 0;
   }
+
+  &__slide {
+    position: relative;
+
+    @include media-query($mobile) {
+      height: calc(100vh - 135px);
+    }
+  }
+
+  &__content {
+    @include media-query($mobile) {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-bottom: 90px;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      -ms-overflow-style: none;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__buttons {
+    padding: 40px 0;
+
+    @include media-query($mobile) {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: #cde5f2;
+      padding: 20px 0;
+      width: 100%;
+    }
+  }
 }
 
 .Grid {
   margin-bottom: 60px;
+
+  .Radio,
+  .Radio:last-child {
+    label {
+      margin-right: 0;
+    }
+  }
+
+  @include media-query($mobile) {
+    .Radio:last-child:nth-child(odd) {
+      grid-column: span 6;
+    }
+  }
 }
 
 .Input__errors,
@@ -105,7 +180,7 @@
   line-height: 150px;
 
   @include media-query($mobile) {
-    margin: 10px;
+    margin: 10px auto;
     width: 140px;
     min-height: 140px;
     line-height: 140px;
@@ -136,19 +211,20 @@
 
     &:checked + label::before {
       z-index: -1;
-      background-color: #006468;
+      background-color: #50b0bd;
     }
   }
 
   label {
     padding-left: 0;
     width: 95px;
+    color: #231f20;
 
     &::before {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border-color: #006468 !important;
+      border-color: #50b0bd !important;
       width: 150px;
       height: 150px;
 
@@ -184,7 +260,7 @@
 
     &:checked + label::before {
       z-index: initial;
-      background-color: #006468;
+      background-color: #50b0bd;
       padding-top: 2px;
       color: #fff;
       font-family: 'Font Awesome 5 Pro';
@@ -198,7 +274,7 @@
       top: -25px;
       left: -60px;
       transform: initial;
-      border: 2px solid #006468;
+      border: 2px solid #50b0bd;
       border-radius: 0;
       background: transparent;
       width: 365px;
@@ -220,7 +296,7 @@
       left: -40px;
       transform: translateY(-50%);
       border-radius: 50%;
-      border-color: #006468 !important;
+      border-color: #50b0bd !important;
       width: 30px;
       height: 30px;
       text-align: center;

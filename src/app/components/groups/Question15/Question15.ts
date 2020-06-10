@@ -4,31 +4,18 @@ import store from 'infinite/src/app/store';
 export default Vue.extend({
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quiz.contact_online || store.state.Forms.quiz.contact_online.value === ``;
+      return !store.state.Forms.quizForm.contact_online || store.state.Forms.quizForm.contact_online.value === ``;
     },   
     isMyself(): boolean {
-      return store.state.Forms.quiz.focus.value === `myself`;
+      return store.state.Forms.quizForm.focus.value === `myself`;
     },    
   },
-  watch: {
-    isDisabled(): void {
-      if (store.state.Forms.quiz.contact_online && store.state.Forms.quiz.contact_online.value !== ``) {      
-        setTimeout(() => {
-          if (store.state.Forms.quiz.contact_online.value === `yes`) {
-            store.dispatch.Quiz.nextStep(`question16`);
-          } else {
-            store.dispatch.Quiz.nextStep(`question17`);
-          }
-        }, 1000);       
-      }
-    },
-  },  
   methods: {
     back(): void {
       store.dispatch.Quiz.nextStep(`question14`);
     },
     next(): void {
-      if (store.state.Forms.quiz.contact_online.value === `yes`) {
+      if (store.state.Forms.quizForm.contact_online.value === `yes`) {
         store.dispatch.Quiz.nextStep(`question16`);
       } else {
         store.dispatch.Quiz.nextStep(`question17`);

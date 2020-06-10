@@ -35,7 +35,7 @@
 
       @include media-query($mobile) {
         top: 45px;
-        left: 10%;
+        left: 37px;
       }
     }
 
@@ -45,16 +45,18 @@
       @include media-query($mobile) {
         label {
           position: absolute;
-          top: -40px;
-          left: -10px;
+          top: -20px;
+          left: 10px;
           width: 95px;
 
           &::before {
-            top: 80px;
+            top: 60px;
+            left: 33%;
           }
 
           &::after {
-            top: 72px;
+            top: 52px;
+            left: 33%;
           }
         }
       }
@@ -88,15 +90,17 @@
         label {
           position: absolute;
           top: -20px;
-          left: -10px;
+          left: -20px;
           width: 95px;
 
           &::before {
             top: 60px;
+            left: 60%;
           }
 
           &::after {
             top: 52px;
+            left: 60%;
           }
         }
       }
