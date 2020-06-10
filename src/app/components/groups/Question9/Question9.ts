@@ -10,15 +10,6 @@ export default Vue.extend({
       return store.state.Forms.quiz.focus.value === `myself`;
     },
   },
-  watch: {
-    isDisabled(): void {
-      if (store.state.Forms.quiz.vaccine && store.state.Forms.quiz.vaccine.value !== `` && store.state.Forms.quiz.vaccine.errors.length === 0) {      
-        setTimeout(() => {
-          store.dispatch.Quiz.nextStep(`question10`);   
-        }, 1000);       
-      }
-    },
-  }, 
   methods: {
     back(): void {
       if (store.state.Forms.quiz.focus.value === `myself`) {
