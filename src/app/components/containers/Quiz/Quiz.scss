@@ -194,6 +194,12 @@
 
   &__group {
     margin: 40px 0;
+
+    .Radio {
+      @include media-query($mobile) {
+        margin: 2%;
+      }
+    }
   }
 
   &:last-child label {

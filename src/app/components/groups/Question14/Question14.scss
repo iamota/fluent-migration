@@ -22,7 +22,7 @@
         width: 25%;
 
         @include media-query($mobile) {
-          width: 37%;
+          width: 38%;
         }
       }
 
@@ -39,7 +39,7 @@
     text-align: left;
 
     @include media-query($mobile) {
-      width: 42%;
+      width: 43%;
     }
   }
 
@@ -50,7 +50,7 @@
     vertical-align: middle;
 
     @include media-query($mobile) {
-      width: 58%;
+      width: 57%;
       text-align: left;
     }
 
@@ -66,6 +66,13 @@
         margin-left: 10px;
         padding: 16px;
         padding-left: 50px;
+      }
+
+      &:first-child,
+      &:nth-child(2) {
+        @include media-query($mobile) {
+          width: calc(50% - 10px);
+        }
       }
 
       &:last-of-type {
