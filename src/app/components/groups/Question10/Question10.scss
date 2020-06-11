@@ -50,7 +50,7 @@
       &:checked + label::before {
         z-index: initial;
         border-radius: 50%;
-        background-color: #006468;
+        background-color: #50b0bd;
         padding-top: 25px;
         color: #fff;
         font-family: 'Font Awesome 5 Pro';
@@ -60,7 +60,7 @@
       }
 
       &:checked + label {
-        border: 2px solid #006468;
+        border: 2px solid #50b0bd;
       }
     }
   }
