@@ -32,9 +32,11 @@
       }
 
       @include media-query($mobile) {
-        bottom: 24%;
+        top: 395px;
         left: 40%;
+        transform: translateY(-50%);
         width: 50%;
+        height: 40px;
       }
     }
 

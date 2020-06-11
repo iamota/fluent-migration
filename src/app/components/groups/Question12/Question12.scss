@@ -31,7 +31,97 @@
       content: '';
 
       @include media-query($mobile) {
-        top: -9px;
+        top: 35px;
+        left: 8%;
+        width: 80%;
+      }
+    }
+
+    .Radio:first-child {
+      position: relative;
+
+      @include media-query($mobile) {
+        label {
+          position: absolute;
+          top: -20px;
+          left: 0;
+
+          &::before {
+            top: 50px;
+            left: 33%;
+          }
+
+          &::after {
+            top: 43px;
+            left: 33%;
+          }
+        }
+      }
+    }
+
+    .Radio:nth-child(2) {
+      position: relative;
+
+      @include media-query($mobile) {
+        label {
+          position: absolute;
+          top: 70px;
+          left: -10px;
+
+          &::before {
+            top: -40px;
+            left: 45%;
+          }
+
+          &::after {
+            top: -47px;
+            left: 45%;
+          }
+        }
+      }
+    }
+
+    .Radio:nth-child(3) {
+      position: relative;
+
+      @include media-query($mobile) {
+        label {
+          position: absolute;
+          top: -20px;
+          left: -5px;
+
+          &::before {
+            top: 50px;
+            left: 45%;
+          }
+
+          &::after {
+            top: 43px;
+            left: 45%;
+          }
+        }
+      }
+    }
+
+    .Radio:nth-child(4) {
+      position: relative;
+
+      @include media-query($mobile) {
+        label {
+          position: absolute;
+          top: 70px;
+          left: -12px;
+
+          &::before {
+            top: -40px;
+            left: 60%;
+          }
+
+          &::after {
+            top: -47px;
+            left: 60%;
+          }
+        }
       }
     }
   }
@@ -44,6 +134,10 @@
 
     label {
       width: 95%;
+
+      @include media-query($mobile) {
+        width: 100%;
+      }
 
       &::before {
         top: -30px;
