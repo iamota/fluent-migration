@@ -161,11 +161,13 @@
     line-height: 90px;
 
     label {
+      border: 2px solid  transparent;
+      padding: 5px;
       width: 95%;
-      height: 40px;
+      height: 50px;
 
       &::before {
-        top: -30px;
+        top: -27px;
         left: 50%;
         transform: translateX(-50%);
         border: 0;
@@ -191,12 +193,16 @@
 
       &:checked + label::after {
         display: block;
-        top: -38px;
+        top: -35px;
         left: 50%;
         transform: translateX(-50%);
         background: #006468;
         width: 26px;
         height: 26px;
+      }
+
+      &:focus + label {
+        border-color: var(--checkbox-background);
       }
     }
   }

@@ -62,6 +62,10 @@
       &:checked + label {
         border: 2px solid #50b0bd;
       }
+
+      &:focus + label {
+        border: 2px solid var(--checkbox-background);
+      }
     }
   }
 }

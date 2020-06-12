@@ -173,6 +173,10 @@
         width: 26px;
         height: 26px;
       }
+
+      &:focus + label {
+        border: 2px solid var(--checkbox-background);
+      }
     }
   }
 }
