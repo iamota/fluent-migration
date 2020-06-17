@@ -12,7 +12,11 @@ export default Vue.extend({
   },
   methods: {
     back(): void {
-      store.dispatch.Quiz.nextStep(`question14`);
+      if (store.state.Forms.quizForm.visit && store.state.Forms.quizForm.visit.value === `No visit`) { 
+        store.dispatch.Quiz.nextStep(`question13`);
+      } else {
+        store.dispatch.Quiz.nextStep(`question14`);
+      }
     },
     next(): void {
       if (store.state.Forms.quizForm.contact_online.value === `yes`) {
