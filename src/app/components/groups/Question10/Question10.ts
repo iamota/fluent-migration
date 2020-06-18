@@ -12,7 +12,8 @@ export default Vue.extend({
       if (store.state.Forms.quizForm.focus.value === `myself`) {
         store.dispatch.Quiz.nextStep(`question9`);
       } else {
-        store.dispatch.Quiz.nextStep(`question9c`);
+        // store.dispatch.Quiz.nextStep(`question9c`);
+        store.dispatch.Quiz.nextStep(`question9b`);
       }
     },
     next(): void {

@@ -322,13 +322,15 @@
 .fade-leave-active,
 .fade2-enter-active,
 .fade2-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.25s ease-out;
+  transition-delay: 0.26s;
 }
 
 .fade-enter,
 .fade-leave-to,
 .fade2-enter,
 .fade2-leave-to {
+  transition: opacity 0.25s ease-out;
   opacity: 0;
 }
 

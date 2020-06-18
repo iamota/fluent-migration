@@ -38,6 +38,9 @@ export default Vue.extend({
       return store.getters.Quiz.getCurrentStep;
     },
     isDisabled(): boolean {
+      if (!store.state.Forms.quizForm) {
+        return true;
+      }
       return !store.state.Forms.quizForm.q35_email || store.state.Forms.quizForm.q35_email.value === `` || store.state.Forms.quizForm.q35_email.errors.length > 0;
     },
     submited(): boolean {
