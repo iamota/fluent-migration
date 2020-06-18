@@ -154,6 +154,12 @@
 .Grid {
   margin-bottom: 60px;
 
+  &--mobile-3 {
+    .Radio {
+      @include grid-item(3, $mobile);
+    }
+  }
+
   .Radio,
   .Radio:last-child {
     label {
@@ -180,10 +186,8 @@
   line-height: 150px;
 
   @include media-query($mobile) {
-    margin: 10px auto;
-    width: 140px;
-    min-height: 140px;
-    line-height: 140px;
+    margin: 0;
+    width: unset;
   }
 
   &--inline label {
@@ -226,6 +230,10 @@
     width: 95px;
     color: #231f20;
 
+    @include media-query($mobile) {
+      width: 100%;
+    }
+
     &::before {
       top: 50%;
       left: 50%;
@@ -235,8 +243,9 @@
       height: 150px;
 
       @include media-query($mobile) {
-        width: 140px;
-        height: 140px;
+        padding-top: 100%;
+        width: 100%;
+        height: unset;
       }
     }
 
