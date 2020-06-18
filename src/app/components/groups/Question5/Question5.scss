@@ -10,5 +10,10 @@
 
   .Grid {
     margin-bottom: 40px;
+
+    @include media-query($mobile) {
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
   }
 }
