@@ -154,6 +154,12 @@
 .Grid {
   margin-bottom: 60px;
 
+  &--mobile-3 {
+    .Radio {
+      @include grid-item(3, $mobile);
+    }
+  }
+
   .Radio,
   .Radio:last-child {
     label {
@@ -180,10 +186,10 @@
   line-height: 150px;
 
   @include media-query($mobile) {
-    margin: 10px auto;
-    width: 140px;
-    min-height: 140px;
-    line-height: 140px;
+    margin: 0;
+    width: unset;
+    min-height: unset;
+    line-height: unset;
   }
 
   &--inline label {
@@ -217,6 +223,7 @@
 
     &:checked + label::before {
       z-index: -1;
+      border-color: #50b0bd !important;
       background-color: #50b0bd;
     }
   }
@@ -226,17 +233,22 @@
     width: 95px;
     color: #231f20;
 
+    @include media-query($mobile) {
+      width: 100%;
+    }
+
     &::before {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border-color: #50b0bd !important;
+      border-color: #50b0bd;
       width: 150px;
       height: 150px;
 
       @include media-query($mobile) {
-        width: 140px;
-        height: 140px;
+        padding-top: 100%;
+        width: 100%;
+        height: unset;
       }
     }
 
@@ -249,17 +261,25 @@
 .Radio--longtext .Radio,
 .Radio--longtext .Checkbox {
   display: flex;
+  position: relative;
   align-items: center;
   margin: 0;
   background-color: #fff;
-  padding: 25px;
-  padding-left: 60px;
+  padding: 25px 25px 18px 60px;
   width: auto;
   min-height: initial;
   text-align: left;
   line-height: initial;
 
   input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+
     &:checked + label {
       color: initial;
     }
@@ -290,9 +310,15 @@
         display: none;
       }
     }
+
+    &:focus + label {
+      border-color: var(--checkbox-background);
+    }
   }
 
   label {
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
     padding-left: initial;
     width: initial;
     text-align: left;
@@ -302,7 +328,7 @@
       left: -40px;
       transform: translateY(-50%);
       border-radius: 50%;
-      border-color: #50b0bd !important;
+      border-color: #50b0bd;
       width: 30px;
       height: 30px;
       text-align: center;
@@ -322,13 +348,15 @@
 .fade-leave-active,
 .fade2-enter-active,
 .fade2-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.25s ease-out;
+  transition-delay: 0.26s;
 }
 
 .fade-enter,
 .fade-leave-to,
 .fade2-enter,
 .fade2-leave-to {
+  transition: opacity 0.25s ease-out;
   opacity: 0;
 }
 

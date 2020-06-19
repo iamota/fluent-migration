@@ -105,6 +105,10 @@ $button-border-radius: 53px;
         }
       }
 
+      .Input__label {
+        padding-top: 15px;
+      }
+
       .Input__field {
         padding-right: $submit-width - 20px;
         height: $input-height - 24px;
@@ -128,7 +132,7 @@ $button-border-radius: 53px;
         @include media-query($tablet-down) {
           --button-horizontal-padding--mobile: 20px;
 
-          padding: 0 10px;
+          padding: 0 25px;
         }
       }
 
@@ -143,6 +147,7 @@ $button-border-radius: 53px;
         @include media-query($tablet-down) {
           position: relative;
           margin: 30px auto 10px;
+          width: unset;
         }
       }
 
@@ -151,7 +156,7 @@ $button-border-radius: 53px;
         top: 50px;
         right: 15px;
         text-decoration: underline;
-        color: #ababac;
+        color: white;
         font-size: 14px;
         font-weight: 600;
         font-style: italic;

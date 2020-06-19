@@ -32,7 +32,7 @@
       </div> 
     </div>
     <div class="Quiz__buttons">
-      <button :class="`Button Button__Primary`" @click="back">back</button>
+      <button type="button" :class="`Button Button__Primary`" @click="back">back</button>
       <button :class="`Button Button__Primary`" @click="next">continue</button>
     </div>
   </div>

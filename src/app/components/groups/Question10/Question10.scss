@@ -13,11 +13,6 @@
     width: 150px;
     height: 150px;
 
-    @include media-query($mobile) {
-      width: 140px;
-      height: 140px;
-    }
-
     label {
       position: absolute;
       top: -18px;
@@ -31,11 +26,6 @@
       line-height: 20px;
       letter-spacing: 0.04em;
 
-      @include media-query($mobile) {
-        width: 140px;
-        height: 140px;
-      }
-
       &::before {
         top: 50px;
         left: 50%;
@@ -43,6 +33,11 @@
         border: 0;
         width: 70px;
         height: 70px;
+      }
+
+      @include media-query($mobile) {
+        width: 140px;
+        height: 140px;
       }
     }
 
@@ -59,9 +54,22 @@
         content: '\f00c';
       }
 
+      + label {
+        border: 2px solid white;
+      }
+
       &:checked + label {
         border: 2px solid #50b0bd;
       }
+
+      &:focus + label {
+        border: 2px solid var(--checkbox-background);
+      }
+    }
+
+    @include media-query($mobile) {
+      width: 140px;
+      height: 140px;
     }
   }
 }
