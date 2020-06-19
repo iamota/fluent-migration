@@ -128,7 +128,7 @@ $button-border-radius: 53px;
         @include media-query($tablet-down) {
           --button-horizontal-padding--mobile: 20px;
 
-          padding: 0 10px;
+          padding: 0 25px;
         }
       }
 
@@ -139,10 +139,12 @@ $button-border-radius: 53px;
         margin: 0;
         width: $submit-width;
         height: 100%;
+        overflow: hidden;
 
         @include media-query($tablet-down) {
           position: relative;
           margin: 30px auto 10px;
+          width: unset;
         }
       }
 
