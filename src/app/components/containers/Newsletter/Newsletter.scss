@@ -139,7 +139,6 @@ $button-border-radius: 53px;
         margin: 0;
         width: $submit-width;
         height: 100%;
-        overflow: hidden;
 
         @include media-query($tablet-down) {
           position: relative;
