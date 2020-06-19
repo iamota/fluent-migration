@@ -105,6 +105,10 @@ $button-border-radius: 53px;
         }
       }
 
+      .Input__label {
+        padding-top: 15px;
+      }
+
       .Input__field {
         padding-right: $submit-width - 20px;
         height: $input-height - 24px;
