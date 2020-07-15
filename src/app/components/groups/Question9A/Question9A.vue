@@ -3,7 +3,7 @@
     <div class="Quiz__content">
       <h4>Let’s get to know the family member that you cared for a bit more…</h4>
       <h3>What is your family member’s age? </h3>
-      <Grid expand desktop="2">
+      <Grid desktop="2" mobile="2">
         <Radio 
           name="family_member_age" 
           label="Infant (<12 months)" 
@@ -16,6 +16,8 @@
           value="toddler" 
           inline
         /> 
+      </Grid>
+      <Grid desktop="2" mobile="2">
         <Radio 
           name="family_member_age" 
           label="Child (5-12 years)" 
@@ -28,6 +30,8 @@
           value="teen" 
           inline
         /> 
+      </Grid>
+      <Grid desktop="2" mobile="2">
         <Radio 
           name="family_member_age" 
           label="Young Adult (19-24 years)" 
@@ -40,6 +44,8 @@
           value="adult" 
           inline
         />    
+      </Grid>
+      <Grid desktop="2" mobile="2">
         <Radio 
           name="family_member_age" 
           label="Senior (65 and over)" 
