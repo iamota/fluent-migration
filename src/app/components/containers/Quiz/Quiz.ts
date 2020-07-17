@@ -21,7 +21,7 @@ export default Vue.extend({
         },
         validAge: (age: string): string => {          
           if (age === `Under 18`) {
-            return `We can not accept input from someone who is a minor. Thank you for your interest!`;
+            return `We cannot accept input from anyone under the age of 18. Thank you for your interest!`;
           }
           return ``;
         },
