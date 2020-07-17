@@ -155,7 +155,7 @@ export default Vue.extend({
       store.dispatch.Quiz.nextStep(`question17`);
     },
     startQuiz(): void {
-      store.dispatch.Quiz.nextStep(`introduction`);
+      store.dispatch.Quiz.nextStep(`question1`);
     },    
   },
 });
