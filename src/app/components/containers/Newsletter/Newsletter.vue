@@ -33,7 +33,7 @@
               <span>{{ submit_label_with_default }}</span>
             </Button>
           </div>
-          <a class="Newsletter__terms" href="">TERMS & CONDITIONS</a>
+          <!-- <a class="Newsletter__terms" href="">TERMS & CONDITIONS</a> -->
         </div>
       </Form>
     </Overlay>
