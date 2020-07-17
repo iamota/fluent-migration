@@ -1,3 +1,7 @@
 {
-
+  "general": {
+    "newsletter_form": {
+      "email_placeholder": "Enter Email Address"
+    }
+  }
 }
