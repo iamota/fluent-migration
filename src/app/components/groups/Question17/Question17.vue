@@ -1,7 +1,7 @@
 <template>
   <div class="Quiz__slide Question17">
     <div class="Quiz__content">
-      <h3>Thank you for helping us better understand your cold and flu experiences. We have just one more question.<br>How interested would you be in an at-home testing service that includes:</h3>
+      <h3>One last question...<br>How interested would you be in an at-home testing service that includes:</h3>
       <ul>
         <li>A Bluetooth-enabled nasal swab reader to test for cold or flu</li>
         <li>Test results sent privately and securely to your mobile device within minutes</li>
