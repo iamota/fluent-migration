@@ -1,0 +1,25 @@
+.ContentArea {
+  .ContentBlock {
+
+    &__paragraph {
+
+      ul {
+        padding-inline-start: 30px;
+      }
+      
+      li {
+        position: relative;
+        list-style: none;
+      }
+
+      .fa-check {
+        color: $color-primary;
+        position: absolute;
+        top: 1px;
+        left: -22px;
+        line-height: 27px;
+      }
+    }
+  }
+  
+}

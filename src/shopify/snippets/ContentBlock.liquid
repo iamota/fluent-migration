@@ -1,0 +1,89 @@
+{%- capture heading_type -%}
+  {%- if section.settings.heading != '' -%}
+    h3
+  {%- else -%}
+    h2
+  {%- endif -%}
+{%- endcapture -%}
+
+<div 
+  id="block{{ block.id }}" 
+  class="
+    ContentBlock 
+    ContentBlock--{{ block.settings.image_position }} 
+    ContentBlock--{{ block.settings.image_text_split }}
+    {% if block.settings.animation != 'none' %}Animate Animate--{{ block.settings.animation }}{% endif %}
+  " 
+  {{ block.shopify_attributes }}
+>
+  {% capture image %}
+  <div class="ContentBlock__image">
+    <div class="ContentBlock__wrapper">
+      {% if block.settings.image %}<img src="{{ block.settings.image | img_url: '1280x' }}" alt="{{ block.settings.image.alt | escape }}">{% endif %}
+    </div>
+  </div>
+  {% endcapture %}
+
+  {% if block.settings.image_position == 'left' or block.settings.image_position == 'center-top' %}{{ image }}{% endif %}
+  <div class="ContentBlock__text">
+    <div class="ContentBlock__wrapper">
+      <{{ heading_type | strip_newlines }}>
+        {% if block.settings.preheading != '' %}<span class="ContentBlock__preheading {{ block.settings.preheading_class }}">{{ block.settings.preheading }}</span>{% endif %}
+        {% if block.settings.heading != '' %}<span class="ContentBlock__heading {{ block.settings.heading_class }}">{{ block.settings.heading }}</span>{% endif %}
+        {% if block.settings.subheading != '' %}<span class="ContentBlock__subheading {{ block.settings.subheading_class }}">{{ block.settings.subheading }}</span>{% endif %}
+      </{{ heading_type | strip_newlines }}>
+      {% if block.settings.paragraph != '' %}<div class="ContentBlock__paragraph">{{ block.settings.paragraph }}</div>{% endif %}
+      {% if block.settings.cta != '' %}<a href="{{ block.settings.url }}" class="ContentBlock__button Button Button--{{ block.settings.cta_style }}" aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">{{ block.settings.cta }}</a>{% endif %}   
+    </div>
+  </div>
+  {% if block.settings.image_position == 'right' or block.settings.image_position == 'center-bottom' %}{{ image }}{% endif %}
+
+  <style>
+    #block{{ block.id}} {
+      margin-top: {{ block.settings.margin_top }}px;
+    }
+
+    #block{{ block.id }} .ContentBlock__image {
+      text-align: {{ block.settings.image_horizontal_position }};
+      align-self: {{ block.settings.image_vertical_position }};
+    }
+    #block{{ block.id }} .ContentBlock__image .ContentBlock__wrapper {
+      max-width: {{ block.settings.image_max_width }}px;
+    }
+
+    #block{{ block.id }} .ContentBlock__text {
+      text-align: {{ block.settings.text_horizontal_position }};
+      align-self: {{ block.settings.text_vertical_position }};
+    }
+    #block{{ block.id }} .ContentBlock__text .ContentBlock__wrapper {
+      max-width: {{ block.settings.text_max_width }}px;
+      text-align: {{ block.settings.text_align }};
+    }
+
+    #block{{ block.id }} .ContentBlock__preheading,
+    #block{{ block.id }} .ContentBlock__heading,
+    #block{{ block.id }} .ContentBlock__subheading {
+      display: block;
+    }
+
+    @media only screen and (max-width: {{ settings.grid_tablet_max }}) {
+      #block{{ block.id}} {
+        margin-top: 0;
+      }
+    }
+
+    @media only screen and (max-width: {{ settings.grid_mobile_max }}) {
+      
+      #block{{ block.id }} .ContentBlock__image,
+      #block{{ block.id }} .ContentBlock__text {
+        text-align: center;
+        align-self: center;
+      }
+      #block{{ block.id }} .ContentBlock__image .ContentBlock__wrapper,
+      #block{{ block.id }} .ContentBlock__text .ContentBlock__wrapper {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</div>

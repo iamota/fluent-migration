@@ -6,10 +6,12 @@
 >
   <div class="Overlay Overlay--top-center Overlay--{{ section.settings.overlay }}">
     <div class="Overlay__background"></div>
-    {% include 'INF-ContentArea__content' %}
+    {% comment %} {% include 'INF-ContentArea__content' %} {% endcomment %}
+    {% include 'ContentArea__content' %}
   </div>
   <div class="ContentArea__placeholder" data-prevent-tab aria-hidden="true">
-    {% include 'INF-ContentArea__content' %}
+    {% comment %} {% include 'INF-ContentArea__content' %} {% endcomment %}
+    {% include 'ContentArea__content' %}
   </div>
 
   <style>
@@ -628,8 +630,8 @@
           {
             "label": "Paragraph",
             "id": "paragraph",
-            "type": "richtext",
-            "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+            "type": "textarea",
+            "default": "Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review."
           },
           {
             "label": "Button text",

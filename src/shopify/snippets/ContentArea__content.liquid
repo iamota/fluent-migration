@@ -1,0 +1,14 @@
+<div class="Overlay__content ContentArea__content">
+  <div class="Section__container {% if section.settings.animation != 'none' %}Animate Animate--{{ section.settings.animation }}{% endif %}">
+    <div class="Section__info">
+      {%- if section.settings.heading != '' -%}<h2 class="Section__heading {{ section.settings.heading_class }}">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.paragraph != '<p></p>' -%}<div class="ContentArea__paragraph">{{ section.settings.paragraph }}</div>{%- endif -%}
+    </div>
+    <div class="ContentArea__blocks">
+      {%- for block in section.blocks -%}
+        {% comment %} {% include 'INF-ContentBlock' %} {% endcomment %}
+        {% include 'ContentBlock' %}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
