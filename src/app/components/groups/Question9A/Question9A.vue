@@ -12,10 +12,24 @@
         />
         <Radio 
           name="family_member_age" 
+          label="Young Adult (19 - 24 years)" 
+          value="young" 
+          inline
+        />  
+      </Grid>
+      <Grid desktop="2" mobile="2">
+        <Radio 
+          name="family_member_age" 
           label="Toddler (1 - 4 years)" 
           value="toddler" 
           inline
         /> 
+        <Radio 
+          name="family_member_age" 
+          label="Adult (25 – 64 years)" 
+          value="adult" 
+          inline
+        />  
       </Grid>
       <Grid desktop="2" mobile="2">
         <Radio 
@@ -23,35 +37,21 @@
           label="Child (5 - 12 years)" 
           value="child" 
           inline
-        /> 
+        />
+        <Radio 
+          name="family_member_age" 
+          label="Senior (65 years and over)" 
+          value="senior" 
+          inline
+        />   
+      </Grid>
+      <Grid desktop="2" mobile="2">
         <Radio 
           name="family_member_age" 
           label="Teen (13 - 18 years)" 
           value="teen" 
           inline
         /> 
-      </Grid>
-      <Grid desktop="2" mobile="2">
-        <Radio 
-          name="family_member_age" 
-          label="Young Adult (19 - 24 years)" 
-          value="young" 
-          inline
-        />      
-        <Radio 
-          name="family_member_age" 
-          label="Adult (25 – 64 years)" 
-          value="adult" 
-          inline
-        />    
-      </Grid>
-      <Grid desktop="2" mobile="2">
-        <Radio 
-          name="family_member_age" 
-          label="Senior (65 years and over)" 
-          value="senior" 
-          inline
-        />
       </Grid> 
     </div>
     <div class="Quiz__buttons">
