@@ -1,8 +1,8 @@
 <template>
   <div class="Quiz__slide Question10">
     <div class="Quiz__content">      
-      <h3 v-if="isMyself">Now think about the most recent time you were sick with a cold or the flu... <br> Which symptoms did you experience? (Select all that apply)</h3>      
-      <h3 v-if="!isMyself">Now think about the most recent time you cared for this family member when they were sick with a cold or the flu... <br> Which symptoms did your family member experience? (Select all that apply)</h3>
+      <h3 v-if="isMyself">Now think about the most recent time you were sick with a cold or the flu... <br> Which cold or flu symptoms did you experience? (Select all that apply)</h3>      
+      <h3 v-if="!isMyself">Now think about the most recent time you cared for this family member when they were sick with a cold or the flu... <br> Which cold or flu symptoms did your family member experience? (Select all that apply)</h3>
       <Grid 
         expand 
         desktop="4" 
@@ -26,7 +26,7 @@
         <Checkbox 
           class="Checkbox--Runny"
           name="symptoms[]" 
-          value="Runny Nose"
+          value="Runny nose"
           label="Runny or stuffy nose" 
           inline
         /> 
@@ -76,7 +76,7 @@
           class="Checkbox--Joint"
           name="symptoms[]" 
           label="Muscle or joint pain" 
-          value="Joint Pain"
+          value="Joint pain"
           inline
         /> 
         <Checkbox 
@@ -90,7 +90,7 @@
           class="Checkbox--Appetite"
           name="symptoms[]" 
           label="Loss of appetite" 
-          value="Lost Appetite"
+          value="Lost appetite"
           inline          
         />
         <Checkbox 
@@ -113,7 +113,14 @@
           label="Diarrhea" 
           value="Diarrhea"
           inline
-        /> 
+        />
+        <Checkbox 
+          class="Checkbox--No-symptoms"
+          name="symptoms[]" 
+          label="No symptoms" 
+          value="No symptoms"
+          inline
+        />  
       </Grid>
     </div>
     <div class="Quiz__buttons">

@@ -11,7 +11,7 @@
         />
         <Radio 
           name="focus" 
-          label="Answering for a Family Member" 
+          label="Answering for a family member" 
           value="family member" 
           inline
         /> 
