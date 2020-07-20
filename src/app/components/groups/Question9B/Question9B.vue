@@ -1,7 +1,7 @@
 <template>
   <div class="Quiz__slide Question9B">
     <div class="Quiz__content">
-      <h3>What is this family member’s gender?</h3>
+      <h3>What is the family member’s gender?</h3>
       <Grid desktop="4" tablet="4" mobile="2">
         <Radio 
           name="family_gender" 

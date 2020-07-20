@@ -1,8 +1,8 @@
 <template>
   <div class="Quiz__slide Question9">
     <div class="Quiz__content">
-      <h3 v-if="isMyself">Have you gotten a flu vaccine in the past 12 months?</h3> 
-      <h3 v-if="!isMyself">Had your family member gotten a flu vaccine in the past 12 months?</h3>     
+      <h3 v-if="isMyself">Did you get the flu vaccine in the past 12 months?</h3> 
+      <h3 v-if="!isMyself">Did your family member get the flu vaccine in the past 12 months?</h3>     
       <Grid 
         expand 
         desktop="3" 
@@ -21,12 +21,20 @@
           value="no" 
           inline
         /> 
-        <Radio 
+        <Radio
+          v-if="isMyself" 
           name="vaccine" 
           label="I don't remember" 
           value="I don't remember" 
           inline
-        /> 
+        />
+        <Radio
+          v-if="!isMyself" 
+          name="vaccine" 
+          label="I don't know" 
+          value="I don't know" 
+          inline
+        />  
       </Grid>   
     </div>
     <div class="Quiz__buttons">
