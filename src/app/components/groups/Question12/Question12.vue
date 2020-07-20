@@ -1,11 +1,12 @@
 <template>
   <div class="Quiz__slide Question12">
     <div class="Quiz__content">
-      <h3>What was your highest temperature measured?</h3>
+      <h3 v-if="isMyself">What was your highest temperature measured?</h3>
+      <h3 v-if="!isMyself">What was the highest temperature measured?</h3>
       <div class="Slider">
         <Radio 
           name="temperature" 
-          label="Below 98.6º F" 
+          label="98.5º F and under" 
           value="Normal"
           inline 
           checked 
@@ -25,7 +26,7 @@
         />
         <Radio 
           name="temperature" 
-          label="Greater than 103º F" 
+          label="103º F and over" 
           value="High fever" 
           inline
         />

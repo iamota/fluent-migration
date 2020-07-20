@@ -1,18 +1,18 @@
 <template>
   <div class="Quiz__slide Question13 Radio--longtext">
     <div class="Quiz__content">
-      <h3 v-if="isMyself">Did you visit (in person) any of the following healthcare facilities?</h3>
-      <h3 v-if="!isMyself">Did your family member visit (in person) any of the following healthcare facilities?</h3>
+      <h3 v-if="isMyself">Did you visit any of the following healthcare facilities (in person)?</h3>
+      <h3 v-if="!isMyself">Did your family member visit any of the following healthcare facilities  (in person)?</h3>
       <Grid expand desktop="2">
         <Radio 
           name="visit" 
-          label="Doctor’s office" 
-          value="Doctor’s office"
+          label="Doctor’s Office" 
+          value="Doctor’s Office"
           inline 
         />
         <Radio 
           name="visit" 
-          label="Retail Health Clinic" 
+          label="Retail Health Clinic (e.g. CVS Minute Clinic)" 
           value="Retail Health Clinic" 
           inline
         /> 
@@ -42,9 +42,17 @@
           design="legacy"
           placeholder="Please describe"
         />
-        <Radio 
+        <Radio
+          v-if="isMyself" 
           name="visit" 
-          label="I did not visit any health facility in person" 
+          label="I did not visit a health facility in person" 
+          value="No visit" 
+          inline
+        /> 
+        <Radio
+          v-if="!isMyself" 
+          name="visit" 
+          label="My family member did not visit a health facility in person" 
           value="No visit" 
           inline
         /> 

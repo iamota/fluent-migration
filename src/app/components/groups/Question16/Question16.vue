@@ -1,10 +1,10 @@
 <template>
   <div class="Quiz__slide Question16 Radio--longtext">
     <div class="Quiz__content">
-      <h3 v-if="isMyself">Were you given the following over the phone or internet?</h3> 
-      <h3 v-if="!isMyself">Was your family member given the following over the phone or internet?</h3>   
+      <h3 v-if="isMyself">Were you given the following over the phone or internet (telemedicine, email, video, patient portal, etc)?</h3> 
+      <h3 v-if="!isMyself">Was your family member given the following over the phone or internet (telemedicine, email, video, patient portal, etc)?</h3>   
       <div>
-        <p>A recommendation for an in-person flu test</p>
+        <p>Recommendation for an in-person flu test</p>
         <div class="Radio__group">
           <Radio 
             name="flu_test_online" 
@@ -52,7 +52,7 @@
         </transition>
       </div>
       <div>
-        <p>A Prescription for an Antiviral (TAMIFLU®, RELENZA®)</p>
+        <p>Prescription for an antiviral (TAMIFLU®, RELENZA®)</p>
         <div class="Radio__group">
           <Radio 
             name="antiviral_prescription_online" 
@@ -75,7 +75,7 @@
         </div>
       </div>
       <div>
-        <p>A Prescription for an Antibiotic</p>
+        <p>Prescription for an antibiotic</p>
         <div class="Radio__group">
           <Radio 
             name="antibiotic_prescription_online" 
@@ -98,7 +98,7 @@
         </div>
       </div>
       <div>
-        <p>A recommendation for an Over-the-counter fever reducer</p>
+        <p>Recommendation for an over-the-counter fever reducer</p>
         <div class="Radio__group">
           <Radio 
             name="fever_reducer_online" 
@@ -146,7 +146,7 @@
         </transition>
       </div>
       <div>
-        <p>A recommendation for an Over-the-Counter cold & flu medicine</p>
+        <p>Recommendation for an over-the-counter cold & flu medicine</p>
         <div class="Radio__group">
           <Radio 
             name="cold_medicine_online" 
