@@ -40,7 +40,7 @@
         />      
         <Radio 
           name="family_member_age" 
-          label="Adult (25 – 65 years)" 
+          label="Adult (25 – 64 years)" 
           value="adult" 
           inline
         />    

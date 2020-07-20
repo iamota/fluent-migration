@@ -2,7 +2,7 @@
   <div class="Quiz__slide Question5">
     <div class="Quiz__content">
       <h3>How many people live in your household, including you?</h3>
-      <h4>Adults</h4>
+      <h4>Adults (18 and over)</h4>
       <Grid desktop="4" tablet="4" mobile="2">
         <Radio 
           name="household_adults" 
@@ -30,7 +30,7 @@
           inline 
         />
       </Grid>
-      <h4>Children (under age 18)</h4>
+      <h4>Children (17 and under)</h4>
       <Grid desktop="4" tablet="4" mobile="2">
         <Radio 
           name="household_children" 

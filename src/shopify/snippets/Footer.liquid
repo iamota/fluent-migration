@@ -36,7 +36,8 @@
 
     <div class="Footer__bottom">
       <p class="Footer__copyright">
-        &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. All Rights Reserved.      
+       {% comment %} Copyright &copy;{{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. All Rights Reserved.       {% endcomment %}
+       Copyright &copy;{{ 'now' | date: "%Y" }} {{ 'Fluent' | link_to: '/' }}. All Rights Reserved.      
         {%- assign linklist_copyright = section.settings.linklist_copyright -%}
         {% if linklists[linklist_copyright].links.size > 0 %}
           {% for link in linklists[linklist_copyright].links %}
