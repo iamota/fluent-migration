@@ -25,6 +25,16 @@ export default Vue.extend({
           }
           return ``;
         },
+        validNumericalAge: (age: string): string => {
+          const age_number = parseInt(age);
+          if (age_number > 120 || age_number < 1) {
+            return `Please input an age that is between 1 and 120`;
+          }
+          if (age_number < 18) {
+            return `We cannot accept input from anyone under the age of 18. Thank you for your interest!`;
+          }
+          return ``;
+        },
       },
     };
   },
