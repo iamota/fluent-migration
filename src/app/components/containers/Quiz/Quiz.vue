@@ -45,7 +45,7 @@
             :disabled="isDisabled" 
             submit
           >
-            <span v-if="!submited">Keep Me Posted</span>
+            <span v-if="!submited">SUBMIT</span>
             <span v-if="submited">Sending...</span>
           </Button>
         </div>
