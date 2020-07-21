@@ -1,4 +1,5 @@
 @import '~@INF/styles';
+@import '../../../styles/variables.scss';
 
 .Question12 {
   margin: 0 auto;
@@ -186,7 +187,8 @@
         top: -38px;
         left: 50%;
         transform: translateX(-50%);
-        background: #006468;
+        // background: #006468;
+        background: $color-blue-1;
         width: 26px;
         height: 26px;
       }
