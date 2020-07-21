@@ -8,12 +8,12 @@
     &__secondary,
     &__icons,
     &__search {
-      @include grid-item(1);
+      @include grid-item(3);
     }
 
     &--single-linklist {
       .NavBar__primary {
-        @include grid-item(8);
+        @include grid-item(6);
       }
     }
   }
