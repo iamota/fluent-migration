@@ -64,7 +64,8 @@
       }
 
       .Select__field {
-        border: 2px solid #318185;
+        // border: 2px solid #318185;
+        border: 2px solid $color-blue-1;
         border-radius: 30px;
         background-color: #fff;
       }
@@ -78,7 +79,8 @@
       }
 
       .Input__field {
-        border: 2px solid #318185;
+        // border: 2px solid #318185;
+        border: 2px solid $color-blue-1;
         border-radius: 30px;
         background-color: #fff;
         text-align: center;
