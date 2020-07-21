@@ -1,7 +1,7 @@
 <template>
   <div class="Quiz__slide Question8 Radio--longtext">
     <div class="Quiz__content">
-      <h3>We’d like to ask you about the most recent time you or a family member had a cold or the flu.  Please choose one:</h3>
+      <h3>We’d like to ask you about the most recent time you or a family member had a cold or the flu.  <br>Please choose one:</h3>
       <Grid expand>
         <Radio 
           name="focus" 
