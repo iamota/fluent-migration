@@ -2,13 +2,13 @@
   <div class="Quiz__slide Question3">
     <div class="Quiz__content">
       <h3>What is your age?</h3>    
-      <Select 
-        name="age"
-        label="Age"
-        :options="getYears" 
-        required
+      <Input 
+        name="age" 
+        label="Age" 
         design="legacy"
-        rules="validAge"
+        placeholder="Age"
+        required
+        :rules="[`integer('Please input age as an integer.')`, `validNumericalAge`]"
       />
     </div>
     <div class="Quiz__buttons">
