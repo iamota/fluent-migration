@@ -12,7 +12,12 @@ export default Vue.extend({
       store.dispatch.Quiz.nextStep(`starter`);
     },
     next(): void {
-      store.dispatch.Quiz.nextStep(`question2`);
+      setTimeout(() => {
+        if (store.state.Forms.quizForm.first_name.errors.length > 0) {
+          return;
+        }
+        store.dispatch.Quiz.nextStep(`question2`);
+      }, 10);
     },
   },
 });

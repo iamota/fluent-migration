@@ -77,7 +77,7 @@
 
       &:last-of-type {
         @include media-query($mobile) {
-          width: 100%;
+          width: calc(100% - 10px);
         }
       }
 
