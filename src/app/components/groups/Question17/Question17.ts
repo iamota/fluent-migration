@@ -11,7 +11,8 @@ export default Vue.extend({
       }
     },
     next(): void {
-      store.dispatch.Quiz.nextStep(`email`);      
+      store.dispatch.Quiz.nextStep(`email`); 
+      store.state.Forms.quizForm._status.submitted = null;
     },
   },
 });
