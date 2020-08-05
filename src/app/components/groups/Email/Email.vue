@@ -10,7 +10,7 @@
         spellcheck="false"
         rules="email" 
         design="legacy"
-        placeholder="Email address"
+        placeholder="Email address" 
       />   
     </div>
   </div>
