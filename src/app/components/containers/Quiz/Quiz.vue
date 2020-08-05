@@ -41,7 +41,7 @@
           <button class="Button Button__Primary" @click="back">back</button>
           <Button 
             class="Button Button--primary" 
-            :class="{ 'noHover': isDisabled }" 
+            :class="{ 'noHover': isDisabled }"  
             :disabled="isDisabled" 
             submit
           >
