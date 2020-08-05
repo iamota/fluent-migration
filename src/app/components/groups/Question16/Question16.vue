@@ -195,15 +195,15 @@
       </div>
     </div>
     <div class="Quiz__buttons">
-      <button type="button" :class="`Button Button__Primary`" @click="back">back</button>
-      <button 
+      <a :class="`Button Button__Primary`" @click="back">back</a>
+      <a 
         class="Button Button__Primary" 
         :class="{ 'noHover': isDisabled }" 
         :disabled="isDisabled" 
         @click="next"
       >
         continue
-      </button>
+      </a>
     </div>
   </div>
 </template>
