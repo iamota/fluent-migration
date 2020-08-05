@@ -20,12 +20,13 @@
       </div>   
     </div>
     <div class="Quiz__buttons"> 
-      <a :class="`Button Button__Primary`" @click="back">back</a>
+      <a href="#" :class="`Button Button__Primary`" @click.prevent="back">back</a>
       <a 
+        href="#" 
         class="Button Button__Primary" 
         :class="{ 'noHover': isDisabled }" 
         :disabled="isDisabled" 
-        @click="next"
+        @click.prevent="next"
       >
         continue
       </a>
