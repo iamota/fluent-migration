@@ -5,8 +5,8 @@
       <p>We would like ask you a few questions to better understand your cold and flu experiences.  It should take you less than 5 minutes to complete.</p>
     </div>
     <div class="Quiz__buttons">
-      <a class="Button Button__Primary" @click="back">back</a>
-      <a class="Button Button__Primary" @click="next">continue</a>
+      <a href="#" class="Button Button__Primary" @click.prevent="back">back</a>
+      <a href="#" class="Button Button__Primary" @click.prevent="next">continue</a>
     </div>
   </div>
 </template>
