@@ -95,7 +95,7 @@
         <input type="email" name="email" :value="getEmail">
         <button>Submit</button>
       </form>
-    </Overlay>    
+    </Overlay>   
   </Section>
 </template>
 
