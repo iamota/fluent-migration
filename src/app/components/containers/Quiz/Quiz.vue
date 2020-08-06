@@ -45,8 +45,8 @@
             :disabled="isDisabled" 
             submit
           >
-            <span v-if="!submited">SUBMIT</span>
-            <span v-if="submited">Sending...</span>
+            <span v-if="!submitted">SUBMIT</span>
+            <span v-if="submitted">Sending...</span>
           </Button>
         </div>
         <!-- </transition-group> -->
@@ -84,6 +84,17 @@
         <input type="hidden" name="q33_cold_medicine_purchase_online" :value="getColdMedicinePurchaseOnline">
         <input type="hidden" name="q34_interest_product" :value="getInterestProduct">
       </Form>
+      <form 
+        name="quizKlaviyo"
+        action="https://manage.kmail-lists.com/subscriptions/subscribe"
+        method="POST"
+        target="form-klaviyo"
+        style="visibility:hidden"
+      >
+        <input type="hidden" name="g" value="WA4xyZ">
+        <input type="email" name="email" :value="getEmail">
+        <button>Submit</button>
+      </form>
     </Overlay>    
   </Section>
 </template>
