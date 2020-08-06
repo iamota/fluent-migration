@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import $ from 'jquery';
 import store from 'infinite/src/app/store';
 import { default_props, default_css_variables } from './Quiz.defaults';
 
@@ -53,12 +54,9 @@ export default Vue.extend({
       }
       return !store.state.Forms.quizForm.q35_email || store.state.Forms.quizForm.q35_email.value === `` || store.state.Forms.quizForm.q35_email.errors.length > 0;
     },
-    submited(): boolean {
-      const submited = store.state.Forms.quizForm && store.state.Forms.quizForm._status.submitted;
-      if (submited) {
-        window.location.href = `/pages/thankyou`;
-      }
-      return submited;
+    submitted(): boolean {
+      const submitted = store.state.Forms.quizForm && store.state.Forms.quizForm._status.submitted;      
+      return submitted;
     },
     getFirstName(): string {
       return store.state.Forms.quizForm && store.state.Forms.quizForm.first_name ? store.state.Forms.quizForm.first_name.value : ``;
@@ -159,10 +157,29 @@ export default Vue.extend({
     getInterestProduct(): string {
       return store.state.Forms.quizForm && store.state.Forms.quizForm.interest_product ? store.state.Forms.quizForm.interest_product.value : ``;
     },
+    getEmail(): string {
+      return store.state.Forms.quizForm && store.state.Forms.quizForm.q35_email ? store.state.Forms.quizForm.q35_email.value : ``;
+    },
+  },
+  watch: {
+    submitted(new_value): void {
+      if (new_value) {
+        this.handleSubmit();
+      }
+    },
   },
   methods: {
     back(): void {
       store.dispatch.Quiz.nextStep(`question17`);
+    },
+    handleSubmit(): void {      
+      // @ts-ignore
+      document.quizKlaviyo[0].action = `https://manage.kmail-lists.com/subscriptions/subscribe`;
+      // @ts-ignore
+      document.quizKlaviyo[0].submit();
+      setTimeout(() => {
+        window.location.href = `/pages/thankyou`;
+      }, 1500);
     },
     startQuiz(): void {
       store.dispatch.Quiz.nextStep(`question1`);

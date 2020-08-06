@@ -6,15 +6,16 @@
       
       <Form
         id="201555005195045"
-        action="https://submit.jotform.com/submit/201555005195045/"
-        method="post" 
+        action="https://manage.kmail-lists.com/subscriptions/subscribe"
+        method="POST" 
         class="Newsletter__form"
         name="form_201555005195045" 
         target="form-newsletter"
       >
         <div :class="placement_class">
+          <input type="hidden" name="g" value="SypgQu">
           <Input 
-            name="q3_email" 
+            name="email" 
             :label="`general.newsletter_form.email_placeholder` | t" 
             autocorrect="off"
             autocapitalize="off"
@@ -35,7 +36,7 @@
           </div>
           <!-- <a class="Newsletter__terms" href="">TERMS & CONDITIONS</a> -->
         </div>
-      </Form>
+      </Form>      
     </Overlay>
   </Section>
 </template>
