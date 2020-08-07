@@ -12,6 +12,11 @@ export default Vue.extend({
       store.dispatch.Quiz.nextStep(`question7`);
     },
     next(): void {
+      if (store.state.Forms.quizForm.times_sick.value === `0`) {
+        store.dispatch.Quiz.nextStep(`question17`);
+        return;
+      }  
+
       if (store.state.Forms.quizForm.focus.value === `myself`) {
         store.dispatch.Quiz.nextStep(`question9`);
       } else {
