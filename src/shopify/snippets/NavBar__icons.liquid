@@ -3,7 +3,7 @@ This is just a recommended starting point...customize away!
 Note: this is only used when the pre-header is disabled. If you have a pre-header, you'll want to modify snippets/PreHeader__icons.liquid instead.
 {%- endcomment -%}
 <div class="NavBar__icons">
-  <a class="Button Button--primary" href="/pages/quiz">Take our survey</a>
+  <a class="Button Button--primary" onclick="fbq('track', 'Lead');" href="/pages/quiz">Take our survey</a>
   {% comment %} <a class="Button Button--primary" href="/pages/quiz">Take the quiz</a> {% endcomment %}
   {% comment %} {%- if shop.customer_accounts_enabled and settings.preheader_enabled == false -%}
     <a class="NavBar__icon" href="/account"><i aria-label="{{ 'customer.account.title' | t }}" class="{{ settings.fa }} fa-user"></i></a>
