@@ -2,6 +2,14 @@ import Vue from 'vue';
 import { default_props, default_css_variables } from './Newsletter.defaults';
 import translate from '../../../../../node_modules/infinite/src/app/filters/translate';
 
+declare global {
+  interface Window {
+    fbq: {
+      track: CallableFunction;
+    };
+  }
+}
+
 export default Vue.extend({
   props: {
     ...default_props,
@@ -46,7 +54,10 @@ export default Vue.extend({
     });
   },
   methods: {
-    submitForm(): void {
+    submitForm(): void {      
+      if (window.fbq) {
+        window.fbq.track(`track`, `lead`);
+      }
       setTimeout(() => {
         this.$store.dispatch(`Forms/${this.form_id}/clear`);
       }, 200);
