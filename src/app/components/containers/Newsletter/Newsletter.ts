@@ -4,9 +4,7 @@ import translate from '../../../../../node_modules/infinite/src/app/filters/tran
 
 declare global {
   interface Window {
-    fbq: {
-      track: CallableFunction;
-    };
+    fbq: CallableFunction;
   }
 }
 
@@ -56,7 +54,7 @@ export default Vue.extend({
   methods: {
     submitForm(): void {      
       if (window.fbq) {
-        window.fbq.track(`track`, `lead`);
+        window.fbq(`track`, `lead`);
       }
       setTimeout(() => {
         this.$store.dispatch(`Forms/${this.form_id}/clear`);
