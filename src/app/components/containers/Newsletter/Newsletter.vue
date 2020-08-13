@@ -13,7 +13,7 @@
         target="form-newsletter"
       >
         <div :class="placement_class">
-          <input type="hidden" name="g" value="SypgQu">
+          <input type="hidden" name="g" value="SypgQu"> 
           <Input 
             name="email" 
             :label="`general.newsletter_form.email_placeholder` | t" 
