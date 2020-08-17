@@ -6,6 +6,9 @@
       <Form 
         sync="201555005195045"
         class="EmailCapture__form"
+        action="https://manage.kmail-lists.com/subscriptions/subscribe"
+        name="form_201555005195045" 
+        target="form-newsletter"
       >
         <div :class="placement_class">
           <Input 
