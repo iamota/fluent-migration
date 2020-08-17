@@ -11,5 +11,21 @@
 
   &__form {
     margin-top: 15px;
+
+    .Form {
+
+      &__body {
+        overflow: visible;
+      }
+
+      &__successMessage {
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        color: #f5b542;
+        font-weight: 500;
+        font-style: italic;
+      }
+    }
   }
 }
