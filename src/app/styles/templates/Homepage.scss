@@ -126,6 +126,14 @@
       }
     }
   }
+
+  &.template-index--B {
+    #Pod1591256997016-0 {
+      &::before {
+        content: none;
+      }
+    }
+  }
 }
 
 .hide {
