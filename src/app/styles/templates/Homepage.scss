@@ -46,6 +46,65 @@
     }
   }
 
+  #Pod1591256997016-0 {
+    position: relative;
+
+    .Pod {
+      &__heading {
+        position: relative;
+
+        &--eyebrow {
+          font-size: 16px;
+          color: red;
+          position: absolute;
+          top: -180px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+
+    @include media-query($mobile) {
+      padding-bottom: 50px !important;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      border-right: 2px solid red;
+      height: calc(100% + 30px);
+      position: absolute;
+      top: -30px;
+      right: -9px;
+
+      @include media-query($mobile) {
+        content: none;
+      }
+    }
+  }
+
+  #Pod1591256997016-1 {
+    .Pod {
+      &__heading {
+        position: relative;
+
+        &--eyebrow {
+          font-size: 16px;
+          color: red;
+          white-space: nowrap;
+          position: absolute;
+          top: -180px;
+          left: 70%;
+
+          @include media-query($mobile) {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+      }
+    }
+  }
+
   .ContentArea__content {
     .Section__container {
       padding: 0;
