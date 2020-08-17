@@ -1,0 +1,15 @@
+@import '~@INF/styles';
+
+.EmailCapture {
+  &__heading,
+  &__form {
+    margin: 0 auto;
+    width: var(--content-width);
+    max-width: 100%;
+    text-align: center;
+  }
+
+  &__form {
+    margin-top: 15px;
+  }
+}
