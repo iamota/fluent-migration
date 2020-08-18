@@ -4,15 +4,17 @@
 
     <div class="EmailCapture">
       <Form 
-        sync="201555005195045"
-        class="EmailCapture__form"
+        id="201555005195045--B"
         action="https://manage.kmail-lists.com/subscriptions/subscribe"
+        method="POST" 
         name="form_201555005195045" 
         target="form-newsletter"
+        class="EmailCapture__form"
       >
         <div :class="placement_class">
+          <input type="hidden" name="g" value="SypgQu">
           <Input 
-            name="email" 
+            name="$email" 
             :label="`general.newsletter_form.email_placeholder` | t" 
           />
           <div v-if="formSubmitted" class="Form__successMessage">{{ `general.newsletter_form.confirmation` | t }}</div>          
