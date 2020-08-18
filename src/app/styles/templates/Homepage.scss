@@ -54,7 +54,8 @@
         position: relative;
 
         &--eyebrow {
-          font-size: 16px;
+          font-size: 20px;
+          white-space: nowrap;
           position: absolute;
           top: -180px;
           left: 50%;
@@ -74,7 +75,7 @@
         position: relative;
 
         &--eyebrow {
-          font-size: 16px;
+          font-size: 20px;
           white-space: nowrap;
           position: absolute;
           top: -180px;
