@@ -1,0 +1,35 @@
+@import '~@INF/styles';
+
+.EmailCapture {
+  &__heading,
+  &__form {
+    margin: 0 auto;
+    width: var(--content-width);
+    max-width: 100%;
+    text-align: center;
+  }
+
+  &__heading {
+    color: #5a6b80;
+  }
+
+  &__form {
+    margin-top: 15px;
+
+    .Form {
+
+      &__body {
+        overflow: visible;
+      }
+
+      &__successMessage {
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        color: #f5b542;
+        font-weight: 500;
+        font-style: italic;
+      }
+    }
+  }
+}
