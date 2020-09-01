@@ -2,6 +2,11 @@ import Vue from 'vue';
 import store from 'infinite/src/app/store';
   
 export default Vue.extend({
+  data() {
+    return {
+      next_step: `email`,
+    };
+  },
   computed: {
     previous_step(): string {
       if (store.state.Forms.quizForm.times_sick.value === `0`) {

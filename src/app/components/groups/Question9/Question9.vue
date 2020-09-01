@@ -40,7 +40,7 @@
     <QuizButtons 
       :disabled="isDisabled"
       :previous_step="previous_step" 
-      next_step="question10"
+      :next_step="next_step"
     />
   </div>
 </template>

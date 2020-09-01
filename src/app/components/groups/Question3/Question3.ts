@@ -2,6 +2,12 @@ import Vue from 'vue';
 import store from 'infinite/src/app/store';
   
 export default Vue.extend({
+  data() {
+    return {
+      previous_step: `question2`,
+      next_step: `question4`,
+    };
+  },
   computed: {
     getYears(): Array<string> {
       const years = [`Under 18`];

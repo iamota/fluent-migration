@@ -3,6 +3,11 @@ import store from 'infinite/src/app/store';
 import { get } from 'lodash-es';
   
 export default Vue.extend({
+  data() {
+    return {
+      previous_step: `question7`,
+    };
+  },
   computed: {
     isDisabled(): boolean {
       return !store.state.Forms.quizForm.focus || store.state.Forms.quizForm.focus.value === `` || store.state.Forms.quizForm.focus.errors.length > 0;

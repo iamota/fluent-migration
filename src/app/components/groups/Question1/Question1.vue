@@ -9,12 +9,13 @@
         placeholder="First Name"
         required 
         :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]"
+        @keypress.native.enter.prevent="nextStep"
       />
     </div>
     <QuizButtons 
       :disabled="isDisabled"
-      previous_step="starter" 
-      next_step="question2"
+      :previous_step="previous_step" 
+      :next_step="next_step"
     />
   </div>
 </template>

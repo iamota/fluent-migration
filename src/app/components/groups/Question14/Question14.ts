@@ -2,6 +2,12 @@ import Vue from 'vue';
 import store from 'infinite/src/app/store';
   
 export default Vue.extend({
+  data() {
+    return {
+      previous_step: `question13`,
+      next_step: `question15`,
+    };
+  },
   computed: {
     isFeverReducerYes(): boolean {
       return store.state.Forms.quizForm.fever_reducer && store.state.Forms.quizForm.fever_reducer.value === `yes`;

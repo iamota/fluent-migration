@@ -44,7 +44,7 @@
     <QuizButtons 
       :disabled="false"
       :previous_step="previous_step" 
-      next_step="email"
+      :next_step="next_step"
     />
   </div>
 </template>

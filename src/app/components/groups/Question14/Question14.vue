@@ -171,8 +171,8 @@
     </div>
     <QuizButtons 
       :disabled="isDisabled"
-      previous_step="question13" 
-      next_step="question15"
+      :previous_step="previous_step" 
+      :next_step="next_step"
     />
   </div>
 </template>
