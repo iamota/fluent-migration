@@ -11,18 +11,11 @@
         :rules="[`integer('Please input age as an integer.')`, `validNumericalAge`]"
       />
     </div>
-    <div class="Quiz__buttons">
-      <a href="#" class="Button Button__Primary" @click.prevent="back">back</a>
-      <a 
-        href="#" 
-        class="Button Button__Primary" 
-        :class="{ 'noHover': isDisabled }" 
-        :disabled="isDisabled" 
-        @click.prevent="next"
-      >
-        continue
-      </a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      previous_step="question2" 
+      next_step="question4"
+    />
   </div>
 </template>
 

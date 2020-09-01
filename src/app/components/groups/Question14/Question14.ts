@@ -29,12 +29,4 @@ export default Vue.extend({
       }
     },
   },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question13`);
-    },
-    next(): void {
-      store.dispatch.Quiz.nextStep(`question15`);      
-    },
-  },
 });

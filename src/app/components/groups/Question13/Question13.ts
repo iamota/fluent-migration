@@ -8,22 +8,20 @@ export default Vue.extend({
     },      
     isMyself(): boolean {
       return store.state.Forms.quizForm.focus.value === `myself`;
-    },     
-  },
-  methods: {
-    back(): void {
-      if (store.state.Forms.quizForm.take_temperature.value === `yes`) {
-        store.dispatch.Quiz.nextStep(`question12`);
-      } else {
-        store.dispatch.Quiz.nextStep(`question11`);
-      }
     },
-    next(): void {
-      if (store.state.Forms.quizForm.visit && store.state.Forms.quizForm.visit.value === `No visit`) { 
-        store.dispatch.Quiz.nextStep(`question15`); 
-      } else {
-        store.dispatch.Quiz.nextStep(`question14`); 
-      }      
+    previous_step(): string {
+      if (store.state.Forms.quizForm.take_temperature.value === `yes`) {
+        return `question12`;
+      } 
+
+      return `question11`;
+    },
+    next_step(): string {
+      if (store.state.Forms.quizForm.visit && store.state.Forms.quizForm.visit.value === `No visit`) {
+        return `question15`;
+      }
+
+      return `question14`;
     },
   },
 });

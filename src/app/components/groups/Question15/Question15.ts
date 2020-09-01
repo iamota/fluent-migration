@@ -9,21 +9,19 @@ export default Vue.extend({
     isMyself(): boolean {
       return store.state.Forms.quizForm.focus.value === `myself`;
     },    
-  },
-  methods: {
-    back(): void {
+    previous_step(): string {
       if (store.state.Forms.quizForm.visit && store.state.Forms.quizForm.visit.value === `No visit`) { 
-        store.dispatch.Quiz.nextStep(`question13`);
-      } else {
-        store.dispatch.Quiz.nextStep(`question14`);
+        return `question13`;
       }
+      
+      return `question14`;      
     },
-    next(): void {
+    next_step(): string {
       if (store.state.Forms.quizForm.contact_online.value === `yes`) {
-        store.dispatch.Quiz.nextStep(`question16`);
-      } else {
-        store.dispatch.Quiz.nextStep(`question17`);
+        return `question16`;
       }
+
+      return `question17`;
     },
   },
 });

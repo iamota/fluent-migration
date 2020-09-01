@@ -40,12 +40,4 @@ export default Vue.extend({
       }
     },
   },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question15`);
-    },
-    next(): void {
-      store.dispatch.Quiz.nextStep(`question17`);      
-    },
-  },
 });

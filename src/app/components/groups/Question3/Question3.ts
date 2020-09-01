@@ -14,17 +14,4 @@ export default Vue.extend({
       return !store.state.Forms.quizForm.age || store.state.Forms.quizForm.age.value === `` || store.state.Forms.quizForm.age.errors.length > 0;
     },
   },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question2`);
-    },
-    next(): void {
-      setTimeout(() => {
-        if (store.state.Forms.quizForm.age.errors.length > 0) {
-          return;
-        }
-        store.dispatch.Quiz.nextStep(`question4`);
-      }, 10);
-    },
-  },
 });

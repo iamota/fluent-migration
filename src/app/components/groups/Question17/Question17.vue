@@ -41,10 +41,11 @@
         />
       </div> 
     </div>
-    <div class="Quiz__buttons">
-      <a href="#" :class="`Button Button__Primary`" @click.prevent="back">back</a>
-      <a href="#" :class="`Button Button__Primary`" @click.prevent="next">continue</a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      next_step="email"
+    />
   </div>
 </template>
 

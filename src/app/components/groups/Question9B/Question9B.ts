@@ -7,12 +7,4 @@ export default Vue.extend({
       return !store.state.Forms.quizForm.family_gender || store.state.Forms.quizForm.family_gender.value === `` || store.state.Forms.quizForm.family_gender.errors.length > 0;
     },
   },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question9a`);
-    },
-    next(): void {
-      store.dispatch.Quiz.nextStep(`question9`);
-    },
-  },
 });

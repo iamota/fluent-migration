@@ -3,10 +3,11 @@
     <div class="Quiz__content">
       <h3>We are working on an exciting new way to diagnose and treat cold and flu for people like you.  To help make it amazing, we would like to ask you a few questions about your experiences.</h3>       
     </div>
-    <div class="Quiz__buttons">
-      <button type="button" class="Button Button__Primary" @click="back">back</button>
-      <button class="Button Button__Primary" @click="next">continue</button>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      previous_step="starter" 
+      next_step="question1"
+    />
   </div>
 </template>
 

@@ -7,12 +7,4 @@ export default Vue.extend({
       return store.state.Forms.quizForm.focus.value === `myself`;
     },     
   },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question11`);
-    },
-    next(): void {      
-      store.dispatch.Quiz.nextStep(`question13`);      
-    },
-  },
 });

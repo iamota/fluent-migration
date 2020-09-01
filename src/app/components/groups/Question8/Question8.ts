@@ -6,22 +6,16 @@ export default Vue.extend({
     isDisabled(): boolean {
       return !store.state.Forms.quizForm.focus || store.state.Forms.quizForm.focus.value === `` || store.state.Forms.quizForm.focus.errors.length > 0;
     },
-  },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question7`);
-    },
-    next(): void {
+    next_step(): string {
       if (store.state.Forms.quizForm.times_sick.value === `0`) {
-        store.dispatch.Quiz.nextStep(`question17`);
-        return;
+        return `question17`;
       }  
-
+  
       if (store.state.Forms.quizForm.focus.value === `myself`) {
-        store.dispatch.Quiz.nextStep(`question9`);
-      } else {
-        store.dispatch.Quiz.nextStep(`question9a`);
+        return `question9`;
       }
+
+      return `question9a`;
     },
   },
 });

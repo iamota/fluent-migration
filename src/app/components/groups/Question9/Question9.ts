@@ -9,17 +9,12 @@ export default Vue.extend({
     isMyself(): boolean {
       return store.state.Forms.quizForm.focus.value === `myself`;
     },
-  },
-  methods: {
-    back(): void {
+    previous_step(): string {
       if (store.state.Forms.quizForm.focus.value === `myself`) {
-        store.dispatch.Quiz.nextStep(`question8`);
-      } else {
-        store.dispatch.Quiz.nextStep(`question9b`);
+        return `question8`;
       }
-    },
-    next(): void {
-      store.dispatch.Quiz.nextStep(`question10`);      
+
+      return `question9b`;      
     },
   },
 });
