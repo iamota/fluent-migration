@@ -21,3 +21,4 @@ export { Email } from './Email';
 export { Question9A } from './Question9A';
 export { Question9B } from './Question9B';
 export { ProgressBar } from './ProgressBar';
+export { QuizButtons } from './QuizButtons';

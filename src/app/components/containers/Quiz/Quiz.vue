@@ -1,11 +1,11 @@
 <template>
   <Section v-bind="$props" :css_variables="cssVariables">
-    <ProgressBar />
+    <!-- <ProgressBar /> -->
     <Overlay v-bind="$props">
       <Form
         id="quizForm"        
-        action="https://submit.jotform.com/submit/201556818723055/"
-        name="form_201556818723055"
+        action="https://submit.jotform.com/submit/202438328987164/"
+        name="form_202438328987164"
         method="post" 
         class="Quiz__form"
         :validators="validators"
@@ -13,6 +13,7 @@
       >
         <Heading v-if="currentStep === `starter`" v-bind="$props" />     
         <button v-if="currentStep === `starter` && cta !== ``" :class="`Quiz__startButton Button Button__${cta_style}`" @click="startQuiz">{{ cta }}</button>
+        <div v-if="currentStep === `starter`" v-html="disclaimer_text" />
         
         <!-- <transition-group name="fade" mode="out-in"> -->
         <introduction v-if="currentStep === `introduction`" key="introduction" />

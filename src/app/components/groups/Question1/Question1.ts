@@ -7,17 +7,4 @@ export default Vue.extend({
       return !store.state.Forms.quizForm.first_name || store.state.Forms.quizForm.first_name.value === `` || store.state.Forms.quizForm.first_name.errors.length > 0;
     },
   },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`starter`);
-    },
-    next(): void {
-      setTimeout(() => {
-        if (store.state.Forms.quizForm.first_name.errors.length > 0) {
-          return;
-        }
-        store.dispatch.Quiz.nextStep(`question2`);
-      }, 10);
-    },
-  },
 });
