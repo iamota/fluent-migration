@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import store from 'infinite/src/app/store';
+import { get } from 'lodash-es';
   
 export default Vue.extend({
   computed: {
@@ -7,10 +8,10 @@ export default Vue.extend({
       return !store.state.Forms.quizForm.take_temperature || store.state.Forms.quizForm.take_temperature.value === `` || store.state.Forms.quizForm.take_temperature.errors.length > 0;
     },
     isMyself(): boolean {
-      return store.state.Forms.quizForm.focus.value === `myself`;
+      return get(store, `state.Forms.quizForm.focus.value`, null) === `myself`;
     },
     next_step(): string {
-      if (store.state.Forms.quizForm.take_temperature.value === `yes`) {
+      if (get(store, `state.Forms.quizForm.take_temperature.value`, null) === `yes`) {
         return `question12`;
       }
 

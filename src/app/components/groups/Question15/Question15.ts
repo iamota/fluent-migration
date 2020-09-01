@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import store from 'infinite/src/app/store';
+import { get } from 'lodash-es';
   
 export default Vue.extend({
   computed: {
@@ -10,14 +11,14 @@ export default Vue.extend({
       return store.state.Forms.quizForm.focus.value === `myself`;
     },    
     previous_step(): string {
-      if (store.state.Forms.quizForm.visit && store.state.Forms.quizForm.visit.value === `No visit`) { 
+      if (get(store, `state.Forms.quizForm.visit.value`, null) === `No visit`) { 
         return `question13`;
       }
       
       return `question14`;      
     },
     next_step(): string {
-      if (store.state.Forms.quizForm.contact_online.value === `yes`) {
+      if (get(store,`state.Forms.quizForm.contact_online.value`, null) === `yes`) {
         return `question16`;
       }
 

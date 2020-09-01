@@ -60,7 +60,7 @@
       </Grid>
     </div>
     <QuizButtons 
-      :disabled="isDisabled"
+      :disabled="false"
       previous_step="question4" 
       next_step="question6"
     />

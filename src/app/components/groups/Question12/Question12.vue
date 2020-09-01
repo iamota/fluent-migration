@@ -33,7 +33,7 @@
       </div> 
     </div>
     <QuizButtons 
-      :disabled="isDisabled"
+      :disabled="false"
       previous_step="question11" 
       next_step="question13"
     />

@@ -42,7 +42,7 @@
       </div> 
     </div>
     <QuizButtons 
-      :disabled="isDisabled"
+      :disabled="false"
       :previous_step="previous_step" 
       next_step="email"
     />

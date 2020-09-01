@@ -5,7 +5,7 @@
       <p>We would like ask you a few questions to better understand your cold and flu experiences.  It should take you less than 5 minutes to complete.</p>
     </div>
     <QuizButtons 
-      :disabled="isDisabled"
+      :disabled="false"
       previous_step="question1" 
       next_step="question3"
     />
