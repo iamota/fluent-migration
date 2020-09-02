@@ -11,6 +11,7 @@ export default Vue.extend({
     cta_aria_label: { type: String },
     cta_style: { type: String },
     disclaimer_text: { type: String },
+    body_text: { type: String },
   },
   data() {
     return {

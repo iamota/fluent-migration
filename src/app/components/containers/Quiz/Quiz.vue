@@ -11,9 +11,10 @@
         :validators="validators"
         target="form-quiz"
       >
-        <Heading v-if="currentStep === `starter`" v-bind="$props" />     
+        <Heading class="Quiz__heading" v-if="currentStep === `starter`" v-bind="$props" />     
+        <div class="Quiz__body-text" v-if="currentStep === `starter`" v-html="body_text" />
         <button v-if="currentStep === `starter` && cta !== ``" :class="`Quiz__startButton Button Button__${cta_style}`" @click="startQuiz">{{ cta }}</button>
-        <div v-if="currentStep === `starter`" v-html="disclaimer_text" />
+        <div class="Quiz__disclaimer" v-if="currentStep === `starter`" v-html="disclaimer_text" />
         
         <!-- <transition-group name="fade" mode="out-in"> -->
         <Question1 v-if="currentStep === `question1`" key="question1" />
