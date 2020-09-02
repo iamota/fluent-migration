@@ -1,0 +1,30 @@
+.HeroCarousel {
+  .Overlay {
+    height: 100%;
+    width: 64%;
+    margin: 0 0 0 auto;
+    position: relative;
+    background-color: blue;
+    border-top-left-radius: 300px;
+    border-bottom-left-radius: 300px;
+
+    &--left {
+      .Overlay {
+        &__content {
+          padding: 0 80px 0 130px;
+        }
+      }
+    }
+  }
+
+  .HeroSlide {
+    &__link {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 45px;
+      margin: 20px 10px 0 10px;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+}
