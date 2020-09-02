@@ -8,7 +8,7 @@
         design="legacy" 
         placeholder="First Name"
         required 
-        :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]"
+        :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]" 
         @keypress.native.enter.prevent="nextStep"
       />
     </div>
