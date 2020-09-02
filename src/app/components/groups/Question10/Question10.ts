@@ -2,22 +2,21 @@ import Vue from 'vue';
 import store from 'infinite/src/app/store';
   
 export default Vue.extend({
+  data() {
+    return {
+      next_step: `question11`,
+    };
+  },
   computed: {
     isMyself(): boolean {
-      return store.state.Forms.quizForm.focus.value === `myself`;
+      return store.state.Forms.quizForm.focus.value === `self`;
     },
-  },
-  methods: {
-    back(): void {
-      if (store.state.Forms.quizForm.focus.value === `myself`) {
-        store.dispatch.Quiz.nextStep(`question9`);
-      } else {
-        // store.dispatch.Quiz.nextStep(`question9c`);
-        store.dispatch.Quiz.nextStep(`question9b`);
+    previous_step(): string {
+      if (store.state.Forms.quizForm.focus.value === `self`) {
+        return `question6`;
       }
-    },
-    next(): void {
-      store.dispatch.Quiz.nextStep(`question11`);
+      
+      return `question9`;
     },
   },
 });

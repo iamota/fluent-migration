@@ -1,28 +1,27 @@
 <template>
-  <div class="Quiz__slide Question6">
+  <div class="Quiz__slide Question6 Radio--longtext">
     <div class="Quiz__content">
-      <h3>Please enter your zip code.</h3>
-      <Input 
-        name="zip_code" 
-        label="Zip Code" 
-        design="legacy"
-        placeholder="Zip Code"
-        required
-        rules="validZipCode"
-      />
+      <h3>How long have you had your symptoms?</h3>   
+      <Grid expand>
+        <Radio 
+          name="symptom_duration" 
+          label="6 days or less" 
+          value="6 days or less"
+          inline 
+        />
+        <Radio 
+          name="symptom_duration" 
+          label="7 days or more" 
+          value="7 days or more" 
+          inline
+        /> 
+      </Grid>   
     </div>
-    <div class="Quiz__buttons">
-      <a href="#" :class="`Button Button__Primary`" @click.prevent="back">back</a>
-      <a 
-        href="#" 
-        class="Button Button__Primary" 
-        :class="{ 'noHover': isDisabled }" 
-        :disabled="isDisabled" 
-        @click.prevent="next"
-      >
-        continue
-      </a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      :next_step="next_step"
+    />
   </div>
 </template>
 

@@ -1,46 +1,23 @@
 <template>
-  <div class="Quiz__slide Question7">
+  <div class="Quiz__slide Question7 Radio--longtext">
     <div class="Quiz__content">
-      <h3>How many times have you or your household members had a cold or the flu in the past 12 months?</h3>
-      <Grid desktop="4" tablet="4" mobile="2">
-        <Radio 
-          name="times_sick" 
-          label="0" 
-          value="0"
-          inline 
-        />
-        <Radio 
-          name="times_sick" 
-          label="1-2" 
-          value="1-2" 
-          inline
-        /> 
-        <Radio 
-          name="times_sick" 
-          label="3-4" 
-          value="3-4" 
-          inline 
-        />
-        <Radio 
-          name="times_sick" 
-          label="5+" 
-          value="5+" 
-          inline 
-        />
-      </Grid>
+      <h4>Let’s get to know the family member that you cared for a bit more…</h4>
+      <h3>What is that family member’s age? </h3>
+      <Input 
+        name="family_member_age" 
+        label="Age" 
+        design="legacy"
+        placeholder="Enter their age"
+        required
+        :rules="[`integer('Please input age as an integer.')`, `validNumericalAge`]"
+        @keypress.native.enter.prevent="nextStep"
+      />
     </div>
-    <div class="Quiz__buttons">
-      <a href="#" :class="`Button Button__Primary`" @click.prevent="back">back</a>
-      <a 
-        href="#" 
-        class="Button Button__Primary" 
-        :class="{ 'noHover': isDisabled }" 
-        :disabled="isDisabled" 
-        @click.prevent="next"
-      >
-        continue
-      </a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      :next_step="next_step"
+    />
   </div>
 </template>
 

@@ -1,46 +1,27 @@
 <template>
-  <div class="Quiz__slide Question4">
+  <div class="Quiz__slide Question4 Radio--longtext">
     <div class="Quiz__content">
-      <h3>What is your gender?</h3>
-      <Grid desktop="4" tablet="4" mobile="2">
+      <h3>Are you answering for yourself or a for a family member?</h3>
+      <Grid expand>
         <Radio 
-          name="gender" 
-          label="Male" 
-          value="male"
+          name="focus" 
+          label="Answering for myself" 
+          value="self"
           inline 
         />
         <Radio 
-          name="gender" 
-          label="Female" 
-          value="female" 
-          inline
-        />
-        <Radio 
-          name="gender" 
-          label="Other" 
+          name="focus" 
+          label="Answering for a family member" 
           value="other" 
-          inline 
-        />
-        <Radio 
-          name="gender" 
-          label="I'd prefer not to say" 
-          value="I'd prefer not to say" 
-          inline 
-        />
-      </Grid>
+          inline
+        /> 
+      </Grid>    
     </div>
-    <div class="Quiz__buttons">
-      <a href="#" :class="`Button Button__Primary`" @click.prevent="back">back</a>
-      <a 
-        href="#" 
-        class="Button Button__Primary" 
-        :class="{ 'noHover': isDisabled }" 
-        :disabled="isDisabled" 
-        @click.prevent="next"
-      >
-        continue
-      </a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      :next_step="next_step"
+    />
   </div>
 </template>
 
