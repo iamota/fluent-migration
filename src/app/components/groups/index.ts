@@ -11,3 +11,4 @@ export { Question9 } from './Question9';
 export { Question10 } from './Question10';
 export { ProgressBar } from './ProgressBar';
 export { QuizButtons } from './QuizButtons';
+export { QuizProduct } from './QuizProduct';

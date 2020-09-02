@@ -27,19 +27,13 @@
         <Question8 v-if="currentStep === `question8`" key="question8" />
         <Question9 v-if="currentStep === `question9`" key="question9" />
         <Question10 v-if="currentStep === `question10`" key="question10" />
-        <Email v-if="currentStep === `email`" key="email" />
-        <div v-if="currentStep === `email`" key="email2" class="Quiz__buttons">
-          <button class="Button Button__Primary" @click="back">back</button>
-          <Button 
-            class="Button Button--primary" 
-            :class="{ 'noHover': isDisabled }"  
-            :disabled="isDisabled" 
-            submit
-          >
-            <span v-if="!submitted">SUBMIT</span>
-            <span v-if="submitted">Sending...</span>
-          </Button>
-        </div>
+        <QuizProduct 
+          :product_data_id="5574461685917" 
+          :filmstrip="false" 
+          :arrow_opacity="0"
+          option_type="list"
+        />
+        
         <!-- </transition-group> -->
 
         <input type="hidden" name="q3_first_name" :value="getFirstName">
