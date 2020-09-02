@@ -154,20 +154,39 @@
                 {%- if block.settings.cta != '' or block.settings.cta_2 != '' or block.settings.cta_3 != '' -%}
                   <div class="HeroSlide__buttons">
                 {%- endif -%}
+
                   {%- if block.settings.cta != '' -%}
+                    {% unless block.settings.cta_style == 'text' %}
                     <a class="HeroSlide__button Button Button--{{ block.settings.cta_style }}" {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">
                       {{ block.settings.cta }}
                     </a>
+                    {% else %}
+                    <a class="HeroSlide__link" {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">
+                      {{ block.settings.cta }}
+                    </a>
+                    {% endunless %}
                   {%- endif -%}
                   {%- if block.settings.cta_2 != '' -%}
+                  {% unless block.settings.cta_style_2 == 'text' %}
                   <a class="HeroSlide__button Button Button--{{ block.settings.cta_style_2 }}" {% if block.settings.url_2 %}href="{{ block.settings.url_2 }}"{% endif %} aria-label="{{ block.settings.cta_aria_label_2 | default: block.settings.cta_2 }}">
                     {{ block.settings.cta_2 }}
                   </a>
+                  {% else %}
+                  <a class="HeroSlide__link" {% if block.settings.url_2 %}href="{{ block.settings.url_2 }}"{% endif %} aria-label="{{ block.settings.cta_aria_label_2 | default: block.settings.cta_2 }}">
+                      {{ block.settings.cta_2 }}
+                    </a>
+                  {% endunless %}
                 {%- endif -%}
                 {%- if block.settings.cta_3 != '' -%}
+                  {% unless block.settings.cta_style_3 == 'text' %}
                   <a class="HeroSlide__button Button Button--{{ block.settings.cta_style_3 }}" {% if block.settings.url_3 %}href="{{ block.settings.url_3 }}"{% endif %} aria-label="{{ block.settings.cta_aria_label_3 | default: block.settings.cta_3 }}">
                     {{ block.settings.cta_3 }}
                   </a>
+                  {% else %}
+                  <a class="HeroSlide__link" {% if block.settings.url_3 %}href="{{ block.settings.url_3 }}"{% endif %} aria-label="{{ block.settings.cta_aria_label_3 | default: block.settings.cta_3 }}">
+                      {{ block.settings.cta_3 }}
+                    </a>
+                  {% endunless %}
                 {%- endif -%}
                 {%- if block.settings.cta != '' or block.settings.cta_2 != '' or block.settings.cta_3 != '' -%}
                   </div>
@@ -326,19 +345,37 @@
                   <div class="HeroSlide__buttons">
                 {%- endif -%}
                   {%- if cta--mobile != '' -%}
+                    {%- unless cta_style--mobile == 'text' -%}
                     <a class="HeroSlide__button Button Button--{{ cta_style--mobile }}" {% if url--mobile %}href="{{ url--mobile }}"{% endif %} aria-label="{{ cta_aria_label--mobile | default: cta--mobile }}">
                       {{ cta--mobile }}
                     </a>
+                    {%- else -%}
+                    <a class="HeroSlide__link" {% if url--mobile %}href="{{ url--mobile }}"{% endif %} aria-label="{{ cta_aria_label--mobile | default: cta--mobile }}">
+                      {{ cta--mobile }}
+                    </a>
+                    {%- endunless -%}
                   {%- endif -%}
                   {%- if cta_2--mobile != '' -%}
+                  {%- unless cta_style_2--mobile == 'text' -%}
                   <a class="HeroSlide__button Button Button--{{ cta_style_2--mobile }}" {% if url_2--mobile %}href="{{ url_2--mobile }}"{% endif %} aria-label="{{ cta_aria_label_2--mobile | default: cta_2--mobile }}">
                     {{ cta_2--mobile }}
                   </a>
+                  {%- else -%}
+                  <a class="HeroSlide__link" {% if url_2--mobile %}href="{{ url_2--mobile }}"{% endif %} aria-label="{{ cta_aria_label_2--mobile | default: cta_2--mobile }}">
+                    {{ cta_2--mobile }}
+                  </a>
+                  {%- endunless -%}
                 {%- endif -%}
                 {%- if cta_3--mobile != '' -%}
+                {%- unless cta_style_3--mobile == 'text' -%}
                   <a class="HeroSlide__button Button Button--{{ cta_style_3--mobile }}" {% if url_3--mobile %}href="{{ url_3--mobile }}"{% endif %} aria-label="{{ cta_aria_label_3--mobile | default: cta_3--mobile }}">
                     {{ cta_3--mobile }}
                   </a>
+                  {%- else -%}
+                  <a class="HeroSlide__link" {% if url_3--mobile %}href="{{ url_3--mobile }}"{% endif %} aria-label="{{ cta_aria_label_3--mobile | default: cta_3--mobile }}">
+                    {{ cta_3--mobile }}
+                  </a>
+                  {%- endunless -%}
                 {%- endif -%}
                 {%- if cta--mobile != '' or cta_2--mobile != '' or cta_3--mobile != '' -%}
                   </div>
@@ -1193,6 +1230,10 @@
               {
                 "value": "secondary",
                 "label": "Secondary"
+              },
+              { 
+                "value": "text", 
+                "label": "Text Link" 
               }
             ]
           },
@@ -1228,6 +1269,10 @@
               {
                 "value": "secondary",
                 "label": "Secondary"
+              },
+              { 
+                "value": "text", 
+                "label": "Text Link" 
               }
             ]
           },
@@ -1263,6 +1308,10 @@
               {
                 "value": "secondary",
                 "label": "Secondary"
+              },
+              { 
+                "value": "text", 
+                "label": "Text Link" 
               }
             ]
           },
