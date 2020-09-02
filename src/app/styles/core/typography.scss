@@ -1,0 +1,71 @@
+// 'Comfortaa' Regular = 400.
+// 'Open Sans' Regular = 400, Bold = 700.
+// h1 = 44px DT, 30px M
+// h2 = 40px DT, 28px M
+// h3 = 36px DT, 26px M
+// h4 = 32px DT, 25px M
+// h5 = 24px DT, 18px M
+// h6 = 18px DT, 16px M
+// p = 16px DT, 16px M
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4 {
+  font-family: $font-primary;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+
+  @include media-query($tablet-down) {
+    line-height: 1.2;
+    letter-spacing: -0.0015em;
+  } 
+}
+
+h5, .h5 {
+  font-family: $font-secondary;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+h6, .h6 {
+  font-family: $font-secondary;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+body,
+p, .p {
+  font-family: $font-secondary;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+input,
+optgroup,
+select,
+textarea,
+.Button,
+a.Button {
+  font-family: $font-secondary;
+}
+
+input,
+optgroup,
+select,
+textarea {
+  font-weight: 400;
+}
+
+.Button,
+a.Button {
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+a {
+  letter-spacing: 0;
+}
