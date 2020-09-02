@@ -3,17 +3,4 @@
 .Question5 {
   margin: 0 auto;
   max-width: 750px;
-
-  .Radio {
-    width: initial;
-  }
-
-  .Grid {
-    margin-bottom: 40px;
-
-    @include media-query($mobile) {
-      margin-top: 30px;
-      margin-bottom: 50px;
-    }
-  }
 }

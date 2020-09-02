@@ -13,4 +13,9 @@ export default Vue.extend({
       return !store.state.Forms.quizForm.family_member_age || store.state.Forms.quizForm.family_member_age.value === ``;
     },  
   },
+  methods: {
+    nextStep(): void {
+      store.dispatch.Quiz.nextStep(this.next_step);
+    },
+  },
 });

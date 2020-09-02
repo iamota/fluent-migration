@@ -1,21 +1,21 @@
 <template>
   <div class="Quiz__slide Question8 Radio--longtext">
     <div class="Quiz__content">
-      <h3>We’d like to ask you about the most recent time you or a family member had a cold or the flu.  <br>Please choose one:</h3>
+      <h3>How quickly did your symptoms start?</h3>   
       <Grid expand>
         <Radio 
-          name="focus" 
-          label="Answering for myself" 
-          value="myself"
+          name="family_symptom_onset" 
+          label="Gradual over a few days" 
+          value="gradual"
           inline 
         />
         <Radio 
-          name="focus" 
-          label="Answering for a family member" 
-          value="family member" 
+          name="family_symptom_onset" 
+          label="Sudden in a matter of hours" 
+          value="sudden" 
           inline
         /> 
-      </Grid>    
+      </Grid>   
     </div>
     <QuizButtons 
       :disabled="isDisabled"

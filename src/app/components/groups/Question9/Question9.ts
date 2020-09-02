@@ -4,22 +4,13 @@ import store from 'infinite/src/app/store';
 export default Vue.extend({  
   data() {
     return {
+      previous_step: `question8`,
       next_step: `question10`,
     };
   },
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quizForm.vaccine || store.state.Forms.quizForm.vaccine.value === `` || store.state.Forms.quizForm.vaccine.errors.length > 0;
-    },
-    isMyself(): boolean {
-      return store.state.Forms.quizForm.focus.value === `myself`;
-    },
-    previous_step(): string {
-      if (store.state.Forms.quizForm.focus.value === `myself`) {
-        return `question8`;
-      }
-
-      return `question9b`;      
+      return !store.state.Forms.quizForm.family_symptom_duration || store.state.Forms.quizForm.family_symptom_duration.value === `` || store.state.Forms.quizForm.family_symptom_duration.errors.length > 0;
     },
   },
 });

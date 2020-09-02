@@ -1,40 +1,20 @@
 <template>
-  <div class="Quiz__slide Question9">
+  <div class="Quiz__slide Question9 Radio--longtext">
     <div class="Quiz__content">
-      <h3 v-if="isMyself">Did you get the flu vaccine in the past 12 months?</h3> 
-      <h3 v-if="!isMyself">Did your family member get the flu vaccine in the past 12 months?</h3>     
-      <Grid 
-        expand 
-        desktop="3" 
-        tablet="3" 
-        mobile="2"
-      >
+      <h3>How long have you had your symptoms?</h3>   
+      <Grid expand>
         <Radio 
-          name="vaccine" 
-          label="Yes" 
-          value="yes"
+          name="family_symptom_duration" 
+          label="6 days or less" 
+          value="6 days or less"
           inline 
         />
         <Radio 
-          name="vaccine" 
-          label="No" 
-          value="no" 
+          name="family_symptom_duration" 
+          label="7 days or more" 
+          value="7 days or more" 
           inline
         /> 
-        <Radio
-          v-if="isMyself" 
-          name="vaccine" 
-          label="I don't remember" 
-          value="I don't remember" 
-          inline
-        />
-        <Radio
-          v-if="!isMyself" 
-          name="vaccine" 
-          label="I don't know" 
-          value="I don't know" 
-          inline
-        />  
       </Grid>   
     </div>
     <QuizButtons 
@@ -44,6 +24,7 @@
     />
   </div>
 </template>
+
 
 <script src="./Question9.ts"></script>
 <style src="./Question9.scss"></style>
