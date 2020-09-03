@@ -1,7 +1,7 @@
-s@import '~@INF/styles';
+@import '~@INF/styles';
 @import '../../src/app/styles/variables';
 
-t.QuizProduct {
+.QuizProduct {
   &__preheading {
     text-transform: uppercase;
     color: $color-blue-1;
