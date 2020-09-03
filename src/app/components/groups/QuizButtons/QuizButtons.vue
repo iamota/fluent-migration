@@ -1,10 +1,13 @@
 <template>
   <div class="QuizButtons">
-    <Button type="secondary" @click.native="back">back</Button>
+    <Button type="secondary" @click.native="back">Back</Button>
     <Button 
       :class="{ 'noHover': disabled }" 
       :disabled="disabled"
-      @click.native="next">continue</Button>
+      @click.native="next"
+    >
+      Continue
+    </Button>
   </div>
 </template>
 

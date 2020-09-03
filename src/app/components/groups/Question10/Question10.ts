@@ -4,7 +4,7 @@ import store from 'infinite/src/app/store';
 export default Vue.extend({
   data() {
     return {
-      next_step: `question11`,
+      next_step: `kit`,
     };
   },
   computed: {
