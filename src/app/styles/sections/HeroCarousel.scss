@@ -21,7 +21,8 @@
           padding: 0 80px 0 130px;
 
           @include media-query($mobile) {
-            padding: 20px;
+            padding: 20px 20px 50px;
+            text-align: center;
           }
         }
       }
@@ -37,6 +38,18 @@
 
   .HeroSlide {
 
+    &__paragraph {
+      @include media-query($mobile) {
+        margin-top: 20px;
+      }
+    }
+
+    &__buttons {
+      @include media-query($mobile) {
+        text-align: center;
+      }
+    }
+
     &__link {
       display: inline-block;
       vertical-align: top;
@@ -50,5 +63,5 @@
 
 // Needs to disable the style below inside of Infinite if want to use "crop" on mobile
 // .HeroCarousel--crop .flickity-viewport {
-//   height: auto !important;
+//   height: 100% !important;
 // }
