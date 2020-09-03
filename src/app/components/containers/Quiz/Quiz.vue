@@ -27,11 +27,13 @@
         <Question8 v-if="currentStep === `question8`" key="question8" />
         <Question9 v-if="currentStep === `question9`" key="question9" />
         <Question10 v-if="currentStep === `question10`" key="question10" />
-        <QuizProduct 
+        <QuizProduct
+          v-if="currentStep === `kit`"
+          key="kit" 
+          option_type="list"
           :product_data_id="5574461685917" 
           :filmstrip="false" 
           :arrow_opacity="0"
-          option_type="list"
         />
         
         <!-- </transition-group> -->

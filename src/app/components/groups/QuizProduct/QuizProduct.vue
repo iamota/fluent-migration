@@ -18,6 +18,7 @@
         />
         <div class="ProductOverview__quantity-add">
           <ProductQuantity :product_data_id="product_id" v-bind="$props" />
+          <Button class="QuizProduct__cta">View Details</Button>
           <ProductAddToCartButton :product_data_id="product_id" v-bind="$props" />
         </div>
       </div>

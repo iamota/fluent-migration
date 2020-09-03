@@ -1,7 +1,46 @@
 @import '~@INF/styles';
+@import '../../src/app/styles/variables';
 
 .QuizProduct {
-  // Add your styles here
+  text-align: left;
+
+  .ProductOption {
+    margin-bottom: 40px;
+
+    &__name {
+      margin-bottom: 12px;
+    }
+
+    .Button {
+      margin: 0 20px 0 0;
+      background-color: transparent;
+      padding: 0;
+    }
+
+    .Button--selected {
+      border-color: $color-primary-1;
+
+      label {
+        color: $color-primary-1;
+      }
+    }
+
+    label {
+      padding: 10px 45px;
+      line-height: 15px;
+      color: black;
+    }
+  }
+
+  // .ProductOverview__quantity-add {
+  //   .Button {
+  //     margin: 0 20px;
+  //   }
+  // }
+  .QuizProduct__cta {
+    margin-right: 20px;
+  }
+
   .ProductQuantity,
   .flickity-button {
     display: none;
