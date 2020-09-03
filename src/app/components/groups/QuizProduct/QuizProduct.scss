@@ -4,6 +4,16 @@
 .QuizProduct {
   text-align: left;
 
+  &__preheading {
+    text-transform: uppercase;
+    color: $color-blue-1;
+  }
+
+  .Heading {
+    margin: 0 0 120px;
+    text-align: center;
+  }
+
   .ProductOption {
     margin-bottom: 40px;
 
@@ -18,7 +28,6 @@
 
       label {
         padding: 10px 45px;
-        line-height: 15px;
         color: black;
       }
     }

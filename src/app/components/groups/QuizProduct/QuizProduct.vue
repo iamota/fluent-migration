@@ -6,6 +6,13 @@
     :css_variables="cssVariables"
     :animation="null"
   >
+    <Heading 
+      name="QuizProduct"
+      :heading="recommended_heading"
+      heading_class="h1"
+      preheading="Based on your stymptoms..."
+      preheading_class="h5"
+    />
     <div class="ProductOverview__grid">
       <ProductImages :product_data_id="product_id" v-bind="$props" />
       <div class="ProductInfo">
@@ -18,7 +25,7 @@
         />
         <div class="ProductOverview__quantity-add">
           <ProductQuantity :product_data_id="product_id" v-bind="$props" />
-          <Button class="QuizProduct__cta">View Details</Button>
+          <Anchor :href="product_url" class="QuizProduct__cta Button Button--primary">View Details</Anchor>
           <ProductAddToCartButton :product_data_id="product_id" v-bind="$props" />
         </div>
       </div>
