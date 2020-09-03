@@ -1,5 +1,14 @@
 @import '~@INF/styles';
 
 .QuizButtons {
-  // Add your styles here
+  padding: 40px 0;
+
+  @include media-query($mobile) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #cde5f2;
+    padding: 35px 0;
+    width: 100%;
+  }
 }
