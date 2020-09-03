@@ -4,9 +4,9 @@
     width: 64%;
     margin: 0 0 0 auto;
     position: relative;
-    background-color: blue;
     border-top-left-radius: 300px;
     border-bottom-left-radius: 300px;
+    @include gradient(135deg, $color-secondary-7, $color-secondary-8);
 
     @include media-query($mobile) {
       height: auto;
