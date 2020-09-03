@@ -20,6 +20,16 @@
         line-height: 27px;
       }
     }
+
+    &__button {
+      margin-top: 30px;
+    }
   }
   
+  h2,
+  h3 {
+    &:empty {
+      display: none;
+    }
+  }
 }
