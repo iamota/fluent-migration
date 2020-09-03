@@ -153,8 +153,8 @@
       }
     }
 
-    .Radio--longtext .Radio,
-    .Radio--longtext .Checkbox {
+    &.Radio--longtext .Radio,
+    &.Radio--longtext .Checkbox {
       display: flex;
       position: relative;
       align-items: center;

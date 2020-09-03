@@ -15,6 +15,12 @@
       margin: 0 20px 0 0;
       background-color: transparent;
       padding: 0;
+
+      label {
+        padding: 10px 45px;
+        line-height: 15px;
+        color: black;
+      }
     }
 
     .Button--selected {
@@ -23,12 +29,6 @@
       label {
         color: $color-primary-1;
       }
-    }
-
-    label {
-      padding: 10px 45px;
-      line-height: 15px;
-      color: black;
     }
   }
 
