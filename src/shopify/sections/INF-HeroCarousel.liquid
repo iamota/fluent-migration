@@ -231,9 +231,9 @@
       <div 
         id="HeroCarousel--mobile{{ section.id }}" 
         class="HeroCarousel HeroCarousel--mobile HeroCarousel--{{ section.settings.aspect_ratio--mobile }}"
-        {% if section.settings.aspect_ratio--mobile == 'crop' %}
+        {% comment %} {% if section.settings.aspect_ratio--mobile == 'crop' %}
           style="height: {{ section.settings.height--mobile }}px;"
-        {% endif %}
+        {% endif %} {% endcomment %}
         data-hero-carousel
         data-prev-next-buttons="{{ section.settings.prevNextButtons--mobile }}"
         data-page-dots="{{ section.settings.pageDots--mobile }}"
@@ -314,18 +314,21 @@
             {%- assign overlay--mobile = block.settings.overlay -%}
           {%- endif -%}
 
-          <div 
-            id="HeroSlide--mobile{{ block.id }}" 
-            class="HeroSlide HeroSlide--mobile HeroSlide--content-{{ alignment--mobile }}" 
-            {% if image--mobile and section.settings.aspect_ratio--mobile == 'crop' %} 
-              style="background-image: url('{{ image--mobile | img_url: '768x' }}'); background-position: {{ image_alignment--mobile }};" 
-              aria-label="{{ block.settings.image--mobile.alt }}"
-            {% endif %} 
-            {% unless block.settings.pageDotAriaLabel--mobile == blank %}
-              data-page-dot-aria-label="{{ block.settings.pageDotAriaLabel }}"
-            {% endunless %}
-            {{ block.shopify_attributes }}
-          >
+          <div class="HeroSlide">
+            <div 
+              id="HeroSlide--mobile{{ block.id }}" 
+              class="HeroSlide--mobile HeroSlide--content-{{ alignment--mobile }}" 
+              {% if image--mobile and section.settings.aspect_ratio--mobile == 'crop' %} 
+                style="background-image: url('{{ image--mobile | img_url: '768x' }}'); background-position: {{ image_alignment--mobile }}; height: {{ section.settings.height--mobile }}px;" 
+                aria-label="{{ block.settings.image--mobile.alt }}"
+              {% endif %} 
+              {% unless block.settings.pageDotAriaLabel--mobile == blank %}
+                data-page-dot-aria-label="{{ block.settings.pageDotAriaLabel }}"
+              {% endunless %}
+              {{ block.shopify_attributes }}
+            >
+            </div>
+            {%- capture text_content -%}
             <div class="Overlay Overlay--{{ alignment--mobile }} Overlay--{{ overlay--mobile }}">
               <div class="Overlay__background"></div>
               <div class="Overlay__content HeroSlide__content {% if section.settings.prevNextButtons--mobile %}HeroSlide__content--has-arrows{% endif %}"
@@ -382,6 +385,8 @@
                 {%- endif -%}
               </div>
             </div>
+            {%- endcapture -%}
+            
             {% if image--mobile and section.settings.aspect_ratio--mobile == 'scale' %}
             <div class="HeroSlide__image"><img src="{{ image--mobile | img_url: '768x' }}" alt="{{ image--mobile.alt | escape }}"></div>
             {%- elsif video_mp4--mobile -%}
@@ -426,6 +431,7 @@
                 pause: block.settings.pause--mobile
               -%}
             {% endif %}
+            {{ text_content }}
           </div>
         {% endfor %}
       </div>
