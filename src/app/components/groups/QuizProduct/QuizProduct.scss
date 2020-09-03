@@ -1,17 +1,18 @@
-@import '~@INF/styles';
+s@import '~@INF/styles';
 @import '../../src/app/styles/variables';
 
-.QuizProduct {
-  text-align: left;
-
+t.QuizProduct {
   &__preheading {
     text-transform: uppercase;
     color: $color-blue-1;
   }
 
-  .Heading {
+  &__heading {
     margin: 0 0 120px;
-    text-align: center;
+  }
+
+  .ProductOverview__grid {
+    text-align: left;
   }
 
   .ProductOption {
@@ -23,6 +24,7 @@
 
     .Button {
       margin: 0 20px 0 0;
+      border-width: 1px;
       background-color: transparent;
       padding: 0;
 
@@ -33,11 +35,27 @@
     }
 
     .Button--selected {
+      border-width: 2px;
       border-color: $color-primary-1;
 
       label {
         color: $color-primary-1;
       }
+    }
+  }
+
+  .ProductInfo__preheading {
+    margin: 0;
+    text-transform: uppercase;
+    color: $color-primary-1;
+  }
+
+  .ProductHeading {
+    &__price {
+      color: $color-primary-1;
+      font-family: $font-primary;
+      font-size: 22px;
+      font-weight: normal;
     }
   }
 
