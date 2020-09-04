@@ -3,10 +3,10 @@
     <div class="Footer__wrapper">
       <div class="Footer__content">
         <div class="Footer__content-wrapper">
+          <div class="Footer__image">
+            <img src="{{ section.settings.image | img_url: '640x' }}" alt="{{ image_alt | escape }}" onLoad="elementLoaded(this);">
+          </div>
           <div class="Footer__top">
-            <div class="Footer__image">
-              <img src="{{ section.settings.image | img_url: '640x' }}" alt="{{ image_alt | escape }}" onLoad="elementLoaded(this);">
-            </div>
 
             <div class="Footer__nav">
             {% for block in section.blocks %}
@@ -26,6 +26,29 @@
               {%- endif -%}
             {% endfor %}
             </div>
+
+            {%- if section.settings.show_social -%}
+              {%- assign social_accounts = 'Facebook, Twitter, Instagram, Pinterest, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+              <div class="Footer__social-wrapper">
+                <div class="Footer__social-heading">Follow Us</div>
+                <ul class="Footer__social Footer__nav-list">
+                  {%- for social in social_accounts -%}
+                    {%- assign social_handle = social | handleize -%}
+                    {%- capture social_link -%}social_{{ social_handle }}_link{%- endcapture -%}
+                    {%- capture social_icon -%}fa-{{ social_handle }}{%- endcapture -%}
+
+                    {%- if settings[social_link] != blank -%}
+                      <li class="Footer__social-icon">
+                        <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}" target="_blank">
+                          <i aria-hidden="true" class="fab {{ social_icon }}"></i>
+                          <span class="icon-fallback-text">{{ social }}</span>
+                        </a>
+                      </li>
+                    {%- endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {%- endif -%}
           </div>
           <div class="Footer__bottom">
             <p class="Footer__copyright">
@@ -61,29 +84,6 @@
             </div>
           {%- endif -%}
         {%- endfor -%}
-
-        {%- if section.settings.show_social -%}
-          {%- assign social_accounts = 'Facebook, Twitter, Instagram, Pinterest, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
-          <div class="Footer__social-wrapper">
-            <div class="Footer__social-heading">Follow Us</div>
-            <ul class="Footer__social Footer__nav-list">
-              {%- for social in social_accounts -%}
-                {%- assign social_handle = social | handleize -%}
-                {%- capture social_link -%}social_{{ social_handle }}_link{%- endcapture -%}
-                {%- capture social_icon -%}fa-{{ social_handle }}{%- endcapture -%}
-
-                {%- if settings[social_link] != blank -%}
-                  <li class="Footer__social-icon">
-                    <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}" target="_blank">
-                      <i aria-hidden="true" class="fab {{ social_icon }}"></i>
-                      <span class="icon-fallback-text">{{ social }}</span>
-                    </a>
-                  </li>
-                {%- endif %}
-              {% endfor %}
-            </ul>
-          </div>
-        {%- endif -%}
         </div>
       </div>
     </div>
