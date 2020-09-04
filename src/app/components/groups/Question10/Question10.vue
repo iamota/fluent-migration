@@ -21,7 +21,6 @@
           value="Fever"
           inline          
         />
-        <QuizTemp :show="showTemp" mobile />
         <Checkbox 
           class="Checkbox--Shortness"
           name="symptoms[]" 
@@ -29,7 +28,7 @@
           value="Shortness"
           inline
         />
-        <QuizTemp :show="showTemp" />
+        <QuizTemp v-show="showTemp" />
         <Checkbox 
           class="Checkbox--Joint"
           name="symptoms[]" 

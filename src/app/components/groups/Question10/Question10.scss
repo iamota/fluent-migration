@@ -5,7 +5,66 @@
   margin: 0 auto;
   max-width: 890px;
 
+  // Ordering of cells
+  .Checkbox--Fever {
+    order: 1;
+  }
 
+  .Checkbox--Shortness {
+    order: 2;
+
+    @include media-query($mobile) {
+      order: 3;
+    }
+  }
+
+  .QuizTemp {
+    order: 3;
+
+    @include media-query($mobile) {
+      order: 2;
+    }
+  }
+
+  .Checkbox--Joint {
+    order: 4;
+  }
+
+  .Checkbox--Exhausted {
+    order: 5;
+  }
+
+  .Checkbox--Sinus-congestion {
+    order: 6;
+  }
+
+  .Checkbox--Runny {
+    order: 7;
+  }
+
+  .Checkbox--Nasal-congestion {
+    order: 8;
+  }
+
+  .Checkbox--Mucus {
+    order: 9;
+  }
+
+  .Checkbox--Headache {
+    order: 10;
+  }
+
+  .Checkbox--Sore {
+    order: 11;
+  }
+
+  .Checkbox--Cough {
+    order: 12;
+  }
+
+  .Checkbox--Sneezing {
+    order: 13;
+  }
 
   .Checkbox {
     &__control {

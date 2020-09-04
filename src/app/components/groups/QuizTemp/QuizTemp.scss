@@ -2,17 +2,8 @@
 @import '../../../styles/variables.scss';
 
 .QuizTemp[class~='QuizTemp'] {
-  &.QuizTemp--mobile {
-    display: none;
+  grid-column: span 2;
 
-    @include media-query($mobile) {
-      display: block;
-    }
-  }
-
-  &.QuizTemp--desktop {
-    grid-column: span 2;
-  }
 
   .Slider {
     position: relative;
@@ -20,7 +11,7 @@
     font-size: 0;
 
     @include media-query($mobile) {
-      margin: 70px -20px 0;
+      margin-top: 35px;
     }
 
     &::before {
@@ -32,100 +23,18 @@
       width: 66%;
       height: 2px;
       content: '';
-
-      @include media-query($mobile) {
-        top: 35px;
-        left: 8%;
-        width: 80%;
-      }
     }
 
     .Radio:first-child {
       position: relative;
-
-      @include media-query($mobile) {
-        label {
-          position: absolute;
-          top: -20px;
-          left: 0;
-
-          &::before {
-            top: 50px;
-            left: 33%;
-          }
-
-          &::after {
-            top: 42px;
-            left: 33%;
-          }
-        }
-      }
     }
 
     .Radio:nth-child(2) {
       position: relative;
-
-      @include media-query($mobile) {
-        label {
-          position: absolute;
-          top: 70px;
-          left: -10px;
-
-          &::before {
-            top: -40px;
-            left: 45%;
-          }
-
-          &::after {
-            top: -48px;
-            left: 45%;
-          }
-        }
-      }
     }
 
     .Radio:nth-child(3) {
       position: relative;
-
-      @include media-query($mobile) {
-        label {
-          position: absolute;
-          top: -20px;
-          left: -5px;
-
-          &::before {
-            top: 50px;
-            left: 45%;
-          }
-
-          &::after {
-            top: 42px;
-            left: 45%;
-          }
-        }
-      }
-    }
-
-    .Radio:nth-child(4) {
-      position: relative;
-
-      @include media-query($mobile) {
-        label {
-          position: absolute;
-          top: 70px;
-          left: -12px;
-
-          &::before {
-            top: -40px;
-            left: 60%;
-          }
-
-          &::after {
-            top: -48px;
-            left: 60%;
-          }
-        }
-      }
     }
   }
 

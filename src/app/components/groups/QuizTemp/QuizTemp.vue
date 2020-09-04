@@ -1,5 +1,5 @@
 <template>
-  <div class="QuizTemp" :class="cssClass">
+  <div class="QuizTemp">
     <p>What is your temperature?</p>
     <div class="Slider">
       <Radio 
