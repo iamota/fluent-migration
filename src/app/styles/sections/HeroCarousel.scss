@@ -73,6 +73,7 @@
         border: 1px solid #ffffff;
         border-radius: $button-border-radius;
         animation: radiate 1.5s forwards infinite;
+        pointer-events: none;
       }
     }
   }
