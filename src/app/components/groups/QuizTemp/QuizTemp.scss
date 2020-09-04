@@ -1,15 +1,17 @@
 @import '~@INF/styles';
 @import '../../../styles/variables.scss';
 
-.Question12 {
-  margin: 0 auto;
-  max-width: 750px;
+.QuizTemp[class~='QuizTemp'] {
+  &.QuizTemp--mobile {
+    display: none;
 
-  .Quiz__content {
-    top: 41%;
-    padding-bottom: 0;
-    height: auto;
-    overflow: visible;
+    @include media-query($mobile) {
+      display: block;
+    }
+  }
+
+  &.QuizTemp--desktop {
+    grid-column: span 2;
   }
 
   .Slider {
@@ -23,11 +25,11 @@
 
     &::before {
       position: absolute;
-      left: 12%;
+      left: 17%;
       transform: translateY(-50%);
       z-index: 0;
       background: #b0bac6;
-      width: 75%;
+      width: 66%;
       height: 2px;
       content: '';
 
@@ -129,7 +131,7 @@
 
   .Radio {
     margin: 0;
-    width: 25%;
+    width: 33%;
     min-height: 70px;
     line-height: 70px;
 
@@ -145,13 +147,21 @@
         left: 50%;
         transform: translateX(-50%);
         border: 0;
-        background: #b0bac6;
+        background: white;
         width: 10px;
         height: 10px;
       }
 
       &::after {
+        display: block;
+        top: -38px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 3;
+        border: 2px solid $color-light-gray;
+        background: white;
+        width: 26px;
+        height: 26px;
       }
     }
 
@@ -183,18 +193,8 @@
       }
 
       &:checked + label::after {
-        display: block;
-        top: -38px;
-        left: 50%;
-        transform: translateX(-50%);
-        // background: #006468;
+        border-color: $color-blue-1;
         background: $color-blue-1;
-        width: 26px;
-        height: 26px;
-      }
-
-      &:focus + label {
-        border: 2px solid var(--checkbox-background);
       }
     }
   }
