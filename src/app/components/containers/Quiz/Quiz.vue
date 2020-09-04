@@ -25,7 +25,7 @@
         <Question6 v-if="currentStep === `question6`" key="question6" />
         <Question7 v-if="currentStep === `question7`" key="question7" />
         <Question8 v-if="currentStep === `question8`" key="question8" />
-        <Question9 v-if="currentStep === `question9`" key="question9" />
+        <Question9 v-if="currentStep === `question9`" key="question9" /> 
         <Question10 v-if="currentStep === `question10`" key="question10" />        
         <QuizProduct
           v-if="currentStep === `kit`"
