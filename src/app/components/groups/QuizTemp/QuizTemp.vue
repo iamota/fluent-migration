@@ -1,23 +1,24 @@
 <template>
   <div class="QuizTemp" :class="cssClass">
+    <p>What is your temperature?</p>
     <div class="Slider">
       <Radio 
         name="temperature" 
-        label="98.5º F and under" 
-        value="t1"
+        label="96 - 99.4º F" 
+        value="t3"
         inline 
         checked 
       />
       <Radio 
         name="temperature" 
-        label="98.6 – 100.3º F" 
+        label="99.5 – 100.3º F" 
         value="t2" 
         inline
       /> 
       <Radio 
         name="temperature" 
-        label="100.4 – 102.9º F" 
-        value="t3"
+        label="100.4º+ F" 
+        value="t1"
         inline 
         checked 
       />
