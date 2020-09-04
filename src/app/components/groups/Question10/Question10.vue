@@ -1,42 +1,82 @@
 <template>
   <div class="Quiz__slide Question10">
-    <div class="Quiz__content">      
-      <h3 v-if="isMyself">Now think about the most recent time you were sick with a cold or the flu... <br> Which cold or flu symptoms did you experience? (Select all that apply)</h3>      
-      <h3 v-if="!isMyself">Now think about the most recent time you cared for this family member when they were sick with a cold or the flu... <br> Which cold or flu symptoms did your family member experience? (Select all that apply)</h3>
+    <div class="Quiz__content">                  
+      <Heading
+        name="Question10" 
+        heading="Pleaset tell us about the symptoms..."
+        heading_class="h1"
+        subheading="(Select all that apply)"
+        subheading_class="pbold"
+      />
       <Grid 
         expand 
-        desktop="4" 
-        tablet="3" 
+        desktop="2" 
+        tablet="2" 
         mobile="2"
       >
         <Checkbox 
           class="Checkbox--Fever"
           name="symptoms[]" 
-          label="Fever" 
+          label="Fever &amp; Chills" 
           value="Fever"
           inline          
         />
         <Checkbox 
-          class="Checkbox--Chills"
+          class="Checkbox--Shortness"
           name="symptoms[]" 
-          label="Chills" 
-          value="Chills"
+          label="Shortness of breath" 
+          value="Shortness"
+          inline
+        />
+        <Checkbox 
+          class="Checkbox--Joint"
+          name="symptoms[]" 
+          label="Muscle &amp; Body Aches" 
+          value="Joint pain"
+          inline
+        />
+        <Checkbox 
+          class="Checkbox--Exhausted"
+          name="symptoms[]" 
+          label="Fatigue or exhausted" 
+          value="Exhausted"
           inline
         /> 
+        <Checkbox 
+          class="Checkbox--Sinus-congestion"
+          name="symptoms[]" 
+          value="sinus"
+          label="Sinus Congestion" 
+          inline
+        />
         <Checkbox 
           class="Checkbox--Runny"
           name="symptoms[]" 
           value="Runny nose"
-          label="Runny or stuffy nose" 
+          label="Runny or Stuffy Nose" 
+          inline
+        />
+        <Checkbox 
+          class="Checkbox--Nasal-congestion"
+          name="symptoms[]" 
+          value="nasal"
+          label="Nasal Congestion" 
+          inline
+        />
+        <Checkbox 
+          class="Checkbox--Mucus"
+          name="symptoms[]" 
+          label="Thickened Phlegm" 
+          value="Mucus"
           inline
         /> 
         <Checkbox 
-          class="Checkbox--Sneezing"
+          class="Checkbox--Headache"
           name="symptoms[]" 
-          label="Sneezing" 
-          value="Sneezing"
+          label="Headache" 
+          value="Headache"         
           inline
-        /> 
+        />
         <Checkbox 
           class="Checkbox--Sore"
           name="symptoms[]" 
@@ -52,75 +92,12 @@
           inline
         /> 
         <Checkbox 
-          class="Checkbox--Mucus"
+          class="Checkbox--Sneezing"
           name="symptoms[]" 
-          label="Colored mucus or phlegm" 
-          value="Mucus"
+          label="Sneezing" 
+          value="Sneezing"
           inline
         /> 
-        <Checkbox 
-          class="Checkbox--Shortness"
-          name="symptoms[]" 
-          label="Shortness of breath" 
-          value="Shortness"
-          inline
-        /> 
-        <Checkbox 
-          class="Checkbox--Headache"
-          name="symptoms[]" 
-          label="Headache" 
-          value="Headache"         
-          inline
-        /> 
-        <Checkbox 
-          class="Checkbox--Joint"
-          name="symptoms[]" 
-          label="Muscle or joint pain" 
-          value="Joint pain"
-          inline
-        /> 
-        <Checkbox 
-          class="Checkbox--Exhausted"
-          name="symptoms[]" 
-          label="Feeling tired or exhausted" 
-          value="Exhausted"
-          inline
-        /> 
-        <Checkbox 
-          class="Checkbox--Appetite"
-          name="symptoms[]" 
-          label="Loss of appetite" 
-          value="Lost appetite"
-          inline          
-        />
-        <Checkbox 
-          class="Checkbox--Nausea"
-          name="symptoms[]" 
-          label="Nausea" 
-          value="Nausea"
-          inline
-        /> 
-        <Checkbox 
-          class="Checkbox--Vomiting"
-          name="symptoms[]" 
-          label="Vomiting" 
-          value="Vomiting"
-          inline
-        /> 
-        <Checkbox 
-          class="Checkbox--Diarrhea"
-          name="symptoms[]" 
-          label="Diarrhea" 
-          value="Diarrhea"
-          inline
-        />
-        <Checkbox 
-          class="Checkbox--No-symptoms"
-          name="symptoms[]" 
-          label="No symptoms" 
-          value="No symptoms"
-          inline
-        />  
       </Grid>
     </div>
     <QuizButtons 
