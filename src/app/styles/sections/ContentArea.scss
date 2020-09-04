@@ -20,6 +20,39 @@
         line-height: 27px;
       }
     }
+
+    &__button {
+      margin-top: 25px;
+    }
   }
   
+  h2,
+  h3 {
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+#section1599156390627 {
+  .ContentBlock {
+    &__image {
+      padding-top: 25px;
+
+      @include media-query($mobile) {
+        padding-top: 10px;
+      }
+    }
+
+    &__text {
+      padding-top: 20px;
+    }
+
+    &__button {
+
+      @include media-query($mobile) {
+        margin-top: 30px;
+      }
+    }
+  }
 }
