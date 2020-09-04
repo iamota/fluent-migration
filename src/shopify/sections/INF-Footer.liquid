@@ -1,0 +1,425 @@
+<style>
+  {{ section.settings.menu_title_font | font_face }}
+  {{ section.settings.menu_font | font_face }}
+
+  .Footer {
+    color: {{ section.settings.color }};
+    background: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media only screen and (max-width: {{ settings.grid_mobile_max }}) {
+    .Footer {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+
+  .Footer a,
+  .Footer a:visited,
+  .Footer a:active {
+    color: {{ section.settings.link_color }};
+  }
+
+  .Footer a:hover,
+  .Footer a:focus {
+    color: {{ section.settings.link_color_hover }};
+  }
+
+  .Footer__title {
+    color: {{ section.settings.menu_title_color }};
+    font-family: {{ section.settings.menu_title_font.family }}, {{ section.settings.menu_title_font.fallback_families }};
+    font-size: {{ section.settings.menu_title_font_size }}px;
+    font-weight: {{ section.settings.menu_title_font.weight }};
+    font-style: {{ section.settings.menu_title_font.style }};
+    text-transform: {{ section.settings.menu_title_text_capitalization }};
+  }
+
+  .Footer__link {
+    font-family: {{ section.settings.menu_font.family }}, {{ section.settings.menu_font.fallback_families }};
+    font-size: {{ section.settings.menu_font_size }}px;
+    font-weight: {{ section.settings.menu_font.weight }};
+    font-style: {{ section.settings.menu_font.style }};
+    text-transform: {{ section.settings.menu_text_capitalization }};
+  }
+
+  .Footer__link a,
+  .Footer__link a:visited,
+  .Footer__link a:active {
+    color: {{ section.settings.menu_link_color }};
+  }
+
+  .Footer__link a:hover,
+  .Footer__link a:focus {
+    color: {{ section.settings.menu_link_color_hover }};
+  }
+
+  .Footer__social-icon {
+    font-size: {{ section.settings.icon_size }}px;
+  }
+
+  .Footer__social-icon a,
+  .Footer__social-icon a:visited,
+  .Footer__social-icon a:active {
+    color: {{ section.settings.icon_color }};
+  }
+
+  .Footer__social-icon a:hover,
+  .Footer__social-icon a:focus {
+    color: {{ section.settings.icon_color_hover }};
+  }
+
+  .Footer__copyright,
+  .Footer__shout-out {
+    font-size: {{ section.settings.copyright_font_size }}px;
+  }
+
+  .Footer__bottom {
+    border-color: {{ section.settings.line_color }};
+  }
+</style>
+
+{% include 'Footer' %}
+{% include 'Footer', extra_classes: 'Footer--placeholder', extra_attrs: 'data-prevent-tab aria-hidden="true"', placeholder: true %}
+
+{% schema %}
+  {
+    "name": "Footer",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "label": "Image",
+        "id": "image",
+        "type": "image_picker"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Content width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text color",
+        "default": "#333"
+      },
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "Link color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "link_color_hover",
+        "label": "Link hover color",
+        "default": "#666"
+      },
+      {
+        "type": "color",
+        "id": "line_color",
+        "label": "Line color",
+        "default": "#ddd"
+      },
+      {
+        "type": "paragraph",
+        "content": "You can select up to 2 linklists in the 'content' area at the bottom of this panel to use for your footer menus."
+      },
+      {
+        "type": "header",
+        "content": "Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 40
+      },
+            {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 30
+      },
+            {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 20
+      },
+      {
+        "type": "header",
+        "content": "Menu Titles"
+      },
+      {
+        "type": "color",
+        "id": "menu_title_color",
+        "label": "Text color",
+        "default": "#999"
+      },
+      {
+        "type": "font_picker",
+        "id": "menu_title_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "menu_title_text_capitalization",
+        "label": "Text capitalization",
+        "default": "uppercase",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "menu_title_font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 12
+      },
+      {
+        "type": "header",
+        "content": "Menu Links"
+      },
+      {
+        "type": "color",
+        "id": "menu_link_color",
+        "label": "Link color",
+        "default": "#333"
+      },
+      {
+        "type": "color",
+        "id": "menu_link_color_hover",
+        "label": "Link hover color",
+        "default": "#666"
+      },
+      {
+        "type": "font_picker",
+        "id": "menu_font",
+        "default": "open_sans_n4",
+        "label": "Font family"
+      },
+      {
+        "type": "select",
+        "id": "menu_text_capitalization",
+        "label": "Text capitalization",
+        "default": "none",
+        "options": [
+          {
+            "label": "Uppercase (all caps)",
+            "value": "uppercase"
+          },
+          {
+            "label": "Capitalize (first letter)",
+            "value": "capitalize"
+          },
+          {
+            "label": "Lowercase",
+            "value": "lowercase"
+          },
+          {
+            "label": "None (as-is)",
+            "value": "none"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "menu_font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 13
+      },
+      {
+        "type": "header",
+        "content": "Social"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social",
+        "label": "Show social icons",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "icon_color",
+        "label": "Icon color",
+        "default": "#333"
+      },
+      {
+        "type": "color",
+        "id": "icon_color_hover",
+        "label": "Icon hover color",
+        "default": "#666"
+      },
+      {
+        "type": "range",
+        "id": "icon_size",
+        "min": 14,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "label": "Icon size",
+        "default": 20
+      },
+      {
+        "type": "header",
+        "content": "Fine Print"
+      },
+      {
+        "type": "link_list",
+        "id": "linklist_copyright",
+        "label": "Privacy/terms"
+      },
+      {
+        "type": "range",
+        "id": "copyright_font_size",
+        "min": 8,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 11
+      }
+    ],
+    "blocks": [
+      {
+        "type": "link_list",
+        "name": "Link List",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "linklist",
+            "label": "Menu source"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_title",
+            "label": "Show menu title",
+            "default": true
+          }
+        ]
+      },      
+      {
+        "type": "shopify",
+        "name": "Shopify",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+          }
+        ]
+      },
+      {
+        "type": "klaviyo",
+        "name": "Klaviyo",
+        "settings": [
+          {
+            "type": "text",
+            "id": "list_id",
+            "label": "List ID"
+          },
+          {
+            "type": "text",
+            "id": "form_heading",
+            "label": "Heading"
+          },          
+          {
+            "type": "text",
+            "id": "form_description",
+            "label": "Description"
+          }
+        ]
+      },
+      {
+        "type": "hubspot",
+        "name": "HubSpot",
+        "settings": [
+          { 
+            "type": "paragraph",
+            "content": "First create a Form in Hubspot and setup an Active list of contacts who made a Form submission. Please reach out if you require GDPR compliance."
+          },
+          {
+            "type": "text",
+            "id": "portal_id",
+            "label": "Portal ID"
+          },
+          {
+            "type": "text",
+            "id": "form_id",
+            "label": "Form ID"
+          }
+        ]
+      }
+    ]
+  }
+
+{% endschema %} 
