@@ -10,8 +10,7 @@ export default Vue.extend({
   },
   computed: {
     isMyself(): boolean {
-      // return store.state.Forms.quizForm.focus.value === `self`;
-      return true;
+      return store.state.Forms.quizForm.focus.value === `self`;
     },
     showTemp(): boolean {
       const symptoms = get(store, `state.Forms.quizForm['symptoms[]'].value`, []);
@@ -20,8 +19,7 @@ export default Vue.extend({
       return symptoms.indexOf(`Fever`) !== -1;
     },
     previous_step(): string {
-      // if (store.state.Forms.quizForm.focus.value === `self`) {
-      if (true === `self`) {
+      if (store.state.Forms.quizForm.focus.value === `self`) {      
         return `question6`;
       }
       
