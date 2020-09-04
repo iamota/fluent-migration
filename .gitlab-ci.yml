@@ -1,4 +1,4 @@
-image: gcr.io/lucid-fusion/infinite-v3-deployment:latest
+image: gcr.io/lucid-fusion/infinite-v3-deployment
 
 deploy:
   stage: deploy
