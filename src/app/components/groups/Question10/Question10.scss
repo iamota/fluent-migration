@@ -50,6 +50,10 @@
       &:checked + label {
         border-color: $color-primary-1;
 
+        &::before {
+          animation: none;
+        }
+
         &::after {
           display: none;
         }
