@@ -96,27 +96,27 @@
     display: none;
   }
 
-  .ContentArea__content {
-    .Section__container {
-      padding: 0;
-    }
+  // .ContentArea__content {
+  //   .Section__container {
+  //     padding: 0;
+  //   }
 
-    .ContentBlock__text .ContentBlock__wrapper {
-      @include media-query($mobile) {
-        padding: 0 20px;
-      }
+  //   .ContentBlock__text .ContentBlock__wrapper {
+  //     @include media-query($mobile) {
+  //       padding: 0 20px;
+  //     }
 
-      @include media-query($tablet) {
-        padding: 0 0 20px 20px;
-      }
-    }
+  //     @include media-query($tablet) {
+  //       padding: 0 0 20px 20px;
+  //     }
+  //   }
 
-    .ContentBlock--right .ContentBlock__image {
-      @include media-query($mobile) {
-        grid-row-start: initial;
-      }
-    }
-  }
+  //   .ContentBlock--right .ContentBlock__image {
+  //     @include media-query($mobile) {
+  //       grid-row-start: initial;
+  //     }
+  //   }
+  // }
 
   &.template-index--B {
     #Pod1591256997016-0 {

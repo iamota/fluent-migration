@@ -1,0 +1,4 @@
+@mixin gradient($angle, $color_1, $color_2) {
+  background-color: $color_1; /* For browsers that do not support gradients */
+  background-image: linear-gradient($angle, $color_1, $color_2); 
+}

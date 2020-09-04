@@ -6,6 +6,11 @@
  * Use this to override styles for existing Infinite components or to define global styles.
  * Do not put your custom component styles here!
  */
+// Tools
+@import './tools/mixins.scss';
+
+// Core
+@import './core/typography.scss';
 
 // Containers
 // @import './components/containers/MyContainer';
@@ -27,9 +32,7 @@
 @import './sections/ThankYouPods';
 @import './sections/ThankYouContentArea';
 @import './sections/ContentArea';
+@import './sections/HeroCarousel';
 
 // Templates
 @import './templates/Homepage';
-
-// Core
-@import './core/typography.scss';

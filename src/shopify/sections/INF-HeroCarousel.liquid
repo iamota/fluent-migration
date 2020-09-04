@@ -1,0 +1,2750 @@
+<section 
+  id="section{{ section.id }}" 
+  data-section-id="{{ section.id }}" 
+  data-section-type="INF-HeroCarousel" 
+  class="Section Section--{{ section.settings.width }}" 
+  style="{% if section.settings.use_background %}background: {{ section.settings.background }};{% endif %}"
+>
+
+  <style>
+    #section{{ section.id }} .Section__container {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    @media only screen and (max-width: {{ settings.grid_mobile_max }}) {
+      #section{{ section.id }} .Section__container {
+        padding-top: {{ section.settings.padding_top--mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom--mobile }}px;
+      }
+    }
+  </style>
+
+  <div class="Section__container">
+
+    {% if section.blocks.size > 0 %}
+      <style>
+        #HeroCarousel{{ section.id }} .flickity-prev-next-button {
+          {%- assign arrow_bg_opacity = section.settings.arrow_bg_opacity | divided_by: 100.0 -%}
+          background: {{ section.settings.arrow_bg_color | hex_to_rgba: arrow_bg_opacity }};
+        }
+        #HeroCarousel{{ section.id }} .flickity-prev-next-button .arrow {
+          fill: {{ section.settings.arrow_color }};
+          opacity: {{ section.settings.arrow_opacity | divided_by: 100.0 }};
+        }
+        #HeroCarousel{{ section.id }} .flickity-page-dots {
+          bottom: {{ section.settings.dot_location }};
+        }
+        #HeroCarousel{{ section.id }} .flickity-page-dots .dot {
+          background: {{ section.settings.dot_color }};
+          opacity: {{ section.settings.dot_opacity | divided_by: 100.0 }};
+        }
+        #HeroCarousel{{ section.id }} .flickity-page-dots .dot.is-selected {
+          background: {{ section.settings.dot_color_active }};
+          opacity: {{ section.settings.dot_opacity_active | divided_by: 100.0 }};
+        }
+        {% if section.settings.dot_location == '-35px' %}
+          #HeroCarousel{{ section.id }} {
+            margin-bottom: 55px;
+          }
+        {% endif %}
+
+        {% if section.settings.transition == 'fade' %}
+          #HeroCarousel{{ section.id }} .flickity-slider {
+            transform: none !important;
+          }
+          #HeroCarousel{{ section.id }} .HeroSlide {
+            left: 0 !important;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+          }
+          #HeroCarousel{{ section.id }} .HeroSlide.is-selected {
+            opacity: 1;
+          }
+        {% endif %}
+
+        /* MOBILE */
+
+        #HeroCarousel--mobile{{ section.id }} .flickity-prev-next-button {
+          {%- assign arrow_bg_opacity--mobile = section.settings.arrow_bg_opacity--mobile | divided_by: 100.0 -%}
+          background: {{ section.settings.arrow_bg_color--mobile | hex_to_rgba: arrow_bg_opacity--mobile }};
+        }
+        #HeroCarousel--mobile{{ section.id }} .flickity-prev-next-button .arrow {
+          fill: {{ section.settings.arrow_color--mobile }};
+          opacity: {{ section.settings.arrow_opacity--mobile | divided_by: 100.0 }};
+        }
+        #HeroCarousel--mobile{{ section.id }} .flickity-page-dots {
+          bottom: {{ section.settings.dot_location--mobile }};
+        }
+        #HeroCarousel--mobile{{ section.id }} .flickity-page-dots .dot {
+          background: {{ section.settings.dot_color--mobile }};
+          opacity: {{ section.settings.dot_opacity--mobile | divided_by: 100.0 }};
+        }
+        #HeroCarousel--mobile{{ section.id }} .flickity-page-dots .dot.is-selected {
+          background: {{ section.settings.dot_color_active--mobile }};
+          opacity: {{ section.settings.dot_opacity_active--mobile | divided_by: 100.0 }};
+        }
+        {% if section.settings.dot_location--mobile == '-35px' %}
+          #HeroCarousel--mobile{{ section.id }} {
+            margin-bottom: 55px;
+          }
+        {% endif %}
+
+        {% if section.settings.transition--mobile == 'fade' %}
+          #HeroCarousel--mobile{{ section.id }} .flickity-slider {
+            transform: none !important;
+          }
+          #HeroCarousel--mobile{{ section.id }} .HeroSlide {
+            left: 0 !important;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+          }
+          #HeroCarousel--mobile{{ section.id }} .HeroSlide.is-selected {
+            opacity: 1;
+          }
+        {% endif %}
+      </style>
+
+      <div id="HeroCarousel{{ section.id }}" 
+        class="HeroCarousel HeroCarousel--{{ section.settings.aspect_ratio }}" 
+        {% if section.settings.aspect_ratio == 'crop' %}
+          style="height: {{ section.settings.height }}px;"
+        {% endif %}
+        data-hero-carousel
+        data-prev-next-buttons="{{ section.settings.prevNextButtons }}"
+        data-page-dots="{{ section.settings.pageDots }}"
+        data-draggable="{{ section.settings.draggable }}"
+        data-wrap-around="{{ section.settings.wrapAround }}"
+        {% if section.settings.autoPlay %}
+          data-auto-play="{{ section.settings.autoPlay_speed | times: 1000 }}"
+        {% else %}
+          data-auto-play="false"
+        {% endif %}
+        data-pause-auto-play-on-hover="{{ section.settings.pauseAutoPlayOnHover }}"
+        data-page-dot-aria-label="{{ section.settings.pageDotAriaLabel }}"
+        data-previous-aria-label="{{ section.settings.previousAriaLabel }}"
+        data-next-aria-label="{{ section.settings.nextAriaLabel }}"
+      >
+        {%- for block in section.blocks -%}
+          <div id="HeroSlide{{ block.id }}" class="HeroSlide HeroSlide--content-{{ block.settings.alignment }}" {% if block.settings.image and section.settings.aspect_ratio == 'crop' %} 
+            style="background-image: url('{{ block.settings.image | img_url: '2048x' }}'); background-position: {{ block.settings.image_alignment }};" 
+            aria-label="{{ block.settings.image.alt }}"
+          {% endif %} 
+          {% unless block.settings.pageDotAriaLabel == blank %}
+            data-page-dot-aria-label="{{ block.settings.pageDotAriaLabel }}"
+          {% endunless %}
+          {{ block.shopify_attributes }}>
+            <div class="Overlay Overlay--{{ block.settings.alignment }} Overlay--{{ block.settings.overlay }}">
+              <div class="Overlay__background"></div>
+              <div class="Overlay__content HeroSlide__content {% if section.settings.prevNextButtons %}HeroSlide__content--has-arrows{% endif %}"
+                {% if section.settings.pageDots 
+                  and section.settings.dot_location == '20px' 
+                  and block.settings.alignment contains 'bottom-center' 
+                %}
+                  style="padding-bottom: 50px;"
+                {% elsif block.settings.unmute or block.settings.pause %}
+                  {% if block.settings.alignment contains 'bottom-right' %}
+                    style="padding-bottom: 60px;"
+                  {% endif %}
+                {% endif %}
+              >
+                {%- if block.settings.preheading != '' %}<p class="HeroSlide__preheading {{ block.settings.preheading_class }}">{{ block.settings.preheading }}</p>{%- endif -%}
+                {%- if block.settings.heading != '' %}<h2 class="HeroSlide__heading {{ block.settings.heading_class }}">{{ block.settings.heading }}</h2>{%- endif -%}
+                {%- if block.settings.subheading != '' %}<p class="HeroSlide__subheading {{ block.settings.subheading_class }}">{{ block.settings.subheading }}</p>{%- endif -%}
+                {%- if block.settings.paragraph != '' %}<p class="HeroSlide__paragraph {{ block.settings.paragraph_class }}">{{ block.settings.paragraph }}</p>{%- endif -%}
+                {%- if block.settings.cta != '' or block.settings.cta_2 != '' or block.settings.cta_3 != '' -%}
+                  <div class="HeroSlide__buttons">
+                {%- endif -%}
+
+                  {%- if block.settings.cta != '' -%}
+                    {% unless block.settings.cta_style == 'text' %}
+                    <a class="HeroSlide__button Button Button--{{ block.settings.cta_style }}" {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">
+                      {{ block.settings.cta }}
+                    </a>
+                    {% else %}
+                    <a class="HeroSlide__link" {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">
+                      {{ block.settings.cta }}
+                    </a>
+                    {% endunless %}
+                  {%- endif -%}
+                  {%- if block.settings.cta_2 != '' -%}
+                  {% unless block.settings.cta_style_2 == 'text' %}
+                  <a class="HeroSlide__button Button Button--{{ block.settings.cta_style_2 }}" {% if block.settings.url_2 %}href="{{ block.settings.url_2 }}"{% endif %} aria-label="{{ block.settings.cta_aria_label_2 | default: block.settings.cta_2 }}">
+                    {{ block.settings.cta_2 }}
+                  </a>
+                  {% else %}
+                  <a class="HeroSlide__link" {% if block.settings.url_2 %}href="{{ block.settings.url_2 }}"{% endif %} aria-label="{{ block.settings.cta_aria_label_2 | default: block.settings.cta_2 }}">
+                      {{ block.settings.cta_2 }}
+                    </a>
+                  {% endunless %}
+                {%- endif -%}
+                {%- if block.settings.cta_3 != '' -%}
+                  {% unless block.settings.cta_style_3 == 'text' %}
+                  <a class="HeroSlide__button Button Button--{{ block.settings.cta_style_3 }}" {% if block.settings.url_3 %}href="{{ block.settings.url_3 }}"{% endif %} aria-label="{{ block.settings.cta_aria_label_3 | default: block.settings.cta_3 }}">
+                    {{ block.settings.cta_3 }}
+                  </a>
+                  {% else %}
+                  <a class="HeroSlide__link" {% if block.settings.url_3 %}href="{{ block.settings.url_3 }}"{% endif %} aria-label="{{ block.settings.cta_aria_label_3 | default: block.settings.cta_3 }}">
+                      {{ block.settings.cta_3 }}
+                    </a>
+                  {% endunless %}
+                {%- endif -%}
+                {%- if block.settings.cta != '' or block.settings.cta_2 != '' or block.settings.cta_3 != '' -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+            {%- if block.settings.image and section.settings.aspect_ratio == 'scale' -%}
+            <div class="HeroSlide__image"><img src="{{ block.settings.image | img_url: '2048x' }}" alt="{{ block.settings.image.alt | escape }}"></div>
+            {%- elsif block.settings.video_mp4 -%}
+              {%- assign poster = block.settings.poster | img_url: '1920x' -%}
+              {%- capture crop -%}{% if section.settings.aspect_ratio == 'crop' %}true{% else %}false{% endif %}{%- endcapture -%}
+              
+              {%- include 'INF-BackgroundVideo-native', 
+                unique_id: block.id, 
+                aspect_ratio: block.settings.video_aspect_ratio,
+                video: block.settings.video_mp4
+              -%}
+              {%- include 'INF-BackgroundControls', unmute: block.settings.unmute, pause: block.settings.pause -%}
+            {%- elsif block.settings.video -%}
+              {%- if block.settings.poster and block.settings.poster != blank and block.settings.poster != '' -%}
+                {%- assign poster = block.settings.poster | img_url: '1920x' -%}
+                {%- assign poster_type = 'native' -%}
+              {%- elsif block.settings.video.type == 'youtube' -%}
+                {%- capture poster -%}https://img.youtube.com/vi/{{ block.settings.video.id }}/0.jpg{%- endcapture -%}
+                {%- assign poster_type = 'youtube' -%}
+              {%- elsif block.settings.video.type == 'vimeo' -%}
+                {%- assign poster_type = 'vimeo' -%}
+              {%- endif -%}
+              {%- capture crop -%}{% if section.settings.aspect_ratio == 'crop' %}true{% else %}false{% endif %}{%- endcapture -%}
+
+              {%- include 'INF-BackgroundVideo-iframe', 
+                unique_id: block.id, 
+                aspect_ratio: block.settings.video_aspect_ratio, 
+                video: block.settings.video 
+              -%}
+              {%- include 'INF-BackgroundControls', unmute: block.settings.unmute, pause: block.settings.pause -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div 
+        id="HeroCarousel--mobile{{ section.id }}" 
+        class="HeroCarousel HeroCarousel--mobile HeroCarousel--{{ section.settings.aspect_ratio--mobile }}"
+        {% comment %} {% if section.settings.aspect_ratio--mobile == 'crop' %}
+          style="height: {{ section.settings.height--mobile }}px;"
+        {% endif %} {% endcomment %}
+        data-hero-carousel
+        data-prev-next-buttons="{{ section.settings.prevNextButtons--mobile }}"
+        data-page-dots="{{ section.settings.pageDots--mobile }}"
+        data-draggable="{{ section.settings.draggable--mobile }}"
+        data-wrap-around="{{ section.settings.wrapAround--mobile }}"
+        {% if section.settings.autoPlay--mobile %}
+          data-auto-play="{{ section.settings.autoPlay_speed--mobile | times: 1000 }}"
+        {% else %}
+          data-auto-play="false"
+        {% endif %}
+        data-pause-auto-play-on-hover="{{ section.settings.pauseAutoPlayOnHover--mobile }}"
+        data-page-dot-aria-label="{{ section.settings.pageDotAriaLabel--mobile }}"
+        data-previous-aria-label="{{ section.settings.previousAriaLabel--mobile }}"
+        data-next-aria-label="{{ section.settings.nextAriaLabel--mobile }}"
+      >
+        {% for block in section.blocks %}
+          {%- assign image--mobile = block.settings.image--mobile | default: block.settings.image -%}
+          {%- assign image_alignment--mobile = block.settings.image_alignment--mobile -%}
+          {%- assign video_mp4--mobile = block.settings.video_mp4--mobile | default: block.settings.video_mp4 -%}
+          {%- assign video--mobile = block.settings.video--mobile | default: block.settings.video -%}
+          {%- assign preheading--mobile = block.settings.preheading--mobile | default: block.settings.preheading -%}
+          {%- assign preheading_class--mobile = block.settings.preheading_class--mobile -%}
+          {%- if preheading_class--mobile == 'same' -%}
+            {%- assign preheading_class--mobile = block.settings.preheading_class -%}
+          {%- endif -%}
+          {%- assign heading--mobile = block.settings.heading--mobile | default: block.settings.heading -%}
+          {%- assign heading_class--mobile = block.settings.heading_class--mobile -%}
+          {%- if heading_class--mobile == 'same' -%}
+            {%- assign heading_class--mobile = block.settings.heading_class -%}
+          {%- endif -%}
+          {%- assign subheading--mobile = block.settings.subheading--mobile | default: block.settings.subheading -%}
+          {%- assign subheading_class--mobile = block.settings.subheading_class--mobile -%}
+          {%- if subheading_class--mobile == 'same' -%}
+            {%- assign subheading_class--mobile = block.settings.subheading_class -%}
+          {%- endif -%}
+          {%- assign paragraph--mobile = block.settings.paragraph--mobile | default: block.settings.paragraph -%}
+          {%- assign paragraph_class--mobile = block.settings.paragraph_class--mobile -%}
+          {%- if paragraph_class--mobile == 'same' -%}
+            {%- assign paragraph_class--mobile = block.settings.paragraph_class -%}
+          {%- endif -%}
+
+          {%- assign cta--mobile = block.settings.cta--mobile | default: block.settings.cta -%}
+          {%- assign cta_aria_label--mobile = block.settings.cta_aria_label--mobile | default: block.settings.cta_aria_label -%}
+          {%- assign url--mobile = block.settings.url--mobile | default: block.settings.url -%}
+          {%- assign cta_style--mobile = block.settings.cta_style--mobile -%}
+          {%- if cta_style--mobile == 'same' -%}
+            {%- assign cta_style--mobile = block.settings.cta_style -%}
+          {%- endif -%}
+
+          {%- assign cta_2--mobile = block.settings.cta_2--mobile | default: block.settings.cta_2 -%}
+          {%- assign cta_aria_label_2--mobile = block.settings.cta_aria_label_2--mobile | default: block.settings.cta_aria_label_2 -%}
+          {%- assign url_2--mobile = block.settings.url_2--mobile | default: block.settings.url_2 -%}
+          {%- assign cta_style_2--mobile = block.settings.cta_style_2--mobile -%}
+          {%- if cta_style_2--mobile == 'same' -%}
+            {%- assign cta_style_2--mobile = block.settings.cta_style_2 -%}
+          {%- endif -%}
+
+          {%- assign cta_3--mobile = block.settings.cta_3--mobile | default: block.settings.cta_3 -%}
+          {%- assign cta_aria_label_3--mobile = block.settings.cta_aria_label_3--mobile | default: block.settings.cta_aria_label_3 -%}
+          {%- assign url_3--mobile = block.settings.url_3--mobile | default: block.settings.url_3 -%}
+          {%- assign cta_style_3--mobile = block.settings.cta_style_3--mobile -%}
+          {%- if cta_style_3--mobile == 'same' -%}
+            {%- assign cta_style_3--mobile = block.settings.cta_style_3 -%}
+          {%- endif -%}
+
+          {%- assign video_aspect_ratio--mobile = block.settings.video_aspect_ratio--mobile -%}
+          {%- if video_aspect_ratio--mobile == 'same' -%}
+            {%- assign video_aspect_ratio--mobile = block.settings.video_aspect_ratio -%}
+          {%- endif -%}
+
+          {%- assign alignment--mobile = block.settings.alignment--mobile -%}
+          {%- if alignment--mobile == 'same' -%}
+            {%- assign alignment--mobile = block.settings.alignment -%}
+          {%- endif -%}
+
+          {%- assign overlay--mobile = block.settings.overlay--mobile -%}
+          {%- if overlay--mobile == 'same' -%}
+            {%- assign overlay--mobile = block.settings.overlay -%}
+          {%- endif -%}
+
+          <div class="HeroSlide">
+            <div 
+              id="HeroSlide--mobile{{ block.id }}" 
+              class="HeroSlide--mobile HeroSlide--content-{{ alignment--mobile }}" 
+              {% if image--mobile and section.settings.aspect_ratio--mobile == 'crop' %} 
+                style="background-image: url('{{ image--mobile | img_url: '768x' }}'); background-position: {{ image_alignment--mobile }}; height: {{ section.settings.height--mobile }}px;" 
+                aria-label="{{ block.settings.image--mobile.alt }}"
+              {% endif %} 
+              {% unless block.settings.pageDotAriaLabel--mobile == blank %}
+                data-page-dot-aria-label="{{ block.settings.pageDotAriaLabel }}"
+              {% endunless %}
+              {{ block.shopify_attributes }}
+            >
+            </div>
+            {%- capture text_content -%}
+            <div class="Overlay Overlay--{{ alignment--mobile }} Overlay--{{ overlay--mobile }}">
+              <div class="Overlay__background"></div>
+              <div class="Overlay__content HeroSlide__content {% if section.settings.prevNextButtons--mobile %}HeroSlide__content--has-arrows{% endif %}"
+                {% if alignment--mobile contains 'bottom-right' and block.settings.unmute--mobile %}
+                  style="padding-bottom: 60px;"
+                {% elsif alignment--mobile contains 'bottom-right' and block.settings.pause--mobile %}
+                  style="padding-bottom: 60px;"
+                {% elsif section.settings.pageDots--mobile and section.settings.dot_location--mobile == '20px' and alignment--mobile contains 'bottom-' %}
+                  style="padding-bottom: 50px;"
+                {% endif %}
+              >
+                {% if preheading--mobile != '' %}<p class="HeroSlide__preheading {{ preheading_class--mobile }}">{{ preheading--mobile }}</p>{% endif %}
+                {% if heading--mobile != '' %}<h2 class="HeroSlide__heading {{ heading_class--mobile }}">{{ heading--mobile }}</h2>{% endif %}
+                {% if subheading--mobile != '' %}<p class="HeroSlide__subheading {{ subheading_class--mobile }}">{{ subheading--mobile }}</p>{% endif %}
+                {% if paragraph--mobile != '' %}<p class="HeroSlide__paragraph {{ paragraph_class--mobile }}">{{ paragraph--mobile }}</p>{% endif %}
+                {%- if cta--mobile != '' or cta_2--mobile != '' or cta_3--mobile != '' -%}
+                  <div class="HeroSlide__buttons">
+                {%- endif -%}
+                  {%- if cta--mobile != '' -%}
+                    {%- unless cta_style--mobile == 'text' -%}
+                    <a class="HeroSlide__button Button Button--{{ cta_style--mobile }}" {% if url--mobile %}href="{{ url--mobile }}"{% endif %} aria-label="{{ cta_aria_label--mobile | default: cta--mobile }}">
+                      {{ cta--mobile }}
+                    </a>
+                    {%- else -%}
+                    <a class="HeroSlide__link" {% if url--mobile %}href="{{ url--mobile }}"{% endif %} aria-label="{{ cta_aria_label--mobile | default: cta--mobile }}">
+                      {{ cta--mobile }}
+                    </a>
+                    {%- endunless -%}
+                  {%- endif -%}
+                  {%- if cta_2--mobile != '' -%}
+                  {%- unless cta_style_2--mobile == 'text' -%}
+                  <a class="HeroSlide__button Button Button--{{ cta_style_2--mobile }}" {% if url_2--mobile %}href="{{ url_2--mobile }}"{% endif %} aria-label="{{ cta_aria_label_2--mobile | default: cta_2--mobile }}">
+                    {{ cta_2--mobile }}
+                  </a>
+                  {%- else -%}
+                  <a class="HeroSlide__link" {% if url_2--mobile %}href="{{ url_2--mobile }}"{% endif %} aria-label="{{ cta_aria_label_2--mobile | default: cta_2--mobile }}">
+                    {{ cta_2--mobile }}
+                  </a>
+                  {%- endunless -%}
+                {%- endif -%}
+                {%- if cta_3--mobile != '' -%}
+                {%- unless cta_style_3--mobile == 'text' -%}
+                  <a class="HeroSlide__button Button Button--{{ cta_style_3--mobile }}" {% if url_3--mobile %}href="{{ url_3--mobile }}"{% endif %} aria-label="{{ cta_aria_label_3--mobile | default: cta_3--mobile }}">
+                    {{ cta_3--mobile }}
+                  </a>
+                  {%- else -%}
+                  <a class="HeroSlide__link" {% if url_3--mobile %}href="{{ url_3--mobile }}"{% endif %} aria-label="{{ cta_aria_label_3--mobile | default: cta_3--mobile }}">
+                    {{ cta_3--mobile }}
+                  </a>
+                  {%- endunless -%}
+                {%- endif -%}
+                {%- if cta--mobile != '' or cta_2--mobile != '' or cta_3--mobile != '' -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+            {%- endcapture -%}
+            
+            {% if image--mobile and section.settings.aspect_ratio--mobile == 'scale' %}
+            <div class="HeroSlide__image"><img src="{{ image--mobile | img_url: '768x' }}" alt="{{ image--mobile.alt | escape }}"></div>
+            {%- elsif video_mp4--mobile -%}
+              {%- assign poster--mobile = block.settings.poster--mobile | default: block.settings.poster -%}
+              {%- assign poster--mobile = poster--mobile | img_url: '1920x' -%}
+              {%- capture crop--mobile -%}{% if section.settings.aspect_ratio--mobile == 'crop' %}true{% else %}false{% endif %}{%- endcapture -%}
+              
+              {%- include 'INF-BackgroundVideo-native', 
+                prefix: 'Mobile',
+                unique_id: block.id, 
+                aspect_ratio: video_aspect_ratio--mobile, 
+                crop: crop--mobile, 
+                video: video_mp4--mobile, 
+                poster: poster--mobile,
+                poster_type: poster_type--mobile
+              -%}
+              {%- include 'INF-BackgroundControls', unmute: block.settings.unmute--mobile, pause: block.settings.pause--mobile -%}
+            {% elsif video--mobile %}
+              {%- if block.settings.poster--mobile and block.settings.poster--mobile != blank and block.settings.poster--mobile != '' -%}
+                {%- assign poster--mobile = block.settings.poster--mobile | img_url: '1920x' -%}
+                {%- assign poster_type--mobile = 'native' -%}
+              {%- elsif video--mobile.type == 'youtube' -%}
+                {%- capture poster--mobile -%}https://img.youtube.com/vi/{{ video--mobile.id}}/0.jpg{%- endcapture -%}
+                {%- assign poster_type--mobile = 'youtube' -%}
+              {%- elsif video--mobile.type == 'vimeo' -%}
+                {%- assign poster_type--mobile = 'vimeo' -%}
+              {%- endif -%}
+              {%- capture crop--mobile -%}{% if section.settings.aspect_ratio--mobile == 'crop' %}true{% else %}false{% endif %}{%- endcapture -%}
+
+              {%- include 'INF-BackgroundVideo-iframe', 
+                prefix: 'Mobile', 
+                unique_id: block.id, 
+                aspect_ratio: video_aspect_ratio--mobile, 
+                crop: crop--mobile, 
+                video: video--mobile, 
+                poster: poster--mobile,
+                poster_type: poster_type--mobile
+              -%}
+              {%- include 'INF-BackgroundControls', 
+                type--mobile: video--mobile.type,
+                unmute: block.settings.unmute--mobile, 
+                pause: block.settings.pause--mobile
+              -%}
+            {% endif %}
+            {{ text_content }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero Carousel",
+    "max_blocks": 10,
+    "settings": [
+     {
+        "type": "checkbox",
+        "id": "use_background",
+        "label": "Use background color",
+        "default": false,
+        "info": "Check this to use a custom section background color."
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "info": "Crop: maintain a consistent height across varying browser sizes and crop the sides of the image as needed.  Scale: never crop the photo and maintain the original aspect ratio. The image will get taller/shorter as the browser gets wider/narrower.",
+        "default": "crop",
+        "options": [
+          {
+            "label": "Crop (fixed height)",
+            "value": "crop"
+          },
+          {
+            "label": "Scale (variable height)",
+            "value": "scale"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "height",
+        "min": 300,
+        "max": 800,
+        "step": 50,
+        "unit": "px",
+        "label": "Height (if using crop)",
+        "default": 550
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 0
+      },
+            {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 0
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "full",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "transition",
+        "label": "Transition type",
+        "default": "slide",
+        "options": [
+          {
+            "label": "Slide",
+            "value": "slide"
+          },
+          {
+            "label": "Fade",
+            "value": "fade"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable",
+        "label": "Allow dragging & flicking",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "wrapAround",
+        "label": "Wrap-around in an infinite loop",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Arrows"
+      },
+      {
+        "type": "checkbox",
+        "id": "prevNextButtons",
+        "label": "Show previous & next buttons",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "arrow_color",
+        "label": "Arrow color",
+        "default": "#333"
+      },
+      {
+        "type": "range",
+        "id": "arrow_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "arrow_bg_color",
+        "label": "Arrow background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "arrow_bg_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow background opacity",
+        "default": 75
+      },
+      {
+        "type": "text",
+        "id": "previousAriaLabel",
+        "label": "Previous button ARIA label",
+        "default": "Previous featured content"
+      },
+      {
+        "type": "text",
+        "id": "nextAriaLabel",
+        "label": "Next button ARIA label",
+        "default": "Next featured content"
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Page Dots"
+      },
+      {
+        "type": "checkbox",
+        "id": "pageDots",
+        "label": "Show page dots",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "dot_location",
+        "label": "Page dot location",
+        "default": "20px",
+        "options": [
+          {
+            "label": "Inside",
+            "value": "20px"
+          },
+          {
+            "label": "Outside",
+            "value": "-35px"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "dot_color_active",
+        "label": "Active page dot color",
+        "default": "#fff",
+        "info": "The color of the active slide's dot."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity_active",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Active page dot opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "dot_color",
+        "label": "Inactive page dot color",
+        "default": "#fff",
+        "info": "The color of all other dots."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Inactive page dot opacity",
+        "default": 50
+      },
+      {
+        "type": "text",
+        "id": "pageDotAriaLabel",
+        "label": "Page dot ARIA label",
+        "default": "Featured content"
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Auto Play"
+      },
+      {
+        "type": "paragraph",
+        "content": "Automatically cycles through slides until a user interacts with the carousel (clicks an arrow or page dot, drags, flicks, etc.)"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoPlay",
+        "label": "Enable auto play",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "pauseAutoPlayOnHover",
+        "label": "Pause when hovering",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "autoPlay_speed",
+        "min": 3,
+        "max": 15,
+        "step": 1,
+        "unit": "sec",
+        "label": "Change slides every",
+        "default": 7
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "aspect_ratio--mobile",
+        "label": "Aspect Ratio",
+        "info": "Crop: maintain a consistent height across varying browser sizes and crop the sides of the image as needed.  Scale: never crop the photo and maintain the original aspect ratio. The image will get taller/shorter as the browser gets wider/narrower.",
+        "default": "crop",
+        "options": [
+          {
+            "label": "Crop (fixed height)",
+            "value": "crop"
+          },
+          {
+            "label": "Scale (variable height)",
+            "value": "scale"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "height--mobile",
+        "min": 150,
+        "max": 600,
+        "step": 50,
+        "unit": "px",
+        "label": "Height",
+        "default": 400
+      },
+            {
+        "type": "range",
+        "id": "padding_top--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 0
+      },
+            {
+        "type": "range",
+        "id": "padding_bottom--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 0
+      },
+      {
+        "type": "select",
+        "id": "width--mobile",
+        "label": "Width",
+        "default": "full",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "transition--mobile",
+        "label": "Transition type",
+        "default": "slide",
+        "options": [
+          {
+            "label": "Slide",
+            "value": "slide"
+          },
+          {
+            "label": "Fade",
+            "value": "fade"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable--mobile",
+        "label": "Allow dragging & flicking",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "wrapAround--mobile",
+        "label": "Wrap-around in an infinite loop",
+        "default": true
+      },
+
+      {
+        "type": "header",
+        "content": "Mobile :: Arrows"
+      },
+      {
+        "type": "checkbox",
+        "id": "prevNextButtons--mobile",
+        "label": "Show previous & next buttons",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "arrow_color--mobile",
+        "label": "Arrow color",
+        "default": "#333"
+      },
+      {
+        "type": "range",
+        "id": "arrow_opacity--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "arrow_bg_color--mobile",
+        "label": "Arrow background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "arrow_bg_opacity--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow background opacity",
+        "default": 75
+      },
+      {
+        "type": "text",
+        "id": "previousAriaLabel--mobile",
+        "label": "Previous button ARIA label", 
+        "default": "Previous featured content"
+      },
+      {
+        "type": "text",
+        "id": "nextAriaLabel--mobile",
+        "label": "Next button ARIA label",
+        "default": "Next featured content"
+      },
+      {
+        "type": "header",
+        "content": "Mobile:: Page Dots"
+      },
+      {
+        "type": "checkbox",
+        "id": "pageDots--mobile",
+        "label": "Show page dots",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "dot_location--mobile",
+        "label": "Page dot location",
+        "default": "20px",
+        "options": [
+          {
+            "label": "Inside",
+            "value": "20px"
+          },
+          {
+            "label": "Outside",
+            "value": "-35px"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "dot_color_active--mobile",
+        "label": "Active page dot color",
+        "default": "#fff",
+        "info": "The color of the active slide's dot."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity_active--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Active page dot opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "dot_color--mobile",
+        "label": "Inactive page dot color",
+        "default": "#fff",
+        "info": "The color of all other dots."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Inactive page dot opacity",
+        "default": 50
+      },
+      {
+        "type": "text",
+        "id": "pageDotAriaLabel--mobile",
+        "label": "Page dot ARIA label",
+        "default": "Featured content"
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Auto Play"
+      },
+      {
+        "type": "paragraph",
+        "content": "Automatically cycles through slides until a user interacts with the carousel (clicks an arrow or page dot, drags, flicks, etc.)"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoPlay--mobile",
+        "label": "Enable auto play",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "pauseAutoPlayOnHover--mobile",
+        "label": "Pause when hovering",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "autoPlay_speed--mobile",
+        "min": 3,
+        "max": 15,
+        "step": 1,
+        "unit": "sec",
+        "label": "Change slides every",
+        "default": 7
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image slide",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Desktop"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "image_alignment",
+            "label": "Image alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "preheading",
+            "label": "Preheading",
+            "default": "Preheading"
+          },
+          {
+            "type": "select",
+            "id": "preheading_class",
+            "label": "Preheading Style",
+            "default": "pbold",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Image slide"
+          },
+          {
+            "type": "text",
+            "id": "pageDotAriaLabel",
+            "label": "Page dot ARIA label"
+          },
+          {
+            "type": "select",
+            "id": "heading_class",
+            "label": "Heading Style",
+            "default": "h2",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "Tell your brand's story through images"
+          },
+          {
+            "type": "select",
+            "id": "subheading_class",
+            "label": "Subheading Style",
+            "default": "pbold",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },      
+          {
+            "type": "text",
+            "id": "paragraph",
+            "label": "paragraph",
+            "default": "Paragraph"
+          },
+          {
+            "type": "select",
+            "id": "paragraph_class",
+            "label": "Paragraph Style",
+            "default": "p",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "label": "Button text 1",
+            "id": "cta",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 1",
+            "id": "cta_aria_label",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 1",
+            "id": "url",
+            "type": "url"
+          },
+          {
+            "label": "Button style 1",
+            "id": "cta_style",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              },
+              { 
+                "value": "text", 
+                "label": "Text Link" 
+              }
+            ]
+          },
+          {
+            "label": "Button text 2",
+            "id": "cta_2",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 2",
+            "id": "cta_aria_label_2",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 2",
+            "id": "url_2",
+            "type": "url"
+          },
+          {
+            "label": "Button style 2",
+            "id": "cta_style_2",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              },
+              { 
+                "value": "text", 
+                "label": "Text Link" 
+              }
+            ]
+          },
+          {
+            "label": "Button text 3",
+            "id": "cta_3",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 3",
+            "id": "cta_aria_label_3",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 3",
+            "id": "url_3",
+            "type": "url"
+          },
+          {
+            "label": "Button style 3",
+            "id": "cta_style_3",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              },
+              { 
+                "value": "text", 
+                "label": "Text Link" 
+              }
+            ]
+          },
+          {
+            "label": "Text alignment",
+            "id": "alignment",
+            "type": "select",
+            "options": [
+              {
+                "group": "Top",
+                "value": "top-left",
+                "label": "Left"
+              },
+              {
+                "group": "Top",
+                "value": "top-center",
+                "label": "Center"
+              },
+              {
+                "group": "Top",
+                "value": "top-right",
+                "label": "Right"
+              },
+              {
+                "group": "Center",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Center",
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Center",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-left",
+                "label": "Left"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-center",
+                "label": "Center"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-right",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "label": "Overlay style",
+            "id": "overlay",
+            "type": "select",
+            "options": [
+              {
+                "group": "No Overlay",
+                "value": "light-text",
+                "label": "Light Text"
+              },
+              {
+                "group": "No Overlay",
+                "value": "dark-text",
+                "label": "Dark Text"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "light-overlay",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "dark-overlay",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "branded-overlay",
+                "label": "Branded"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "light-gradient",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "dark-gradient",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "branded-gradient",
+                "label": "Branded"
+              }
+            ],
+            "default": "dark-overlay"
+          },
+          {
+            "type": "header",
+            "content": "Mobile"
+          },
+          {
+            "type": "paragraph",
+            "content": "Only fill in the areas below that you want to change specifically for mobile. Anything left blank will use the desktop settings."
+          },
+          {
+            "type": "image_picker",
+            "id": "image--mobile",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "image_alignment--mobile",
+            "label": "Image alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "preheading--mobile",
+            "label": "Preheading"
+          },
+          {
+            "type": "select",
+            "id": "preheading_class--mobile",
+            "label": "Preheading Style",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "heading--mobile",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "pageDotAriaLabel--mobile",
+            "label": "Page dot ARIA label"
+          },
+          {
+            "type": "select",
+            "id": "heading_class--mobile",
+            "label": "Heading Style",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "subheading--mobile",
+            "label": "Subheading"
+          },
+          {
+            "type": "select",
+            "id": "subheading_class--mobile",
+            "label": "Subheading Style",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "paragraph--mobile",
+            "label": "Paragraph"
+          },
+          {
+            "type": "select",
+            "id": "paragraph_class--mobile",
+            "label": "Paragraph Style",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "label": "Button text 1",
+            "id": "cta--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 1",
+            "id": "cta_aria_label--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 1",
+            "id": "url--mobile",
+            "type": "url"
+          },
+          {
+            "label": "Button style 1",
+            "id": "cta_style--mobile",
+            "type": "select",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Button text 2",
+            "id": "cta_2--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 2",
+            "id": "cta_aria_label_2--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 2",
+            "id": "url_2--mobile",
+            "type": "url"
+          },
+          {
+            "label": "Button style 2",
+            "id": "cta_style_2--mobile",
+            "type": "select",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Button text 3",
+            "id": "cta_3--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 3",
+            "id": "cta_aria_label_3--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 3",
+            "id": "url_3--mobile",
+            "type": "url"
+          },
+          {
+            "label": "Button style 3",
+            "id": "cta_style_3--mobile",
+            "type": "select",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Text alignment",
+            "id": "alignment--mobile",
+            "type": "select",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "group": "Top",
+                "value": "top-left",
+                "label": "Left"
+              },
+              {
+                "group": "Top",
+                "value": "top-center",
+                "label": "Center"
+              },
+              {
+                "group": "Top",
+                "value": "top-right",
+                "label": "Right"
+              },
+              {
+                "group": "Center",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Center",
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Center",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-left",
+                "label": "Left"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-center",
+                "label": "Center"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-right",
+                "label": "Right"
+              }
+            ],
+            "default": "same"
+          },
+          {
+            "label": "Overlay style",
+            "id": "overlay--mobile",
+            "type": "select",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "group": "No Overlay",
+                "value": "light-text",
+                "label": "Light Text"
+              },
+              {
+                "group": "No Overlay",
+                "value": "dark-text",
+                "label": "Dark Text"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "light-overlay",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "dark-overlay",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "branded-overlay",
+                "label": "Branded"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "light-gradient",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "dark-gradient",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "branded-gradient",
+                "label": "Branded"
+              }
+            ],
+            "default": "same"
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "name": "Video slide",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Desktop"
+          },
+          {
+            "type": "image_picker",
+            "id": "poster",
+            "label": "Poster (placeholder)",
+            "info": "This image is shown until the video loads. If left blank, will default to low-res image provided by Youtube/Vimeo."
+          },
+          {
+            "type": "video_url",
+            "id": "video",
+            "label": "Youtube/Vimeo",
+            "accept": ["youtube", "vimeo"]
+          },
+          {
+            "type": "url",
+            "id": "video_mp4",
+            "label": "MP4 file",
+            "info": "If you prefer not to use youtube/vimeo, upload an MP4 video in the Settings > Files area (or to another CDN) and paste the link here."
+          },
+          {
+            "type": "select",
+            "id": "video_aspect_ratio",
+            "label": "Video aspect ratio",
+            "default": "1.777778",
+            "options": [
+              {
+                "value": "1.33",
+                "label": "4:3 (SD)"
+              },
+              {
+                "value": "1.777778",
+                "label": "16:9 (HD)"
+              },
+              {
+                "value": "1.85",
+                "label": "1.85:1 (Cinema)"
+              },
+              {
+                "value": "2",
+                "label": "2:1 (Ultra-Wide HD)"
+              },
+              {
+                "value": "2.39",
+                "label": "2.39:1 (Anamorphic Cinema)"
+              }
+            ]
+          },
+          {
+            "type": "checkbox",
+            "id": "unmute",
+            "label": "Enable unmute",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "pause",
+            "label": "Enable pause",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Video slide"
+          },
+          {
+            "type": "text",
+            "id": "pageDotAriaLabel",
+            "label": "Page dot ARIA label"
+          },
+          {
+            "type": "select",
+            "id": "heading_class",
+            "label": "Heading Style",
+            "default": "h2",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "Tell your brand's story through video"
+          },
+          {
+            "type": "select",
+            "id": "subheading_class",
+            "label": "Subheading Style",
+            "default": "pbold",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "label": "Button text 1",
+            "id": "cta",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 1",
+            "id": "cta_aria_label",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 1",
+            "id": "url",
+            "type": "url"
+          },
+          {
+            "label": "Button style 1",
+            "id": "cta_style",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Button text 2",
+            "id": "cta_2",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 2",
+            "id": "cta_aria_label_2",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 2",
+            "id": "url_2",
+            "type": "url"
+          },
+          {
+            "label": "Button style 2",
+            "id": "cta_style_2",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Button text 3",
+            "id": "cta_3",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 3",
+            "id": "cta_aria_label_3",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 3",
+            "id": "url_3",
+            "type": "url"
+          },
+          {
+            "label": "Button style 3",
+            "id": "cta_style_3",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Text alignment",
+            "id": "alignment",
+            "type": "select",
+            "options": [
+              {
+                "group": "Top",
+                "value": "top-left",
+                "label": "Left"
+              },
+              {
+                "group": "Top",
+                "value": "top-center",
+                "label": "Center"
+              },
+              {
+                "group": "Top",
+                "value": "top-right",
+                "label": "Right"
+              },
+              {
+                "group": "Center",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Center",
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Center",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-left",
+                "label": "Left"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-center",
+                "label": "Center"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-right",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "label": "Overlay style",
+            "id": "overlay",
+            "type": "select",
+            "options": [
+              {
+                "group": "No Overlay",
+                "value": "light-text",
+                "label": "Light Text"
+              },
+              {
+                "group": "No Overlay",
+                "value": "dark-text",
+                "label": "Dark Text"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "light-overlay",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "dark-overlay",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "branded-overlay",
+                "label": "Branded"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "light-gradient",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "dark-gradient",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "branded-gradient",
+                "label": "Branded"
+              }
+            ],
+            "default": "dark-overlay"
+          },
+          {
+            "type": "header",
+            "content": "Mobile"
+          },
+          {
+            "type": "paragraph",
+            "content": "Only fill in the areas below that you want to change specifically for mobile. Anything left blank will use the desktop settings."
+          },
+          {
+            "type": "image_picker",
+            "id": "poster--mobile",
+            "label": "Poster (placeholder)"
+          },
+          {
+            "type": "video_url",
+            "id": "video--mobile",
+            "label": "Video",
+            "accept": ["youtube", "vimeo"]
+          },
+          {
+            "type": "url",
+            "id": "video_mp4--mobile",
+            "label": "MP4 file"
+          },
+          {
+            "type": "select",
+            "id": "video_aspect_ratio--mobile",
+            "label": "Video aspect ratio",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "0.5625",
+                "label": "9:16 (Ultra-Portrait)"
+              },
+              {
+                "value": "0.75",
+                "label": "3:4 (Portrait)"
+              },
+              {
+                "value": "1",
+                "label": "1:1 (Square)"
+              },
+              {
+                "value": "1.33",
+                "label": "4:3 (SD)"
+              },
+              {
+                "value": "1.777778",
+                "label": "16:9 (HD)"
+              },
+              {
+                "value": "1.85",
+                "label": "1.85:1 (Cinema)"
+              },
+              {
+                "value": "2",
+                "label": "2:1 (Ultra-Wide HD)"
+              },
+              {
+                "value": "2.39",
+                "label": "2.39:1 (Anamorphic Cinema)"
+              }
+            ]
+          },
+          {
+            "type": "checkbox",
+            "id": "unmute--mobile",
+            "label": "Enable unmute",
+            "default": true,
+            "info": "Currently unavailable for Vimeo due to limitations of their API. If you need mobile unmute, use Youtube or MP4."
+          },
+          {
+            "type": "checkbox",
+            "id": "pause--mobile",
+            "label": "Enable pause",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "heading--mobile",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "pageDotAriaLabel--mobile",
+            "label": "Page dot ARIA label"
+          },
+          {
+            "type": "select",
+            "id": "heading_class--mobile",
+            "label": "Heading Style",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "subheading--mobile",
+            "label": "Subheading"
+          },
+          {
+            "type": "select",
+            "id": "subheading_class--mobile",
+            "label": "Subheading Style",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "label": "Button text 1",
+            "id": "cta--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 1",
+            "id": "cta_aria_label--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 1",
+            "id": "url--mobile",
+            "type": "url"
+          },
+          {
+            "label": "Button style 1",
+            "id": "cta_style--mobile",
+            "type": "select",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Button text 2",
+            "id": "cta_2--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 2",
+            "id": "cta_aria_label_2--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 2",
+            "id": "url_2--mobile",
+            "type": "url"
+          },
+          {
+            "label": "Button style 2",
+            "id": "cta_style_2--mobile",
+            "type": "select",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Button text 3",
+            "id": "cta_3--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 3",
+            "id": "cta_aria_label_3--mobile",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 3",
+            "id": "url_3--mobile",
+            "type": "url"
+          },
+          {
+            "label": "Button style 3",
+            "id": "cta_style_3--mobile",
+            "type": "select",
+            "default": "same",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Text alignment",
+            "id": "alignment--mobile",
+            "type": "select",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "group": "Top",
+                "value": "top-left",
+                "label": "Left"
+              },
+              {
+                "group": "Top",
+                "value": "top-center",
+                "label": "Center"
+              },
+              {
+                "group": "Top",
+                "value": "top-right",
+                "label": "Right"
+              },
+              {
+                "group": "Center",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Center",
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Center",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-left",
+                "label": "Left"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-center",
+                "label": "Center"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-right",
+                "label": "Right"
+              }
+            ],
+            "default": "same"
+          },
+          {
+            "label": "Overlay style",
+            "id": "overlay--mobile",
+            "type": "select",
+            "options": [
+              {
+                "value": "same",
+                "label": "Same as Desktop"
+              },
+              {
+                "group": "No Overlay",
+                "value": "light-text",
+                "label": "Light Text"
+              },
+              {
+                "group": "No Overlay",
+                "value": "dark-text",
+                "label": "Dark Text"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "light-overlay",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "dark-overlay",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "branded-overlay",
+                "label": "Branded"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "light-gradient",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "dark-gradient",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "branded-gradient",
+                "label": "Branded"
+              }
+            ],
+            "default": "same"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Hero Carousel",
+      "category": "Image",
+      "settings": {
+        "autoPlay": true,
+        "autoPlay_speed": 7
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}
