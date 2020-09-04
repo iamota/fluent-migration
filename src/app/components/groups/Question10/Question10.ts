@@ -12,6 +12,9 @@ export default Vue.extend({
       // return store.state.Forms.quizForm.focus.value === `self`;
       return true;
     },
+    showTemp(): boolean {
+      return true;
+    },
     previous_step(): string {
       // if (store.state.Forms.quizForm.focus.value === `self`) {
       if (true === `self`) {

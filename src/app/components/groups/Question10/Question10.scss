@@ -34,11 +34,6 @@
         width: 70px;
         height: 70px;
       }
-
-      @include media-query($mobile) {
-        width: 140px;
-        height: 140px;
-      }
     }
 
     input {
@@ -58,11 +53,6 @@
           display: none;
         }
       }
-    }
-
-    @include media-query($mobile) {
-      width: 140px;
-      height: 140px;
     }
   }
 }

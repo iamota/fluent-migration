@@ -1,0 +1,1 @@
+export { default as QuizTemp } from './QuizTemp.vue';

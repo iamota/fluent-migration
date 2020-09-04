@@ -12,7 +12,7 @@
         expand 
         desktop="2" 
         tablet="2" 
-        mobile="2"
+        mobile="1"
       >
         <Checkbox 
           class="Checkbox--Fever"
@@ -21,6 +21,7 @@
           value="Fever"
           inline          
         />
+        <QuizTemp :show="showTemp" mobile />
         <Checkbox 
           class="Checkbox--Shortness"
           name="symptoms[]" 
@@ -28,6 +29,7 @@
           value="Shortness"
           inline
         />
+        <QuizTemp :show="showTemp" />
         <Checkbox 
           class="Checkbox--Joint"
           name="symptoms[]" 
