@@ -3,36 +3,38 @@
     <p class="{{ section.settings.success_heading_style }} Newsletter__success-message">{{ 'general.newsletter_form.confirmation' | t }}!</p>
   </div>
   
-  <div class="Form__input-group">
-    <div class="Form__input-item">
-      {% comment %} <label {% unless placeholder %}for="Email"{% endunless %} class="Form__label">
-        {% include 'INF-translation', translate: 'general.newsletter_form.email_label', default: 'Email' %}
-      </label> {% endcomment %}
-      <div class="Form__input-wrapper">
-        <input type="email" 
-          class="Form__input"
-          {% unless placeholder %}name="EMAIL"{% endunless %} 
-          {% unless placeholder %}id="newsletter-email"{% endunless %} 
-          {% comment %} placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" {% endcomment %}
-          placeholder="Your email here"
-          autocapitalize="off" 
-          value="{% if customer %}{{ customer.email }}{% endif %}" 
-          required 
-        >
+  <div class="Form__container">
+    <div class="Form__input-group">
+      <div class="Form__input-item">
+        {% comment %} <label {% unless placeholder %}for="Email"{% endunless %} class="Form__label">
+          {% include 'INF-translation', translate: 'general.newsletter_form.email_label', default: 'Email' %}
+        </label> {% endcomment %}
+        <div class="Form__input-wrapper">
+          <input type="email" 
+            class="Form__input"
+            {% unless placeholder %}name="EMAIL"{% endunless %} 
+            {% unless placeholder %}id="newsletter-email"{% endunless %} 
+            {% comment %} placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" {% endcomment %}
+            placeholder="Your Email"
+            autocapitalize="off" 
+            value="{% if customer %}{{ customer.email }}{% endif %}" 
+            required 
+          >
+        </div>
       </div>
     </div>
-  </div>
 
-  <input type="hidden" name="g" value="{{ block.settings.list_id }}">
+    <input type="hidden" name="g" value="{{ block.settings.list_id }}">
 
-  <div class="Form__submit-group">
-    <input 
-      class="Button Button--{{ section.settings.cta_style }}" 
-      type="submit" 
-      name="submit"
-      {% comment %} value="{{ 'general.newsletter_form.submit' | t }}" {% endcomment %}
-      value="SIGN UP"
-    >
+    <div class="Form__submit-group">
+      <input 
+        class="Button Button--special" 
+        type="submit" 
+        name="submit"
+        {% comment %} value="{{ 'general.newsletter_form.submit' | t }}" {% endcomment %}
+        value="Submit"
+      >
+    </div>
   </div>
 </form>
 <iframe class="Newsletter__iframe" src="" {% unless placeholder %} name="newsletter-iframe"{% endunless %} frameborder="0"></iframe>
