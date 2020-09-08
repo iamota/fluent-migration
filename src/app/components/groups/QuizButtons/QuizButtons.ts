@@ -9,7 +9,7 @@ export default Vue.extend({
   },
   methods: {
     back(): void {
-      store.dispatch.Quiz.nextStep(this.previous_step);
+      store.dispatch.Quiz.previousStep(this.previous_step);
     },
     next(): void {
       setTimeout(() => {

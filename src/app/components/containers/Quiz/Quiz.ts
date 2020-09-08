@@ -99,27 +99,27 @@ export default Vue.extend({
     },
   },
   watch: {
-    submitted(new_value): void {
-      if (new_value) {
-        this.handleSubmit();
-      }
-    },
+    // submitted(new_value): void {
+    //   if (new_value) {
+    //     this.handleSubmit();
+    //   }
+    // },
   },
   methods: {
     back(): void {
       store.dispatch.Quiz.nextStep(`question17`);
     },
-    handleSubmit(): void {      
-      // @ts-ignore
-      document.quizKlaviyo[0].action = `https://manage.kmail-lists.com/subscriptions/subscribe`;
-      // @ts-ignore
-      document.quizKlaviyo[0].submit();
-      setTimeout(() => {
-        window.location.href = `/pages/thankyou`;
-      }, 1500);
-    },
+    // handleSubmit(): void {      
+    //   // @ts-ignore
+    //   document.quizKlaviyo[0].action = `https://manage.kmail-lists.com/subscriptions/subscribe`;
+    //   // @ts-ignore
+    //   document.quizKlaviyo[0].submit();
+    //   setTimeout(() => {
+    //     window.location.href = `/pages/thankyou`;
+    //   }, 1500);
+    // },
     startQuiz(): void {
-      store.dispatch.Quiz.nextStep(`question1`);
+      store.commit.Quiz.setStep(`question1`);
     },
     async getProduct(): Promise<void> {
       const product_data = await store.dispatch.Quiz.getProduct(store.state.Quiz.product_handle);
