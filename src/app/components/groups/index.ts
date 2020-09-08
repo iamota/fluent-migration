@@ -9,6 +9,7 @@ export { Question7 } from './Question7';
 export { Question8 } from './Question8';
 export { Question9 } from './Question9';
 export { Question10 } from './Question10';
+export { QuizTemp } from './QuizTemp';
 export { ProgressBar } from './ProgressBar';
 export { QuizButtons } from './QuizButtons';
 export { QuizProduct } from './QuizProduct';

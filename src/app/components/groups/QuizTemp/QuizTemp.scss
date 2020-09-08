@@ -1,0 +1,110 @@
+@import '~@INF/styles';
+@import '../../../styles/variables.scss';
+
+.QuizTemp[class~='QuizTemp'] {
+  grid-column: span 2;
+
+
+  .Slider {
+    position: relative;
+    margin-top: 70px;
+    font-size: 0;
+
+    @include media-query($mobile) {
+      margin-top: 35px;
+    }
+
+    &::before {
+      position: absolute;
+      left: 17%;
+      transform: translateY(-50%);
+      z-index: 0;
+      background: #b0bac6;
+      width: 66%;
+      height: 2px;
+      content: '';
+    }
+
+    .Radio:first-child {
+      position: relative;
+    }
+
+    .Radio:nth-child(2) {
+      position: relative;
+    }
+
+    .Radio:nth-child(3) {
+      position: relative;
+    }
+  }
+
+  .Radio {
+    margin: 0;
+    width: 33%;
+    min-height: 70px;
+    line-height: 70px;
+
+    label {
+      width: 95%;
+
+      @include media-query($mobile) {
+        width: 100%;
+      }
+
+      &::before {
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 0;
+        background: white;
+        width: 10px;
+        height: 10px;
+      }
+
+      &::after {
+        display: block;
+        top: -38px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        border: 2px solid $color-light-gray;
+        background: white;
+        width: 26px;
+        height: 26px;
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 50%;
+        content: ' ';
+        pointer-events: all;
+      }
+
+      &:checked + label {
+        color: initial;
+      }
+
+      &:checked + label::before {
+        z-index: 4;
+        background: #fff;
+      }
+
+      &:checked + label::after {
+        border-color: $color-blue-1;
+        background: $color-blue-1;
+      }
+    }
+  }
+}

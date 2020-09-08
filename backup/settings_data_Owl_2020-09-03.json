@@ -89,7 +89,7 @@
     "button_horizontal_padding--tablet": 45,
     "buttons_font_size--mobile": 19,
     "button_height--mobile": 41,
-    "button_horizontal_padding--mobile": 20,
+    "button_horizontal_padding--mobile": 40,
     "primary_button_transparent": false,
     "primary_button_background": "#3cb4e5",
     "primary_button_border_color": "#3cb4e5",
@@ -381,6 +381,7 @@
       },
       "1590711776325": {
         "type": "INF-ContentArea",
+        "disabled": true,
         "blocks": {
           "1590711776325-0": {
             "type": "image-text",
@@ -400,7 +401,6 @@
               "paragraph": "<p>No more waiting for the doctor. No more debating endless options in the cold and flu aisle. No more uncertainty in how to get healthy.<\/p>\n<p>Our team of healthcare professionals is simplifying your at-home cold and flu treatment by:<\/p>\n<ul>\n<li>\n<i class=\"far fa-check\" aria-hidden=\"true\"><\/i> Providing easy and effective treatment options<\/li>\n<li>\n<i class=\"far fa-check\" aria-hidden=\"true\"><\/i> Getting you in touch with the right healthcare professionals<\/li>\n<li>\n<i class=\"far fa-check\" aria-hidden=\"true\"><\/i> Delivering your treatment quickly<\/li>\n<\/ul>\n<p>All from the comfort of your home.<\/p>",
               "cta": "",
               "cta_aria_label": "",
-              "cta_tracking": "",              
               "url": "",
               "cta_style": "primary",
               "text_align": "left",
@@ -439,6 +439,7 @@
       },
       "1590713802237": {
         "type": "INF-ContentArea",
+        "disabled": true,
         "blocks": {
           "1590713802237-0": {
             "type": "image-text",
@@ -458,7 +459,6 @@
               "paragraph": "<p>At °Fluent, we take the power out of the flu by helping you know what to do, when and how. <\/p>\n<p>Fill out our 5-minute survey to help us understand your past experience with a cold or flu, to help us make °Fluent services and product offerings even better. All information will be kept private and confidential. \n<\/p><p>Complete the survey below and you could be randomly selected to receive a °Fluent Cold & Flu Essentials Kit!<\/p>",
               "cta": "START SURVEY",
               "cta_aria_label": "",
-              "cta_tracking": "fbq('track', 'Lead');",
               "url": "shopify:\/\/pages\/quiz",
               "cta_style": "secondary",
               "text_align": "left",
@@ -497,6 +497,7 @@
       },
       "1591029919668": {
         "type": "Newsletter",
+        "disabled": true,
         "settings": {
           "heading": "Take the Power Out of the Cold & Flu From the Comfort of Your Home",
           "heading_class": "h1",
@@ -755,6 +756,7 @@
       },
       "1591256997016": {
         "type": "ThankYouPods",
+        "disabled": true,
         "blocks": {
           "1591256997016-0": {
             "type": "pod",
@@ -882,6 +884,7 @@
       },
       "1597697382997": {
         "type": "EmailCapture",
+        "disabled": true,
         "settings": {
           "heading": "Interested in learning more?",
           "heading_class": "h3",
@@ -906,6 +909,123 @@
           "padding_top_mobile": 20,
           "padding_bottom_mobile": 20
         }
+      },
+      "1599067595157": {
+        "type": "INF-HeroCarousel",
+        "blocks": {
+          "1599067595157-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1124850351_dad_and_daughter.png",
+              "image_alignment": "center",
+              "preheading": "",
+              "preheading_class": "pbold",
+              "heading": "Lorem dolor sit amet consectetuer adipiscing",
+              "pageDotAriaLabel": "",
+              "heading_class": "h1",
+              "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+              "subheading_class": "p",
+              "paragraph": "Let’s get ready to stay well.",
+              "paragraph_class": "h5",
+              "cta": "Shop Our Products",
+              "cta_aria_label": "",
+              "url": "shopify:\/\/collections",
+              "cta_style": "secondary",
+              "cta_2": "Feeling Sick? Take the Quiz",
+              "cta_aria_label_2": "",
+              "url_2": "shopify:\/\/pages\/quiz",
+              "cta_style_2": "text",
+              "cta_3": "",
+              "cta_aria_label_3": "",
+              "url_3": "",
+              "cta_style_3": "on-image",
+              "alignment": "left",
+              "overlay": "light-text",
+              "image--mobile": "shopify:\/\/shop_images\/1124850351_dad_and_daughter_Mx460.png",
+              "image_alignment--mobile": "center",
+              "preheading--mobile": "",
+              "preheading_class--mobile": "same",
+              "heading--mobile": "",
+              "pageDotAriaLabel--mobile": "",
+              "heading_class--mobile": "same",
+              "subheading--mobile": "",
+              "subheading_class--mobile": "same",
+              "paragraph--mobile": "",
+              "paragraph_class--mobile": "same",
+              "cta--mobile": "",
+              "cta_aria_label--mobile": "",
+              "url--mobile": "",
+              "cta_style--mobile": "same",
+              "cta_2--mobile": "",
+              "cta_aria_label_2--mobile": "",
+              "url_2--mobile": "",
+              "cta_style_2--mobile": "same",
+              "cta_3--mobile": "",
+              "cta_aria_label_3--mobile": "",
+              "url_3--mobile": "",
+              "cta_style_3--mobile": "same",
+              "alignment--mobile": "same",
+              "overlay--mobile": "same"
+            }
+          }
+        },
+        "block_order": [
+          "1599067595157-0"
+        ],
+        "settings": {
+          "use_background": false,
+          "background": "#fff",
+          "aspect_ratio": "crop",
+          "height": 600,
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "width": "full",
+          "transition": "slide",
+          "draggable": true,
+          "wrapAround": true,
+          "prevNextButtons": true,
+          "arrow_color": "#333",
+          "arrow_opacity": 100,
+          "arrow_bg_color": "#fff",
+          "arrow_bg_opacity": 75,
+          "previousAriaLabel": "Previous featured content",
+          "nextAriaLabel": "Next featured content",
+          "pageDots": true,
+          "dot_location": "20px",
+          "dot_color_active": "#fff",
+          "dot_opacity_active": 100,
+          "dot_color": "#fff",
+          "dot_opacity": 50,
+          "pageDotAriaLabel": "Featured content",
+          "autoPlay": true,
+          "pauseAutoPlayOnHover": true,
+          "autoPlay_speed": 7,
+          "aspect_ratio--mobile": "scale",
+          "height--mobile": 250,
+          "padding_top--mobile": 0,
+          "padding_bottom--mobile": 0,
+          "width--mobile": "full",
+          "transition--mobile": "slide",
+          "draggable--mobile": true,
+          "wrapAround--mobile": true,
+          "prevNextButtons--mobile": false,
+          "arrow_color--mobile": "#333",
+          "arrow_opacity--mobile": 100,
+          "arrow_bg_color--mobile": "#fff",
+          "arrow_bg_opacity--mobile": 75,
+          "previousAriaLabel--mobile": "Previous featured content",
+          "nextAriaLabel--mobile": "Next featured content",
+          "pageDots--mobile": true,
+          "dot_location--mobile": "20px",
+          "dot_color_active--mobile": "#fff",
+          "dot_opacity_active--mobile": 100,
+          "dot_color--mobile": "#fff",
+          "dot_opacity--mobile": 50,
+          "pageDotAriaLabel--mobile": "Featured content",
+          "autoPlay--mobile": false,
+          "pauseAutoPlayOnHover--mobile": true,
+          "autoPlay_speed--mobile": 7
+        }
       }
     },
     "content_for_index": [
@@ -913,7 +1033,8 @@
       "1590711776325",
       "1591256997016",
       "1597697382997",
-      "1590713802237"
+      "1590713802237",
+      "1599067595157"
     ]
   }
 }
