@@ -71,10 +71,21 @@
   &__middle-container {
     display: flex;
     margin-top: 20px;
+
+    @media only screen and (max-width: 1140px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__text-wrapper {
     margin-right: 55px;
+  }
+
+  &__social-wrapper {
+    @media only screen and (max-width: 1140px) {
+      flex: 0 0 100%;
+      order: -1;
+    }
   }
 
   &__top {
