@@ -9,7 +9,7 @@ export default defineActions({
   },
   async nextStep(context, step): Promise<void> {
     const { commit, dispatch } = QuizActionContext(context);  
-    const response = await dispatch.getAssessment(null);
+    const response = await dispatch.getAssessment();
 
     if (response && response.type === `advance`) {
       try {
@@ -43,38 +43,39 @@ export default defineActions({
       resolve(data.product_data);
     });
   },
-  getAssessment(context, payload): Promise<GenericObject> {
+  getAssessment(context): Promise<GenericObject> {
+    const { getters } = QuizActionContext(context);  
     return new Promise(async (resolve) => {
       try {
-        const mock = {
-          patient: {
-            first_name: `First`,
-            age: 30,
-            gender: `male`,
-            patient_type: `self`,
-            symptoms_over_6_days: false,
-            symptom_onset: `sudden`,
-            age_under_11: false,
-          },
-          symptoms: {
-            shortness_of_breath: false,
-            fever_chills: {
-              temperature: null,
-            },
-            fatigue_tiredness: false,
-            body_aches: false,
-            runny_stuffy_nose: false,
-            thickened_phlegm: false,
-            sinus_congestion: false,
-            nasal_congestion: false,
-            headache: false,
-            sore_throat: false,
-            sneezing: false,
-            coughing: false,
-          },
-          question: 1,
-        };
-        const data = JSON.stringify(mock);
+        // const mock = {
+        //   patient: {
+        //     first_name: `First`,
+        //     age: 30,
+        //     gender: `male`,
+        //     patient_type: `self`,
+        //     symptoms_over_6_days: false,
+        //     symptom_onset: `sudden`,
+        //     age_under_11: false,
+        //   },
+        //   symptoms: {
+        //     shortness_of_breath: false,
+        //     fever_chills: {
+        //       temperature: null,
+        //     },
+        //     fatigue_tiredness: false,
+        //     body_aches: false,
+        //     runny_stuffy_nose: false,
+        //     thickened_phlegm: false,
+        //     sinus_congestion: false,
+        //     nasal_congestion: false,
+        //     headache: false,
+        //     sore_throat: false,
+        //     sneezing: false,
+        //     coughing: false,
+        //   },
+        //   question: 1,
+        // };
+        const data = JSON.stringify(getters.getAssessmentInfo);
         const response = await $.ajax({
           type: `POST`,
           url: `https://fluent-api.vcomm.io/assessment`,
