@@ -6,13 +6,13 @@
         <Radio 
           name="symptom_duration" 
           label="6 days or less" 
-          value="6 days or less"
+          value="6"
           inline 
         />
         <Radio 
           name="symptom_duration" 
           label="7 days or more" 
-          value="7 days or more" 
+          value="7" 
           inline
         /> 
       </Grid>   

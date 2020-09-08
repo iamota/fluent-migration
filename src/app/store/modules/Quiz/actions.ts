@@ -72,7 +72,7 @@ export default defineActions({
             sneezing: false,
             coughing: false,
           },
-          question: 10,
+          question: 1,
         };
         const data = JSON.stringify(mock);
         const response = await $.ajax({

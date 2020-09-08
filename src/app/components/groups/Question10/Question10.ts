@@ -16,7 +16,7 @@ export default Vue.extend({
       const symptoms = get(store, `state.Forms.quizForm['symptoms[]'].value`, []);
       if (symptoms.length === 0) { return false; }
 
-      return symptoms.indexOf(`Fever`) !== -1;
+      return symptoms.indexOf(`fever_chills`) !== -1;
     },
     previous_step(): string {
       if (store.state.Forms.quizForm.focus.value === `self`) {      
