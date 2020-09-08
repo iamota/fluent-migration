@@ -39,5 +39,7 @@ export default defineGetters<Quiz.State>()({
   getCurrentStep(state): string {
     return state.step;
   },
-  getAssessmentInfo(state):
+  getAssessmentInfo(state): string {
+    return ``;
+  },
 });
