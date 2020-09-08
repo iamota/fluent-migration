@@ -32,7 +32,9 @@
       // padding-right: 20px;
 
       @include media-query($mobile) {
-        padding-top: 20px;
+        display: block;
+        padding: 30px 20px 20px;
+        // padding-top: 30px;
       }
     }
   }
@@ -44,6 +46,8 @@
 
     @include media-query($mobile) {
       text-align: center;
+      background-color: unset;
+      border-radius: 0;
     }
 
     &-wrapper {
@@ -54,9 +58,29 @@
       padding-left: 80px;
 
       @include media-query($mobile) {
-        padding-top: 20px;
         max-width: unset;
+        padding-top: 35px;
         padding-left: 20px;
+        padding-bottom: 0;
+        background-color: $color-primary-1;
+      }
+    }
+
+    &--bottom {
+      @include mobile-only;
+      height: 80px;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: -200px;
+        right: -50px;
+        bottom: 0;
+        left: -50px;
+        border-radius: 50%;
+        background-color: $color-primary-1;
       }
     }
   }
@@ -64,9 +88,12 @@
   &__image {
     display: inline-block;
     margin-right: 35px;
-    // @include media-query($mobile) {
-    //   display: none;
-    // }
+
+    @include media-query($mobile) {
+      display: block;
+      margin-right: 0;
+      text-align: center;
+    }
 
     img {
       max-width: 60px;
@@ -81,10 +108,20 @@
     @media only screen and (max-width: 1180px) {
       flex-wrap: wrap;
     }
+
+    @include media-query($mobile) {
+      margin: 0;
+    }
   }
 
   &__text-wrapper {
     margin-right: 55px;
+
+    @include media-query($mobile) {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
   }
 
   &__top {
@@ -116,7 +153,11 @@
     text-align: left;
     
     @include media-query($mobile) {
-      padding-left: 5px;
+      // padding-left: 5px;
+      max-width: 300px !important;
+      margin: 0 auto;
+      text-align: center;
+
     }
   }
 
@@ -144,6 +185,10 @@
 
       @media only screen and (max-width: 800px) {
         margin-right: 100px;
+      }
+
+      @include media-query($mobile) {
+        margin-right: 0;
       }
     }
 
@@ -182,6 +227,10 @@
     margin-top: 10px;
     text-align: left;
 
+    @include media-query($mobile) {
+      text-align: center;
+    }
+
     &-wrapper {
       // display: flex;
       // justify-content: space-between;
@@ -197,7 +246,7 @@
       @include media-query($mobile) {
         display: block;
         max-width: 400px;
-        margin: 0 auto 15px;
+        margin: 30px auto 30px;
       }
     }
 
@@ -208,7 +257,8 @@
       color: $color-secondary-1;
 
       @include media-query($mobile) {
-        display: none;
+        // display: none;
+        text-align: center;
       }
     }
 
@@ -289,6 +339,11 @@
       background-color: $color-secondary-1;
       border: 4px solid $color-secondary-1;
       border-radius: 23px;
+
+      @include media-query($mobile) {
+        max-width: 250px;
+        margin: 0 auto;
+      }
     }
 
     &__input-group {
