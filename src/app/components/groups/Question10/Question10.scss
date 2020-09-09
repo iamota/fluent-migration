@@ -2,10 +2,12 @@
 @import '../../../styles/variables.scss';
 
 .Question10 {
-  margin: 0 auto;
-  max-width: 890px;
-
   // Ordering of cells
+  &__subheading {
+    margin-bottom: 50px;
+    text-transform: uppercase;
+  }
+
   .Checkbox--Fever {
     order: 1;
   }

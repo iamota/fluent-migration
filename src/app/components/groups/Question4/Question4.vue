@@ -1,7 +1,7 @@
 <template>
   <div class="Quiz__slide Question4 Radio--longtext">
+    <h3 class="Quiz__heading h1">Are you answering for yourself or a for a family member?</h3>
     <div class="Quiz__content">
-      <h3>Are you answering for yourself or a for a family member?</h3>
       <Grid expand>
         <Radio 
           name="focus" 

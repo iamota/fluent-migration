@@ -1,6 +1,8 @@
 @import '~@INF/styles';
 
-.Question3 {
-  margin: 0 auto;
-  max-width: 750px;
+.Question3.Quiz__slide {
+  // CSS
+  .Quiz__heading {
+    margin-bottom: 50px;
+  }
 }
