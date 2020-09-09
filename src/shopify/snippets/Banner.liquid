@@ -33,8 +33,8 @@
       {{ height_type }}: {{ style_source.settings.banner_height }}px;
     }
     @media only screen and (max-width: 767px) {
-      #Section{{ section.id }} .Banner {
-        {{ height_type }}: {{ style_source.settings.banner_height--mobile }}px;
+      #Section{{ section.id }} .Banner__image--mobile {
+        height: {{ style_source.settings.banner_height--mobile }}px;
       }
     }
 

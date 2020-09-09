@@ -14,6 +14,34 @@
         align-items: center;
 
         @include gradient(135deg, $color-secondary-3, $color-secondary-4);
+
+        @include media-query($mobile) {
+          position: static;
+          width: 100%;
+          height: auto;
+          border-radius: unset;
+          display: block;
+          padding: 30px 20px 45px;
+          text-align: left;
+        }
+      }
+
+      &__description {
+        p:first-child {
+          margin-top: 1em;
+        }
+      }
+
+      &__image {
+        &--mobile {
+          position: static;
+        }
+      }
+
+      &__placeholder {
+        @include media-query($mobile) {
+          display: none;
+        }
       }
     }
 
@@ -22,7 +50,17 @@
         max-width: 650px;
         margin: 0 0 0 auto;
         padding-right: 110px;
+
+        @include media-query($mobile) {
+          max-width: unset;
+          margin: 0;
+          padding-right: 0;
+        }
       }
+    }
+
+    .AnnouncementsBarPlaceholder {
+      display: none;
     }
   }
 }
