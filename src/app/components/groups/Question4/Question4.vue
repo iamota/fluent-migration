@@ -5,13 +5,13 @@
       <Grid expand>
         <Radio 
           name="focus" 
-          label="Answering for myself" 
+          label="Myself" 
           value="self"
           inline 
         />
         <Radio 
           name="focus" 
-          label="Answering for a family member" 
+          label="Family Member" 
           value="other" 
           inline
         /> 

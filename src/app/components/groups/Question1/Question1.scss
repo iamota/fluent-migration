@@ -2,4 +2,13 @@
 
 .Question1 {
   // CSS
+  .Quiz__heading {
+    br {
+      display: none;
+
+      @include media-query($mobile) {
+        display: block;
+      }
+    }
+  }
 }

@@ -3,9 +3,10 @@
 .Question8.Quiz__slide {
   .Quiz__heading {
     margin-bottom: 50px;
+    max-width: none;
   }
 
   .Quiz__content {
-    max-width: 880px;
+    max-width: 750px;
   }
 }
