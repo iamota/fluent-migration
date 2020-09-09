@@ -1,0 +1,28 @@
+.Banner {
+  &--custom {
+    .Banner {
+      &__content {
+        max-width: unset;
+        width: 60%;
+        height: 100%;
+        margin: 0;
+        top: 0;
+        transform: none;
+        border-top-right-radius: 250px;
+        border-bottom-right-radius: 250px;
+        display: flex;
+        align-items: center;
+
+        @include gradient(135deg, $color-secondary-3, $color-secondary-4);
+      }
+    }
+
+    .Section {
+      &__container {
+        max-width: 650px;
+        margin: 0 0 0 auto;
+        padding-right: 110px;
+      }
+    }
+  }
+}

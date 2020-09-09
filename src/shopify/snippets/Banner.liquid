@@ -1,0 +1,58 @@
+{%- include 'INF-Banner-logic' -%}
+
+{%- if banner_image -%}
+<section
+  id="Section{{ section.id }}" 
+  data-section-id="{{ section.id }}" 
+  data-section-type="INF-CollectionBanner" 
+  class="Section {% unless section_animation == 'none' %} Animate Animate--{{ section_animation }} {% endunless %}"
+  >
+  <div class="Banner Banner--custom" {% unless template.name == 'index' %} role="banner"{% endunless %}>
+    <div class="Banner__image Banner__image--desktop AnimateOnLoad Animate--{{ style_source.settings.animation }}" style="background-image: url('{{ banner_image | img_url: '2560x' }}');" aria-label="{{ banner_image.alt }}">
+      <img src="{{ banner_image | img_url: '2560x' }}" onLoad="elementLoaded(this);" style="display: none;">
+    </div>
+    <div class="Banner__image Banner__image--mobile AnimateOnLoad Animate--{{ style_source.settings.animation }}" style="background-image: url('{{ banner_image--mobile | img_url: '2560x' }}');" aria-label="{{ banner_image--mobile.alt }}">
+      <img src="{{ banner_image--mobile | img_url: '2560x' }}" onLoad="elementLoaded(this);" style="display: none;">
+    </div>
+    <div class="Overlay Overlay--{{ style_source.settings.alignment }} Overlay--{{ style_source.settings.alignment--mobile }}-mobile Overlay--{{ style_source.settings.overlay }}">
+      <div class="Overlay__background"></div>
+      {%- include 'Banner__content' -%}
+    </div>
+    <div class="Banner__placeholder" aria-hidden="true" data-prevent-tab>
+      {%- include 'Banner__content' -%}
+    </div>
+  </div>
+
+  <style>
+    {%- assign height_type = 'height' -%}
+    {%- if style_source.settings.responsive_height -%}
+      {%- assign height_type = 'min-height' -%}
+    {%- endif -%}
+
+    #Section{{ section.id }} .Banner {
+      {{ height_type }}: {{ style_source.settings.banner_height }}px;
+    }
+    @media only screen and (max-width: 767px) {
+      #Section{{ section.id }} .Banner {
+        {{ height_type }}: {{ style_source.settings.banner_height--mobile }}px;
+      }
+    }
+
+    #Section{{ section.id }} .Banner__image--desktop {
+      background-position: {{ style_source.settings.background_position }};
+    }
+
+    #Section{{ section.id }} .Banner__image--mobile {
+      background-position: {{ style_source.settings.background_position--mobile }};
+    }
+
+    {%- if section.settings.max_width -%}
+      #Section{{ section.id }} .Section__container {
+        max-width: {{ section.settings.max_width }}px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    {%- endif -%}
+  </style>
+</section>
+{%- endif -%}
