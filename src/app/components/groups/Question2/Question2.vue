@@ -1,7 +1,7 @@
 <template>
   <div class="Quiz__slide Question2">
+    <h3 class="Quiz__heading h1">What is your age?</h3>    
     <div class="Quiz__content">
-      <h3>What is your age?</h3>    
       <Input 
         name="age" 
         label="Age" 

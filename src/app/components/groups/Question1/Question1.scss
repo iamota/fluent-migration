@@ -1,12 +1,14 @@
 @import '~@INF/styles';
 
 .Question1 {
-  margin: 0 auto;
-  max-width: 500px;
+  // CSS
+  .Quiz__heading {
+    br {
+      display: none;
 
-  .Quiz__content {
-    top: 41%;
-    padding-bottom: 0;
-    height: auto;
+      @include media-query($mobile) {
+        display: block;
+      }
+    }
   }
 }

@@ -31,6 +31,7 @@
           v-if="currentStep === `kit`"
           key="kit" 
           option_type="list"
+          id="QuizProduct"
           :product_data_id="5574461685917" 
           :filmstrip="false" 
           :arrow_opacity="0"

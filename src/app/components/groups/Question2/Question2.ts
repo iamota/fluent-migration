@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import store from 'infinite/src/app/store';
+import { get } from 'lodash-es'
   
 export default Vue.extend({
   data() {
@@ -17,7 +18,8 @@ export default Vue.extend({
     //   return years;
     // },
     isDisabled(): boolean {
-      return !store.state.Forms.quizForm.age || store.state.Forms.quizForm.age.value === `` || store.state.Forms.quizForm.age.errors.length > 0;
+      const value = get(store, `state.Forms.quizForm.age.value`, null);
+      return !value || isNaN(parseInt(value, 10)) || value === `` || store.state.Forms.quizForm.age.errors.length > 0;
     },
   },
   methods: {

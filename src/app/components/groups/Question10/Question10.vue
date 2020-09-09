@@ -1,13 +1,13 @@
 <template>
   <div class="Quiz__slide Question10">
+    <Heading
+      name="Question10" 
+      heading="Pleaset tell us about the symptoms..."
+      heading_class="Quiz__heading  h1"
+      subheading="(Select all that apply)"
+      subheading_class="pbold"
+    />
     <div class="Quiz__content">                  
-      <Heading
-        name="Question10" 
-        heading="Pleaset tell us about the symptoms..."
-        heading_class="h1"
-        subheading="(Select all that apply)"
-        subheading_class="pbold"
-      />
       <Grid 
         expand 
         desktop="2" 

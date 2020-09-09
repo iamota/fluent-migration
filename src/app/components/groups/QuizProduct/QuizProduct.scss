@@ -2,13 +2,30 @@
 @import '../../src/app/styles/variables';
 
 .QuizProduct {
+  @include media-query($mobile) {
+    margin-top: -50px;
+  }
+
   &__preheading {
     text-transform: uppercase;
     color: $color-blue-1;
+
+    @include media-query($mobile) {
+      font-size: 16px;
+    }
   }
 
   &__heading {
     margin: 0 0 120px;
+
+    @include media-query($mobile) {
+      margin-bottom: 30px;
+      padding: 0;
+    }
+  }
+
+  .Section__container {
+    padding: 0;
   }
 
   .ProductOverview__grid {
@@ -20,6 +37,10 @@
 
     &__name {
       margin-bottom: 12px;
+
+      @include media-query($mobile) {
+        text-align: center;
+      }
     }
 
     .Button {
@@ -27,6 +48,10 @@
       border-width: 1px;
       background-color: transparent;
       padding: 0;
+
+      @include media-query($mobile) {
+        margin: 0 10px;
+      }
 
       label {
         padding: 10px 45px;
@@ -41,6 +66,22 @@
       label {
         color: $color-primary-1;
       }
+    }
+  }
+
+  .ProductShortDescription {
+    max-height: 150px;
+    text-overflow: ellipsis;
+  }
+
+  .ProductOptions {
+    border-top: 1px solid $color-light-gray;
+  }
+
+  .ProductOption__variants.ProductOption__variants--list {
+    @include media-query($mobile) {
+      display: flex;
+      justify-content: center;
     }
   }
 
@@ -68,6 +109,7 @@
     margin-right: 20px;
   }
 
+  .ProductImages__thumbs,
   .ProductQuantity,
   .flickity-button {
     display: none;
