@@ -25,9 +25,14 @@
 
     &-wrapper {
       display: flex;
+      flex-basis: 100%;
       max-width: 805px;
       margin-left: auto;
       padding-left: 20px;
+
+      @include media-query($tablet) {
+        padding-top: 20px;
+      }
 
       @include media-query($mobile) {
         display: block;
