@@ -192,6 +192,10 @@
   &__copyright {
     text-align: left;
     color: $color-secondary-1;
+
+    @include media-query($mobile) {
+      text-align: center;
+    }
   }
 
   &__social {
