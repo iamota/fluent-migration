@@ -1,0 +1,53 @@
+<div class="Banner__content Overlay__content">
+  <div class="Section__container {% unless content_animation == 'none' %} Animate Animate--{{ content_animation }} {% endunless %}">
+    <div class="AnnouncementsBarPlaceholder {% if settings.preheader_enabled %}AnnouncementsBarPlaceholder--hide-desktop{% endif %} {% if settings.preheader_enabled--mobile %}AnnouncementsBarPlaceholder--hide-mobile{% endif %}"></div>
+    
+    {%- if search.performed and style_source.settings.hide_heading == false -%}        
+      <span class="visually-hidden" role="heading" aria-level="1">{{ 'general.search.results_with_count' | t: terms: raw_query, count: search.results_count }}</span>
+    {%- endif -%}
+
+    {%- capture heading_type -%}
+      {%- if search.performed or template == "index" -%}
+        h2
+      {%- else -%}
+        h1
+      {%- endif -%}
+    {%- endcapture -%}
+
+    <{{ heading_type | strip_newlines }}>
+    {%- if banner_preheading -%}
+      <span class="Banner__preheading {{ style_source.settings.preheading_class }}">
+        {{ banner_preheading }}
+      </span>
+    {%- endif %}
+    
+    {%- unless style_source.settings.hide_heading -%}
+      <span class="Banner__heading {{ style_source.settings.heading_class }}">{{ banner_heading }}</span>
+    {%- endunless -%}
+
+    {%- if banner_subheading -%}
+      <span class="Banner__subheading {{ style_source.settings.subheading_class }}">
+        {{ banner_subheading }}
+      </span>
+    {%- endif -%}
+    </{{ heading_type | strip_newlines }}>
+
+    {%- if search_content -%}
+      {{ search_content }}
+    {%- endif -%}
+    {%- if banner_description -%}
+      <div class="Banner__description rte">
+        {{ banner_description }}
+      </div>
+    {%- endif %}
+    {%- if buttons_content and buttons_content != '' -%}
+      <div class="Banner__buttons">
+        {{ buttons_content }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_author -%}
+      <div class="h5 Banner__author">By {{ article.author }}</div>
+    {%- endif -%}
+  </div>
+</div>
