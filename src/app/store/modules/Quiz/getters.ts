@@ -8,7 +8,7 @@ interface AssessmentData {
   patient: Patient;
   symptoms: Symptoms;
   question: number;
-}
+} 
 
 interface Patient {
   first_name: string;
