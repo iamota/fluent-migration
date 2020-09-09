@@ -1,0 +1,46 @@
+<form class="Form Newsletter__form" {% if placeholder %} DO SOMETHING {% else %} action="https://api.hsforms.com/submissions/v3/integration/submit/{{ block.settings.portal_id }}/{{ block.settings.form_id }}" name="hubspot-signup" data-hubspot-form{% endif %}>
+  <div class="Newsletter__success">
+    <p class="{{ section.settings.success_heading_style }} Newsletter__success-message">{{ 'general.newsletter_form.confirmation' | t }}</p>
+  </div>
+  <div class="Newsletter__errors-container">
+    <ul class="errors">
+      <li>{% include 'INF-translation', translate: 'general.newsletter_form.invalid_email', default: 'Email is invalid' %}</li>
+    </ul>
+  </div>
+  
+  <div class="Form__input-group">
+    <div class="Form__input-item">
+      <label {% unless placeholder %}for="Email"{% endunless %} class="Form__label">
+        {% include 'INF-translation', translate: 'general.newsletter_form.email_label', default: 'Email' %}
+      </label>
+      <div class="Form__input-wrapper">
+        <input type="email" 
+          class="Form__input"
+          {% unless placeholder %}name="email"{% endunless %} 
+          id="newsletter-email" 
+          placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+          autocapitalize="off" 
+          value="{% if customer %}{{ customer.email }}{% endif %}" 
+          required 
+        >
+      </div>
+    </div>
+  </div>
+
+  {%- if customer -%}
+    {% unless customer.first_name == blank %}
+      <input type="hidden" name="firstname" value="{{customer.first_name }}">
+    {% endunless %}
+    {% unless customer.last_name == blank %}
+      <input type="hidden" name="lastname" value="{{customer.last_name }}">
+    {% endunless %}
+  {%- endif -%}
+  <div class="Form__submit-group">
+    <input 
+      class="Button Button--{{ section.settings.cta_style }}" 
+      type="submit" 
+      name="submit"
+      value="{{ 'general.newsletter_form.submit' | t }}"
+    >
+  </div>
+</form>
