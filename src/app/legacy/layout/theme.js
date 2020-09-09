@@ -19,6 +19,7 @@ import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
 import RteVideo from '../components/rte-video';
 import ShoppableImage from '../components/ShoppableImage';
 import RecentArticlesCarosuel from '../components/RecentArticlesCarousel';
+import { FormIframe } from '../components/FormWithIframe';
 import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
 
 import ThankYouPods from '../sections/ThankYouPods';
@@ -52,6 +53,7 @@ $(document).ready(() => {
   ShoppableImage();
   SimpleCarousel();
   RecentArticlesCarosuel();
+  FormIframe();
   ThankYouPods();
 
   _.each(Infinite, (component) => {

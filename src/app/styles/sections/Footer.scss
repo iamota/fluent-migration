@@ -349,6 +349,7 @@
   .Form--submitted {
     .Newsletter__success {
       display: block;
+      padding: 7px 0;
 
       @include media-query($mobile) {
         text-align: center;
@@ -356,10 +357,12 @@
 
       &-message {
         font-size: 20px;
-        // font-family: $font-family-2;
+        color: $color-secondary-1;
+        margin: 0;
       }
     }
 
+    .Form__container,
     .Form__input-group,
     .Form__submit-group {
       display: none;
