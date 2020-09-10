@@ -11,7 +11,7 @@ export default defineActions({
     const { commit, dispatch } = QuizActionContext(context);  
     const response = await dispatch.getAssessment();
 
-    if (response && response.type === `advance`) {
+    if (response && (response.type === `advance` || response.type === `kit`)) {
       try {
         window.ga(`send`, `event`, `Quiz`, `Changing Step`, `Step`, step);
       } catch (error) {
