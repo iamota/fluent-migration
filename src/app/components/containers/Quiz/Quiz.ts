@@ -100,7 +100,7 @@ export default Vue.extend({
     getAssessmentData(): GenericObject | string {
       return store.getters.Quiz.getAssessmentInfo;
     },
-  },
+  }, 
   watch: {
     // submitted(new_value): void {
     //   if (new_value) {
