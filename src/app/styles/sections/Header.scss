@@ -31,10 +31,23 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      background-image: var(--user-icon);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
+      // background-image: var(--user-icon);
+      // background-image: url('https://cdn.shopify.com/s/files/1/0399/0008/6429/files/user-circle.svg?v=1599770456');
+      // background-position: center;
+      // background-repeat: no-repeat;
+      // background-size: contain;
+
+      svg {
+        fill: $color-secondary-1;
+      }
+    }
+
+    &:hover {
+      .NavBar__icon-image {
+        svg {
+          fill: #aaa;
+        }
+      }
     }
   }
 
