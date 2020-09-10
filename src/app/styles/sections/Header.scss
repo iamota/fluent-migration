@@ -22,6 +22,20 @@
 
   &__icon {
     vertical-align: middle;
+
+    &--user {
+      font-size: 0;
+    }
+
+    &-image {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: var(--user-icon);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
   }
 
   .Button {
