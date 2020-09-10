@@ -1,0 +1,62 @@
+{%- assign module_name = 'data-cms-module-related-content' -%}
+
+{%- assign module_start = '<div ' | append: module_name | append: '>' -%}
+{%- assign module_end = '<!-- ' | append: module_name | append: ' -->' -%}
+{%- assign module_array = content | split: module_start -%}
+
+{%- for segment in module_array -%}
+  {%- assign index = forloop.index0 -%}
+
+  {%- if index == 0 -%}
+    {%- continue -%}
+  {%- else -%}
+    {%- assign module_body = module_array[index] | split: module_end | first -%}
+    
+    {%- assign settings_json = module_body | split: '<script type="application/json" data-settings>' -%}
+    {%- assign settings_json = settings_json[1] | split: '</script><!-- data-settings -->' | first -%}
+
+    {%- assign article_handles = settings_json | split: '"articles":[{' -%}
+    {%- assign article_handles = article_handles[1] | split: '}],"' | first | split: "},{" -%}
+
+    {%- assign old_html = module_start | append: module_body | append: module_end -%}
+
+    {%- unless module_body == blank -%}
+      {%- assign module_open = '<div ' | append: module_name | append: ' data-cms-module>' -%}
+      {%- assign module_close = '</div>' -%}
+
+      {%- capture new_html -%}
+        {{ module_open }}
+          <script type="application/json" data-settings>{{ settings_json }}</script>
+          <div data-content-container>
+            {%- for article_object in article_handles -%}
+              {%- assign handle = article_object | split: '"article_handle":"' -%}
+              {%- assign handle =  handle[1] | split: '","' | first -%}
+              {%- assign article_image = article_object | split: '"image":"' -%}
+              {%- assign article_image = article_image[1] | split: '","' | first -%}
+              {%- assign article = articles[handle] -%}
+              {%- assign article_image = article.image.src | img_url: 'master' -%}
+              {%- if article_image == blank -%}
+                {%- assign article_image = article.image.src | img_url: 'master' -%}
+              {%- endif -%}
+              {%- assign content_type = handle | split: '/' -%}
+              {%- if content_type[0] == 'pages' -%}
+                {%- assign content_type = content_type[1] | split: '"' | first -%}
+                {%- assign article = pages[content_type] -%}
+              {%- endif -%}
+              <div
+                data-article-information
+                data-article-img="{{ article_image }}"
+                data-article-url="{{article.url}}"
+                data-article-title="{{article.title}}"
+                data-article-excerpt="{{ article.excerpt | default: article.title }}"
+                ></div>
+            {%- endfor -%}
+          </div>
+        {{ module_close }}
+      {%- endcapture -%}
+
+      {%- assign content = content | replace: old_html, new_html -%}
+    {%- endunless -%}
+
+  {%- endif -%}
+{%- endfor -%}
