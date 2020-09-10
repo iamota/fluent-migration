@@ -1,22 +1,20 @@
 
 .NavBar {
-  // @include grid {
-  //   &__logo {
-  //     @include grid-item(3);
-  //   }
+  @include grid {
+    &--center-logo .NavBar__logo {
+      @include grid-item(2);
+    }
 
-  //   &__secondary,
-  //   &__icons,
-  //   &__search {
-  //     @include grid-item(3);
-  //   }
+    &--center-logo .NavBar__icons {
+      @include grid-item(5);
+    }
 
-  //   &--single-linklist {
-  //     .NavBar__primary {
-  //       @include grid-item(6);
-  //     }
-  //   }
-  // }
+    &--single-linklist {
+      .NavBar__primary {
+        @include grid-item(5);
+      }
+    }
+  }
 
   &__text {
     color: $color-secondary-1;
