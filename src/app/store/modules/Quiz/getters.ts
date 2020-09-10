@@ -39,6 +39,10 @@ interface FeverChills {
   temperature: string | unknown;
 }
 
+interface Query {
+  [index: string]: string | boolean | number;
+}
+
 export default defineGetters<Quiz.State>()({
   getCurrentStep(state): string {
     return state.step;
@@ -49,22 +53,98 @@ export default defineGetters<Quiz.State>()({
       ? 0 
       : step;
   },
-  getAssessmentInfo(...args: any): AssessmentData {
+  getAssessmentQueryString(...args: any): string {
     const { rootState } = rootGetterContext(args);
-    const { getters } = QuizGetterContext(args);
+    const first_name = get(rootState, `Forms.quizForm.first_name.value`, ``);
+    const age = get(rootState, `Forms.quizForm.age.value`, 0);
+    const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);
     const patient_type = get(rootState, `Forms.quizForm.focus.value`, ``);
+    const gender = get(rootState, `Forms.quizForm.gender.value`, ``);
     const symptoms_over_6_days_self = (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`);
     const symptoms_over_6_days_family = (get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== `6`);
     const symptoms_onset_self = get(rootState, `Forms.quizForm.symptom_onset.value`, ``);
     const symptoms_onset_family = get(rootState, `Forms.quizForm.family_symptom_onset.value`, ``);
     const symptoms = get(rootState, `Forms.quizForm['symptoms[]'].value`, []);
     const fever_chills = getSymptom(`fever_chills`, symptoms);
+    const shortness_of_breath = getSymptom(`shortness_of_breath`, symptoms);
+    const temperature = get(rootState, `Forms.quizForm.temperature.value`, `t3`);
+    const fatigue_tiredness = getSymptom(`fatigue_tiredness`, symptoms);
+    const body_aches = getSymptom(`body_aches`, symptoms);
+    const runny_stuffy_nose = getSymptom(`runny_stuffy_nose`, symptoms);
+    const thickened_phlegm = getSymptom(`thickened_phlegm`, symptoms);
+    const sinus_congestion = getSymptom(`sinus_congestion`, symptoms);
+    const nasal_congestion = getSymptom(`nasal_congestion`, symptoms);
+    const headache = getSymptom(`headache`, symptoms);
+    const sore_throat = getSymptom(`sore_throat`, symptoms);
+    const sneezing = getSymptom(`sneezing`, symptoms);
+    const coughing = getSymptom(`coughing`, symptoms);
+    
+    const query_object: Query = {
+      first_name,
+      age,
+      gender,
+      patient_type,
+      symptoms_over_6_days: patient_type === `self`
+        ? symptoms_over_6_days_self
+        : symptoms_over_6_days_family,
+      symptom_onset: patient_type === `self`
+      ? symptoms_onset_self
+      : symptoms_onset_family,
+      age_under_11,
+      shortness_of_breath,
+      fever_chills,
+      temperature,
+      fatigue_tiredness,
+      body_aches,
+      runny_stuffy_nose,
+      thickened_phlegm,
+      sinus_congestion,
+      nasal_congestion,
+      headache,
+      sore_throat,
+      sneezing,
+      coughing,
+    };
+
+    const query_string = Object.keys(query_object)
+      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(query_object[key])}`)
+      .join(`&`);
+    
+    return query_string;
+  },
+  getAssessmentInfo(...args: any): AssessmentData | string {
+    const { rootState } = rootGetterContext(args);
+    const { getters } = QuizGetterContext(args);
+    const first_name = get(rootState, `Forms.quizForm.first_name.value`, ``);
+    const age = get(rootState, `Forms.quizForm.age.value`, 0);
+    const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);
+    const patient_type = get(rootState, `Forms.quizForm.focus.value`, ``);
+    const gender = get(rootState, `Forms.quizForm.gender.value`, ``);
+    const symptoms_over_6_days_self = (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`);
+    const symptoms_over_6_days_family = (get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== `6`);
+    const symptoms_onset_self = get(rootState, `Forms.quizForm.symptom_onset.value`, ``);
+    const symptoms_onset_family = get(rootState, `Forms.quizForm.family_symptom_onset.value`, ``);
+    const symptoms = get(rootState, `Forms.quizForm['symptoms[]'].value`, []);
+    const fever_chills = getSymptom(`fever_chills`, symptoms);
+    const shortness_of_breath = getSymptom(`shortness_of_breath`, symptoms);
+    const temperature = get(rootState, `Forms.quizForm.temperature.value`, `t3`);
+    const fatigue_tiredness = getSymptom(`fatigue_tiredness`, symptoms);
+    const body_aches = getSymptom(`body_aches`, symptoms);
+    const runny_stuffy_nose = getSymptom(`runny_stuffy_nose`, symptoms);
+    const thickened_phlegm = getSymptom(`thickened_phlegm`, symptoms);
+    const sinus_congestion = getSymptom(`sinus_congestion`, symptoms);
+    const nasal_congestion = getSymptom(`nasal_congestion`, symptoms);
+    const headache = getSymptom(`headache`, symptoms);
+    const sore_throat = getSymptom(`sore_throat`, symptoms);
+    const sneezing = getSymptom(`sneezing`, symptoms);
+    const coughing = getSymptom(`coughing`, symptoms);
     const question = getters.getCurrentStepNumber;
+
     return {
       patient: {
-        first_name: get(rootState, `Forms.quizForm.first_name.value`, ``),
-        age: get(rootState, `Forms.quizForm.age.value`, 0),
-        gender: get(rootState, `Forms.quizForm.gender.value`, ``),
+        first_name,
+        age,
+        gender,
         patient_type,
         symptoms_over_6_days: patient_type === `self`
           ? symptoms_over_6_days_self
@@ -72,25 +152,25 @@ export default defineGetters<Quiz.State>()({
         symptom_onset: patient_type === `self`
         ? symptoms_onset_self
         : symptoms_onset_family,
-        age_under_11: (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11),
+        age_under_11,
       },
       symptoms: {
-        shortness_of_breath: getSymptom(`shortness_of_breath`, symptoms),
+        shortness_of_breath,
         fever_chills: {
           temperature: fever_chills
-          ? get(rootState, `Forms.quizForm.temperature.value`, `t3`)
+          ? temperature
           : null,
         },
-        fatigue_tiredness: getSymptom(`fatigue_tiredness`, symptoms),
-        body_aches: getSymptom(`body_aches`, symptoms),
-        runny_stuffy_nose: getSymptom(`runny_stuffy_nose`, symptoms),
-        thickened_phlegm: getSymptom(`thickened_phlegm`, symptoms),
-        sinus_congestion: getSymptom(`sinus_congestion`, symptoms),
-        nasal_congestion: getSymptom(`nasal_congestion`, symptoms),
-        headache: getSymptom(`headache`, symptoms),
-        sore_throat: getSymptom(`sore_throat`, symptoms),
-        sneezing: getSymptom(`sneezing`, symptoms),
-        coughing: getSymptom(`coughing`, symptoms),
+        fatigue_tiredness,
+        body_aches,
+        runny_stuffy_nose,
+        thickened_phlegm,
+        sinus_congestion,
+        nasal_congestion,
+        headache,
+        sore_throat,
+        sneezing,
+        coughing,
       },
       question,
     };

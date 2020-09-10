@@ -3,6 +3,7 @@
 
 .Quiz {
   --input-height: 60px;
+  --input-height--tablet: 60px;
   --input-height--mobile: 60px;
   --input-font-size--mobile: 16px;
 
@@ -333,7 +334,10 @@
         border: 2px solid $color-light-gray;
         border-radius: 8px;
         background-color: #fff;
+        padding-top: 10px;
+        padding-bottom: 10px;
         text-align: center;
+        line-height: 1;
       }
     }
   }

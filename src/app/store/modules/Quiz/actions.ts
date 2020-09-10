@@ -8,10 +8,10 @@ export default defineActions({
     commit.setStep(step);
   },
   async nextStep(context, step): Promise<void> {
-    const { commit, dispatch } = QuizActionContext(context);  
+    const { commit, dispatch, getters } = QuizActionContext(context);  
     const response = await dispatch.getAssessment();
 
-    if (response && response.type === `advance`) {
+    if (response && (response.type === `advance` || response.type === `kit`)) {
       try {
         window.ga(`send`, `event`, `Quiz`, `Changing Step`, `Step`, step);
       } catch (error) {
@@ -21,6 +21,15 @@ export default defineActions({
         window.scrollTo({ top: 0, behavior: `smooth` });
       }, 1);
       commit.setStep(step);
+    }
+
+    if (response && response.type === `breakout`) {
+      const redirect_url = response.path;
+      const query_string = getters.getAssessmentQueryString;
+
+      if (!redirect_url) { return; }
+
+      window.location.href = `${response.path}?${query_string}`;
     }
   },
   back(context, step): void {

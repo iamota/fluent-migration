@@ -97,7 +97,7 @@ export default Vue.extend({
     getTemperature(): string {
       return store.state.Forms.quizForm && store.state.Forms.quizForm.temperature ? store.state.Forms.quizForm.temperature.value : ``;
     },
-    getAssessmentData(): GenericObject {
+    getAssessmentData(): GenericObject | string {
       return store.getters.Quiz.getAssessmentInfo;
     },
   },
