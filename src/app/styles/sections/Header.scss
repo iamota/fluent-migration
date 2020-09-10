@@ -69,17 +69,61 @@
   }
 }
 
-.MobileLogo {
-  left: 10px;
-  transform: none;
-  transform: translateY(-50%);
-}
+// .MobileLogo {
+//   left: 10px;
+//   transform: none;
+//   transform: translateY(-50%);
+// }
 
-.MobileBar__right {
-  margin-right: 10px;
+// .MobileBar__right {
+//   margin-right: 10px;
 
-  .Button {
-    margin-bottom: 4px;
+//   .Button {
+//     margin-bottom: 4px;
+//   }
+// }
+
+.MobileBar {
+  height: 60px;
+  line-height: 60px;
+
+  &__icon {
+    color: $color-secondary-1;
+    font-size: 23px;
+    vertical-align: middle;
+
+    &--user {
+      font-size: 0;
+      margin-right: 8px;
+
+      svg {
+        fill: $color-secondary-1;
+      }
+    }
+
+    &-image {
+      display: inline-block;
+      width: 26px;
+    }
+  }
+
+  .IconToggle {
+    display: inline-block;
+  }
+
+  &__bottom {
+    background: $color-primary-3;
+    color: $color-secondary-1;
+    padding: 0 10px 10px;
+
+    &-text {
+      margin-right: 5px;
+    }
+
+    .Button {
+      font-size: 16px;
+      line-height: 31px;
+    }
   }
 }
 
