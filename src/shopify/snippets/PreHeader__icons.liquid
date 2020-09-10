@@ -1,10 +1,10 @@
 {%- comment -%}This is just a recommended starting point...customize away!{%- endcomment -%}
 <div class="PreHeader__icons">
-  <a class="PreHeader__icon" role="button" href="#anchor_modal"><i aria-label="anchor modal" class="{{ settings.fa }} fa-anchor"></i></a>
-  <a class="PreHeader__icon" role="button" data-open-modal="#no_anchor_modal" tabindex="0"><i aria-label="no anchor modal" class="{{ settings.fa }} fa-window-maximize"></i></a>
-  {%- if shop.customer_accounts_enabled -%}
+  {% comment %} <a class="PreHeader__icon" role="button" href="#anchor_modal"><i aria-label="anchor modal" class="{{ settings.fa }} fa-anchor"></i></a>
+  <a class="PreHeader__icon" role="button" data-open-modal="#no_anchor_modal" tabindex="0"><i aria-label="no anchor modal" class="{{ settings.fa }} fa-window-maximize"></i></a> {% endcomment %}
+  {% comment %} {%- if shop.customer_accounts_enabled -%}
     <a class="PreHeader__icon" href="/account"><i aria-label="{% include 'INF-translation', translate: 'customer.account.title', default: 'My Account' %}" class="{{ settings.fa }} fa-user"></i></a>
-  {%- endif -%}
+  {%- endif -%} {% endcomment %}
   {%- if settings.header_buttons_placement == 'preheader' -%}
     {%- capture search_label -%}
       {% include 'INF-translation', translate: 'general.search.title', default: 'Search our store' %}

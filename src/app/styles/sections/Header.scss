@@ -1,21 +1,38 @@
 
 .NavBar {
-  @include grid {
-    &__logo {
-      @include grid-item(3);
-    }
+  // @include grid {
+  //   &__logo {
+  //     @include grid-item(3);
+  //   }
 
-    &__secondary,
-    &__icons,
-    &__search {
-      @include grid-item(3);
-    }
+  //   &__secondary,
+  //   &__icons,
+  //   &__search {
+  //     @include grid-item(3);
+  //   }
 
-    &--single-linklist {
-      .NavBar__primary {
-        @include grid-item(6);
-      }
-    }
+  //   &--single-linklist {
+  //     .NavBar__primary {
+  //       @include grid-item(6);
+  //     }
+  //   }
+  // }
+
+  &__text {
+    color: $color-secondary-1;
+  }
+
+  &__icon {
+    vertical-align: middle;
+  }
+
+  .Button {
+    padding: 0 20px;
+    margin: 0 10px;
+  }
+
+  .IconToggle {
+    display: inline-block;
   }
 }
 
