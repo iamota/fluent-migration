@@ -1,7 +1,7 @@
 <template>
   <div class="Quiz__slide Question8 Radio--longtext">
+    <h3 class="Quiz__heading h1">How quickly did your symptoms start?</h3>   
     <div class="Quiz__content">
-      <h3>How quickly did your symptoms start?</h3>   
       <Grid expand>
         <Radio 
           name="family_symptom_onset" 

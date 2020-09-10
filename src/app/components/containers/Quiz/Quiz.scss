@@ -2,15 +2,27 @@
 @import '../../../styles/variables.scss';
 
 .Quiz {
+  --input-height: 60px;
+  --input-height--mobile: 60px;
+  --input-font-size--mobile: 16px;
+
   min-height: calc(100vh - 130px);
 
   @include media-query($mobile) {
+    padding: 120px 0 0;
     min-height: auto;
   }
 
   &__heading {
     margin: 0 auto;
-    max-width: 750px;
+    max-width: 880px;
+    letter-spacing: -0.5px;
+
+    h3 {
+      @include media-query($mobile) {
+        padding: 0 10px;
+      }
+    }
 
     br {
       @include media-query($mobile) {
@@ -20,31 +32,37 @@
   }
 
   &__preheading {
+    margin-bottom: 25px;
     text-transform: uppercase;
-    color: $color-blue-1;
+    letter-spacing: -0.5px;
+    color: $color-primary-1;
   }
 
   &__body-text {
-    margin: 0 auto;
-    max-width: 580px;
+    margin: 25px auto 40px;
+    max-width: 650px;
+
+    @include media-query($mobile) {
+      margin: 25px auto 30px;
+    }
   }
 
   &__disclaimer {
-    margin: 0 auto;
+    margin: 40px auto 0;
     max-width: 650px;
 
     p {
       color: $color-gray;
       font-style: italic;
+
+      @include media-query($small) {
+        font-size: 14px;
+      }
     }
   }
 
   &__form {
     margin: 0 auto;
-
-    @include media-query($mobile) {
-      min-height: calc(100vh - 130px);
-    }
 
     .Form__body {
       max-height: 10000px !important;
@@ -55,8 +73,8 @@
   &__slide {
     position: relative;
 
-    @include media-query($mobile) {
-      height: calc(100vh - 135px);
+    .Quiz__heading {
+      margin-bottom: 30px;
     }
 
     .Button {
@@ -124,7 +142,7 @@
 
           // background-color: #50b0bd;
 
-          background-color: $color-blue-1;
+          background-color: $color-primary-1;
         }
       }
 
@@ -137,7 +155,7 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          border-color: $color-blue-1 !important;
+          border-color: $color-primary-1 !important;
           width: 150px;
           height: 150px;
 
@@ -160,23 +178,17 @@
       align-items: center;
       margin: 0;
       background-color: #fff;
-      padding: 25px 25px 18px 60px;
+
+      // padding: 25px 25px 18px 60px;
+
       width: auto;
       min-height: initial;
       text-align: left;
       line-height: initial;
 
       input {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        cursor: pointer;
-        width: 100%;
-        height: 100%;
-
         &:checked + label {
-          color: initial;
+          color: $color-primary-1;
         }
 
         &:checked + label::before {
@@ -184,7 +196,7 @@
 
           // background-color: #50b0bd;
 
-          background-color: $color-blue-1;
+          background-color: $color-primary-1;
           padding-top: 2px;
           color: #fff;
           font-family: 'Font Awesome 5 Pro';
@@ -194,48 +206,45 @@
         }
 
         &:checked + label::after {
-          display: block;
-          top: -25px;
-          left: -60px;
-          transform: initial;
-
-          // border: 2px solid #50b0bd;
-
-          border: 2px solid $color-blue-1;
-          border-radius: 0;
-          background: transparent;
-          width: 365px;
-          height: 70px;
-
-          @include media-query($mobile) {
-            display: none;
-          }
-        }
-
-        &:focus + label {
-          border-color: var(--checkbox-background);
+          border-color: $color-primary-1;
         }
       }
 
       label {
+        margin-bottom: 30px;
         border-bottom: 2px solid transparent;
-        padding-bottom: 5px;
-        padding-left: initial;
-        width: initial;
+        padding-bottom: 0;
+        padding-left: 60px;
+        width: 100%;
         text-align: left;
+
+        @include media-query($mobile) {
+          margin-bottom: 40px;
+        }
 
         &::before {
           top: 50%;
-          left: -40px;
+          left: 20px;
           transform: translateY(-50%);
           border-radius: 50%;
 
           // border-color: #50b0bd;
 
-          border-color: $color-blue-1;
+          border-color: $color-primary-1;
           width: 30px;
           height: 30px;
           text-align: center;
+        }
+
+        &::after {
+          display: block;
+          top: -20px;
+          transform: initial;
+          border: 2px solid $color-light-gray;
+          border-radius: 8px;
+          background: transparent;
+          width: 100%;
+          height: 60px;
         }
       }
     }
@@ -249,7 +258,7 @@
     }
 
     .Grid {
-      margin-bottom: 60px;
+      margin-bottom: 0;
 
       &--mobile-3 {
         .Radio {
@@ -273,19 +282,8 @@
   }
 
   &__content {
-    @include media-query($mobile) {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-
-      // padding-bottom: 90px;
-
-      padding-bottom: 120px;
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-      -ms-overflow-style: none;
-    }
+    margin: 0 auto;
+    max-width: 880px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -311,7 +309,7 @@
       .Select__field {
         // border: 2px solid #318185;
 
-        border: 2px solid $color-blue-1;
+        border: 2px solid $color-primary-1;
         border-radius: 30px;
         background-color: #fff;
       }
@@ -320,15 +318,20 @@
 
   .Input {
     &--legacy {
+      margin: 0 auto;
+      max-width: 270px;
+
+      @include media-query($mobile) {
+        max-width: 100%;
+      }
+
       .Input__label {
         display: none;
       }
 
       .Input__field {
-        // border: 2px solid #318185;
-
-        border: 2px solid $color-blue-1;
-        border-radius: 30px;
+        border: 2px solid $color-light-gray;
+        border-radius: 8px;
         background-color: #fff;
         text-align: center;
       }

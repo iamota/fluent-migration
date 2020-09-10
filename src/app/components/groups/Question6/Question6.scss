@@ -1,6 +1,12 @@
 @import '~@INF/styles';
 
-.Question6 {
-  margin: 0 auto;
-  max-width: 750px;
+.Question6.Quiz__slide {
+  .Quiz__heading {
+    margin-bottom: 50px;
+    max-width: none;
+  }
+
+  .Quiz__content {
+    max-width: 660px;
+  }
 }

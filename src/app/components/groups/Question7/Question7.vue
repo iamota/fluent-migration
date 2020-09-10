@@ -1,8 +1,7 @@
 <template>
   <div class="Quiz__slide Question7 Radio--longtext">
+    <h3 class="Quiz__heading h1">If answering for a family member, please tell us their age.</h3>
     <div class="Quiz__content">
-      <h4>Let’s get to know the family member that you cared for a bit more…</h4>
-      <h3>What is that family member’s age? </h3>
       <Input 
         name="family_member_age" 
         label="Age" 

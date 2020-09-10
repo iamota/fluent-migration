@@ -1,8 +1,8 @@
 <template>
-  <div class="Quiz__slide Question3">
+  <div class="Quiz__slide Question3 Radio--longtext">
+    <h3 class="Quiz__heading h1">What is your gender?</h3>
     <div class="Quiz__content">
-      <h3>What is your gender?</h3>
-      <Grid desktop="4" tablet="4" mobile="2">
+      <Grid desktop="3" tablet="3" mobile="1">
         <Radio 
           name="gender" 
           label="Male" 
@@ -19,12 +19,6 @@
           name="gender" 
           label="Other" 
           value="other" 
-          inline 
-        />
-        <Radio 
-          name="gender" 
-          label="I'd prefer not to say" 
-          value="I'd prefer not to say" 
           inline 
         />
       </Grid>

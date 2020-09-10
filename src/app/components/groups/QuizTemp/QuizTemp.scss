@@ -3,7 +3,8 @@
 
 .QuizTemp[class~='QuizTemp'] {
   grid-column: span 2;
-
+  border-radius: 8px;
+  background: $color-light-gray-alt-1;
 
   .Slider {
     position: relative;
@@ -23,6 +24,11 @@
       width: 66%;
       height: 2px;
       content: '';
+
+      @include media-query($mobile) {
+        left: 7%;
+        width: 86%;
+      }
     }
 
     .Radio:first-child {
@@ -44,11 +50,51 @@
     min-height: 70px;
     line-height: 70px;
 
+    @include media-query($mobile) {
+      &:first-of-type {
+        label {
+          padding-left: 12px;
+          text-align: left;
+        }
+
+        label::before {
+          left: 20px;
+          transform: none;
+        }
+
+        label::after {
+          left: 12px;
+          transform: none;
+        }
+      }
+
+      &:last-of-type {
+        label {
+          padding-right: 12px;
+          text-align: right;
+        }
+
+        label::before {
+          right: 20px;
+          left: auto;
+          transform: none;
+        }
+
+        label::after {
+          right: 12px;
+          left: auto;
+          transform: none;
+        }
+      }
+    }
+
+
     label {
       width: 95%;
 
       @include media-query($mobile) {
         width: 100%;
+        font-size: 12px;
       }
 
       &::before {
@@ -93,7 +139,7 @@
       }
 
       &:checked + label {
-        color: initial;
+        color: $color-primary-1;
       }
 
       &:checked + label::before {
@@ -106,5 +152,9 @@
         background: $color-blue-1;
       }
     }
+  }
+
+  p {
+    color: $color-primary-1;
   }
 }
