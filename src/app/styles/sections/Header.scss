@@ -34,6 +34,14 @@
   }
 }
 
+.NavList {
+  &__heading {
+    > a {
+      padding: 0 18px;
+    }
+  }
+}
+
 .MobileLogo {
   left: 10px;
   transform: none;
