@@ -5,7 +5,7 @@
       heading="Pleaset tell us about the symptoms..."
       heading_class="Quiz__heading  h1"
       subheading="(Select all that apply)"
-      subheading_class="pbold"
+      subheading_class="pbold" 
     />
     <div class="Quiz__content">                  
       <Grid 
