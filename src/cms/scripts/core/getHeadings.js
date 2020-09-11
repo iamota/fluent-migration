@@ -1,0 +1,1 @@
+export default (settings, alignment_desktop, alignment_mobile) => { return null; };
