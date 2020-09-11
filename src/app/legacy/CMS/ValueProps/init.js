@@ -20,7 +20,7 @@ const render = (module_name, container = document) => {
     if (!settings) { return; }
     // console.log(`${module_name} Settings:`, settings);
     const styles_html = styles(settings, module_name, i);
-    const background_html = generateBackground(settings.background, module_name, i, null);
+    const background_html = generateBackground(settings.background, module_name, i, 0);
     const content_html = generateContent(settings, module_name, i);
     const module_animation = settings.animation.module_animation === `none` ? `` : `Animate Animate--${settings.animation.module_animation}`;
     const inner_animation = settings.animation.inner_animation === `none` ? `` : `Animate Animate--${settings.animation.inner_animation}`;
