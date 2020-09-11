@@ -159,3 +159,19 @@
     }
   }
 }
+
+.Announcements {
+  .flickity-prev-next-button  {
+    @include transition(background 0.5s);
+  }
+
+  &.flickity-enabled {
+    .Announcement {
+      opacity: 0;
+    
+      &.is-selected {
+        opacity: 1;
+      }
+    }
+  }
+}
