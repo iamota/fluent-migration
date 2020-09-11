@@ -15,7 +15,7 @@
         <div class="Quiz__body-text" v-if="currentStep === `starter`" v-html="body_text" />
         <Button v-if="currentStep === `starter` && cta !== ``" :class="`Quiz__startButton Button Button__${cta_style}`" @click.native="startQuiz">{{ cta }}</Button>
         <div class="Quiz__disclaimer" v-if="currentStep === `starter`" v-html="disclaimer_text" />
-        
+         
         <!-- <transition-group name="fade" mode="out-in"> -->
         <Question1 v-if="currentStep === `question1`" key="question1" />
         <Question2 v-if="currentStep === `question2`" key="question2" />
