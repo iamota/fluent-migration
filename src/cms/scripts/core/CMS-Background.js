@@ -40,7 +40,7 @@ const getVideoHtml = (media, video_embed, { module_type, module_index, submodule
   `;
 };
 
-export default (background, module_name, module_index, submodule_index = 0, video_option_overrides = {}) => {
+export default (background, module_name, module_index, submodule_index, video_option_overrides, extra_class_name) => {
   if (!background) { return ``; }
 
   const video_options = {
@@ -64,14 +64,14 @@ export default (background, module_name, module_index, submodule_index = 0, vide
         const will_hide_mobile = background[`background_image--mobile`] ? ` data-image-hide-mobile` : ``;
         background_html += `<div class="Module__Bg--full" ${will_hide_mobile} data-bg-image-desktop data-type="image"></div>`;
         background_styles += `
-        .rte #Module-${module_name}--${module_index}--${submodule_index}__Bg [data-bg-image-desktop] {
+        .rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg [data-bg-image-desktop] {
           background-image: url(${background.background_image});
           background-size: ${background.background_size};
         }`;
         if (background[`background_image--mobile`]) {
           background_html += `<div class="Module__Bg--full" data-image-hide-desktop data-bg-image-mobile data-type="image"></div>`;
           background_styles += `
-          .rte #Module-${module_name}--${module_index}--${submodule_index}__Bg [data-bg-image-mobile] {
+          .rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg [data-bg-image-mobile] {
             background-image: url(${background[`background_image--mobile`]});
             background-size: cover;
           }`;
@@ -80,29 +80,29 @@ export default (background, module_name, module_index, submodule_index = 0, vide
       break;
     case `color`:
       background_html += `<div class="Module__Bg--full" data-type="color"></div>`;
-      background_styles += `.rte #Module-${module_name}--${module_index}--${submodule_index}__Bg .Module__Bg--full { background-color: ${background.background_color}; }`;
+      background_styles += `.rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg .Module__Bg--full { background-color: ${background.background_color}; }`;
       break;
     case `dual`:
       if (background.background_color_left) {
         background_html += `<div class="Module__Bg--split" data-split="left" data-type="color"></div>`;
-        background_styles += `.rte #Module-${module_name}--${module_index}--${submodule_index}__Bg .Module__Bg--split[data-split="left"] { background-color: ${background.background_color_left}; }`;
+        background_styles += `.rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg .Module__Bg--split[data-split="left"] { background-color: ${background.background_color_left}; }`;
       }
       if (background.background_color_right) {
         background_html += `<div class="Module__Bg--split" data-split="right" data-type="color"></div>`;
-        background_styles += `.rte #Module-${module_name}--${module_index}--${submodule_index}__Bg .Module__Bg--split[data-split="right"] { background-color: ${background.background_color_right}; }`;
+        background_styles += `.rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg .Module__Bg--split[data-split="right"] { background-color: ${background.background_color_right}; }`;
       }
       if (background.has_background_image && background.background_image) {
         const will_hide_mobile = background[`background_image--mobile`] ? ` data-image-hide-mobile` : ``;
         background_html += `<div class="Module__Bg--full" ${will_hide_mobile} data-bg-image-desktop data-type="image"></div>`;
         background_styles += `
-        .rte #Module-${module_name}--${module_index}--${submodule_index}__Bg [data-bg-image-desktop] {
+        .rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg [data-bg-image-desktop] {
           background-image: url(${background.background_image});
           background-size: auto 100%;
         }`;
         if (background[`background_image--mobile`]) {
           background_html += `<div class="Module__Bg--full" data-image-hide-desktop data-bg-image-mobile data-type="image"></div>`;
           background_styles += `
-          .rte #Module-${module_name}--${module_index}--${submodule_index}__Bg [data-bg-image-mobile] {
+          .rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg [data-bg-image-mobile] {
             background-image: url(${background[`background_image--mobile`]});
             background-size: cover;
           }`;
@@ -112,6 +112,16 @@ export default (background, module_name, module_index, submodule_index = 0, vide
     case `video`:
       video_embed = getVideoEmbed(background.video, background.video_type);
       background_html = getVideoHtml(background, video_embed, video_options, module_name);
+      break;
+    case `gradient`:
+      background_html += `<div class="Module__Bg--full" data-type="gradient"></div>`;
+      background_styles += `.rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg .Module__Bg--full {
+        background: ${background.background_gradient_color_start};
+        background: -moz-linear-gradient(${background.background_gradient_angle}deg, ${background.background_gradient_color_start}, ${background.background_gradient_color_end});
+        background: -webkit-linear-gradient(${background.background_gradient_angle}deg, ${background.background_gradient_color_start}, ${background.background_gradient_color_end});
+        background: linear-gradient(${background.background_gradient_angle}deg, ${background.background_gradient_color_start}, ${background.background_gradient_color_end});
+      }
+      `;
       break;
     default:
       return ``;
@@ -126,7 +136,7 @@ export default (background, module_name, module_index, submodule_index = 0, vide
   
   // Extra background styles, eg. insets?
   background_styles += `
-    .rte #Module-${module_name}--${module_index}--${submodule_index}__Bg {
+    .rte ${extra_class_name ? extra_class_name : ``} #Module-${module_name}--${module_index}--${submodule_index}__Bg {
       ${video_options.scale 
         ? `position: relative;`
         : ``
