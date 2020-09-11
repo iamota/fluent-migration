@@ -28,6 +28,7 @@ export default defineActions({
 
     if (response && response.type === `advance`) {
       goToNext();
+      return;
     }
 
     if (response && response.type === `kit`) {
@@ -52,7 +53,8 @@ export default defineActions({
 
       // @ts-ignore
       store.original.registerModule([`Products`, product_data.id], { namespaced: true, state: product_state, mutations: ProductMutations, actions: ProductActions, getters: ProductGetters });
-      goToNext();      
+      goToNext(); 
+      return;     
     }
 
     if (response && response.type === `breakout`) {
@@ -62,7 +64,11 @@ export default defineActions({
       if (!redirect_url) { return; }
 
       window.location.href = `${response.path}?${query_string}`;
+      return;
     }
+
+    // Session Expired
+    console.log(`Session has expired`);
   },
   back(context, step): void {
     const { commit } = QuizActionContext(context);  
