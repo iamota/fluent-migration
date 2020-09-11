@@ -1,13 +1,22 @@
 <template>
   <div class="Quiz__slide Question2">
+    <h3 class="Quiz__heading h1">What is your age?</h3>    
     <div class="Quiz__content">
-      <h3>{{ `Nice to meet you, ${getName}.` }}</h3>
-      <p>We would like ask you a few questions to better understand your cold and flu experiences.  It should take you less than 5 minutes to complete.</p>
+      <Input 
+        name="age" 
+        label="Age" 
+        design="legacy"
+        placeholder="Age"
+        required
+        :rules="[`integer('Please input age as an integer.')`, `validNumericalAge`]"
+        @keypress.native.enter.prevent="nextStep"
+      />
     </div>
-    <div class="Quiz__buttons">
-      <a href="#" class="Button Button__Primary" @click.prevent="back">back</a>
-      <a href="#" class="Button Button__Primary" @click.prevent="next">continue</a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      :next_step="next_step"
+    />
   </div>
 </template>
 

@@ -1,0 +1,10 @@
+@import '~@INF/styles';
+
+.QuizButtons {
+  padding: 40px 0;
+
+  @include media-query($mobile) {
+    display: flex;
+    justify-content: space-between;
+  }
+}

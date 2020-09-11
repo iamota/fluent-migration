@@ -1,6 +1,11 @@
 @import '~@INF/styles';
 
-.Question4 {
-  margin: 0 auto;
-  max-width: 750px;
+.Question4.Quiz__slide {
+  .Quiz__heading {
+    margin-bottom: 50px;
+  }
+
+  .Quiz__content {
+    max-width: 560px;
+  }
 }

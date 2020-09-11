@@ -1,56 +1,30 @@
 <template>
-  <div class="Quiz__slide Question9">
+  <div class="Quiz__slide Question9 Radio--longtext">
+    <h3 class="Quiz__heading h1">How long have you had your symptoms?</h3>   
     <div class="Quiz__content">
-      <h3 v-if="isMyself">Did you get the flu vaccine in the past 12 months?</h3> 
-      <h3 v-if="!isMyself">Did your family member get the flu vaccine in the past 12 months?</h3>     
-      <Grid 
-        expand 
-        desktop="3" 
-        tablet="3" 
-        mobile="2"
-      >
+      <Grid expand>
         <Radio 
-          name="vaccine" 
-          label="Yes" 
-          value="yes"
+          name="family_symptom_duration" 
+          label="6 days or less" 
+          value="6"
           inline 
         />
         <Radio 
-          name="vaccine" 
-          label="No" 
-          value="no" 
+          name="family_symptom_duration" 
+          label="7 days or more" 
+          value="7" 
           inline
         /> 
-        <Radio
-          v-if="isMyself" 
-          name="vaccine" 
-          label="I don't remember" 
-          value="I don't remember" 
-          inline
-        />
-        <Radio
-          v-if="!isMyself" 
-          name="vaccine" 
-          label="I don't know" 
-          value="I don't know" 
-          inline
-        />  
       </Grid>   
     </div>
-    <div class="Quiz__buttons">
-      <a href="#"  :class="`Button Button__Primary`" @click.prevent="back">back</a>
-      <a 
-        href="#" 
-        class="Button Button__Primary" 
-        :class="{ 'noHover': isDisabled }" 
-        :disabled="isDisabled" 
-        @click.prevent="next"
-      >
-        continue
-      </a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      :next_step="next_step"
+    />
   </div>
 </template>
+
 
 <script src="./Question9.ts"></script>
 <style src="./Question9.scss"></style>
