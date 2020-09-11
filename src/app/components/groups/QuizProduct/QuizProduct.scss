@@ -35,6 +35,10 @@
   .ProductOption {
     margin-bottom: 40px;
 
+    @include media-query($mobile) {
+      margin-bottom: 10px;
+    }
+
     &__name {
       margin-bottom: 12px;
 
@@ -44,13 +48,13 @@
     }
 
     .Button {
-      margin: 0 20px 0 0;
+      margin: 0 20px 15px 0;
       border-width: 1px;
       background-color: transparent;
       padding: 0;
 
       @include media-query($mobile) {
-        margin: 0 10px;
+        margin: 0 10px 15px;
       }
 
       label {
@@ -100,11 +104,22 @@
     }
   }
 
-  // .ProductOverview__quantity-add {
-  //   .Button {
-  //     margin: 0 20px;
-  //   }
-  // }
+  .ProductOverview__quantity-add {
+    flex-wrap: wrap;
+
+    @include media-query($mobile) {
+      justify-content: center;
+    }
+
+    .Button {
+      margin: 0 20px 15px 0;
+
+      @include media-query($mobile) {
+        margin: 0 10px 15px;
+      }
+    }
+  }
+
   .QuizProduct__cta {
     margin-right: 20px;
   }
