@@ -5,7 +5,7 @@
     class="QuizProduct" 
     :css_variables="cssVariables"
     :animation="null"
-  >
+  > 
     <p class="QuizProduct__preheading Heading__preheading h5" v-html="kit_title" />
     <h3 class="QuizProduct__heading Heading__heading h1" v-html="kit_body" />
     <div class="ProductOverview__grid">
