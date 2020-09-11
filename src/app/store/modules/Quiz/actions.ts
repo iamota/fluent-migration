@@ -5,6 +5,7 @@ import ProductGetters from '@INF/modules/Products/getters';
 import ProductMutations from '@INF/modules/Products/mutations';
 import ProductActions from '@INF/modules/Products/actions';
 import {QuizActionContext} from './';
+import { SESSION_EXPIRED } from '../../../components/containers/Quiz/config';
 
 export default defineActions({
   previousStep(context, step): void {
@@ -64,11 +65,7 @@ export default defineActions({
       if (!redirect_url) { return; }
 
       window.location.href = `${response.path}?${query_string}`;
-      return;
     }
-
-    // Session Expired
-    window.location.hash = `quiz_session_expired`;
   },
   back(context, step): void {
     const { commit } = QuizActionContext(context);  
@@ -108,6 +105,10 @@ export default defineActions({
         resolve(response);
       } catch (error) {
         console.log(`ERROR: `, error);
+        if (error && error.status === SESSION_EXPIRED) {
+          // Session Expired
+          window.location.hash = `quiz_session_expired`;
+        }
       }
     });
   },
