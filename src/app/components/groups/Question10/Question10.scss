@@ -119,6 +119,10 @@
           display: none;
         }
       }
+
+      .State--visibleFocus &:focus + label {
+        outline: 5px solid blue !important;
+      }
     }
   }
 }

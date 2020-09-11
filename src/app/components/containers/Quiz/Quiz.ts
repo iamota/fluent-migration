@@ -30,13 +30,13 @@ export default Vue.extend({
         },
         validNumericalAge: (age: string): string => {
           const age_number = parseInt(age);
-          const focus = get(store, `state.Forms.quizForm.focus.value`, ``);
+          // const focus = get(store, `state.Forms.quizForm.focus.value`, ``);
           if (age_number > 120 || age_number < 1) {
             return `Please input an age that is between 1 and 120`;
           }
-          if (focus !== `other` && age_number < 18) {
-            return `We cannot accept input from anyone under the age of 18. Thank you for your interest!`;
-          }
+          // if (focus !== `other` && age_number < 18) {
+          //   return `We cannot accept input from anyone under the age of 18. Thank you for your interest!`;
+          // }
           return ``;
         },
       },

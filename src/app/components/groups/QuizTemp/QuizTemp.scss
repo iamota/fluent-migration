@@ -151,6 +151,10 @@
         border-color: $color-blue-1;
         background: $color-blue-1;
       }
+
+      .State--visibleFocus &:focus + label::after {
+        outline: 5px solid blue !important;
+      }
     }
   }
 
