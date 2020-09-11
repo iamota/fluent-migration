@@ -29,9 +29,10 @@
         <Question10 v-if="currentStep === `question10`" key="question10" />        
         <QuizProduct
           v-if="currentStep === `kit`"
+          id="QuizProduct"
           key="kit" 
           option_type="list"
-          id="QuizProduct"
+          name="QuizProduct"
           :product_data_id="5574461685917" 
           :filmstrip="false" 
           :arrow_opacity="0"
