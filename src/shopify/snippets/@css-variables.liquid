@@ -1,7 +1,5 @@
-{% comment %}
 <style>
   :root {
-    --my-custom-variable: {{ settings.my_custom_setting }};
+    --user-icon: url('{{ 'user.png' | asset_img_url: '40x' }}');
   }
 </style>
-{% endcomment %}

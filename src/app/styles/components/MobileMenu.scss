@@ -1,5 +1,42 @@
 // Just some example styles for the top and bottom placeholders in the mobile menu
 .MobileMenu {
+
+  &__list {
+    &:nth-of-type(1) {
+      border-top: 1px solid rgba(255,255,255,0.5);
+    }
+
+    &--tier1 {
+      .MobileMenu__link {
+        border-bottom: none;
+      }
+
+      .MobileMenu__item {
+        position: relative;
+
+        &::before {
+          content: '';
+          width: 65px;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+
+        &:last-child {
+          &::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
+  &__link {
+    font-weight: 700;
+    padding: 25px 0;
+  }
+
   &__top {
     
   }

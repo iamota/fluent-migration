@@ -1,35 +1,131 @@
 
 .NavBar {
   @include grid {
-    &__logo {
-      @include grid-item(3);
+    &--center-logo .NavBar__logo {
+      @include grid-item(2);
     }
 
-    &__secondary,
-    &__icons,
-    &__search {
-      @include grid-item(3);
+    &--center-logo .NavBar__icons {
+      @include grid-item(5);
     }
 
     &--single-linklist {
       .NavBar__primary {
-        @include grid-item(6);
+        @include grid-item(5);
       }
+    }
+  }
+
+  &__text {
+    color: $color-secondary-1;
+  }
+
+  &__icon {
+    vertical-align: middle;
+
+    &--user {
+      font-size: 0;
+    }
+
+    &-image {
+      display: inline-block;
+      width: 22px;
+      // background-image: var(--user-icon);
+      // background-image: url('https://cdn.shopify.com/s/files/1/0399/0008/6429/files/user-circle.svg?v=1599770456');
+      // background-position: center;
+      // background-repeat: no-repeat;
+      // background-size: contain;
+
+      .st0,
+      .st1 {
+        stroke: $color-secondary-1;
+      }
+    }
+
+    &:hover {
+      .NavBar__icon-image {
+        .st0,
+        .st1 {
+          stroke: #aaa;
+        }
+      }
+    }
+  }
+
+  .Button {
+    padding: 0 20px;
+    margin: 0 10px;
+  }
+
+  .IconToggle {
+    display: inline-block;
+  }
+}
+
+.NavList {
+  &__heading {
+    > a {
+      padding: 0 18px;
     }
   }
 }
 
-.MobileLogo {
-  left: 10px;
-  transform: none;
-  transform: translateY(-50%);
-}
+// .MobileLogo {
+//   left: 10px;
+//   transform: none;
+//   transform: translateY(-50%);
+// }
 
-.MobileBar__right {
-  margin-right: 10px;
+// .MobileBar__right {
+//   margin-right: 10px;
 
-  .Button {
-    margin-bottom: 4px;
+//   .Button {
+//     margin-bottom: 4px;
+//   }
+// }
+
+.MobileBar {
+  height: 60px;
+  line-height: 60px;
+
+  &__icon {
+    color: $color-secondary-1;
+    font-size: 23px;
+    vertical-align: middle;
+
+    &--user {
+      font-size: 0;
+      margin-right: 8px;
+
+      .st0,
+      .st1 {
+        stroke: $color-secondary-1;
+      }
+    }
+
+    &-image {
+      display: inline-block;
+      width: 26px;
+    }
+  }
+
+  .IconToggle {
+    display: inline-block;
+  }
+
+  &__bottom {
+    background: $color-primary-3;
+    color: $color-secondary-1;
+    padding: 0 10px 10px;
+
+    &-text {
+      margin-right: 5px;
+    }
+
+    .Button {
+      font-size: 16px;
+      line-height: 31px;
+    }
   }
 }
 
@@ -60,6 +156,22 @@
 
     &__image {
       width: 180px;
+    }
+  }
+}
+
+.Announcements {
+  .flickity-prev-next-button  {
+    @include transition(background 0.5s);
+  }
+
+  &.flickity-enabled {
+    .Announcement {
+      opacity: 0;
+    
+      &.is-selected {
+        opacity: 1;
+      }
     }
   }
 }
