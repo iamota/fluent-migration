@@ -4,12 +4,6 @@ export default (settings, module_name, index) => {
   let custom_css_mobile = ``;
 
   custom_css += `
-    .rte #Module-${module_name}--${index} .Section__container {
-      background: linear-gradient(211deg, #00aca0, #9aca3c);
-    }
-  `;
-
-  custom_css += `
     .rte #Module-${module_name}--${index} .Module-${module_name}__Headings *,
     .rte #Module-${module_name}--${index} .Module-${module_name}__Prop * {
       color: ${settings.theme === `dark` ? `var(--text-color-dark)` : `var(--text-color-light)`};
