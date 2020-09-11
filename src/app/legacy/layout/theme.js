@@ -20,6 +20,7 @@ import RteVideo from '../components/rte-video';
 import ShoppableImage from '../components/ShoppableImage';
 import RecentArticlesCarosuel from '../components/RecentArticlesCarousel';
 import { FormIframe } from '../components/FormWithIframe';
+import AnnouncementBar from '../components/AnnouncementBar';
 import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
 
 import ThankYouPods from '../sections/ThankYouPods';
@@ -54,6 +55,7 @@ $(document).ready(() => {
   SimpleCarousel();
   RecentArticlesCarosuel();
   FormIframe();
+  AnnouncementBar();
   ThankYouPods();
 
   _.each(Infinite, (component) => {
