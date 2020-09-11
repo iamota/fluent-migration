@@ -5,5 +5,4 @@ deploy:
   only:
     - api
   script:
-    - bash /usr/src/app/deploy.sh
-    
+    - bash /usr/src/app/deploy.sh 

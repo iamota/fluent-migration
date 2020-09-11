@@ -1,27 +1,16 @@
 import Vue from 'vue';
 import store from 'infinite/src/app/store';
-  
-export default Vue.extend({
+
+export default Vue.extend({  
+  data() {
+    return {
+      previous_step: `question7`,
+      next_step: `question9`,
+    };
+  },
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quizForm.focus || store.state.Forms.quizForm.focus.value === `` || store.state.Forms.quizForm.focus.errors.length > 0;
-    },
-  },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question7`);
-    },
-    next(): void {
-      if (store.state.Forms.quizForm.times_sick.value === `0`) {
-        store.dispatch.Quiz.nextStep(`question17`);
-        return;
-      }  
-
-      if (store.state.Forms.quizForm.focus.value === `myself`) {
-        store.dispatch.Quiz.nextStep(`question9`);
-      } else {
-        store.dispatch.Quiz.nextStep(`question9a`);
-      }
+      return !store.state.Forms.quizForm.family_symptom_onset || store.state.Forms.quizForm.family_symptom_onset.value === `` || store.state.Forms.quizForm.family_symptom_onset.errors.length > 0;
     },
   },
 });

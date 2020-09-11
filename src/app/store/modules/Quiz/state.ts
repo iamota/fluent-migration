@@ -2,12 +2,20 @@ declare global {
   export namespace Quiz {
     interface State {
       step: string;
+      product_id: number | unknown;
+      product_handle: string;
+      kit_title: string;
+      kit_body: string;
     }
   }
 }
 
 const state: Quiz.State = {
   step: `starter`,
+  kit_body: `You have the flu. <br/>We recommend the Adult Flue Relief Pack.`,
+  kit_title: `Based on your symptoms...`,
+  product_id: 5574461685917,
+  product_handle: `dev-test-product-do-not-delete`,
 };
 
 export default state;
