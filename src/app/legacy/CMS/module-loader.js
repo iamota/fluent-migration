@@ -1,9 +1,10 @@
 import _ from 'lodash-es';
 import * as CMS from 'infinite/cms/loader';
 // import Custom modules below. Add render and pre-render functions to arrays.
+import { CMSValuePropsPreRender, CMSValueProps } from './ValueProps';
 
-const preRenderers = [];
-const renderers = [];
+const preRenderers = [CMSValuePropsPreRender];
+const renderers = [CMSValueProps];
 
 const initModules = () => {
   _.each(CMS, (func) => {
