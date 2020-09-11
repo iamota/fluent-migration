@@ -6,13 +6,8 @@
     :css_variables="cssVariables"
     :animation="null"
   >
-    <Heading 
-      name="QuizProduct"
-      :heading="kit_body"
-      heading_class="h1"
-      :preheading="kit_title"
-      preheading_class="h5"
-    />
+    <p class="QuizProduct__preheading Heading__preheading h5" v-html="kit_title" />
+    <h3 class="QuizProduct__heading Heading__heading h1" v-html="kit_body" />
     <div class="ProductOverview__grid">
       <ProductImages :product_data_id="product_id" v-bind="$props" />
       <div class="ProductInfo">

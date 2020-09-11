@@ -1,5 +1,6 @@
 import { ProductOverview } from '@INF/containers/ProductOverview';
 import store from '@INF/store';
+import { unescape } from 'lodash-es';
   
 export default ProductOverview.extend({
   computed: {
@@ -10,10 +11,10 @@ export default ProductOverview.extend({
       return `/products/${store.state.Quiz.product_handle}`;
     },
     kit_body(): string {
-      return store.state.Quiz.kit_body;
+      return unescape(store.state.Quiz.kit_body);
     },
     kit_title(): string {
-      return store.state.Quiz.kit_title;
+      return unescape(store.state.Quiz.kit_title);
     },
   },
 });
