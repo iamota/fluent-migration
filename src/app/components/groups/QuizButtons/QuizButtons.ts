@@ -18,7 +18,7 @@ export default Vue.extend({
         if (this.disabled) { return;}
 
         const age = get(store, `state.Forms.quizForm.age.value`, null);      
-        if (age < AGE_MINIMUM) {
+        if (age && age < AGE_MINIMUM) {
           window.location.hash = `quiz_age_modal`;
           return;
         }
