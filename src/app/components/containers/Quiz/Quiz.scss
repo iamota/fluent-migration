@@ -209,6 +209,10 @@
         &:checked + label::after {
           border-color: $color-primary-1;
         }
+
+        .State--visibleFocus &:focus + label::after {
+          outline: 5px solid blue !important;
+        }
       }
 
       label {
