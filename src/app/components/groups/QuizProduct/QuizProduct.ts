@@ -1,6 +1,6 @@
 import { ProductOverview } from '@INF/containers/ProductOverview';
 import store from '@INF/store';
-import { unescape } from 'lodash-es';
+import { unescape } from 'lodash-es'; 
   
 export default ProductOverview.extend({
   computed: {
