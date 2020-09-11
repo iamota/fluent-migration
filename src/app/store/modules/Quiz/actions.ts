@@ -68,7 +68,7 @@ export default defineActions({
     }
 
     // Session Expired
-    console.log(`Session has expired`);
+    window.location.hash = `quiz_session_expired`;
   },
   back(context, step): void {
     const { commit } = QuizActionContext(context);  

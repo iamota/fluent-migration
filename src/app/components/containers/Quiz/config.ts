@@ -1,0 +1,1 @@
+export const AGE_MINIMUM = 11;
