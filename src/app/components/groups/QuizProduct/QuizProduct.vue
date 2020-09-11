@@ -8,9 +8,9 @@
   >
     <Heading 
       name="QuizProduct"
-      :heading="recommended_heading"
+      :heading="kit_body"
       heading_class="h1"
-      preheading="Based on your stymptoms..."
+      :preheading="kit_title"
       preheading_class="h5"
     />
     <div class="ProductOverview__grid">

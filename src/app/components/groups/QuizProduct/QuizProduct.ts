@@ -9,8 +9,11 @@ export default ProductOverview.extend({
     product_url(): string {
       return `/products/${store.state.Quiz.product_handle}`;
     },
-    recommended_heading(): string {
-      return store.state.Quiz.recomendation_custom_message;
+    kit_body(): string {
+      return store.state.Quiz.kit_body;
+    },
+    kit_title(): string {
+      return store.state.Quiz.kit_title;
     },
   },
 });

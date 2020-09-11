@@ -19,14 +19,12 @@
           name="symptoms[]" 
           label="Fever &amp; Chills" 
           value="fever_chills"
-          inline          
         />
         <Checkbox 
           class="Checkbox--Shortness"
           name="symptoms[]" 
           label="Shortness of breath" 
           value="shortness_of_breath"
-          inline
         />
         <QuizTemp v-show="showTemp" />
         <Checkbox 
@@ -34,70 +32,60 @@
           name="symptoms[]" 
           label="Muscle &amp; Body Aches" 
           value="body_aches"
-          inline
         />
         <Checkbox 
           class="Checkbox--Exhausted"
           name="symptoms[]" 
           label="Fatigue or exhausted" 
           value="fatigue_tiredness"
-          inline
         /> 
         <Checkbox 
           class="Checkbox--Sinus-congestion"
           name="symptoms[]" 
           label="Sinus Congestion" 
           value="sinus_congestion"
-          inline
         />
         <Checkbox 
           class="Checkbox--Runny"
           name="symptoms[]" 
           label="Runny or Stuffy Nose" 
           value="runny_stuffy_nose"
-          inline
         />
         <Checkbox 
           class="Checkbox--Nasal-congestion"
           name="symptoms[]" 
           label="Nasal Congestion" 
           value="nasal_congestion"
-          inline
         />
         <Checkbox 
           class="Checkbox--Mucus"
           name="symptoms[]" 
           label="Thickened Phlegm" 
           value="thickened_phlegm"
-          inline
         /> 
         <Checkbox 
           class="Checkbox--Headache"
           name="symptoms[]" 
           label="Headache" 
-          value="headache"         
-          inline
+          value="headache"
         />
         <Checkbox 
           class="Checkbox--Sore"
           name="symptoms[]" 
           label="Sore throat" 
-          value="sore_throat" 
-          inline          
+          value="sore_throat"
         />
         <Checkbox 
           class="Checkbox--Cough"
           name="symptoms[]" 
           label="Cough" 
           value="coughing"
-          inline
         /> 
         <Checkbox 
           class="Checkbox--Sneezing"
           name="symptoms[]" 
           label="Sneezing" 
           value="sneezing"
-          inline
         /> 
       </Grid>
     </div>
