@@ -46,6 +46,12 @@
     }
   }
 
+  #section1599156390627 {
+    .Section__heading {
+      line-height: 1.2;
+    }
+  }
+
   #Pod1591256997016-0 {
     position: relative;
 
@@ -150,4 +156,8 @@
 
 .hide {
   display: none;
+}
+
+.mobile-only {
+  @include mobile-only;
 }
