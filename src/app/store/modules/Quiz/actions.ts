@@ -1,17 +1,20 @@
 import { defineActions } from 'direct-vuex';
 import $ from 'jquery';
+import store from '@INF/store';
+import ProductGetters from '@INF/modules/Products/getters';
+import ProductMutations from '@INF/modules/Products/mutations';
+import ProductActions from '@INF/modules/Products/actions';
 import {QuizActionContext} from './';
 
 export default defineActions({
   previousStep(context, step): void {
-    const { commit } = QuizActionContext(context);  
+    const { commit, dispatch } = QuizActionContext(context);  
     commit.setStep(step);
   },
   async nextStep(context, step): Promise<void> {
-    const { commit, dispatch, getters } = QuizActionContext(context);  
+    const { state, commit, dispatch, getters } = QuizActionContext(context);  
     const response = await dispatch.getAssessment();
-
-    if (response && (response.type === `advance` || response.type === `kit`)) {
+    const goToNext = (): void => {
       try {
         window.ga(`send`, `event`, `Quiz`, `Changing Step`, `Step`, step);
       } catch (error) {
@@ -19,8 +22,37 @@ export default defineActions({
       }
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: `smooth` });
-      }, 1);
+      }, 1);      
       commit.setStep(step);
+    };
+
+    if (response && response.type === `advance`) {
+      goToNext();
+    }
+
+    if (response && response.type === `kit`) {
+      commit.setBody(response.kit.banner_body_html);
+      commit.setTitle(response.kit.banner_title_html);
+      // commit.setProductHandle(response.kit.shopify_product_handle);
+      const product_data = await dispatch.getProduct(state.product_handle);
+
+      const selected_variant_id = product_data.variants[0].id;
+      const variant_table: GenericObject = {};
+      
+      for (const variant of product_data.variants) {
+        variant_table[variant.id] = variant;
+      }
+
+      const product_state = {
+        product_data,
+        variant_table,
+        selected_variant_id,
+        quantity: 1,
+      };
+
+      // @ts-ignore
+      store.original.registerModule([`Products`, product_data.id], { namespaced: true, state: product_state, mutations: ProductMutations, actions: ProductActions, getters: ProductGetters });
+      goToNext();      
     }
 
     if (response && response.type === `breakout`) {

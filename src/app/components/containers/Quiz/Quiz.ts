@@ -1,9 +1,6 @@
 import Vue from 'vue';
 import store from '@INF/store';
 import { get } from 'lodash-es';
-import getters from '@INF/modules/Products/getters';
-import mutations from '@INF/modules/Products/mutations';
-import actions from '@INF/modules/Products/actions';
 import { default_props, default_css_variables } from './Quiz.defaults';
 
 export default Vue.extend({
@@ -123,30 +120,6 @@ export default Vue.extend({
     // },
     startQuiz(): void {
       store.commit.Quiz.setStep(`question1`);
-    },
-    async getProduct(): Promise<void> {
-      const product_data = await store.dispatch.Quiz.getProduct(store.state.Quiz.product_handle);
-
-      const selected_variant_id = product_data.variants[0].id;
-      const variant_table: GenericObject = {};
-      
-      for (const variant of product_data.variants) {
-        variant_table[variant.id] = variant;
-      }
-  
-      const state = {
-        product_data,
-        variant_table,
-        selected_variant_id,
-        quantity: 1,
-      };
-
-      // @ts-ignore
-      this.$store.registerModule([`Products`, product_data.id], { namespaced: true, state, mutations, actions, getters });
-      
-    }, 
-  },
-  mounted() {
-    this.getProduct();
+    },    
   },
 });
