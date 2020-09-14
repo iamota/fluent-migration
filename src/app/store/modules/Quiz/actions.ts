@@ -33,11 +33,24 @@ export default defineActions({
     }
 
     if (response && response.type === `kit`) {
-      commit.setBody(response.kit.banner_body_html);
-      commit.setTitle(response.kit.banner_title_html);
-      // commit.setProductHandle(response.kit.shopify_product_handle);
-      const product_data = await dispatch.getProduct(state.product_handle);
+      const { banner_body_html, banner_title_html, gradient_class, image_src_desktop, image_src_mobile, shopify_product_handle } = response.kit;
+      const session_object = {
+        gradient_class,
+        image_src_desktop,
+        image_src_mobile,
+        shopify_product_handle,
+      };
+      const localStorageExists = (typeof Storage !== `undefined`);
 
+      commit.setBody(banner_body_html);
+      commit.setTitle(banner_title_html);
+      // commit.setProductHandle(response.kit.shopify_product_handle);
+
+      if (localStorageExists) {
+        localStorage.setItem(`kit_data`, JSON.stringify(session_object));
+      }
+
+      const product_data = await dispatch.getProduct(state.product_handle);
       const selected_variant_id = product_data.variants[0].id;
       const variant_table: GenericObject = {};
       
