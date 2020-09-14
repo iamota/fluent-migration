@@ -1,4 +1,10 @@
 .Modal {
+  margin-top: 30px;
+
+  @include media-query($mobile) {
+    margin-top: 0;
+  }
+
   &__close {
     top: -22px;
     right: -22px;
