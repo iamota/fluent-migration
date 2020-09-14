@@ -22,10 +22,11 @@
 @import './components/units/Button';
 
 // Components
-// @import './components/MobileMenu';
 @import './components/ShoppableImage';
+@import './components/MobileMenu';
 
 // @import './components/Keen-ui-overrides';
+@import './components/Modal';
 
 // Sections
 @import './sections/Header';
@@ -34,6 +35,7 @@
 @import './sections/ThankYouContentArea';
 @import './sections/ContentArea';
 @import './sections/HeroCarousel';
+@import './sections/CustomBanner';
 
 // Templates
 @import './templates/Homepage';

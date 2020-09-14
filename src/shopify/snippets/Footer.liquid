@@ -1,5 +1,110 @@
 <footer class="Footer Section Section--{{ section.settings.width }} {{ extra_classes }}" {{ extra_attrs }} data-footer>
   <div class="Section__container">
+    <div class="Footer__wrapper">
+      <div class="Footer__content">
+        <div class="Footer__content-wrapper">
+          <div class="Footer__image">
+            <img src="{{ section.settings.image | img_url: '640x' }}" alt="{{ image_alt | escape }}" onLoad="elementLoaded(this);">
+          </div>
+
+          <div class="Footer__middle-container">
+            <div class="Footer__text-wrapper">
+              <div class="Footer__top">
+                <div class="Footer__nav">
+                {% for block in section.blocks %}
+                  {%- if block.type == 'link_list' -%}
+                  <ul class="Footer__menu Footer__nav-list">
+                    {% if block.settings.show_title %}
+                      {%- assign menu_title = linklists[block.settings.linklist].title -%}
+                      {%- if menu_title contains '::' -%}
+                        {%- assign menu_title = menu_title | split: '::' | last -%}
+                      {%- endif -%}
+                      <li class="Footer__title">{{ menu_title }}</li>
+                    {% endif %}
+                    {% for link in linklists[block.settings.linklist].links %}
+                      <li class="Footer__link"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                  {%- endif -%}
+                {% endfor %}
+                </div>
+              </div>
+              <div class="Footer__bottom">
+                <p class="Footer__copyright">
+                  {% comment %} {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. All Rights Reserved.       {% endcomment %}
+                  Copyright &copy;{{ 'now' | date: "%Y" }} {{ '°Fluent™' | link_to: '/' }}. All Rights Reserved.         
+                  {%- assign linklist_copyright = section.settings.linklist_copyright -%}
+                  {% if linklists[linklist_copyright].links.size > 0 %}
+                    {% for link in linklists[linklist_copyright].links %}
+                      <a class="Footer__terms-link" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+                    {% endfor %}
+                  {% endif %}
+                </p>
+                {% comment %} <p class="Footer__shout-out">{% include 'INF-translation', translate: 'layout.footer.digital_experience', default: 'Digital Experience By' %} <strong><a href="https://lucidfusion.com" target="_blank">Lucid Fusion</a></strong></p> {% endcomment %}
+              </div>
+            </div>
+
+            {%- if section.settings.show_social -%}
+              {%- assign social_accounts = 'Facebook, Twitter, Instagram, Pinterest, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+              <div class="Footer__social-wrapper">
+                <div class="Footer__social-heading">Follow Us</div>
+                <ul class="Footer__social Footer__nav-list">
+                  {%- for social in social_accounts -%}
+                    {%- assign social_handle = social | handleize -%}
+                    {%- capture social_link -%}social_{{ social_handle }}_link{%- endcapture -%}
+                    {%- capture social_icon -%}
+                      {%- if social_handle == 'facebook' -%}
+                        fa-facebook-f
+                      {%- else -%}
+                        fa-{{ social_handle }}
+                      {%- endif -%}
+                    {%- endcapture -%}
+
+                    {%- if settings[social_link] != blank -%}
+                      <li class="Footer__social-icon">
+                        <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}" target="_blank">
+                          <i aria-hidden="true" class="fab {{ social_icon }}"></i>
+                          <span class="icon-fallback-text">{{ social }}</span>
+                        </a>
+                      </li>
+                    {%- endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {%- endif -%}
+          </div>
+
+        </div>
+      </div>
+
+      <div class="Footer__action">
+        <div class="Footer__action-wrapper">
+        {% for block in section.blocks %}
+          {%- if block.type != 'link_list' -%}
+            {%- unless block.settings.form_heading == blank -%}<div class="Newsletter__heading">{{ block.settings.form_heading }}</div>{%- endunless -%}
+            {%- unless block.settings.form_description == blank -%}<p class="Newsletter__description">{{ block.settings.form_description }}</p>{%- endunless -%}
+            <div class="Newsletter__form-wrapper" {{ block.shopify_attributes }}>
+            {%- case block.type -%}
+              {%- when 'shopify' -%}
+                {%- include 'Newsletter__form--shopify', placeholder: placeholder -%}
+              {%- when 'klaviyo' -%}
+                {%- include 'Newsletter__form--klaviyo', placeholder: placeholder -%}
+              {%- when 'hubspot' -%}
+                {%- include 'Newsletter__form--hubspot', placeholder: placeholder -%}
+            {%- endcase -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+        </div>
+        <div class="Footer__action--bottom"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+{% comment %} <footer class="Footer Section Section--{{ section.settings.width }} {{ extra_classes }}" {{ extra_attrs }} data-footer>
+  <div class="Section__container">
     <div class="Footer__nav">
     {% for block in section.blocks %}
       <ul class="Footer__menu Footer__nav-list">
@@ -37,7 +142,7 @@
     <div class="Footer__bottom">
       <p class="Footer__copyright">
        {% comment %} Copyright &copy;{{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. All Rights Reserved.       {% endcomment %}
-       Copyright &copy;{{ 'now' | date: "%Y" }} {{ 'Fluent' | link_to: '/' }}. All Rights Reserved.      
+       Copyright &copy;{{ 'now' | date: "%Y" }} {{ '°Fluent™' | link_to: '/' }}. All Rights Reserved.      
         {%- assign linklist_copyright = section.settings.linklist_copyright -%}
         {% if linklists[linklist_copyright].links.size > 0 %}
           {% for link in linklists[linklist_copyright].links %}
@@ -48,4 +153,4 @@
       {% comment %} <p class="Footer__shout-out">{% include 'INF-translation', translate: 'layout.footer.digital_experience', default: 'Digital Experience By' %} <strong><a href="https://lucidfusion.com" target="_blank">Lucid Fusion</a></strong></p> {% endcomment %}
     </div>
   </div>
-</footer>
+</footer> {% endcomment %}
