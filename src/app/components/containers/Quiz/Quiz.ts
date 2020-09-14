@@ -97,6 +97,9 @@ export default Vue.extend({
     getAssessmentData(): GenericObject | string {
       return store.getters.Quiz.getAssessmentInfo;
     },
+    product_data_id(): number {
+      return store.state.Quiz.product_id;
+    },
   }, 
   watch: {
     // submitted(new_value): void {
