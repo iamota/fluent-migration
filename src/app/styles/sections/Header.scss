@@ -30,12 +30,12 @@
     &-image {
       display: inline-block;
       width: 22px;
+
       // background-image: var(--user-icon);
       // background-image: url('https://cdn.shopify.com/s/files/1/0399/0008/6429/files/user-circle.svg?v=1599770456');
       // background-position: center;
       // background-repeat: no-repeat;
       // background-size: contain;
-
       .st0,
       .st1 {
         stroke: $color-secondary-1;
@@ -53,8 +53,8 @@
   }
 
   .Button {
-    padding: 0 20px;
     margin: 0 10px;
+    padding: 0 20px;
   }
 
   .IconToggle {
@@ -83,19 +83,18 @@
 //     margin-bottom: 4px;
 //   }
 // }
-
 .MobileBar {
   height: 60px;
   line-height: 60px;
 
   &__icon {
+    vertical-align: middle;
     color: $color-secondary-1;
     font-size: 23px;
-    vertical-align: middle;
 
     &--user {
-      font-size: 0;
       margin-right: 8px;
+      font-size: 0;
 
       .st0,
       .st1 {
@@ -115,60 +114,94 @@
 
   &__bottom {
     background: $color-primary-3;
-    color: $color-secondary-1;
     padding: 0 10px 10px;
+    color: $color-secondary-1;
 
     &-text {
       margin-right: 5px;
     }
 
     .Button {
-      font-size: 16px;
       line-height: 31px;
+      font-size: 16px;
+    }
+  }
+
+  .IconToggle {
+    display: inline-block;
+  }
+
+  &__bottom {
+    background: $color-primary-3;
+    padding: 0 10px 10px;
+    color: $color-secondary-1;
+
+    &-text {
+      margin-right: 5px;
+    }
+
+    .Button {
+      line-height: 31px;
+      font-size: 16px;
     }
   }
 }
 
-.template-page-quiz,
-.template-page-thank-you {
-  .NavBar__icons,
-  .NavBar__primary {
-    display: none;
-  }
+// .template-page-quiz,
+// .template-page-thank-you {
+//   .NavBar__icons,
+//   .NavBar__primary {
+//     display: none;
+//   }
 
-  .NavBar__logo {
-    grid-column: span 12;
-    text-align: center;
+//   .NavBar__logo {
+//     grid-column: span 12;
+//     text-align: center;
 
-    &-image {
-      width: 250px;
-    }
-  }
+//     &-image {
+//       width: 250px;
+//     }
+//   }
 
-  .MobileBar__right {
-    display: none;
-  }
+//   .MobileBar__right {
+//     display: none;
+//   }
 
-  .MobileLogo {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 250px;
+//   .MobileLogo {
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 250px;
 
-    &__image {
-      width: 180px;
-    }
-  }
-}
-
+//     &__image {
+//       width: 180px;
+//     }
+//   }
+// }
 .Announcements {
-  .flickity-prev-next-button  {
+  .flickity-prev-next-button {
     @include transition(background 0.5s);
   }
 
   &.flickity-enabled {
     .Announcement {
       opacity: 0;
-    
+
+      &.is-selected {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.Announcements {
+  .flickity-prev-next-button {
+    @include transition(background 0.5s);
+  }
+
+  &.flickity-enabled {
+    .Announcement {
+      opacity: 0;
+
       &.is-selected {
         opacity: 1;
       }

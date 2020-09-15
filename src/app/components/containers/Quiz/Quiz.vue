@@ -33,7 +33,7 @@
           key="kit" 
           option_type="list"
           name="QuizProduct"
-          :product_data_id="5574461685917" 
+          :product_data_id="product_data_id" 
           :filmstrip="false" 
           :arrow_opacity="0"
         />
