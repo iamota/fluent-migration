@@ -15,16 +15,16 @@ const verticalLine = (data) => {
 
 export default () => {
 
-  configHook(`Banner`, `postContainer`, verticalLine);
-  configHook(`BlockquoteV3`, `postContainer`, verticalLine);
-  configHook(`Buttons`, `postContainer`, verticalLine);
-  configHook(`Collection`, `postContainer`, verticalLine);
-  configHook(`EmbeddedContent`, `postContainer`, verticalLine);
-  configHook(`Faq`, `postContainer`, verticalLine);
-  configHook(`Group`, `postContainer`, verticalLine);
-  configHook(`HeadingText`, `postContainer`, verticalLine);
-  configHook(`Media`, `postContainer`, verticalLine);
-  configHook(`Pods`, `postContainer`, verticalLine);
-  configHook(`RelatedContent`, `postContainer`, verticalLine);
-  configHook(`SplitContent`, `postContainer`, verticalLine);
+  configHook(`Banner`, `postSection`, verticalLine);
+  configHook(`BlockquoteV3`, `postSection`, verticalLine);
+  configHook(`Buttons`, `postSection`, verticalLine);
+  configHook(`Collection`, `postSection`, verticalLine);
+  configHook(`EmbeddedContent`, `postSection`, verticalLine);
+  configHook(`Faq`, `postSection`, verticalLine);
+  configHook(`Group`, `postSection`, verticalLine);
+  configHook(`HeadingText`, `postSection`, verticalLine);
+  configHook(`Media`, `postSection`, verticalLine);
+  configHook(`Pods`, `postSection`, verticalLine);
+  configHook(`RelatedContent`, `postSection`, verticalLine);
+  configHook(`SplitContent`, `postSection`, verticalLine);
 };
