@@ -1,0 +1,16 @@
+.CollectionSort[class~='CollectionSort'] {
+  .Select--legacy.Select label,
+  .Select--legacy.Select input {
+    display: inline-block;
+    width: auto;
+  }
+
+  label {
+    vertical-align: middle;
+    text-transform: capitalize;
+  }
+
+  input {
+    background: white;
+  }
+}
