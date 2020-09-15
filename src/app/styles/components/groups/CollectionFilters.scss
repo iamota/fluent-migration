@@ -19,7 +19,7 @@
       margin-right: 10px;
       border: 1px solid $color-light-gray;
       background: transparent;
-      padding: 6px 12px;
+      padding: 0;
       text-transform: capitalize;
       line-height: 1;
       font-size: 14px;
@@ -27,6 +27,8 @@
       p,
       a,
       a:focus {
+        display: block;
+        padding: 6px 12px;
         line-height: 1;
         color: $color-gray;
         font-size: 14px;
