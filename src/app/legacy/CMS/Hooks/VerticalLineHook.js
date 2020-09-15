@@ -1,21 +1,22 @@
 import _ from 'lodash-es';
 import { configHook } from 'infinite/cms/scripts/core/CMS-Hooks';
 
-const verticalLine = (data) => {
-  const { $module, settings, module_name, i } = data;
-
-  // if (!_.get(settings, `vertical_line.vertical_line`, false)) { return ``; }
-
-  console.log(`verticalLine:`, settings);
-
-  if (!settings || !settings.vertical_line || !settings.vertical_line.vertical_line) { return ``; }
-
-  const { vertical_line_color } = settings.vertical_line;
-
-  return `<div data-vertical-line data-vertical-line-color=${vertical_line_color}></div>`;
-};
-
 export default () => {
+  
+  const verticalLine = (data) => {
+    const { $module, settings, module_name, i } = data;
+  
+    // if (!_.get(settings, `vertical_line.vertical_line`, false)) { return ``; }
+  
+    console.log(`verticalLine:`, settings);
+  
+    if (!settings || !settings.vertical_line || !settings.vertical_line.vertical_line) { return ``; }
+  
+    const { vertical_line_color } = settings.vertical_line;
+  
+    return `<div data-vertical-line data-vertical-line-color=${vertical_line_color}></div>`;
+  };
+
   configHook(`Banner`, `postContainer`, verticalLine);
   configHook(`BlockquoteV3`, `postContainer`, verticalLine);
   configHook(`Buttons`, `postContainer`, verticalLine);
