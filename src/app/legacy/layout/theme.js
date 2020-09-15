@@ -13,15 +13,17 @@ import '../sections/product';
 
 import * as Infinite from 'infinite/scripts';
 
-import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
 import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
+import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
+
+import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
+import VerticalLineHook from '../CMS/Hooks/VerticalLineHook';
 
 import RteVideo from '../components/rte-video';
 import ShoppableImage from '../components/ShoppableImage';
 import RecentArticlesCarosuel from '../components/RecentArticlesCarousel';
 import { FormIframe } from '../components/FormWithIframe';
 import AnnouncementBar from '../components/AnnouncementBar';
-import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
 
 import ThankYouPods from '../sections/ThankYouPods';
 
@@ -45,6 +47,7 @@ $(document).ready(() => {
   initModules();
   runPreRenderers();
   // *** ALL Module Hooks must be executed below this line
+  VerticalLineHook();
   console.log(hooks);
   // Run Module Renderers
   runRenderers();

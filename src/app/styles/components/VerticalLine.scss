@@ -1,0 +1,23 @@
+[data-vertical-line] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+  &::after {
+    position: absolute;
+    bottom: -35px;
+    border: 1px solid $color-gray;
+    width: 0;
+    height: 70px;
+    content: '';
+  }
+
+  &[data-vertical-line-color='dark']::after {
+    border-color: $color-gray;
+  }
+
+  &[data-vertical-line-color='light']::after {
+    border-color: $color-secondary-1;
+  }
+}

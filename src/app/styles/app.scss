@@ -24,6 +24,7 @@
 // Components
 @import './components/ShoppableImage';
 @import './components/MobileMenu';
+@import './components/VerticalLine';
 
 // @import './components/Keen-ui-overrides';
 @import './components/Modal';
@@ -42,10 +43,10 @@
 
 // CMS
 @import '~infinite/cms/styles';
+@import './CMS/CMS-Blockquote';
 @import './CMS/CMSModules';
 
 // @import './CMS/CMS-Banner';
-// @import './CMS/CMS-Blockquote';
 // @import './CMS/CMS-Buttons';
 // @import './CMS/CMS-Collection';
 // @import './CMS/CMS-EmbeddedContent';
