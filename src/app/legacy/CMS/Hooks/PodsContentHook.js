@@ -36,7 +36,7 @@ const callBack = (data) => {
 
     const position_html = `
     <div class="Module-${module_name}__Content Module-${module_name}__Content--Alignment-${pod.text_alignment}">
-      <h3 class="h3" style="color: ${pod.text_color}">${pod.heading}</h3>
+      <h3 class="h5" style="color: ${pod.text_color}">${pod.heading}</h3>
       <p  style="color: ${pod.text_color}">${pod.description}</p>
       <div class="Module-${module_name}__Buttons">
         ${buttons(pod.buttons, module_name, index, 'Pod__button')}
