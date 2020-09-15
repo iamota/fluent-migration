@@ -13,7 +13,7 @@
       <div class="ProductInfo">
         <Heading name="ProductInfo" preheading_class="pbold" preheading="Recommended for you" />
         <ProductHeading :product_data_id="product_id" v-bind="$props" />
-        <ProductShortDescription :truncate="200" :product_data_id="product_id" v-bind="$props" />
+        <ProductShortDescription :truncate="280" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
           v-if="product.product_data.variants.length > 1" 
           :product_data_id="product_id" 
