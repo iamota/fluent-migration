@@ -16,6 +16,7 @@ import * as Infinite from 'infinite/scripts';
 import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
 import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
 import HeadingContentHook from '../CMS/Hooks/HeadingContentHook';
+import PodsContentHook from '../CMS/Hooks/PodsContentHook';
 
 import RteVideo from '../components/rte-video';
 import ShoppableImage from '../components/ShoppableImage';
@@ -48,6 +49,7 @@ $(document).ready(() => {
   // *** ALL Module Hooks must be executed below this line
   console.log(hooks);
   HeadingContentHook();
+  PodsContentHook();
   // Run Module Renderers
   runRenderers();
 
