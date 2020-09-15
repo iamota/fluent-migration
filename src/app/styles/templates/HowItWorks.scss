@@ -8,15 +8,20 @@
   // }
 
   #Module-Pods--0 {
-    .ShoppableImage {
-      &--full {
-        background-size: contain;
-      }
-    }
+    // .ShoppableImage {
+    //   &--full {
+    //     background-size: contain;
+    //   }
+    // }
 
     h3,
     p {
       color: $color-secondary-1;
     }
+  }
+
+  h3 {
+    font-family: $font-secondary;
+    font-weight: 700;
   }
 }
