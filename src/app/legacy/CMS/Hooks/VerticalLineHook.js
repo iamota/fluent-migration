@@ -1,12 +1,9 @@
-import _ from 'lodash-es';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { configHook } from 'infinite/cms/scripts/core/CMS-Hooks';
 
 export default () => {
-  
   const verticalLine = (data) => {
-    const { $module, settings, module_name, i } = data;
-  
-    // if (!_.get(settings, `vertical_line.vertical_line`, false)) { return ``; }
+    const { settings } = data;
   
     console.log(`verticalLine:`, settings);
   

@@ -15,7 +15,7 @@ import * as Infinite from 'infinite/scripts';
 
 import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
 import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
-import CMSVerticalLine from '../CMS/Hooks/VerticalLineHook';
+import verticalLineHook from '../CMS/hooks/verticalLineHook';
 
 import RteVideo from '../components/rte-video';
 import ShoppableImage from '../components/ShoppableImage';
@@ -47,7 +47,7 @@ $(document).ready(() => {
   runPreRenderers();
   // *** ALL Module Hooks must be executed below this line
   // console.log(hooks);
-  CMSVerticalLine();
+  verticalLineHook();
   // Run Module Renderers
   runRenderers();
 
