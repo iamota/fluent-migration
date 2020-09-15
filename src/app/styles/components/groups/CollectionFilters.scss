@@ -13,11 +13,9 @@
     }
 
     &__value {
-      @extend .Button;
-
-
       margin-right: 10px;
       border: 1px solid $color-light-gray;
+      border-radius: 25px;
       background: transparent;
       padding: 0;
       text-transform: capitalize;
@@ -34,6 +32,10 @@
         font-size: 14px;
       }
 
+      p {
+        opacity: 0.5;
+      }
+
       &--clear {
         display: none;
       }
@@ -45,8 +47,7 @@
         background: $color-light-gray-alt-2;
         font-weight: normal;
 
-        a,
-        p {
+        a {
           color: $color-primary-1;
         }
       }
