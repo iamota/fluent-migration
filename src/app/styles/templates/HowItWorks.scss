@@ -1,0 +1,22 @@
+#how-it-works {
+  // #Module-HeadingText--0 {
+  //   .Module-HeadingText {
+  //     &__Heading {
+  //       color: $color-secondary-1;
+  //     }
+  //   }
+  // }
+
+  #Module-Pods--0 {
+    .ShoppableImage {
+      &--full {
+        background-size: contain;
+      }
+    }
+
+    h3,
+    p {
+      color: $color-secondary-1;
+    }
+  }
+}
