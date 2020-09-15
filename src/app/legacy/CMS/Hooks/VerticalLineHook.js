@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { configHook } from 'infinite/cms/scripts/core/CMS-Hooks';
 
+const verticalLine = (data) => {
+  const { settings } = data;
+
+  console.log(`verticalLine:`, settings);
+
+  if (!settings || !settings.vertical_line || !settings.vertical_line.vertical_line) { return ``; }
+
+  const { vertical_line_color } = settings.vertical_line;
+
+  return `<div data-vertical-line data-vertical-line-color=${vertical_line_color}></div>`;
+};
+
 export default () => {
-  const verticalLine = (data) => {
-    const { settings } = data;
-  
-    console.log(`verticalLine:`, settings);
-  
-    if (!settings || !settings.vertical_line || !settings.vertical_line.vertical_line) { return ``; }
-  
-    const { vertical_line_color } = settings.vertical_line;
-  
-    return `<div data-vertical-line data-vertical-line-color=${vertical_line_color}></div>`;
-  };
 
   configHook(`Banner`, `postContainer`, verticalLine);
   configHook(`BlockquoteV3`, `postContainer`, verticalLine);
