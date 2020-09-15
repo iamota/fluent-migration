@@ -4,8 +4,8 @@ import store from '@INF/store';
 import ProductGetters from '@INF/modules/Products/getters';
 import ProductMutations from '@INF/modules/Products/mutations';
 import ProductActions from '@INF/modules/Products/actions';
-import {QuizActionContext} from './';
 import { SESSION_EXPIRED } from '../../../components/containers/Quiz/config';
+import { QuizActionContext } from './';
 
 export default defineActions({
   previousStep(context, step): void {
@@ -44,15 +44,17 @@ export default defineActions({
 
       commit.setBody(banner_body_html);
       commit.setTitle(banner_title_html);
-      // commit.setProductHandle(response.kit.shopify_product_handle);
-
+      commit.setProductHandle(response.kit.shopify_product_handle);
+      
       if (localStorageExists) {
         localStorage.setItem(`kit_data`, JSON.stringify(session_object));
       }
-
+      
       const product_data = await dispatch.getProduct(state.product_handle);
       const selected_variant_id = product_data.variants[0].id;
       const variant_table: GenericObject = {};
+
+      commit.setProductId(product_data.id);
       
       for (const variant of product_data.variants) {
         variant_table[variant.id] = variant;

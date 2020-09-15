@@ -16,7 +16,7 @@
   }
 
   &__heading {
-    margin: 0 0 120px;
+    margin: 0 0 80px;
 
     @include media-query($mobile) {
       margin-bottom: 30px;
@@ -30,6 +30,15 @@
 
   .ProductOverview__grid {
     text-align: left;
+
+    .ProductInfo,
+    .ProductImages {
+      grid-column: span 6;
+
+      @include media-query($mobile) {
+        grid-column: span 12;
+      }
+    }
   }
 
   .ProductOption {
@@ -41,6 +50,7 @@
 
     &__name {
       margin-bottom: 12px;
+      font-size: 12px;
 
       @include media-query($mobile) {
         text-align: center;
@@ -96,6 +106,12 @@
   }
 
   .ProductHeading {
+    &__title {
+      line-height: 1.6;
+      color: $color-muted-gray;
+      font-size: 30px;
+    }
+
     &__price {
       color: $color-primary-1;
       font-family: $font-primary;
