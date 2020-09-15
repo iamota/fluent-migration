@@ -1,0 +1,15 @@
+.ProductTile {
+  padding-bottom: 80px;
+
+  @include media-query($tablet-down) {
+    padding-bottom: 0;
+  }
+
+  &__content {
+    padding: 0 10px 20px;
+  }
+
+  .QuickView__button {
+    bottom: -135px;
+  }
+}
