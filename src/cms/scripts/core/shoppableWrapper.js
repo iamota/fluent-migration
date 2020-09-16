@@ -1,10 +1,11 @@
 import _ from 'lodash-es';
 
 export default (content, is_bg_image, height) => {
-  let shoppable = '';
-  let max_height = '';
-  let background = '';
-  let background_size = '';
+  let shoppable = ``;
+  let max_height = ``;
+  let background = ``;
+  let background_size = ``;
+  let background_position = ``;
   // console.log("CONTENT>>>", content);
 
   if (content.shoppable_image.is_shoppable && (content.shoppable_image.shoppable_products.length > 0)) {
@@ -26,14 +27,15 @@ export default (content, is_bg_image, height) => {
   if (is_bg_image) {
     background = `background-image: url('${content.image}'); `;
     background_size = `background-size: ${content.image_size}; `;
+    background_position = `background-position: ${content.image_alignment}; `;
   }
 
   // intend to have bg_image use a bg on div but has been implemented differently elsewhere and will need to rework
 
   const html = `
     <div 
-      class="ShoppableImage ${is_bg_image ? 'ShoppableImage--full' : ''}" 
-      style="${max_height}${background}${background_size}" 
+      class="ShoppableImage ${is_bg_image ? `ShoppableImage--full` : ``}" 
+      style="${max_height}${background}${background_size}${background_position}" 
       ${shoppable}
     >
       <img 

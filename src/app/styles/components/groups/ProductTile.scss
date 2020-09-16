@@ -3,7 +3,7 @@
   padding: 20px;
   padding-bottom: 90px;
   width: var(--tile-width);
-  border-radius: 5px;
+  // border-radius: 5px;
 
   @include media-query($mobile) {
     padding-bottom: 20px;
