@@ -33,7 +33,7 @@ export default defineActions({
     }
 
     if (response && response.type === `kit`) {
-      const { banner_body_html, banner_title_html, gradient_class, image_src_desktop, image_src_mobile, shopify_product_handle } = response.kit;
+      const { banner_body_html, banner_title_html, banner_subtitle_html, gradient_class, image_src_desktop, image_src_mobile, shopify_product_handle } = response.kit;
       const session_object = {
         gradient_class,
         image_src_desktop,
@@ -44,6 +44,7 @@ export default defineActions({
 
       commit.setBody(banner_body_html);
       commit.setTitle(banner_title_html);
+      commit.setSubtitle(banner_subtitle_html);
       commit.setProductHandle(response.kit.shopify_product_handle);
       
       if (localStorageExists) {
