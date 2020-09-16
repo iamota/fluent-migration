@@ -40,5 +40,22 @@
         font-weight: 400;
       }
     }
+
+    &__price {
+      color: $color-primary-1;
+      font-family: $font-primary;
+      font-size: 18px;
+
+      .Price {
+        &__compare-at {
+          color: #aaaaaa;
+          font-size: 15px;
+        }
+
+        &__on-sale {
+          color: red;
+        }
+      }
+    }
   }
 }
