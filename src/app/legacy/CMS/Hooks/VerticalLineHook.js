@@ -10,7 +10,7 @@ const verticalLine = (data) => {
 
   const { vertical_line_color } = settings.vertical_line;
 
-  return `<div data-vertical-line data-vertical-line-color=${vertical_line_color}></div>`;
+  return `<div data-vertical-line data-vertical-line-color=${vertical_line_color}><div data-vertical-line-child></div></div>`;
 };
 
 export default () => {
