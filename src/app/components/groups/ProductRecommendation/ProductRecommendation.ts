@@ -1,4 +1,12 @@
 import Vue from 'vue';
+
+interface KitData {
+  gradient_class: string;
+  image_src_desktop: string | unknown;
+  image_src_mobile: string | unknown;
+  shopify_product_handle: string;
+  product: GenericObject;
+}
   
 export default Vue.extend({
   data(): GenericObject {
@@ -10,12 +18,18 @@ export default Vue.extend({
       cta_link: `/pages/quiz`,
       description: `Get a personalized <strong>Symptoms Relief Kit</strong> made just for your symptoms.`,
       title: `Not feeling well?`,
+      product: {},
     };
   },
   computed: {
-    cssClass(): GenericObject {
+    overlay_class(): GenericObject {
       return {
         [`${this.gradient_class}`]: true,
+      };
+    },
+    container_class(): GenericObject {
+      return {
+        'ProductRecommendation--kit': this.shopify_product_handle !== ``,
       };
     },
   },
@@ -29,7 +43,7 @@ export default Vue.extend({
 
       if (!kit_information) { return; }
 
-      const kit_data = JSON.parse(kit_information);
+      const kit_data: KitData = JSON.parse(kit_information);
 
       this.gradient_class = kit_data.gradient_class;
       this.shopify_product_handle = kit_data.shopify_product_handle;
@@ -37,7 +51,8 @@ export default Vue.extend({
       this.cta_link = `/products/${this.shopify_product_handle}`;
       this.title = `Your recommended symptom relief kit is ready!`;
       this.description = `Based on your symptoms, 
-      we’ve set you up with the <strong>Adult Flu Relief Pack.</strong>`;
+      we’ve set you up with the <strong>${kit_data.product.title}</strong>`;
+      this.product = kit_data.product;
     },
   },
 });
