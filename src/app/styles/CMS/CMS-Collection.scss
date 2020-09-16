@@ -5,6 +5,12 @@
     }
   }
 
+  .ProductTile {
+    margin: $grid-gutter $grid-gutter / 2;
+    padding: 20px;
+    width: var(--tile-width);
+  }
+
   .ProductTile__image {
     img {
       display: block;
