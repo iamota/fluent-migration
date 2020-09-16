@@ -5,9 +5,38 @@
     }
   }
 
-  .ProductTile__image {
-    img {
-      display: block;
+  .ProductTile {
+    margin: $grid-gutter $grid-gutter / 2;
+    border-radius: 5px;
+    padding: 20px;
+    padding-bottom: 90px;
+    width: var(--tile-width);
+
+    @include media-query($mobile) {
+      padding-bottom: 20px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+
+      @include media-query($mobile) {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .flickity {
+    &-button {
+      opacity: 0.75;
+      background-color: $color-primary-1;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &-icon {
+        fill: $color-secondary-1;
+      }
     }
   }
 }

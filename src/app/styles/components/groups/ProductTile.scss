@@ -1,0 +1,64 @@
+.ProductTile {
+  position: relative;
+  padding-bottom: 65px;
+
+  @include media-query($tablet-down) {
+    padding-bottom: 0;
+  }
+
+  &__image {
+    position: static;
+
+    img {
+      display: block;
+    }
+  }
+
+  &__title {
+    a,
+    a:visited,
+    a:active {
+      color: $color-gray;
+      font-weight: 400;
+    }
+  }
+
+  &__price {
+    color: $color-primary-1;
+    font-family: $font-primary;
+    font-size: 18px;
+
+    .Price {
+      &__compare-at {
+        color: $color-light-gray-alt-3;
+        font-size: 15px;
+      }
+
+      &__on-sale {
+        color: $color-red;
+      }
+    }
+  }
+
+  .Price {
+    color: $color-primary-1;
+    font-family: $font-primary;
+    font-size: 18px;
+
+    &__sale {
+      color: $color-red;
+    }
+
+    &__compare-at {
+      color: $color-light-gray-alt-3;
+    }
+  }
+
+  &__content {
+    padding: 0 10px 20px;
+  }
+
+  .QuickView__button {
+    bottom: 20px;
+  }
+}
