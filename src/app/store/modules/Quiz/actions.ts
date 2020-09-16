@@ -26,7 +26,7 @@ export default defineActions({
       }, 1);      
       commit.setStep(step);
     };
-
+    
     if (response && response.type === `advance`) {
       goToNext();
       return;
@@ -123,6 +123,8 @@ export default defineActions({
         if (error && error.status === SESSION_EXPIRED) {
           // Session Expired
           window.location.hash = `quiz_session_expired`;
+        } else {
+          window.location.hash = `quiz_generic`;
         }
       }
     });
