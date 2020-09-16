@@ -48,7 +48,7 @@ export default defineActions({
       
       if (localStorageExists) {
         localStorage.setItem(`kit_data`, JSON.stringify(session_object));
-      }
+      } 
        
       const product_data = await dispatch.getProduct(state.product_handle);
       const selected_variant_id = product_data.variants[0].id;
