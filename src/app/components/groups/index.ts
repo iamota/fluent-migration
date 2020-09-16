@@ -14,3 +14,4 @@ export { ProgressBar } from './ProgressBar';
 export { QuizButtons } from './QuizButtons';
 export { QuizProduct } from './QuizProduct';
 export { ProductShortDescription } from './ProductShortDescription';
+export { ProductRecommendation } from './ProductRecommendation';
