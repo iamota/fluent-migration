@@ -95,4 +95,32 @@
       font-weight: 700;
     }
   }
+
+  .Module-SplitContent {
+    h2 {
+      margin: 20px 0;
+    }
+
+    &__Buttons {
+      margin-top: 30px;
+    }
+
+    .ShoppableImage--full {
+      @include media-query($mobile) {
+        max-height: 100%;
+      }
+    }
+
+    &__Column {
+      &--Content {
+        @include media-query($mobile) {
+          height: auto !important;
+        }
+      }
+
+      &--top {
+        grid-row-start: 1 !important;
+      }
+    }
+  }
 }
