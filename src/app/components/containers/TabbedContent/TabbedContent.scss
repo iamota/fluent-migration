@@ -1,0 +1,12 @@
+@import '~@INF/styles';
+
+.TabbedContent {
+  // Add your styles here
+  &__tabs {
+  }
+
+  &__tab {
+    display: inline-block;
+    color: black;
+  }
+}
