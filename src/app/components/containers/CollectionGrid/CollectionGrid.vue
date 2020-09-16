@@ -41,7 +41,7 @@
           :current_page="current_page"
           :total_pages="total_pages"
         />
-        <Button v-if="display_load_more" class="CollectionGrid__button" @click.native="handleLoadMore()" >
+        <Button v-if="display_load_more" type="secondary" class="CollectionGrid__button" @click.native="handleLoadMore()" >
           {{ infinite_scroll_cta }}
           <Loader
             v-show="loading_more"             
