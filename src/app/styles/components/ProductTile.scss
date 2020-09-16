@@ -1,4 +1,5 @@
 .ProductTile {
+  position: relative;
   padding-bottom: 80px;
 
   @include media-query($tablet-down) {
@@ -9,7 +10,11 @@
     padding: 0 10px 20px;
   }
 
+  &__image {
+    position: static;
+  }
+
   .QuickView__button {
-    bottom: -135px;
+    bottom: 15px;
   }
 }
