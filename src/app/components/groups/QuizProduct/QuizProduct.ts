@@ -13,6 +13,9 @@ export default ProductOverview.extend({
     kit_body(): string {
       return unescape(store.state.Quiz.kit_body);
     },
+    kit_subtitle(): string {
+      return unescape(store.state.Quiz.kit_subtitle);
+    },
     kit_title(): string {
       return unescape(store.state.Quiz.kit_title);
     },

@@ -8,6 +8,7 @@
  */
 // Tools
 @import './tools/mixins.scss';
+@import './tools/gradients.scss';
 
 // Core
 @import './core/typography.scss';
@@ -17,16 +18,22 @@
 
 // Groups
 // @import './components/groups/MyGroup';
+@import './components/groups/CollectionFilters';
+@import './components/groups/CollectionSort';
 
 // Units
+@import './components/units/Select';
 @import './components/units/Button';
 
 // Components
 @import './components/ShoppableImage';
 @import './components/MobileMenu';
 @import './components/VerticalLine';
+@import './components/groups/ProductTile';
+@import './components/VerticalLine';
+@import './components/groups/ProductTile';
 
-// @import './components/Keen-ui-overrides';
+// @import  './components/Keen-ui-overrides';
 @import './components/Modal';
 
 // Sections
@@ -37,9 +44,11 @@
 @import './sections/ContentArea';
 @import './sections/HeroCarousel';
 @import './sections/CustomBanner';
+@import './sections/CollectionBanner';
 
 // Templates
 @import './templates/Homepage';
+@import './templates/HowItWorks';
 
 // CMS
 @import '~infinite/cms/styles';
@@ -48,7 +57,9 @@
 
 // @import './CMS/CMS-Banner';
 // @import './CMS/CMS-Buttons';
-// @import './CMS/CMS-Collection';
+
+@import './CMS/CMS-Collection';
+
 // @import './CMS/CMS-EmbeddedContent';
 // @import './CMS/CMS-Grid';
 // @import './CMS/CMS-HeadingText';

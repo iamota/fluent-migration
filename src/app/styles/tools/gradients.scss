@@ -1,0 +1,40 @@
+@import '../variables.scss';
+
+.product-color-mucus {
+  background-color: $color-primary-1;
+}
+
+.product-color-chest-congestion-cough {
+  @include gradient(135deg, $color-secondary-4, $color-secondary-3);
+}
+
+.product-color-cough {
+  background-color: $color-secondary-4;
+}
+
+.product-color-head-congestion {
+  @include gradient(135deg, $color-secondary-6, $color-secondary-5);
+}
+
+.product-color-nasal-congestion-severe {
+  background-color: $color-secondary-6;
+}
+
+.product-color-childrens-fever-pain-ibuprofen {
+  background-color: $color-secondary-5;
+}
+
+.product-color-cold-all-in-one-day,
+.product-color-cold-all-in-one-night {
+  @include gradient(135deg, $color-secondary-8, $color-secondary-7);
+}
+
+.product-color-cold-flu-severe-day,
+.product-color-cold-flu-severe-night {
+  @include gradient(135deg, $color-secondary-6, $color-secondary-5);
+}
+
+.product-color-adult-fever-pain,
+.product-color-childrens-fever-pain-acetaminophen {
+  @include gradient(135deg, $color-secondary-6, $color-secondary-5);
+}

@@ -1,0 +1,1258 @@
+{%- include 'Banner' -%}
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Default Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_heading",
+        "label": "Hide heading",
+        "info": "If checked, this banner won't provide an <h1>.  Be sure to have a different <h1> on the page.",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Heading style",
+        "default": "h1",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          },
+          {
+            "value": "h6",
+            "label": "H6"
+          },
+          {
+            "value": "h7",
+            "label": "H7"
+          },
+          {
+            "value": "h8",
+            "label": "H8"
+          },
+          {
+            "value": "p",
+            "label": "Paragraph"
+          },
+          {
+            "value": "pbold",
+            "label": "Paragraph (Bold)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "preheading_class",
+        "label": "Preheading style",
+        "default": "h5",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          },
+          {
+            "value": "h6",
+            "label": "H6"
+          },
+          {
+            "value": "h7",
+            "label": "H7"
+          },
+          {
+            "value": "h8",
+            "label": "H8"
+          },
+          {
+            "value": "p",
+            "label": "Paragraph"
+          },
+          {
+            "value": "pbold",
+            "label": "Paragraph (Bold)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "subheading_class",
+        "label": "Subheading style",
+        "default": "h4",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          },
+          {
+            "value": "h6",
+            "label": "H6"
+          },
+          {
+            "value": "h7",
+            "label": "H7"
+          },
+          {
+            "value": "h8",
+            "label": "H8"
+          },
+          {
+            "value": "p",
+            "label": "Paragraph"
+          },
+          {
+            "value": "pbold",
+            "label": "Paragraph (Bold)"
+          }
+        ]
+      },
+      {
+        "label": "Text alignment (desktop)",
+        "id": "alignment",
+        "type": "select",
+        "default": "center",
+        "options": [
+          {
+            "group": "Top",
+            "value": "top-left",
+            "label": "Left"
+          },
+          {
+            "group": "Top",
+            "value": "top-center",
+            "label": "Center"
+          },
+          {
+            "group": "Top",
+            "value": "top-right",
+            "label": "Right"
+          },
+          {
+            "group": "Center",
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "group": "Center",
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "group": "Center",
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom-left",
+            "label": "Left"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom-center",
+            "label": "Center"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom-right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "label": "Text alignment (mobile)",
+        "id": "alignment--mobile",
+        "type": "select",
+        "default": "center",
+        "options": [
+          {
+            "group": "Top",
+            "value": "top-left",
+            "label": "Left"
+          },
+          {
+            "group": "Top",
+            "value": "top-center",
+            "label": "Center"
+          },
+          {
+            "group": "Top",
+            "value": "top-right",
+            "label": "Right"
+          },
+          {
+            "group": "Center",
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "group": "Center",
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "group": "Center",
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom-left",
+            "label": "Left"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom-center",
+            "label": "Center"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom-right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "label": "Overlay style",
+        "id": "overlay",
+        "type": "select",
+        "default": "dark-overlay",
+        "options": [
+          {
+            "group": "No Overlay",
+            "value": "light-text",
+            "label": "Light Text"
+          },
+          {
+            "group": "No Overlay",
+            "value": "dark-text",
+            "label": "Dark Text"
+          },
+          {
+            "group": "Solid Overlay",
+            "value": "light-overlay",
+            "label": "Light Background (Dark Text)"
+          },
+          {
+            "group": "Solid Overlay",
+            "value": "dark-overlay",
+            "label": "Dark Background (Light Text)"
+          },
+          {
+            "group": "Solid Overlay",
+            "value": "branded-overlay",
+            "label": "Branded"
+          },
+          {
+            "group": "Gradient Overlay",
+            "value": "light-gradient",
+            "label": "Light Background (Dark Text)"
+          },
+          {
+            "group": "Gradient Overlay",
+            "value": "dark-gradient",
+            "label": "Dark Background (Light Text)"
+          },
+          {
+            "group": "Gradient Overlay",
+            "value": "branded-gradient",
+            "label": "Branded"
+          }
+        ],
+        "default": "dark-overlay"
+      },
+      {
+        "type": "select",
+        "id": "animation",
+        "label": "Image animation",
+        "default": "zoom-fade-in",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "section_animation",
+        "label": "Section animation",
+        "default": "none",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-up",
+            "label": "Fade in & slide up"
+          },
+          {
+            "value": "slide-down",
+            "label": "Fade in & slide down"
+          },          
+          {
+            "value": "slide-left",
+            "label": "Fade in & slide left"
+          },
+          {
+            "value": "slide-right",
+            "label": "Fade in & slide right"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "content_animation",
+        "label": "Content animation",
+        "default": "fade-in",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-up",
+            "label": "Fade in & slide up"
+          },
+          {
+            "value": "slide-down",
+            "label": "Fade in & slide down"
+          },          
+          {
+            "value": "slide-left",
+            "label": "Fade in & slide left"
+          },
+          {
+            "value": "slide-right",
+            "label": "Fade in & slide right"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "banner_height",
+        "min": 50,
+        "max": 800,
+        "step": 50,
+        "unit": "px",
+        "label": "Height (desktop)",
+        "default": 300
+      },
+      {
+        "label": "Image alignment (desktop)",
+        "id": "background_position",
+        "type": "select",
+        "default": "center",
+        "options": [
+          {
+            "group": "Top",
+            "value": "top left",
+            "label": "Left"
+          },
+          {
+            "group": "Top",
+            "value": "top center",
+            "label": "Center"
+          },
+          {
+            "group": "Top",
+            "value": "top right",
+            "label": "Right"
+          },
+          {
+            "group": "Center",
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "group": "Center",
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "group": "Center",
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom left",
+            "label": "Left"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom center",
+            "label": "Center"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "range",
+        "id": "banner_height--mobile",
+        "min": 50,
+        "max": 500,
+        "step": 10,
+        "unit": "px",
+        "label": "Image height (mobile)",
+        "default": 200
+      },
+      {
+        "label": "Image alignment (mobile)",
+        "id": "background_position--mobile",
+        "type": "select",
+        "default": "center",
+        "options": [
+          {
+            "group": "Top",
+            "value": "top left",
+            "label": "Left"
+          },
+          {
+            "group": "Top",
+            "value": "top center",
+            "label": "Center"
+          },
+          {
+            "group": "Top",
+            "value": "top right",
+            "label": "Right"
+          },
+          {
+            "group": "Center",
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "group": "Center",
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "group": "Center",
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom left",
+            "label": "Left"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom center",
+            "label": "Center"
+          },
+          {
+            "group": "Bottom",
+            "value": "bottom right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "label": "Responsive minimum height",
+        "id": "responsive_height",
+        "type": "checkbox",
+        "info": "Banner will grow to fit content if necessary.",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "label": "Desktop banner",
+            "id": "image",
+            "type": "image_picker"
+          },
+          {
+            "label": "Mobile banner",
+            "id": "image--mobile",
+            "type": "image_picker"
+          },
+          {
+            "label": "Title",
+            "id": "title",
+            "type": "text",
+            "info": "For organizing content in admin only."
+          },
+          {
+            "type": "paragraph",
+            "content": "To create a 'default' banner, leave both the tag and path below blank."
+          },
+          {
+            "label": "Tag",
+            "id": "tag",
+            "type": "text",
+            "info": "Use in tags or custom field to include this banner"
+          },
+          {
+            "label": "Path (optional)",
+            "id": "path",
+            "type": "url",
+            "info": "Will show banner if matches current path. Leave blank to use tags instead."
+          },
+          {
+            "type": "header",
+            "content": "Text"
+          },
+          {
+            "label": "Custom heading",
+            "id": "heading",
+            "type": "text",
+            "info": "Leave blank to use default"
+          },
+          {
+            "label": "Preheading",
+            "id": "preheading",
+            "type": "text"
+          },
+          {
+            "label": "Subheading",
+            "id": "subheading",
+            "type": "text"
+          },
+          {
+            "label": "Description",
+            "id": "description",
+            "type": "richtext"
+          },
+          {
+            "type": "header",
+            "content": "Buttons"
+          },
+          {
+            "label": "Button text 1",
+            "id": "button_text_1",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 1",
+            "id": "button_aria_label_1",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 1",
+            "id": "button_url_1",
+            "type": "url"
+          },
+          {
+            "label": "Button style 1",
+            "id": "button_style_1",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Button text 2",
+            "id": "button_text_2",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 2",
+            "id": "button_aria_label_2",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 2",
+            "id": "button_url_2",
+            "type": "url"
+          },
+          {
+            "label": "Button style 2",
+            "id": "button_style_2",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "label": "Button text 3",
+            "id": "button_text_3",
+            "type": "text"
+          },
+          {
+            "label": "Button ARIA label 3",
+            "id": "button_aria_label_3",
+            "type": "text"
+          },
+          {
+            "label": "Button URL 3",
+            "id": "button_url_3",
+            "type": "url"
+          },
+          {
+            "label": "Button style 3",
+            "id": "button_style_3",
+            "type": "select",
+            "default": "on-image",
+            "options": [
+              {
+                "value": "on-image",
+                "label": "On Image"
+              },
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Banner"
+          },
+          {
+            "label": "Use banner defaults",
+            "id": "uses_default",
+            "type": "checkbox",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_heading",
+            "label": "Hide heading",
+            "info": "If checked, this banner won't provide an <h1>.  Be sure to have a different <h1> on the page.",
+            "default": false
+          },
+          {
+            "type": "select",
+            "id": "heading_class",
+            "label": "Heading style",
+            "default": "h1",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "preheading_class",
+            "label": "Preheading style",
+            "default": "h5",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "subheading_class",
+            "label": "Subheading style",
+            "default": "h4",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "h6",
+                "label": "H6"
+              },
+              {
+                "value": "h7",
+                "label": "H7"
+              },
+              {
+                "value": "h8",
+                "label": "H8"
+              },
+              {
+                "value": "p",
+                "label": "Paragraph"
+              },
+              {
+                "value": "pbold",
+                "label": "Paragraph (Bold)"
+              }
+            ]
+          },
+          {
+            "label": "Text alignment (desktop)",
+            "id": "alignment",
+            "type": "select",
+            "default": "center",
+            "options": [
+              {
+                "group": "Top",
+                "value": "top-left",
+                "label": "Left"
+              },
+              {
+                "group": "Top",
+                "value": "top-center",
+                "label": "Center"
+              },
+              {
+                "group": "Top",
+                "value": "top-right",
+                "label": "Right"
+              },
+              {
+                "group": "Center",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Center",
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Center",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-left",
+                "label": "Left"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-center",
+                "label": "Center"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "label": "Text alignment (mobile)",
+            "id": "alignment--mobile",
+            "type": "select",
+            "default": "center",
+            "options": [
+              {
+                "group": "Top",
+                "value": "top-left",
+                "label": "Left"
+              },
+              {
+                "group": "Top",
+                "value": "top-center",
+                "label": "Center"
+              },
+              {
+                "group": "Top",
+                "value": "top-right",
+                "label": "Right"
+              },
+              {
+                "group": "Center",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Center",
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Center",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-left",
+                "label": "Left"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-center",
+                "label": "Center"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom-right",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "label": "Overlay style",
+            "id": "overlay",
+            "type": "select",
+            "default": "dark-overlay",
+            "options": [
+              {
+                "group": "No Overlay",
+                "value": "light-text",
+                "label": "Light Text"
+              },
+              {
+                "group": "No Overlay",
+                "value": "dark-text",
+                "label": "Dark Text"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "light-overlay",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "dark-overlay",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Solid Overlay",
+                "value": "branded-overlay",
+                "label": "Branded"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "light-gradient",
+                "label": "Light Background (Dark Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "dark-gradient",
+                "label": "Dark Background (Light Text)"
+              },
+              {
+                "group": "Gradient Overlay",
+                "value": "branded-gradient",
+                "label": "Branded"
+              }
+            ],
+            "default": "dark-overlay"
+          },
+          {
+            "type": "select",
+            "id": "animation",
+            "label": "Animation",
+            "default": "zoom-fade-in",
+            "options": [
+              {
+                "value": "fade-in",
+                "label": "Fade in"
+              },
+              {
+                "value": "zoom-fade-in",
+                "label": "Fade in & zoom out"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "section_animation",
+            "label": "Section animation",
+            "default": "none",
+            "options": [
+              {
+                "value": "fade-in",
+                "label": "Fade in"
+              },
+              {
+                "value": "slide-up",
+                "label": "Fade in & slide up"
+              },
+              {
+                "value": "slide-down",
+                "label": "Fade in & slide down"
+              },          
+              {
+                "value": "slide-left",
+                "label": "Fade in & slide left"
+              },
+              {
+                "value": "slide-right",
+                "label": "Fade in & slide right"
+              },
+              {
+                "value": "zoom-fade-in",
+                "label": "Fade in & zoom out"
+              },
+                        {
+                "value": "none",
+                "label": "None"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "content_animation",
+            "label": "Content animation",
+            "default": "fade-in",
+            "options": [
+              {
+                "value": "fade-in",
+                "label": "Fade in"
+              },
+              {
+                "value": "slide-up",
+                "label": "Fade in & slide up"
+              },
+              {
+                "value": "slide-down",
+                "label": "Fade in & slide down"
+              },          
+              {
+                "value": "slide-left",
+                "label": "Fade in & slide left"
+              },
+              {
+                "value": "slide-right",
+                "label": "Fade in & slide right"
+              },
+              {
+                "value": "zoom-fade-in",
+                "label": "Fade in & zoom out"
+              },
+              {
+                "value": "none",
+                "label": "None"
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "banner_height",
+            "min": 50,
+            "max": 800,
+            "step": 50,
+            "unit": "px",
+            "label": "Height (desktop)",
+            "default": 300
+          },
+          {
+            "label": "Image alignment (desktop)",
+            "id": "background_position",
+            "type": "select",
+            "default": "center",
+            "options": [
+              {
+                "group": "Top",
+                "value": "top left",
+                "label": "Left"
+              },
+              {
+                "group": "Top",
+                "value": "top center",
+                "label": "Center"
+              },
+              {
+                "group": "Top",
+                "value": "top right",
+                "label": "Right"
+              },
+              {
+                "group": "Center",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Center",
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Center",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom left",
+                "label": "Left"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom center",
+                "label": "Center"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom right",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "range",
+            "id": "banner_height--mobile",
+            "min": 50,
+            "max": 500,
+            "step": 10,
+            "unit": "px",
+            "label": "Image height (mobile)",
+            "default": 200
+          },
+          {
+            "label": "Image alignment (mobile)",
+            "id": "background_position--mobile",
+            "type": "select",
+            "default": "center",
+            "options": [
+              {
+                "group": "Top",
+                "value": "top left",
+                "label": "Left"
+              },
+              {
+                "group": "Top",
+                "value": "top center",
+                "label": "Center"
+              },
+              {
+                "group": "Top",
+                "value": "top right",
+                "label": "Right"
+              },
+              {
+                "group": "Center",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Center",
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "group": "Center",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom left",
+                "label": "Left"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom center",
+                "label": "Center"
+              },
+              {
+                "group": "Bottom",
+                "value": "bottom right",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "label": "Responsive minimum height",
+            "id": "responsive_height",
+            "type": "checkbox",
+            "info": "Banner will grow to fit content if necessary.",
+            "default": true
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

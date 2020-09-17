@@ -15,9 +15,10 @@ import * as Infinite from 'infinite/scripts';
 
 import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
 import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
-
 import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
 import VerticalLineHook from '../CMS/Hooks/VerticalLineHook';
+import HeadingContentHook from '../CMS/Hooks/HeadingContentHook';
+import PodsContentHook from '../CMS/Hooks/PodsContentHook';
 
 import RteVideo from '../components/rte-video';
 import ShoppableImage from '../components/ShoppableImage';
@@ -49,6 +50,8 @@ $(document).ready(() => {
   // *** ALL Module Hooks must be executed below this line
   VerticalLineHook();
   console.log(hooks);
+  HeadingContentHook();
+  PodsContentHook();
   // Run Module Renderers
   runRenderers();
 

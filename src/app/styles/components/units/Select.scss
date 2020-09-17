@@ -1,0 +1,11 @@
+.Select[class~='Select'] {
+  .Select {
+    &__icon {
+      border: none;
+      background: url(https://cdn.shopify.com/s/files/1/0399/0008/6429/files/chevron.svg?v=1600205717) no-repeat center;
+      background-size: contain;
+      width: 20px;
+      height: 10px;
+    }
+  }
+}
