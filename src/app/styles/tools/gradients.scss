@@ -4,7 +4,8 @@
   background-color: $color-primary-1;
 }
 
-.product-color-chest-congestion-cough {
+.product-color-chest-congestion-cough,
+.gradient-option-1 {
   @include gradient(135deg, $color-secondary-4, $color-secondary-3);
 }
 
@@ -12,7 +13,8 @@
   background-color: $color-secondary-4;
 }
 
-.product-color-head-congestion {
+.product-color-head-congestion,
+.gradient-option-2 {
   @include gradient(135deg, $color-secondary-6, $color-secondary-5);
 }
 
@@ -25,7 +27,8 @@
 }
 
 .product-color-cold-all-in-one-day,
-.product-color-cold-all-in-one-night {
+.product-color-cold-all-in-one-night,
+.gradient-option-3 {
   @include gradient(135deg, $color-secondary-8, $color-secondary-7);
 }
 

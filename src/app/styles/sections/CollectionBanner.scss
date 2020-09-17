@@ -13,8 +13,6 @@
       max-width: unset;
       height: 100%;
 
-      @include gradient(135deg, $color-secondary-7, $color-secondary-8);
-
       @include media-query($mobile) {
         display: block;
         position: static;

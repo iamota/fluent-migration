@@ -9,6 +9,9 @@ interface KitData {
 }
   
 export default Vue.extend({
+  props: {
+    collection_handle: { type: String },
+  },
   data(): GenericObject {
     return {
       image: `https://cdn.shopify.com/s/files/1/0399/0008/6429/files/Little_girl142019450_copy.png?v=1599676697`,
@@ -20,7 +23,7 @@ export default Vue.extend({
       title: `Not feeling well?`,
       product: {},
     };
-  },
+  },  
   computed: {
     overlay_class(): GenericObject {
       return {
