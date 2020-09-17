@@ -41,6 +41,10 @@
     width: 80%;
     text-align: left;
 
+    @include media-query($mobile) {
+      width: 75%;
+    }
+
     h3 {
       font-size: 32px;
 

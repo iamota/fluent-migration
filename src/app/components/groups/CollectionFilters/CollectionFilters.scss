@@ -1,0 +1,97 @@
+@import '~@INF/styles';
+@import '../../../styles/variables';
+
+.CollectionFilters {
+  @include media-query($mobile) {
+    border-width: 1px;
+    padding-bottom: 90px;
+  }
+
+  .CollectionFilters {
+    &__category {
+      > span {
+        display: none;
+      }
+    }
+
+    &__list-values {
+      display: block;
+      position: static;
+      border: none;
+
+      @include media-query($mobile) {
+        position: absolute;
+        top: 67px;
+        padding-left: 20px;
+      }
+    }
+
+    &__value {
+      margin-right: 10px;
+      border: 1px solid $color-light-gray;
+      border-radius: 25px;
+      background: transparent;
+      padding: 0;
+      text-transform: capitalize;
+      line-height: 1;
+      font-size: 14px;
+
+      p,
+      a,
+      a:focus {
+        display: block;
+        padding: 6px 12px;
+        line-height: 1;
+        color: $color-gray;
+        font-size: 14px;
+      }
+
+      p {
+        opacity: 0.5;
+      }
+
+      &--clear {
+        display: none;
+      }
+
+      &:hover,
+      &:focus,
+      &.active {
+        border-color: $color-primary-1;
+        background: $color-light-gray-alt-2;
+        font-weight: normal;
+
+        a {
+          color: $color-primary-1;
+        }
+      }
+    }
+
+    &__item {
+      padding: 0 10px;
+      text-transform: none;
+      line-height: 1;
+      font-size: 14px;
+
+      &--label {
+        padding-left: 0;
+      }
+    }
+
+    &__item--label {
+      @include media-query($mobile) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-right: 1px solid $color-light-gray;
+        border-bottom: 1px solid $color-light-gray;
+        padding: 10px 0 0 20px;
+        width: 50%;
+        height: 50px;
+        text-align: left;
+        line-height: 28px;
+        font-size: 16px;
+      }
+    }
+  }
+}
