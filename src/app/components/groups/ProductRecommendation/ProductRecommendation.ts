@@ -49,7 +49,7 @@ export default Vue.extend({
       this.shopify_product_handle = kit_data.shopify_product_handle;
       this.cta_text = `Shop Now`;
       this.cta_link = `/products/${this.shopify_product_handle}`;
-      this.title = `Your recommended symptom relief kit is ready!`;
+      this.title = `Your symptom relief kit is ready!`;
       this.description = `Based on your symptoms, 
       we’ve set you up with the <strong>${kit_data.product.title}</strong>`;
       this.product = kit_data.product;

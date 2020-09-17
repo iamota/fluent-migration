@@ -8,6 +8,7 @@ const Flickity = require(`flickity`); // eslint-disable-line
 export default CollectionFilters.extend({
   data() {
     return {
+      filters_expanded: false,
       flickity_carousels: {} as GenericObject,
       flickityOptions: {
         prevNextButtons: false,
@@ -19,6 +20,14 @@ export default CollectionFilters.extend({
       } as Flickity.Options,
       current_breakpoint: ``,
     };
+  },
+  computed: {
+    collection_filters_class(): GenericObject {
+      return {
+        CollectionFilters: true,
+        'CollectionFilters--expanded': this.filters_expanded,
+      };
+    },
   },
   mounted() {
     this.current_breakpoint = this.getBreakPoint();
@@ -56,6 +65,11 @@ export default CollectionFilters.extend({
         this.flickity_carousels[id] = new Flickity(container, this.flickityOptions);
         
       });
+    },
+    toggleFilters(): void {
+      if (this.current_breakpoint !== `mobile`) { return; }
+
+      this.filters_expanded = !this.filters_expanded;
     },
   },
 });

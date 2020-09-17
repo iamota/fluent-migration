@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div :class="{ CollectionFilters: true, 'CollectionFilters--expanded': display_values }">
-      <div class="CollectionFilters__item CollectionFilters__item--label">{{ 'collections.general.filter_heading' | t }}</div>
+    <div :class="collection_filters_class">
+      <div class="CollectionFilters__item CollectionFilters__item--label" @click="toggleFilters">{{ 'collections.general.filter_heading' | t }}</div>
       <div v-for="(category, i) in categories" :key="i" :class="{CollectionFilters__item: true, [`CollectionFilters__item--${category}`]: true}">
         <ul>          
           <li class="CollectionFilters__category">
