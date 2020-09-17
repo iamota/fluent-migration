@@ -1,0 +1,50 @@
+{%- assign module_name = 'data-cms-module-collection' -%}
+
+{%- assign module_start = '<div ' | append: module_name | append: '>' -%}
+{%- assign module_end = '<!-- ' | append: module_name | append: ' -->' -%}
+{%- assign module_array = content | split: module_start -%}
+
+{%- for segment in module_array -%}
+  {%- assign index = forloop.index0 -%}
+
+  {%- if index == 0 -%}
+    {%- continue -%}
+  {%- else -%}
+    {%- assign module_body = module_array[index] | split: module_end | first -%}
+    
+    {%- assign settings_json = module_body | split: '<script type="application/json" data-settings>' -%}
+    {%- assign settings_json = settings_json[1] | split: '</script><!-- data-settings -->' | first -%}
+
+    {%- assign old_html = module_start | append: module_body | append: module_end -%}
+
+    {%- unless module_body == blank -%}
+      {%- assign module_open = '<div ' | append: module_name | append: ' data-cms-module>' -%}
+      {%- assign module_close = '</div>' -%}
+
+      {%- capture new_html -%}
+        {{ module_open }}
+          <script type="application/json" data-settings>{{ settings_json }}</script>
+          <div data-content-container>
+            {%- assign collection_handle = settings_json | split: '"collection_handle":"' -%}
+            {%- assign collection_handle = collection_handle[1] | split: '","' | first -%}
+            {%- assign collection_layout = settings_json | split: '"layout_type":"' -%}
+            {%- assign collection_layout = collection_layout[1] | split: '","' | first -%}
+            {%- assign collection = collections[collection_handle] -%}
+            {%- if collection -%}
+              {% for product in collection.products %}
+                {%- if collection_layout == 'grid' -%}
+                  {% include 'ProductTile', carousel: false, prevent_animation: true %}
+                {%- else -%}
+                  {% include 'ProductTile', carousel: true, detailsCtaText: 'Details', detailsCta: true, disableQuickView: false %}
+                {%- endif -%}
+              {% endfor %}
+            {%- endif -%}
+          </div>
+        {{ module_close }}
+      {%- endcapture -%}
+
+      {%- assign content = content | replace: old_html, new_html -%}
+    {%- endunless -%}
+
+  {%- endif -%}
+{%- endfor -%}
