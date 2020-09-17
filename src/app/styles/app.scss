@@ -25,6 +25,7 @@
 @import './components/ShoppableImage';
 @import './components/MobileMenu';
 @import './components/VerticalLine';
+@import './components/groups/ProductTile';
 
 // @import './components/Keen-ui-overrides';
 @import './components/Modal';
@@ -40,6 +41,7 @@
 
 // Templates
 @import './templates/Homepage';
+@import './templates/HowItWorks';
 
 // CMS
 @import '~infinite/cms/styles';
@@ -48,7 +50,7 @@
 
 // @import './CMS/CMS-Banner';
 // @import './CMS/CMS-Buttons';
-// @import './CMS/CMS-Collection';
+@import './CMS/CMS-Collection';
 // @import './CMS/CMS-EmbeddedContent';
 // @import './CMS/CMS-Grid';
 // @import './CMS/CMS-HeadingText';
