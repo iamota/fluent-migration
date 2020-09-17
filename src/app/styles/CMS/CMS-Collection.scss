@@ -60,13 +60,13 @@
   // }
 
   .flickity {
-    &-viewport {
-      margin: 0 70px;
+    // &-viewport {
+    //   margin: 0 70px;
 
-      @include media-query($mobile) {
-        margin: 0;
-      }
-    }
+    //   @include media-query($mobile) {
+    //     margin: 0;
+    //   }
+    // }
 
     &-button {
       background-color: $color-primary-1;
