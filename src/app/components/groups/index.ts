@@ -16,3 +16,4 @@ export { QuizProduct } from './QuizProduct';
 export { ProductShortDescription } from './ProductShortDescription';
 export { ProductRecommendation } from './ProductRecommendation';
 export { CollectionFilters } from './CollectionFilters';
+export { ProductTileKit } from './ProductTileKit';

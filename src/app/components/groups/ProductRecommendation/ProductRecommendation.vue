@@ -9,7 +9,7 @@
         </div>
       </div>
     </div>
-    <ProductTile v-if="shopify_product_handle !== ''" v-bind="product" />   
+    <ProductTileKit v-if="shopify_product_handle !== ''" v-bind="product" />   
   </div>
 </template>
 
