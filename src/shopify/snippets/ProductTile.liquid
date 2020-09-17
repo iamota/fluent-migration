@@ -43,7 +43,7 @@
         class="AnimateOnHover--{{ section.settings.animation--hover }}"
         onload="triggerResize();"
       >
-      {% if settings.quickview_enabled and disable_quickview != true %}
+      {% if settings.quickview_enabled and disableQuickView != true %}
         <div class="QuickView__button Button Button--{{ settings.quickview_cta_style }}" aria-label="{{ product.title }} {{ settings.quickview_cta }}" tabindex="0" role="button" data-quick-view-button>
           {% if settings.quickview_icon != blank %}<i aria-hidden="true" class="{{ settings.fa }} {{ settings.quickview_icon }}"></i>{% endif %}
           {{ settings.quickview_cta }}

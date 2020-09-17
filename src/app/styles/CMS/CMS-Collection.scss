@@ -26,9 +26,21 @@
   }
 
   .flickity {
+    &-viewport {
+      margin: 0 70px;
+
+      @include media-query($mobile) {
+        margin: 0;
+      }
+    }
+
     &-button {
       opacity: 0.75;
       background-color: $color-primary-1;
+
+      @include media-query($mobile) {
+        background-color: $color-secondary-1;
+      }
 
       &:hover {
         opacity: 1;
@@ -36,6 +48,10 @@
 
       &-icon {
         fill: $color-secondary-1;
+
+        @include media-query($mobile) {
+          fill: $color-primary-1;
+        }
       }
     }
   }

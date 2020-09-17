@@ -1,0 +1,126 @@
+#how-it-works {
+  [data-cms-module-group] {
+    &:nth-of-type(1) {
+      border-top: 1px solid $color-secondary-1;
+    }
+  }
+
+  .Module-Pods {
+    &__Pod {
+      justify-content: start;
+
+      @include media-query($mobile) {
+        padding-top: 20px;
+
+        &:nth-of-type(1) {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  h3 {
+    font-family: $font-secondary;
+    font-weight: 700;
+  }
+
+  .Module-Banner {
+    .textAlignment {
+      &__center {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+    }
+
+    &__Buttons {
+      padding-top: 10px;
+
+      .Button {
+        min-width: 305px;
+        position: relative;
+
+        @include media-query($mobile) {
+          margin-left: calc((100% - 305px) / 2);
+          margin-right: calc((100% - 305px) / 2);
+        }
+
+        &:nth-of-type(2) {
+          margin-left: 75px;
+
+          @include media-query($mobile) {
+            margin-left: calc((100% - 305px) / 2);
+            margin-top: 55px;
+          }
+
+          &::before {
+            content: 'OR';
+            font-family: $font-secondary;
+            font-weight: 700;
+            font-size: 18px;
+            position: absolute;
+            left: -53px;
+
+            @include media-query($mobile) {
+              left: 50%;
+              top: -48px;
+              transform: translateX(-50%);
+            }
+          }
+        }
+      }
+    }
+  }
+      
+  .Module-EmbeddedContent {
+    .rte__video-wrapper {
+      max-width: 970px;
+      margin: 0 auto;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    &:empty {
+      display: none;
+    }
+  }
+
+  .Module-HeadingText {
+    &__Preheading {
+      font-weight: 700;
+    }
+  }
+
+  .Module-SplitContent {
+    h2 {
+      margin: 20px 0;
+    }
+
+    &__Buttons {
+      margin-top: 30px;
+    }
+
+    .ShoppableImage--full {
+      @include media-query($mobile) {
+        max-height: 100%;
+      }
+    }
+
+    &__Column {
+      &--Content {
+        @include media-query($mobile) {
+          height: auto !important;
+        }
+      }
+
+      &--top {
+        grid-row-start: 1 !important;
+      }
+    }
+  }
+}
