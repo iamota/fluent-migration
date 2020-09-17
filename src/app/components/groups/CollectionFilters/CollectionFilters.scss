@@ -120,8 +120,10 @@
     }
 
     &__item--label::before {
-      transform: rotate(90deg);
-      opacity: 1;
+      @include media-query($mobile) {
+        transform: rotate(90deg);
+        opacity: 1;
+      }
     }
   }
 

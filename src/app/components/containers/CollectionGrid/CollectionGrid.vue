@@ -4,7 +4,7 @@
       <Heading v-if="homepage" v-bind="$props" />
       <div :class="{CollectionGridContainer: true, 'CollectionGridContainer--loading': loading, 'CollectionGridContainer--without-filters': !use_filters}">    
         <CollectionFilters v-if="use_filters" :enable_clear="enable_clear" />
-        <Form id="CollectionSort" class="CollectionSort">                  
+        <Form v-if="collection_handle === 'shop'" id="CollectionSort" class="CollectionSort">                  
           <Select
             name="sort_by"
             :value="getSortBy"
@@ -26,12 +26,13 @@
             size="100"
             :name="loader_style"
           />
-          <ProductRecommendation />
+          <ProductRecommendation :collection_handle="collection_handle" />
           <ProductTile 
             v-for="product in getProducts"
             :key="`ProductTile__${product.id}`"
             :enable_button="enable_button"
             :enable_options="enable_options"
+            :enable_quick_view="enable_quick_view"
             v-bind="product"
           />                    
         </Grid>
