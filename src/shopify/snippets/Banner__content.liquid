@@ -8,7 +8,15 @@
   {%- endif -%}
 {%- endcapture -%}
 
-<div class="Banner__content Overlay__content {{ gradient_class }}">
+{%- capture content_animation_class -%}
+  {%- if block.settings.content_animation_class -%}
+    {{ block.settings.content_animation_class }}
+  {%- elsif section.settings.content_animation_class -%}
+    {{ section.settings.content_animation_class }}  
+  {%- endif -%}
+{%- endcapture -%}
+
+<div class="Banner__content Overlay__content {{ gradient_class }} Animate Animate--{{ content_animation_class }}">
   <div class="Section__container {% unless content_animation == 'none' %} Animate Animate--{{ content_animation }} {% endunless %}">
     <div class="AnnouncementsBarPlaceholder {% if settings.preheader_enabled %}AnnouncementsBarPlaceholder--hide-desktop{% endif %} {% if settings.preheader_enabled--mobile %}AnnouncementsBarPlaceholder--hide-mobile{% endif %}"></div>
     
