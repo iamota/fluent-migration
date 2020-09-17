@@ -2,26 +2,26 @@
   &--custom {
     .Banner {
       &__content {
-        max-width: unset;
-        width: 60%;
-        height: 100%;
-        margin: 0;
+        display: flex;
         top: 0;
+        align-items: center;
         transform: none;
+        margin: 0;
         border-top-right-radius: 250px;
         border-bottom-right-radius: 250px;
-        display: flex;
-        align-items: center;
+        width: 60%;
+        max-width: unset;
+        height: 100%;
 
         @include gradient(135deg, $color-secondary-3, $color-secondary-4);
 
         @include media-query($mobile) {
+          display: block;
           position: static;
+          border-radius: unset;
+          padding: 30px 20px 45px;
           width: 100%;
           height: auto;
-          border-radius: unset;
-          display: block;
-          padding: 30px 20px 45px;
           text-align: left;
         }
       }
@@ -47,14 +47,14 @@
 
     .Section {
       &__container {
-        max-width: 650px;
         margin: 0 0 0 auto;
         padding-right: 110px;
+        max-width: 650px;
 
         @include media-query($mobile) {
-          max-width: unset;
           margin: 0;
           padding-right: 0;
+          max-width: unset;
         }
       }
     }

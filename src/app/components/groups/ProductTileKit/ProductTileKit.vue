@@ -1,5 +1,6 @@
 <template>
   <div 
+    class="ProductTileKit"
     :class="classes"
     :style="css_variables"
     data-product-tile
