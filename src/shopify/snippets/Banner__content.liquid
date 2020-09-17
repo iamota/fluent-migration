@@ -14,7 +14,7 @@
   {%- elsif section.settings.content_animation_class -%}
     {{ section.settings.content_animation_class }}  
   {%- endif -%}
-{%- endcapture -%}
+{%- endcapture -%} 
 
 <div class="Banner__content Overlay__content {{ gradient_class }} {% unless placeholder %}Animate Animate--{{ content_animation_class }}{% endunless %}">
   <div class="Section__container {% unless content_animation == 'none' %} Animate Animate--{{ content_animation }} {% endunless %}">
