@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import _ from 'lodash-es';
 import buttons from 'infinite/cms/scripts/core/CMS-Button';
 import { configHook } from 'infinite/cms/scripts/core/CMS-Hooks';
 import shoppableWrapper from '../../../../cms/scripts/core/shoppableWrapper';
 
-let module_name = '';
-let index = '';
+let module_name = ``;
+let index = ``;
 
 const extractImage = (content, link) => {
   const shoppable_html = shoppableWrapper(content, true);
@@ -25,11 +26,11 @@ const callBack = (data) => {
   module_name = data.module_name;
   index = data.i;
 
-  let pods_html = '';
+  let pods_html = ``;
 
   _.each(settings.pods, (pod) => {
     const on_image_classes = [];
-    if (settings.pod_adjustments.position === 'on') {
+    if (settings.pod_adjustments.position === `on`) {
       on_image_classes.push(`Module-${module_name}__Image--Overlay Module-${module_name}__Image--Overlay-${settings.pod_adjustments.overlay}`);
       on_image_classes.push(`Module-${module_name}__Image--VAlignment Module-${module_name}__Image--VAlignment-${settings.pod_adjustments.vertical_alignment}`);
     }
@@ -39,22 +40,22 @@ const callBack = (data) => {
       <h3 class="h5" style="color: ${pod.text_color}">${pod.heading}</h3>
       <p  style="color: ${pod.text_color}">${pod.description}</p>
       <div class="Module-${module_name}__Buttons">
-        ${buttons(pod.buttons, module_name, index, 'Pod__button')}
+        ${buttons(pod.buttons, module_name, index, `Pod__button`)}
         </div>
     </div>
     `;
 
-    const upper_content = settings.pod_adjustments.position === 'on' 
+    const upper_content = settings.pod_adjustments.position === `on` 
       ? `
-        <div class="Module-${module_name}__Image ${on_image_classes.join(' ')}" style="height:${settings.height}px; background-image:url('${pod.image}')">
-          ${settings.pod_adjustments.position === 'on' ? position_html : ''}
+        <div class="Module-${module_name}__Image ${on_image_classes.join(` `)}" style="height:${settings.height}px; background-image:url('${pod.image}')">
+          ${settings.pod_adjustments.position === `on` ? position_html : ``}
         </div>`
       : extractImage(pod.shoppable_image, pod.link);
 
     pods_html += `
       <div class="Module-${module_name}__Pod">
         ${upper_content}
-        ${settings.pod_adjustments.position === 'below' ? position_html : ''}
+        ${settings.pod_adjustments.position === `below` ? position_html : ``}
       </div>
     `;
   });
