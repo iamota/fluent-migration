@@ -1,0 +1,11 @@
+@import '~@INF/styles';
+
+.InformationProductTile {
+  padding-bottom: 0 !important;
+
+  .ProductTile__button {
+    @include media-query($mobile) {
+      display: none;
+    }
+  }
+}
