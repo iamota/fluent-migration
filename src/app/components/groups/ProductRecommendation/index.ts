@@ -1,0 +1,1 @@
+export { default as ProductRecommendation } from './ProductRecommendation.vue';
