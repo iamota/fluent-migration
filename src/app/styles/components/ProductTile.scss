@@ -1,0 +1,20 @@
+.ProductTile {
+  position: relative;
+  padding-bottom: 65px;
+
+  @include media-query($tablet-down) {
+    padding-bottom: 0;
+  }
+
+  &__content {
+    padding: 0 10px 20px;
+  }
+
+  &__image {
+    position: static;
+  }
+
+  .QuickView__button {
+    bottom: 20px;
+  }
+}

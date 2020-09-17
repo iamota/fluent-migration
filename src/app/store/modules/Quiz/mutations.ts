@@ -10,6 +10,9 @@ export default defineMutations<Quiz.State>()({
   setProductId(state, id: number) {
     state.product_id = id;
   },
+  setSubtitle(state, subtitle: string) {
+    state.kit_subtitle = subtitle;
+  },
   setTitle(state, title: string) {
     state.kit_title = title;
   },
