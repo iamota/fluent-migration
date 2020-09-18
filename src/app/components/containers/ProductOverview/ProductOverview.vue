@@ -11,7 +11,7 @@
         />
         <ProductShortDescription :truncate="1000" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
-          v-if="product.product_data.variants.length > 1 && !assessment || assessment && authorized" 
+          v-if="product.product_data.variants.length > 1 && !assessment || product.product_data.variants.length > 1 && assessment && authorized" 
           :product_data_id="product_id" 
           v-bind="$props" 
         />
