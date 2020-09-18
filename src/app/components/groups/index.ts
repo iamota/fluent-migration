@@ -18,3 +18,4 @@ export { ProductRecommendation } from './ProductRecommendation';
 export { CollectionFilters } from './CollectionFilters';
 export { ProductTileKit } from './ProductTileKit';
 export { InformationProductTile } from './InformationProductTile';
+export { ProductHeading } from './ProductHeading';

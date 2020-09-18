@@ -13,6 +13,13 @@ export default ProductOverview.extend({
         // '--my-custom-css-variable': this.my_custom_prop,
       };
     },
+    assessment(): boolean {
+      const tags: string[] = this.product_data.tags;
+      
+      if (tags.length === 0) { return false; }      
+
+      return tags.map((tag) => tag.toLowerCase()).indexOf(`assessment`) > -1;
+    },
   },
   methods: {
     ...themeEditor,
