@@ -17,9 +17,47 @@
   }
 
   .ProductInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 60px 0 0 10px;
+
+    @include media-query($tablet-down) {
+      padding: 0;
+    }
+  }
+
+  .ProductImages {
+    &__thumbs {
+      margin: 0 auto 15px;
+      padding: 0 30px;
+      width: 90%;
+
+      @include media-query($mobile) {
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    &__thumb-container {
+      margin: 0;
+      border-bottom: none;
+
+      @include media-query($mobile) {
+        margin: 0 5px;
+      }
+    }
+
+    &__thumb {
+      @include media-query($mobile) {
+        width: 20%;
+      }
+
+      img {
+        border: 1px solid $color-light-gray;
+      }
+    }
+
+    &__carousel {
+      padding: 0 30px;
+    }
   }
 
   .ProductQuantity {

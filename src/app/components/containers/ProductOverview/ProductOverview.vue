@@ -3,7 +3,7 @@
     <div class="ProductOverview__grid">
       <ProductImages :product_data_id="product_id" v-bind="$props" />
       <div class="ProductInfo">
-        <ProductHeading :product_data_id="product_id" v-bind="$props" breakpoint="desktop" />
+        <ProductHeading :product_data_id="product_id" v-bind="$props" />
         <ProductShortDescription :truncate="1000" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
           v-if="product.product_data.variants.length > 1" 
