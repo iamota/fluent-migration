@@ -107,7 +107,7 @@ export default defineActions({
 
       resolve(data.product_data);
     });
-  },
+  }, 
   getAssessment(context): Promise<GenericObject> {
     const { getters, state } = QuizActionContext(context);  
     return new Promise(async (resolve) => {
