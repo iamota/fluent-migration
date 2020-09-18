@@ -3,8 +3,8 @@
     <Overlay v-bind="$props">
       <Heading v-if="homepage" v-bind="$props" />
       <div :class="{CollectionGridContainer: true, 'CollectionGridContainer--loading': loading, 'CollectionGridContainer--without-filters': !use_filters}">    
-        <CollectionFilters v-if="use_filters" :enable_clear="enable_clear" />
-        <Form id="CollectionSort" class="CollectionSort">                  
+        <CollectionFilters v-if="use_filters" :class="`template-${template_suffix}`" :enable_clear="enable_clear" />
+        <Form v-if="collection_handle === 'shop'" id="CollectionSort" class="CollectionSort">                  
           <Select
             name="sort_by"
             :value="getSortBy"
@@ -26,14 +26,27 @@
             size="100"
             :name="loader_style"
           />
-          <ProductRecommendation />
-          <ProductTile 
-            v-for="product in getProducts"
-            :key="`ProductTile__${product.id}`"
-            :enable_button="enable_button"
-            :enable_options="enable_options"
-            v-bind="product"
-          />                    
+          <ProductRecommendation :collection_handle="collection_handle" />
+          <template v-if="template_suffix === 'information'">
+            <InformationProductTile 
+              v-for="product in getProducts"
+              :key="`ProductTile__${product.id}`"
+              :enable_button="enable_button"
+              :enable_options="enable_options"
+              :enable_quick_view="enable_quick_view"
+              v-bind="product"
+            />    
+          </template>
+          <template v-else>            
+            <ProductTile 
+              v-for="product in getProducts"
+              :key="`ProductTile__${product.id}`"
+              :enable_button="enable_button"
+              :enable_options="enable_options"
+              :enable_quick_view="enable_quick_view"
+              v-bind="product"
+            />                    
+          </template>
         </Grid>
         <Pagination
           v-if="display_pagination"          
