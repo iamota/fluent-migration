@@ -24,7 +24,7 @@ export default ProductOverview.extend({
       };
     },
     assessment(): boolean {
-      const tags: string[] = this.product_data.tags;
+      const tags: string[] = this.$props.product_data.tags;
       
       if (tags.length === 0) { return false; }      
 
@@ -33,8 +33,11 @@ export default ProductOverview.extend({
     authorized(): boolean {
       const kit_information = localStorage.getItem(`kit_data`) as string;
       const kit_data: KitData = JSON.parse(kit_information);
-      return this.assessment ? this.product_data.handle === kit_data.shopify_product_handle : true;
+      return this.assessment ? this.$props.product_data.handle === kit_data.shopify_product_handle : true;
     },
+  },
+  mounted() {
+    console.log(this.getters);
   },
   methods: {
     ...themeEditor,

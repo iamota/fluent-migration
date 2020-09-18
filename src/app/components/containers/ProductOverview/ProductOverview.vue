@@ -3,7 +3,12 @@
     <div class="ProductOverview__grid">
       <ProductImages :product_data_id="product_id" v-bind="$props" />
       <div class="ProductInfo">
-        <ProductHeading :product_data_id="product_id" v-bind="$props" />
+        <ProductHeading
+          :product_data_id="product_id"
+          v-bind="$props"
+          authorized="authorized"
+          assessment="assessment"
+        />
         <ProductShortDescription :truncate="1000" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
           v-if="product.product_data.variants.length > 1" 
@@ -20,7 +25,12 @@
             :product_data_id="product_id"
             v-bind="$props"
           />
-          <ProductAddToCartButton :product_data_id="product_id" v-bind="$props" />
+          <ProductAddToCartButton
+            :product_data_id="product_id"
+            v-bind="$props"
+            authorized="authorized"
+            assessment="assessment"
+          />
         </div>
         <div
           v-if="!authorized && assessment"
