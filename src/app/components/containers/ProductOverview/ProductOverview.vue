@@ -6,8 +6,8 @@
         <ProductHeading
           :product_data_id="product_id"
           v-bind="$props"
-          authorized="authorized"
-          assessment="assessment"
+          :authorized="authorized"
+          :assessment="assessment"
         />
         <ProductShortDescription :truncate="1000" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
