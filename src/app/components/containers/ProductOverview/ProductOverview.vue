@@ -16,7 +16,7 @@
           v-bind="$props" 
         />
         <!-- <ProductSocialShare :product_data_id="product_id" /> -->
-        <div
+        <div 
           v-if="!assessment || assessment && authorized"
           class="ProductOverview__quantity-add"
         >
