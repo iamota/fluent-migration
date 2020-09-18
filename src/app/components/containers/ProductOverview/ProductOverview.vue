@@ -19,7 +19,7 @@
         <div 
           v-if="!assessment || assessment && authorized"
           class="ProductOverview__quantity-add"
-        >
+        > 
           <ProductQuantity
             v-if="!assessment || assessment && authorized"
             :product_data_id="product_id"
