@@ -1,4 +1,4 @@
-ttconst default_props: INF.DefaultProps = {
+const default_props: INF.DefaultProps = {
   id: { type: String },
   name: { type: String },
   use_background: { type: Boolean, default: false},
