@@ -15,7 +15,11 @@
           v-if="authorized"
           class="ProductOverview__quantity-add"
         >
-          <ProductQuantity :product_data_id="product_id" v-bind="$props" />
+          <ProductQuantity
+            v-if="!assessment"
+            :product_data_id="product_id"
+            v-bind="$props"
+          />
           <ProductAddToCartButton :product_data_id="product_id" v-bind="$props" />
         </div>
         <div
