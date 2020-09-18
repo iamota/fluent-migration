@@ -3,7 +3,6 @@
     <form action="/cart/add" method="post" enctype="multipart/form-data">
       <input type="hidden" name="id" :value="product.variant_table[product.selected_variant_id].id">
       <input type="hidden" name="quantity" :value="product.quantity">
-      <input type="hidden" name="quantity" :value="product.quantity">
       <input
         v-if="assessment"
         type="hidden"
