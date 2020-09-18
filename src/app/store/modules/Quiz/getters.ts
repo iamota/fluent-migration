@@ -16,7 +16,7 @@ interface Patient {
   gender: string;
   patient_type: string;
   symptoms_over_6_days: boolean;
-  symptom_onset: string,
+  symptom_onset: string;
   age_under_11: boolean;
 }
 
@@ -114,7 +114,7 @@ export default defineGetters<Quiz.State>()({
   },
   getAssessmentInfo(...args: any): AssessmentData | string {
     const { rootState } = rootGetterContext(args);
-    const { getters } = QuizGetterContext(args);
+    const { getters, state } = QuizGetterContext(args);
     const first_name = get(rootState, `Forms.quizForm.first_name.value`, ``);
     const age = get(rootState, `Forms.quizForm.age.value`, 0);
     const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);

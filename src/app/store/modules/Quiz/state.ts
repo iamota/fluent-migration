@@ -7,6 +7,7 @@ declare global {
       kit_subtitle: string;
       kit_title: string;
       kit_body: string;
+      token: string;
     }
   }
 }
@@ -18,6 +19,7 @@ const state: Quiz.State = {
   kit_subtitle: `Based on your symptoms...`,
   product_id: 0,
   product_handle: `dev-test-product-do-not-delete`,
+  token: ``,
 };
 
 export default state;
