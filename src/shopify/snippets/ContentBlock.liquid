@@ -68,7 +68,8 @@
 
     @media only screen and (max-width: {{ settings.grid_tablet_max }}) {
       #block{{ block.id}} {
-        margin-top: 0;
+        {% comment %} margin-top: 0; {% endcomment %}
+        margin-top: calc({{ block.settings.margin_top--mobile }}px + 30px);
       }
     }
 

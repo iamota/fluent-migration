@@ -8,6 +8,7 @@
       {% include 'CloseIcon' %}
     </div>
     <div class="QuickView__loader"><i aria-label="{% include 'INF-translation', translate: 'products.product.loading', default: 'Loading' %}" class="{{ settings.fa }} fa-spinner fa-spin"></i></div>
-    <div class="QuickView__content" data-quick-view-content data-section-id="QuickView" data-section-type="product"></div>
+    {% comment %} <div class="QuickView__content" data-quick-view-content data-section-id="QuickView" data-section-type="product"></div> {% endcomment %}
+    {% section 'INF-ProductQuickView' %}
   </div>
 </div>

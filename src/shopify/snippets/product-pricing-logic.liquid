@@ -1,27 +1,29 @@
 {%- if product.compare_at_price > product.price -%}
+  <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+  <s class="Price__compare-at">{{ product.compare_at_price | money }}</s>
+{%- endif -%}
+
+{%- if product.compare_at_price > product.price -%}
 
   {%- if product.price_varies -%}
     {%- assign sale_price = product.price | money -%}
-    {{ 'products.product.on_sale_from_html' | t: price: sale_price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+    {% comment %} {{ 'products.product.on_sale_from_html' | t: price: sale_price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %} {% endcomment %}
+    <span class="Price__on-sale">From {{ sale_price }}</span>{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
   {%- else -%}
-    {{ 'products.product.on_sale' | t }}
-    {{ product.price | money }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+    {% comment %} {{ 'products.product.on_sale' | t }} {% endcomment %}
+    <span class="Price__on-sale">{{ product.price | money }}</span>{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
   {%- endif -%}
 
 {%- else -%}
 
   {%- if product.price_varies -%}
     {%- assign price = product.price | money -%}
-    {{ 'products.product.from_text_html' | t: price: price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+    {% comment %} {{ 'products.product.from_text_html' | t: price: price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %} {% endcomment %}
+    From {{ price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
   {%- else -%}
     {{ product.price | money }}{% if settings.show_currency %}  <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
   {%- endif -%}
   
-{%- endif -%}
-
-{%- if product.compare_at_price > product.price -%}
-  <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-  <s class="Price__compare-at">{{ product.compare_at_price | money }}</s>
 {%- endif -%}
 
 {%- unless product.available -%}

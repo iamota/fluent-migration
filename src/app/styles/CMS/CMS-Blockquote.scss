@@ -1,18 +1,45 @@
-.Module-Blockquote {
-  .Module-Blockquote {
+.Module-BlockquoteV3 {
+  .Module-BlockquoteV3 {
     &__Blockquote {
       &--Alignment {
         &-left {
           text-align: left;
         }
+
         &-center {
           text-align: center;
         }
+
         &-right {
           text-align: right;
         }
+
+        &-left {
+          &--mobile {
+            @include media-query($mobile) {
+              text-align: left;
+            }
+          }
+        }
+
+        &-center {
+          &--mobile {
+            @include media-query($mobile) {
+              text-align: center;
+            }
+          }
+        }
+
+        &-right {
+          &--mobile {
+            @include media-query($mobile) {
+              text-align: right;
+            }
+          }
+        }
       }
     }
+
     &__Source {
       margin: 20px 0;
     }

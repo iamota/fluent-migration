@@ -1,28 +1,22 @@
 <template>
   <div class="Quiz__slide Question1">
+    <h3 class="Quiz__heading h1">What is your <br>first name?</h3>
     <div class="Quiz__content">
-      <h3>What is your first name?</h3>
       <Input 
         name="first_name" 
         label="First name" 
         design="legacy" 
-        placeholder="First Name"
+        placeholder="Enter first name"
         required 
-        :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]"
+        :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]" 
+        @keypress.native.enter.prevent="nextStep"
       />
-    </div>
-    <div class="Quiz__buttons">
-      <a href="#" class="Button Button__Primary" @click.prevent="back">back</a>
-      <a 
-        href="#"
-        class="Button Button__Primary" 
-        :class="{ 'noHover': isDisabled }" 
-        :disabled="isDisabled" 
-        @click.prevent="next"
-      >
-        continue
-      </a>
-    </div>
+    </div> 
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      :next_step="next_step"
+    />
   </div>
 </template>
 

@@ -3,5 +3,10 @@
     "newsletter_form": {
       "email_placeholder": "Enter Email Address"
     }
+  },
+  "collections": {
+    "kit": {
+      "recommend_label": "Recommended for You"
+    }
   }
 }
