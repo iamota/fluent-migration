@@ -11,9 +11,20 @@
           v-bind="$props" 
         />
         <!-- <ProductSocialShare :product_data_id="product_id" /> -->
-        <div class="ProductOverview__quantity-add">
+        <div
+          v-if="authorized"
+          class="ProductOverview__quantity-add"
+        >
           <ProductQuantity :product_data_id="product_id" v-bind="$props" />
           <ProductAddToCartButton :product_data_id="product_id" v-bind="$props" />
+        </div>
+        <div
+          v-if="!authorized && assessment"
+          class="ProductOverview__lockout"
+        >
+          <p class="ProductOverview__lockout--title">{{ assessment_text_title }}</p>
+          <p>{{ assessment_text_description }}</p>
+          <Button>{{ 'products.assessment.take_the_quiz_cta' | t }}</Button>
         </div>
       </div>
     </div>
