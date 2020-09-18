@@ -16,6 +16,9 @@ export default defineMutations<Quiz.State>()({
   setTitle(state, title: string) {
     state.kit_title = title;
   },
+  setToken(state, token: string) {
+    state.token = token;
+  },
   setBody(state, body: string) {
     state.kit_body = body;
   },

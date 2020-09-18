@@ -28,6 +28,9 @@ export default defineActions({
     };
     
     if (response && response.type === `advance`) {
+      if (response.token && state.token === ``) {
+        commit.setToken(response.token);
+      }
       goToNext();
       return;
     }
@@ -106,13 +109,13 @@ export default defineActions({
     });
   },
   getAssessment(context): Promise<GenericObject> {
-    const { getters } = QuizActionContext(context);  
+    const { getters, state } = QuizActionContext(context);  
     return new Promise(async (resolve) => {
       try {
         const data = JSON.stringify(getters.getAssessmentInfo);
         const response = await $.ajax({
           type: `POST`,
-          url: `https://fluent-api.vcomm.io/assessment`,
+          url: `https://fluent-api.vcomm.io/assessment?token=${state.token}`,
           contentType: `application/json; charset=utf-8`,
           crossDomain: true,
           xhrFields: {
