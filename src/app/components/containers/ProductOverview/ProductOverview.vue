@@ -3,7 +3,12 @@
     <div class="ProductOverview__grid">
       <ProductImages :product_data_id="product_id" v-bind="$props" />
       <div class="ProductInfo">
-        <ProductHeading :product_data_id="product_id" v-bind="$props" />
+        <ProductHeading
+          :product_data_id="product_id"
+          v-bind="$props"
+          authorized="authorized"
+          assessment="assessment"
+        />
         <ProductShortDescription :truncate="1000" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
           v-if="product.product_data.variants.length > 1" 
@@ -11,9 +16,29 @@
           v-bind="$props" 
         />
         <!-- <ProductSocialShare :product_data_id="product_id" /> -->
-        <div class="ProductOverview__quantity-add">
-          <ProductQuantity :product_data_id="product_id" v-bind="$props" />
-          <ProductAddToCartButton :product_data_id="product_id" v-bind="$props" />
+        <div
+          v-if="authorized"
+          class="ProductOverview__quantity-add"
+        >
+          <ProductQuantity
+            v-if="!assessment"
+            :product_data_id="product_id"
+            v-bind="$props"
+          />
+          <ProductAddToCartButton
+            :product_data_id="product_id"
+            v-bind="$props"
+            authorized="authorized"
+            assessment="assessment"
+          />
+        </div>
+        <div
+          v-if="!authorized && assessment"
+          class="ProductOverview__lockout"
+        >
+          <p class="ProductOverview__lockout--title">{{ assessment_text_title }}</p>
+          <p>{{ assessment_text_description }}</p>
+          <Button>{{ 'products.assessment.take_the_quiz_cta' | t }}</Button>
         </div>
       </div>
     </div>

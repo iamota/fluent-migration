@@ -1,6 +1,6 @@
-import { ProductHeading } from '@INF/groups/ProductHeading/';
+import Product from '@INF/mixins/Product';
 
-export default ProductHeading.extend({
+export default Product.extend({
   props: {
     assessment: { type: Boolean, default: false },
     authorized: { type: Boolean, default: true },
