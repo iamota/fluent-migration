@@ -8,5 +8,10 @@
     "kit": {
       "recommend_label": "Recommended for You"
     }
+  },
+  "products": {
+    "assessment": {
+      "take_the_quiz_cta": "Take the Quiz"
+    }
   }
 }

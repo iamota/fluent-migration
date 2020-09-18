@@ -11,8 +11,7 @@
     <p class="QuizProduct__body-text" v-html="kit_body" />
     <div class="ProductOverview__grid">
       <ProductImages :product_data_id="product_id" v-bind="$props" />
-      <div class="ProductInfo">
-        <Heading name="ProductInfo" preheading_class="pbold" preheading="Recommended for you" />
+      <div class="ProductInfo">        
         <ProductHeading :product_data_id="product_id" v-bind="$props" />
         <ProductShortDescription :truncate="280" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
