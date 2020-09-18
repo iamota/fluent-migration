@@ -1,12 +1,12 @@
 @import '~@INF/styles';
 
-.Question8 {
-  margin: 0 auto;
-  max-width: 750px;
+.Question8.Quiz__slide {
+  .Quiz__heading {
+    margin-bottom: 50px;
+    max-width: none;
+  }
 
   .Quiz__content {
-    top: 41%;
-    padding-bottom: 0;
-    height: auto;
+    max-width: 750px;
   }
 }

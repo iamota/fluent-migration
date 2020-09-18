@@ -1,0 +1,1 @@
+export { default as CollectionFilters } from './CollectionFilters.vue';

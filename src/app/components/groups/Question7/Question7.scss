@@ -1,6 +1,7 @@
 @import '~@INF/styles';
 
 .Question7 {
-  margin: 0 auto;
-  max-width: 750px;
+  .Quiz__heading {
+    max-width: 880px;
+  }
 }

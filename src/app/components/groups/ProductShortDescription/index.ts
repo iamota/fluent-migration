@@ -1,0 +1,1 @@
+export { default as ProductShortDescription } from './ProductShortDescription.vue';

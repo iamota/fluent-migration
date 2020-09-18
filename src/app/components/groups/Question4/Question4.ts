@@ -1,18 +1,26 @@
 import Vue from 'vue';
 import store from 'infinite/src/app/store';
+import { get } from 'lodash-es';
   
 export default Vue.extend({
+  data() {
+    return {
+      previous_step: `question3`,
+    };
+  },
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quizForm.gender || store.state.Forms.quizForm.gender.value === `` || store.state.Forms.quizForm.gender.errors.length > 0;
+      return !store.state.Forms.quizForm.focus || store.state.Forms.quizForm.focus.value === `` || store.state.Forms.quizForm.focus.errors.length > 0;
     },
-  },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question3`);
-    },
-    next(): void {
-      store.dispatch.Quiz.nextStep(`question5`);
+    next_step(): string {      
+      const focus = get(store, `state.Forms.quizForm.focus.value`, null);
+      
+  
+      if (focus === `self`) {
+        return `question5`;
+      }
+
+      return `question7`;
     },
   },
 });

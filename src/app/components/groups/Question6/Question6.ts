@@ -1,23 +1,16 @@
 import Vue from 'vue';
 import store from 'infinite/src/app/store';
   
-export default Vue.extend({
+export default Vue.extend({  
+  data() {
+    return {
+      previous_step: `question5`,
+      next_step: `question10`,
+    };
+  },
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quizForm.zip_code || store.state.Forms.quizForm.zip_code.value === `` || store.state.Forms.quizForm.zip_code.errors.length > 0;
-    },
-  },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question5`);
-    },
-    next(): void {
-      setTimeout(() => {
-        if (store.state.Forms.quizForm.zip_code.errors.length > 0) {
-          return;
-        }
-        store.dispatch.Quiz.nextStep(`question7`);
-      }, 10);
+      return !store.state.Forms.quizForm.symptom_duration || store.state.Forms.quizForm.symptom_duration.value === `` || store.state.Forms.quizForm.symptom_duration.errors.length > 0;
     },
   },
 });

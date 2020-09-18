@@ -1,0 +1,61 @@
+#SectionCollectionBanner {
+  .Banner {
+    &__content {
+      display: flex;
+      top: 0;
+      left: auto;
+      align-items: center;
+      transform: none;
+      margin: 0;
+      border-radius: 250px 0 0 250px;
+      padding-left: 80px;
+      width: 80%;
+      max-width: unset;
+      height: 100%;
+
+      @include media-query($mobile) {
+        display: block;
+        position: static;
+        border-radius: unset;
+        padding: 10px 20px;
+        width: 100%;
+      }
+    }
+
+    &__description {
+      p:first-child {
+        margin-top: 1em;
+      }
+    }
+
+    &__image {
+      &--mobile {
+        position: static;
+      }
+    }
+
+    &__placeholder {
+      @include media-query($mobile) {
+        display: none;
+      }
+    }
+  }
+
+  .Section {
+    &__container {
+      margin: 0;
+      padding-left: 0;
+      max-width: unset;
+
+      @include media-query($mobile) {
+        margin: 0;
+        padding-right: 0;
+        text-align: center;
+      }
+    }
+  }
+
+  .AnnouncementsBarPlaceholder {
+    display: none;
+  }
+}

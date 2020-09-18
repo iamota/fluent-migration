@@ -138,4 +138,19 @@ $box-mobile-left-position: 10px;
       transition: height 0.2s;
     }
   }
+
+  .textAlignment {
+    &__center {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  h2 {
+    margin: 20px 0;
+  }
+
+  &__Buttons {
+    padding-top: 10px;
+  }
 }

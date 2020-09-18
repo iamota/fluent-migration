@@ -1,34 +1,27 @@
 <template>
   <div class="Quiz__slide Question8 Radio--longtext">
+    <h3 class="Quiz__heading h1">How quickly did your symptoms start?</h3>   
     <div class="Quiz__content">
-      <h3>We’d like to ask you about the most recent time you or a family member had a cold or the flu.  <br>Please choose one:</h3>
       <Grid expand>
         <Radio 
-          name="focus" 
-          label="Answering for myself" 
-          value="myself"
+          name="family_symptom_onset" 
+          label="Gradual over a few days" 
+          value="gradual"
           inline 
         />
         <Radio 
-          name="focus" 
-          label="Answering for a family member" 
-          value="family member" 
+          name="family_symptom_onset" 
+          label="Sudden in a matter of hours" 
+          value="sudden" 
           inline
         /> 
-      </Grid>    
+      </Grid>   
     </div>
-    <div class="Quiz__buttons">
-      <a href="#" :class="`Button Button__Primary`" @click.prevent="back">back</a>
-      <a 
-        href="#" 
-        class="Button Button__Primary" 
-        :class="{ 'noHover': isDisabled }" 
-        :disabled="isDisabled" 
-        @click.prevent="next"
-      >
-        continue
-      </a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      :next_step="next_step"
+    />
   </div>
 </template>
 

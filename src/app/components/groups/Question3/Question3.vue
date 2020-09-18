@@ -1,28 +1,33 @@
 <template>
-  <div class="Quiz__slide Question3">
+  <div class="Quiz__slide Question3 Radio--longtext">
+    <h3 class="Quiz__heading h1">What is your gender?</h3>
     <div class="Quiz__content">
-      <h3>What is your age?</h3>    
-      <Input 
-        name="age" 
-        label="Age" 
-        design="legacy"
-        placeholder="Age"
-        required
-        :rules="[`integer('Please input age as an integer.')`, `validNumericalAge`]"
-      />
+      <Grid desktop="3" tablet="3" mobile="1">
+        <Radio 
+          name="gender" 
+          label="Male" 
+          value="male"
+          inline 
+        />
+        <Radio 
+          name="gender" 
+          label="Female" 
+          value="female" 
+          inline
+        />
+        <Radio 
+          name="gender" 
+          label="Other" 
+          value="other" 
+          inline 
+        />
+      </Grid>
     </div>
-    <div class="Quiz__buttons">
-      <a href="#" class="Button Button__Primary" @click.prevent="back">back</a>
-      <a 
-        href="#" 
-        class="Button Button__Primary" 
-        :class="{ 'noHover': isDisabled }" 
-        :disabled="isDisabled" 
-        @click.prevent="next"
-      >
-        continue
-      </a>
-    </div>
+    <QuizButtons 
+      :disabled="isDisabled"
+      :previous_step="previous_step" 
+      :next_step="next_step"
+    />
   </div>
 </template>
 
