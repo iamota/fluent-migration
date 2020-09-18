@@ -1,20 +1,40 @@
 <template>
   <Section v-bind="$props" :css_variables="cssVariables">
-    <Overlay v-bind="$props">
-      <div class="TabbedContent__content">
-        <div class="TabbedContent__tabs">
-          <div
-            v-for="(title, index) in tabTitles"
-            :key="index"
-            :class="{ 'TabbedContent__tab--selected': current_tab==title}"
-            class="TabbedContent__tab"
-            @click="changeTab(title)"
-          >
-            <span>{{ title }}</span>
-          </div>
+    <Carousel
+      :id="`TabbedCarousel`"
+      class="TabbedContent__tabs"
+      v-bind="mobile_props"
+      cell_align="left"
+      as_nav_for="#TabbedCarousel--content"
+      :draggable="true"
+    >
+      <Slide
+        v-for="(title, index) in tabTitles"
+        :key="index"
+        class="TabbedContent__tab"
+      >
+        <div>
+          <span>{{ title }}</span>
         </div>
-      </div>
-    </Overlay>
+      </Slide>
+    </Carousel>
+    <Carousel
+      :id="`TabbedCarousel--content`"
+      ref="TabbedCarouselContent"
+      class="TabbedContent__content"
+      v-bind="mobile_props"
+      :fade="true"
+    >
+      <Slide
+        v-for="(tab_data, index) in tabs"
+        :key="index"
+        class="TabbedContent__body"
+      >
+        <div
+          v-html="tab_data.tab_content"
+        />
+      </Slide>
+    </Carousel>
   </Section>
 </template>
 

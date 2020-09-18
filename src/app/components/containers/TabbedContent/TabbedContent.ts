@@ -1,16 +1,11 @@
 import _ from 'lodash';
-import Vue from 'vue';
+import CarouselContainers from '@INF/mixins/CarouselContainers';
 import { default_props, default_css_variables } from './TabbedContent.defaults';
 
-export default Vue.extend({
+export default CarouselContainers.extend({
   props: {
     ...default_props,
     tabs: { type: Array },
-  },
-  data() {
-    return {
-      current_tab: `tab`,
-    };
   },
   computed: {
     cssVariables(): GenericObject {
@@ -23,14 +18,14 @@ export default Vue.extend({
       const titles = _.map(this.$props.tabs, (tab): string => { return tab.tab_title; });
       return titles;
     },
+    selectedTab(): number {
+      return this.$store.state.Carousels.TabbedCarousel ? this.$store.state.Carousels.TabbedCarousel.selected_index : 0;
+    },
   },
-  mounted() {
-    const tabs = this.tabTitles;
-    this.current_tab = tabs[0];
-  },
-  methods: {
-    changeTab(tab_name: string): void {
-      this.current_tab = tab_name;
+  watch: {
+    selectedTab(index): void {
+      // @ts-ignore
+      this.$refs.TabbedCarouselContent.select(index);
     },
   },
 });
