@@ -11,25 +11,25 @@
         />
         <ProductShortDescription :truncate="1000" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
-          v-if="product.product_data.variants.length > 1" 
+          v-if="product.product_data.variants.length > 1 && !assessment || assessment && authorized" 
           :product_data_id="product_id" 
           v-bind="$props" 
         />
         <!-- <ProductSocialShare :product_data_id="product_id" /> -->
         <div
-          v-if="authorized"
+          v-if="!assessment || assessment && authorized"
           class="ProductOverview__quantity-add"
         >
           <ProductQuantity
-            v-if="!assessment"
+            v-if="!assessment || assessment && authorized"
             :product_data_id="product_id"
             v-bind="$props"
           />
           <ProductAddToCartButton
             :product_data_id="product_id"
             v-bind="$props"
-            authorized="authorized"
-            assessment="assessment"
+            :authorized="authorized"
+            :assessment="assessment"
           />
         </div>
         <div
