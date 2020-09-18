@@ -1,0 +1,1 @@
+export { default as ProductHeading } from './ProductHeading.vue';
