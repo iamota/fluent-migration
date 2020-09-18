@@ -16,6 +16,12 @@
     }
   }
 
+  &__lockout {
+    &--title {
+      font-weight: bold;
+    }
+  }
+
   .ProductInfo {
     padding: 60px 0 0 10px;
 

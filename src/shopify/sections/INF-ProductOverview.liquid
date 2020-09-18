@@ -1,0 +1,635 @@
+<div data-vue-container="ProductOverview" data-section-id="{{ section.id }}">
+  <script type="application/json" data-vue-props>
+  {
+    "id": "{{ section.id }}",
+    "name": "ProductOverview",
+    {% include 'INF-spread-json', input: section.settings %},
+    "product_data": {
+      {% include 'INF-spread-json', input: product %}
+    },
+    "grid_mobile_max": "{{ settings.grid_mobile_max }}",
+    "product_id": {{ product.id }}, 
+    "assessment_text_title": "{{ product.metafields.icms.assessment_text_title }}",
+    "assessment_text_description": "{{ product.metafields.icms.assessment_text_description }}",
+    "blocks": [
+      {%- for block in section.blocks -%}
+      { 
+        "id": "{{ block.id }}",
+        "type": "{{ block.type }}",
+        "settings": {{ block.settings | json }}
+      }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+</div>
+
+{% schema %}
+  {
+    "name": "Product Overview",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_background",
+        "label": "Use background color",
+        "default": false,
+        "info": "Check this to use a custom section background color."
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Image Carousel"
+      },
+      {
+        "type": "paragraph",
+        "content": "A carousel will only be displayed if more than one image is present."
+      },
+      {
+        "type": "select",
+        "id": "carousel_type",
+        "label": "Carousel type",
+        "default": "all",
+        "options": [
+          {
+            "value": "all",
+            "label": "All images in one carousel"
+          },
+          {
+            "value": "option1",
+            "label": "Unique carousel per primary option"
+          },
+          {
+            "value": "combo",
+            "label": "Unique carousel per primary/secondary combo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "carousel_animation",
+        "label": "Animation",
+        "default": "slide-right",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-up",
+            "label": "Fade in & slide up"
+          },
+          {
+            "value": "slide-down",
+            "label": "Fade in & slide down"
+          },          
+          {
+            "value": "slide-left",
+            "label": "Fade in & slide left"
+          },
+          {
+            "value": "slide-right",
+            "label": "Fade in & slide right"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Product Info"
+      },
+      {
+        "type": "radio",
+        "id": "option_type",
+        "label": "Product option selector",
+        "default": "list",
+        "options": [
+           {
+            "value": "list",
+            "label": "Inline list (pills/buttons)"
+          },
+           {
+            "value": "select",
+            "label": "Dropdown menu"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "info_animation",
+        "label": "Animation",
+        "default": "slide-left",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-up",
+            "label": "Fade in & slide up"
+          },
+          {
+            "value": "slide-down",
+            "label": "Fade in & slide down"
+          },          
+          {
+            "value": "slide-left",
+            "label": "Fade in & slide left"
+          },
+          {
+            "value": "slide-right",
+            "label": "Fade in & slide right"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Short Description"
+      },
+      {
+        "type": "checkbox",
+        "id": "short_description_enabled",
+        "label": "Show on desktop",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "short_description_enabled_mobile",
+        "label": "Show on mobile",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "use_truncated_description",
+        "label": "Fall back to main description",
+        "default": true,
+        "info": "If a short description isn't provided, use the first 100 words of the main product description."
+      },
+      {
+        "type": "text",
+        "id": "short_description_namespace",
+        "label": "Metafield namespace",
+        "default": "c_f"
+      },
+      {
+        "type": "text",
+        "id": "short_description_key",
+        "label": "Metafield key",
+        "default": "short_description"
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Section Settings"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Padding",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Padding",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Carousel Settings"
+      },
+      {
+        "type": "select",
+        "id": "transition",
+        "label": "Transition type",
+        "default": "slide",
+        "options": [
+          {
+            "label": "Slide",
+            "value": "slide"
+          },
+          {
+            "label": "Fade",
+            "value": "fade"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable",
+        "label": "Allow dragging & flicking",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "wrapAround",
+        "label": "Wrap-around in an infinite loop",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Carousel Filmstrip"
+      },
+      {
+        "type": "checkbox",
+        "id": "filmstrip",
+        "label": "Enable filmstrip thumbnails",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "filmstrip_arrows",
+        "label": "Enable filmstrip arrows",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "filmstrip_draggable",
+        "label": "Enable filmstrip dragging",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "filmstrip_cellAlign",
+        "label": "Thumbnail alignment",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Carousel Arrows"
+      },
+      {
+        "type": "checkbox",
+        "id": "prevNextButtons",
+        "label": "Show previous & next buttons",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "arrow_color",
+        "label": "Arrow color",
+        "default": "#333"
+      },
+      {
+        "type": "range",
+        "id": "arrow_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "arrow_bg_color",
+        "label": "Arrow background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "arrow_bg_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow background opacity",
+        "default": 75
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Carousel Dots"
+      },
+      {
+        "type": "checkbox",
+        "id": "pageDots",
+        "label": "Show page dots",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "dot_location",
+        "label": "Page dot location",
+        "default": "-35px",
+        "options": [
+          {
+            "label": "Inside",
+            "value": "20px"
+          },
+          {
+            "label": "Outside",
+            "value": "-35px"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "dot_color_active",
+        "label": "Active page dot color",
+        "default": "#333",
+        "info": "The color of the active slide's dot."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity_active",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Active page dot opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "dot_color",
+        "label": "Inactive page dot color",
+        "default": "#333",
+        "info": "The color of all other dots."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Inactive page dot opacity",
+        "default": 25
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Section Settings"
+      },
+      {
+        "type": "select",
+        "id": "width_mobile",
+        "label": "Width",
+        "default": "mobile-fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "mobile-full"
+          },
+          {
+            "label": "Fixed",
+            "value": "mobile-fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Padding",
+        "default": 15
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Padding",
+        "default": 15
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Carousel Settings"
+      },
+      {
+        "type": "select",
+        "id": "transition_mobile",
+        "label": "Transition type",
+        "default": "slide",
+        "options": [
+          {
+            "label": "Slide",
+            "value": "slide"
+          },
+          {
+            "label": "Fade",
+            "value": "fade"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable_mobile",
+        "label": "Allow dragging & flicking",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "wrapAround_mobile",
+        "label": "Wrap-around in an infinite loop",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Carousel Filmstrip"
+      },
+      {
+        "type": "checkbox",
+        "id": "filmstrip_mobile",
+        "label": "Enable filmstrip thumbnails",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "filmstrip_arrows_mobile",
+        "label": "Enable filmstrip arrows",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "filmstrip_draggable_mobile",
+        "label": "Enable filmstrip dragging",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "filmstrip_cellAlign_mobile",
+        "label": "Thumbnail alignment",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Carousel Arrows"
+      },
+      {
+        "type": "checkbox",
+        "id": "prevNextButtons_mobile",
+        "label": "Show previous & next buttons",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "arrow_color_mobile",
+        "label": "Arrow color",
+        "default": "#333"
+      },
+      {
+        "type": "range",
+        "id": "arrow_opacity_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "arrow_bg_color_mobile",
+        "label": "Arrow background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "arrow_bg_opacity_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Arrow background opacity",
+        "default": 75
+      },
+      {
+        "type": "header",
+        "content": "Mobile:: Carousel Dots"
+      },
+      {
+        "type": "checkbox",
+        "id": "pageDots_mobile",
+        "label": "Show page dots",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "dot_location_mobile",
+        "label": "Page dot location",
+        "default": "-35px",
+        "options": [
+          {
+            "label": "Inside",
+            "value": "20px"
+          },
+          {
+            "label": "Outside",
+            "value": "-35px"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "dot_color_active_mobile",
+        "label": "Active page dot color",
+        "default": "#333",
+        "info": "The color of the active slide's dot."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity_active_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Active page dot opacity",
+        "default": 100
+      },
+      {
+        "type": "color",
+        "id": "dot_color_mobile",
+        "label": "Inactive page dot color",
+        "default": "#333",
+        "info": "The color of all other dots."
+      },
+      {
+        "type": "range",
+        "id": "dot_opacity_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Inactive page dot opacity",
+        "default": 25
+      }
+    ]
+  }
+{% endschema %}
