@@ -4,5 +4,6 @@ export default ProductHeading.extend({
   props: {
     assessment: { type: Boolean, default: false },
     authorized: { type: Boolean, default: true },
+    informational: { type: Boolean, default: false },
   },
 });

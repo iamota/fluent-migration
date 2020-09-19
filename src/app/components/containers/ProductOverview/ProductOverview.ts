@@ -30,6 +30,13 @@ export default ProductOverview.extend({
 
       return tags.map((tag) => tag.toLowerCase()).indexOf(`assessment`) > -1;
     },
+    informational(): boolean {
+      const tags: string[] = this.$props.product_data.tags;
+      
+      if (tags.length === 0) { return false; }      
+
+      return tags.map((tag) => tag.toLowerCase()).indexOf(`information`) > -1;
+    },
     authorized(): boolean {
       if (typeof Storage === `undefined`) { return false; }      
       const kit_information = localStorage.getItem(`kit_data`) as string;
@@ -37,7 +44,7 @@ export default ProductOverview.extend({
       if (!kit_information) { return false; }
       const kit_data: KitData = JSON.parse(kit_information);
       return this.assessment ? this.$props.product_data.handle === kit_data.shopify_product_handle : true;
-    },
+    },    
   },
   methods: {
     ...themeEditor,
