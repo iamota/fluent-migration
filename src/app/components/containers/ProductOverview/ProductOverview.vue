@@ -8,6 +8,7 @@
           v-bind="$props"
           :authorized="authorized"
           :assessment="assessment"
+          :informational="informational"
         />
         <ProductShortDescription :truncate="1000" :product_data_id="product_id" v-bind="$props" />
         <ProductOptions 
@@ -16,12 +17,11 @@
           v-bind="$props" 
         />
         <!-- <ProductSocialShare :product_data_id="product_id" /> -->
-        <div 
-          v-if="!assessment || assessment && authorized"
+        <div
+          v-if="!informational && !assessment || assessment && authorized"
           class="ProductOverview__quantity-add"
         >
-          <ProductQuantity
-            v-if="!assessment || assessment && authorized"
+          <ProductQuantity            
             :product_data_id="product_id"
             v-bind="$props"
           />
