@@ -10,7 +10,7 @@
         :filmstrip="false"
         :product_data_id="product_id" 
         v-bind="$props" 
-      />
+      /> 
       <div class="ProductInfo">
         <ProductHeading :product_data_id="product_id" v-bind="$props" breakpoint="desktop" />
         <ProductShortDescription :product_data_id="product_id" v-bind="$props" />
