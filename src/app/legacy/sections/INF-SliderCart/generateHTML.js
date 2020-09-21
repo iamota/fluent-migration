@@ -12,7 +12,7 @@ import {
   processQuantities,
 } from './helpers';
  
-export default function(cart = window.cart) {
+export default function(cart = window.cart) { 
 
   $.each(cart.items, (i, cart_item) => {
     // Deep clone the cart_item so we can make our modifications without affecting the original
