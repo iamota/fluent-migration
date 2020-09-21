@@ -11,10 +11,10 @@ import 'flickity-imagesloaded';
 import 'flickity-as-nav-for';
 import '../sections/product';
 
-import * as Infinite from 'infinite/scripts';
 
 import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
 import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
+import * as Infinite from '../';
 import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
 import VerticalLineHook from '../CMS/Hooks/VerticalLineHook';
 import HeadingContentHook from '../CMS/Hooks/HeadingContentHook';
@@ -27,7 +27,6 @@ import { FormIframe } from '../components/FormWithIframe';
 import AnnouncementBar from '../components/AnnouncementBar';
 
 import ThankYouPods from '../sections/ThankYouPods';
-import {SliderCart} from '../sections/INF-SliderCart';
 
 import youtubeIframeApi from '../utils/youtubeIframeApi';
 import flickityiOS13Fix from '../utils/flickityiOS13Fix';
@@ -65,15 +64,9 @@ $(document).ready(() => {
   AnnouncementBar();
   ThankYouPods();  
 
-  const disabled_components = [`SliderCart`];
-
-  _.each(Infinite, (component) => {    
-    console.log(`!!! ${component.name}`);
-    if (disabled_components.indexOf(component.name) > -1) { return; }
+  _.each(Infinite, (component) => {
     component();
   });
-
-  SliderCart();
 
   
   // *** Auto-generated imports will be executed below. DO NOT EDIT THIS LINE! ***
