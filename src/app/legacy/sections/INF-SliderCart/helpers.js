@@ -125,8 +125,7 @@ const processDiscountDescription = (item, html) => {
   return updated_html.join('');
 };
 
-const processQuantities = (item, html, disabled = false) => {
-  console.log(`CUSTOM CART CODE`);
+const processQuantities = (item, html, disabled = false) => {  
   if (html.indexOf('##QUANTITIES##') === -1) {
     return html.replace(/##QUANTITY##/g, ``);
   }
