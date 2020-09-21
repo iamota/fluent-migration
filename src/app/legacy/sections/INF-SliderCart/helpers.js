@@ -125,14 +125,21 @@ const processDiscountDescription = (item, html) => {
   return updated_html.join('');
 };
 
-const processQuantities = (item, html) => {
+const processQuantities = (item, html, disabled = false) => {
   if (html.indexOf('##QUANTITIES##') === -1) {
     return html;
   }
-
-  const updated_html = html.split('##QUANTITIES##');
+  
+  if (disabled) {    
+    const disabled_html = html.split(`##QUANTITY##`);
+    disabled_html[1] = ``;
+    return disabled_html.join(``);
+  }
+  
+  const updated_html = html.replaceAll(`##QUANTITY##`, ``).split('##QUANTITIES##');
   let quantities;
   let max_quantity = 10;
+
   
   if (max_quantity < item.quantity) {
     max_quantity = item.quantity;
@@ -149,6 +156,7 @@ const processQuantities = (item, html) => {
   }
 
   updated_html[1] = quantities;
+
   return updated_html.join('');
 };
 

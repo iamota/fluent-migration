@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import updateFreeGift from './updateFreeGift';
+import { get } from 'lodash-es';
 import { 
   generateImageTag, 
   formatPrice, 
@@ -15,7 +16,8 @@ export default function(cart = window.cart) {
 
   $.each(cart.items, (i, cart_item) => {
     // Deep clone the cart_item so we can make our modifications without affecting the original
-    let item = JSON.parse(JSON.stringify(cart_item));
+    const assessment_item = get(cart_item, `properties.Assessment`, false);
+    let item = JSON.parse(JSON.stringify(cart_item));    
     item = generateImageTag(item);
     item = formatPrice(item);
 
@@ -25,8 +27,8 @@ export default function(cart = window.cart) {
     html = processSKU(item, html);
     html = processVendor(item, html);
     html = processDiscountDescription(item, html);
-    html = processQuantities(item, html);
-
+    html = processQuantities(item, html, assessment_item);
+    
     $('[data-cart-products]').append(html);
   });
 
