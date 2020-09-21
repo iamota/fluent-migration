@@ -30,6 +30,7 @@
   }
 
   .Select input {
+    border-radius: 23px;
     background: white;
 
     @include media-query($mobile) {
