@@ -71,13 +71,22 @@
   &__image {
     flex-basis: 120px;
 
+    @include media-query($mobile) {
+      flex-basis: 110px;
+    }
+
     img {
       width: 120px;
+
+      @include media-query($mobile) {
+        width: 110px;
+      }
     }
   }
 
   &__title {
     color: #000 !important;
+    font-size: 16px;
   }
 
   &__price {
@@ -104,5 +113,9 @@
 
   &__info {
     padding-right: 30px;
+
+    @include media-query($mobile) {
+      padding-right: 20px;
+    }
   }
 }
