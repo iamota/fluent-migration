@@ -8,7 +8,7 @@
     "id": "{{ section.id }}",
     "name": "TabbedContent",
     {% include 'INF-spread-json', input: section.settings %},
-    "tabs": {{ tabs }},
+    "tabs": {%- if tabs -%}{{ tabs }}{%- else -%}[]{%- endif -%},
     "blocks": [
       {%- for block in section.blocks -%}
       { 
