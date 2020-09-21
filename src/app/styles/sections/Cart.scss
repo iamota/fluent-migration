@@ -1,0 +1,32 @@
+.StickyCheckout {
+  &__subtotal {
+    margin-bottom: 10px;
+  }
+
+  &__items {
+    text-transform: none;
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+    line-height: 30px;
+
+    &-detail {
+      font-size: 15px;
+    }
+  }
+
+  &__value {
+    font-family: $font-primary;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  &__taxes {
+    text-align: center;
+    padding-top: 10px;
+  }
+}
+
+.CartProduct {
+  
+}

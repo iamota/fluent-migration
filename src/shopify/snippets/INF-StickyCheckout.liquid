@@ -1,0 +1,21 @@
+{%- include 'get-initial-cart' -%}
+{%- capture item_count -%}
+  <span data-cart-count>{{ initial_cart_item_count }}</span> <span data-cart-count-label>{% include 'INF-translation', translate: 'cart.general.item_count_html', count: initial_cart_item_count, default: 'items' %}</span>
+{%- endcapture -%}
+
+<div class="StickyCheckout__subtotal">
+  <div class="StickyCheckout__label">
+    <p class="StickyCheckout__items StickyCheckout__items--desktop">Your cart <span class="StickyCheckout__items-detail">({{ item_count }})</span></p>
+    {% comment %} {{ 'cart.general.subtotal' | t }} {% endcomment %}
+  </div>
+  <div class="StickyCheckout__value">
+    <p class="StickyCheckout__items StickyCheckout__items--mobile">Your cart <span class="StickyCheckout__items-detail">({{ item_count }})</span></p>
+    <span data-cart-total>{{ initial_cart_total_price | money }}</span>{% if settings.show_currency %} <span class="StickyCheckout__currency">{{ shop.currency }}</span>{% endif %}
+  </div>
+  <input type="submit" name="checkout" class="StickyCheckout__button StickyCheckout__button--mobile StickyCheckout__button--has-items Button" {% if prevent_tab %} tabindex="-1"{% endif %} value="{% include 'INF-translation', translate: 'cart.general.checkout_mobile', default: 'Checkout' %}">
+  <div class="StickyCheckout__button StickyCheckout__button--mobile StickyCheckout__button--empty Button Button--secondary" {% unless prevent_tab %} tabindex="0"{% endunless %} role="button" data-cart-toggle>{% include 'INF-translation', translate: 'cart.general.continue', default: 'Continue Shopping' %}</div>
+</div>
+<input type="submit" name="checkout" class="StickyCheckout__button StickyCheckout__button--desktop StickyCheckout__button--has-items Button" {% if prevent_tab %} tabindex="-1"{% endif %} value="{% include 'INF-translation', translate: 'cart.general.checkout_desktop', default: 'Proceed to Checkout' %}">
+<div class="StickyCheckout__button StickyCheckout__button--desktop StickyCheckout__button--empty Button Button--secondary" {% unless prevent_tab %} tabindex="0"{% endunless %} role="button" data-cart-toggle>{% include 'INF-translation', translate: 'cart.general.continue', default: 'Continue Shopping' %}</div>
+<small class="StickyCheckout__taxes StickyCheckout__taxes--has-items">{{ 'cart.general.shipping_at_checkout' | t }}</small>
+<small class="StickyCheckout__taxes StickyCheckout__taxes--empty">{{ 'cart.general.empty' | t }}</small>
