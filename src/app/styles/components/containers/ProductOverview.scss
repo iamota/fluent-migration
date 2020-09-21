@@ -172,6 +172,14 @@
       justify-content: center;
     }
 
+    .ProductQuantity,
+    .ProductAddToCartButton {
+      @include media-query($mobile) {
+        margin-right: 0;
+        width: 50%;
+      }
+    }
+
     .Button {
       margin: 0 20px 15px 0;
 
