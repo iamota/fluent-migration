@@ -136,7 +136,7 @@ const processQuantities = (item, html, disabled = false) => {
     return disabled_html.join(``);
   }
   
-  const updated_html = html.replaceAll(`##QUANTITY##`, ``).split('##QUANTITIES##');
+  const updated_html = html.replace(/##QUANTITY##/g, ``).split(`##QUANTITIES##`);
   let quantities;
   let max_quantity = 10;
 

@@ -65,8 +65,9 @@ $(document).ready(() => {
   AnnouncementBar();
   ThankYouPods();  
 
+  const disabled_components = [`SliderCart`];
+  
   _.each(Infinite, (component) => {    
-    const disabled_components = [`SliderCart`];
     if (disabled_components.indexOf(component.name) > -1) { return; }
     component();
   });
