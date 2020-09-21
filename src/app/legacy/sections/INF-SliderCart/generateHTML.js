@@ -11,7 +11,7 @@ import {
   processDiscountDescription, 
   processQuantities,
 } from './helpers';
-
+ 
 export default function(cart = window.cart) {
 
   $.each(cart.items, (i, cart_item) => {
