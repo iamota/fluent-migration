@@ -1,0 +1,291 @@
+{%- if template.name == 'product' -%}
+  {%- assign tabs = product.metafields.icms.tabbed_content -%}
+{%- endif -%}
+
+<div data-vue-container="TabbedContent" data-section-id="{{ section.id }}">
+  <script type="application/json" data-vue-props>
+  {
+    "id": "{{ section.id }}",
+    "name": "TabbedContent",
+    {% include 'INF-spread-json', input: section.settings %},
+    "tabs": {{ tabs }},
+    "blocks": [
+      {%- for block in section.blocks -%}
+      { 
+        "id": "{{ block.id }}",
+        "type": "{{ block.type }}",
+        "settings": {{ block.settings | json }}
+      }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+
+  {%- for block in section.blocks -%}
+  <div data-block-id="{{ block.id }}" {{ block.shopify_attributes }}></div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+  {
+    "name": "Tabbed Content",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_background",
+        "label": "Use background",
+        "default": false,
+        "info": "Check this to use a custom background."
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "label": "Background image",
+        "id": "background_image",
+        "type": "image_picker"
+      },
+      {
+        "label": "Overlay style",
+        "id": "overlay_type",
+        "type": "select",
+        "default": "dark-overlay",
+        "options": [
+          {
+            "group": "No Overlay",
+            "value": "light-text",
+            "label": "Light Text"
+          },
+          {
+            "group": "No Overlay",
+            "value": "dark-text",
+            "label": "Dark Text"
+          },
+          {
+            "group": "Solid Overlay",
+            "value": "light-overlay",
+            "label": "Light Background (Dark Text)"
+          },
+          {
+            "group": "Solid Overlay",
+            "value": "dark-overlay",
+            "label": "Dark Background (Light Text)"
+          },
+          {
+            "group": "Solid Overlay",
+            "value": "branded-overlay",
+            "label": "Branded"
+          },
+          {
+            "group": "Gradient Overlay",
+            "value": "light-gradient",
+            "label": "Light Background (Dark Text)"
+          },
+          {
+            "group": "Gradient Overlay",
+            "value": "dark-gradient",
+            "label": "Dark Background (Light Text)"
+          },
+          {
+            "group": "Gradient Overlay",
+            "value": "branded-gradient",
+            "label": "Branded"
+          }
+        ],
+        "default": "dark-overlay"
+      },
+      {
+        "type": "select",
+        "id": "animation",
+        "label": "Animation",
+        "default": "fade-in",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-up",
+            "label": "Fade in & slide up"
+          },
+          {
+            "value": "slide-down",
+            "label": "Fade in & slide down"
+          },          
+          {
+            "value": "slide-left",
+            "label": "Fade in & slide left"
+          },
+          {
+            "value": "slide-right",
+            "label": "Fade in & slide right"
+          },
+          {
+            "value": "zoom-fade-in",
+            "label": "Fade in & zoom out"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width_desktop",
+        "label": "Width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "margin_top_desktop",
+        "min": -300,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Top margin",
+        "default": 0,
+        "info": "Use this to shift the entire section up (negative) or down (positive)"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Tablet :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width_tablet",
+        "label": "Width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "margin_top_tablet",
+        "min": -300,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Top margin",
+        "default": 0,
+        "info": "Use this to shift the entire section up (negative) or down (positive)"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_tablet",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_tablet",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width_mobile",
+        "label": "Width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "margin_top_mobile",
+        "min": -300,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Top margin",
+        "default": 0,
+        "info": "Use this to shift the entire section up (negative) or down (positive)"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 20
+      }
+    ]
+  }
+{% endschema %}

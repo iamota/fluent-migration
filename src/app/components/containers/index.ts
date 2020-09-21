@@ -5,3 +5,4 @@ export { EmailCapture } from './EmailCapture';
 export { CollectionGrid } from './CollectionGrid';
 export { ProductOverview } from './ProductOverview';
 export { ProductQuickView } from './ProductQuickView';
+export { TabbedContent } from './TabbedContent';
