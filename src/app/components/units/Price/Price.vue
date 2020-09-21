@@ -23,7 +23,12 @@
         </span>
       </template>
       <template v-else>
-        {{ price | money }}
+        <template v-if="!availability">
+          <span class="Price__unavailable">{{ price | money }}</span>
+        </template>
+        <template v-else>
+          {{ price | money }}
+        </template>
         <span v-if="show_currency" class="Price__currency">
           {{ currency }}
         </span>
