@@ -125,9 +125,9 @@ const processDiscountDescription = (item, html) => {
   return updated_html.join('');
 };
 
-const processQuantities = (item, html, disabled = false) => {  
-  if (html.indexOf('##QUANTITIES##') === -1 || html.indexOf('##QUANTITY##') === -1) {
-    return html.replace(/##QUANTITY##/g, ``);
+const processQuantities = (item, html, disabled = false) => {
+  if (html.indexOf('##QUANTITIES##') === -1 && html.indexOf('##QUANTITY##') === -1) {
+    return html;
   }
   
   if (disabled) {    
