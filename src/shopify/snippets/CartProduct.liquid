@@ -37,7 +37,7 @@
     ##DISCOUNT_DESCRIPTION##
 
     <div class="CartProduct__quantity" data-label="{{ 'cart.label.quantity' | t }}">
-      <label for="quantity_[[ key ]]">{{ 'cart.label.quantity' | t }}</label>
+      {% comment %} <label for="quantity_[[ key ]]">{{ 'cart.label.quantity' | t }}</label> {% endcomment %}
       
       {% if settings.quantity_ui == 'input' %}
         <div class="Quantity__button Quantity__button--left" tabindex="0" role="button" data-quantity-minus><i aria-label="{% include 'INF-translation', translate: 'cart.label.decrease_quantity', default: 'Decrease quantity' %} - [[ product_title ]]" class="{{ settings.fa }} fa-minus"></i></div>
@@ -60,8 +60,8 @@
           ##QUANTITIES##
         </select>
       {% endif %}
-
-      <div class="CartProduct__remove" tabindex="0" role="button" data-cart-remove><i aria-label="{% include 'INF-translation', translate: 'cart.general.remove', default: 'Remove from cart' %} - [[ product_title ]]" class="{{ settings.fa }} fa-times"></i></div>
     </div>
   </div>
+
+  <div class="CartProduct__remove" tabindex="0" role="button" data-cart-remove><i aria-label="{% include 'INF-translation', translate: 'cart.general.remove', default: 'Remove from cart' %} - [[ product_title ]]" class="{{ settings.fa }} fa-times"></i></div>
 </div>

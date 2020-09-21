@@ -57,6 +57,52 @@
   }
 }
 
-.CartProduct {
+.SliderCart {
   
+  &__taxes {
+    display: none;
+  }
+}
+
+  
+.CartProduct {
+  position: relative;
+
+  &__image {
+    flex-basis: 120px;
+
+    img {
+      width: 120px;
+    }
+  }
+
+  &__title {
+    color: #000 !important;
+  }
+
+  &__price {
+    color: $color-primary-1;
+  }
+    
+  .Quantity {
+    &__button,
+    &__input {
+      background: transparent;
+    }
+
+    &__input {
+      border-left: none;
+      border-right: none;
+    }
+  }
+
+  &__remove {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  &__info {
+    padding-right: 30px;
+  }
 }
