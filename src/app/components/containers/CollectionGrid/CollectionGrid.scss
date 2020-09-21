@@ -2,6 +2,9 @@
 
 .CollectionGrid {
   // Add your styles here
+
+  transform: translateZ(-100px);
+
   .Overlay__content {
     @include media-query($mobile) {
       padding: 0;
