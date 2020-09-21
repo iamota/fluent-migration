@@ -126,21 +126,21 @@ const processDiscountDescription = (item, html) => {
 };
 
 const processQuantities = (item, html, disabled = false) => {
-  if (html.indexOf('##QUANTITIES##') === -1 && html.indexOf('##QUANTITY##') === -1) {
+  if (html.indexOf('##QUANTITIES##') === -1) {
     return html;
   }
   
-  if (disabled) {    
-    const disabled_html = html.split(`##QUANTITY##`);
-    disabled_html[1] = ``;
-    return disabled_html.join(``);
-  }
   
-  const updated_html = html.replace(/##QUANTITY##/g, ``).split(`##QUANTITIES##`);
+  const updated_html = html.split(`##QUANTITIES##`);
+  let quantity_class = ``;
   let quantities;
   let max_quantity = 10;
-
   
+  
+  if (disabled) {    
+    quantity_class = `CartProduct__quantity--hidden`;
+  }
+
   if (max_quantity < item.quantity) {
     max_quantity = item.quantity;
   }
@@ -157,7 +157,7 @@ const processQuantities = (item, html, disabled = false) => {
 
   updated_html[1] = quantities;
 
-  return updated_html.join('');
+  return updated_html.join(``).replace(`[[ quantity_class ]]`, quantity_class);
 };
 
 export {

@@ -35,9 +35,8 @@
     ##DISCOUNT_DESCRIPTION##
       <div class="CartProduct__discount">[[ discount_description ]]</div>
     ##DISCOUNT_DESCRIPTION##
-
-    ##QUANTITY##
-    <div class="CartProduct__quantity" data-label="{{ 'cart.label.quantity' | t }}">
+    
+    <div class="CartProduct__quantity [[ quantity_class ]]" data-label="{{ 'cart.label.quantity' | t }}">
       {% comment %} <label for="quantity_[[ key ]]">{{ 'cart.label.quantity' | t }}</label> {% endcomment %}
       
       {% if settings.quantity_ui == 'input' %}
@@ -61,7 +60,6 @@
           ##QUANTITIES##
         </select>
       {% endif %}
-      ##QUANTITY##
 
     </div>
   </div>

@@ -10,18 +10,18 @@
 
   &__items {
     text-transform: none;
+    line-height: 30px;
+    color: #000;
     font-size: 20px;
     font-weight: 400;
-    color: #000;
-    line-height: 30px;
 
     &-detail {
       font-size: 15px;
     }
 
     &--mobile {
-      color: #000 !important;
       float: left;
+      color: #000 !important;
 
       & + [data-cart-total] {
         float: right;
@@ -41,8 +41,8 @@
   }
 
   &__taxes {
-    text-align: center;
     padding-top: 10px;
+    text-align: center;
 
     @include media-query($mobile) {
       padding-top: 0;
@@ -51,20 +51,19 @@
 
   &__button {
     &--mobile {
-      width: 100%;
       margin-top: 5px;
+      width: 100%;
     }
   }
 }
 
 .SliderCart {
-  
   &__taxes {
     display: none;
   }
 }
 
-  
+
 .CartProduct {
   position: relative;
 
@@ -92,7 +91,13 @@
   &__price {
     color: $color-primary-1;
   }
-    
+
+  &__quantity {
+    &--hidden {
+      display: none;
+    }
+  }
+
   .Quantity {
     &__button,
     &__input {
@@ -100,8 +105,8 @@
     }
 
     &__input {
-      border-left: none;
       border-right: none;
+      border-left: none;
     }
   }
 
