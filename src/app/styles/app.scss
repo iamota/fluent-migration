@@ -19,6 +19,7 @@
 
 // Groups
 // @import './components/groups/MyGroup';
+
 @import './components/groups/CollectionFilters';
 @import './components/groups/CollectionSort';
 
@@ -29,8 +30,6 @@
 // Components
 @import './components/ShoppableImage';
 @import './components/MobileMenu';
-@import './components/VerticalLine';
-@import './components/groups/ProductTile';
 @import './components/VerticalLine';
 @import './components/groups/ProductTile';
 @import './components/groups/Carousel';
@@ -54,6 +53,7 @@
 
 // CMS
 @import '~infinite/cms/styles';
+@import './CMS/CMS-ValueProps';
 @import './CMS/CMS-Blockquote';
 @import './CMS/CMSModules';
 @import './CMS/CMS-Banner';
