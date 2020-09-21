@@ -1,0 +1,8 @@
+@import '~@INF/styles';
+@import '../../../styles/variables';
+
+.Price {
+  &__sold-out {
+    color: $color-secondary-11;
+  }
+}
