@@ -6,10 +6,17 @@
     :animation="null"
   >
     <div class="ProductOverview__grid">
-      <ProductImages :product_data_id="product_id" v-bind="$props" />
+      <ProductImages 
+        :filmstrip="false"
+        :product_data_id="product_id" 
+        v-bind="$props" 
+      />
       <div class="ProductInfo">
         <ProductHeading :product_data_id="product_id" v-bind="$props" breakpoint="desktop" />
         <ProductShortDescription :product_data_id="product_id" v-bind="$props" />
+        <div class="ProductQuickView__cta-container">
+          <Anchor class="ProductQuickView__cta" :href="product_url">{{ cta }}</Anchor>
+        </div>
         <ProductOptions 
           v-if="product.product_data.variants.length > 1" 
           :product_data_id="product_id" 

@@ -1,0 +1,183 @@
+%product_overview {
+  // Must be nested inside of ".ProductOverview"
+  .ProductOverview__grid {
+    text-align: left;
+
+    .ProductInfo,
+    .ProductImages {
+      grid-column: span 6;
+
+      @include media-query($mobile) {
+        grid-column: span 12;
+      }
+    }
+  }
+
+  .ProductOverview__lockout {
+    &--title {
+      font-weight: bold;
+    }
+  }
+
+  .ProductInfo {
+    padding: 60px 0 0 10px;
+
+    @include media-query($tablet-down) {
+      padding: 0;
+    }
+  }
+
+  .ProductImages {
+    &__thumbs {
+      margin: 0 auto 15px;
+      padding: 0 30px;
+      width: 90%;
+
+      @include media-query($mobile) {
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    &__thumb-container {
+      margin: 0;
+      border-bottom: none;
+
+      @include media-query($mobile) {
+        margin: 0 5px;
+      }
+    }
+
+    &__thumb {
+      @include media-query($mobile) {
+        width: 20%;
+      }
+
+      img {
+        border: 1px solid $color-light-gray;
+      }
+    }
+
+    &__carousel {
+      padding: 0 30px;
+    }
+  }
+
+  .ProductQuantity {
+    margin-right: 20px;
+    margin-bottom: 14px;
+    width: 160px;
+    color: black;
+
+    .container {
+      border: 1px solid $color-light-gray;
+      border-radius: 30px;
+      height: 45px;
+    }
+
+    .box {
+      border: none;
+      font-weight: 700;
+    }
+  }
+
+  .ProductOption {
+    margin-bottom: 40px;
+
+    @include media-query($mobile) {
+      margin-bottom: 10px;
+    }
+
+    &__name {
+      margin-bottom: 12px;
+      font-size: 12px;
+
+      @include media-query($mobile) {
+        text-align: center;
+      }
+    }
+
+    .Button {
+      margin: 0 20px 15px 0;
+      border-width: 1px;
+      background-color: transparent;
+      padding: 0;
+
+      @include media-query($mobile) {
+        margin: 0 10px 15px;
+      }
+
+      label {
+        padding: 10px 45px;
+        color: black;
+      }
+    }
+
+    .Button--selected {
+      border-width: 2px;
+      border-color: $color-primary-1;
+
+      label {
+        color: $color-primary-1;
+      }
+    }
+
+    .Button--sold-out {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      label {
+        pointer-events: none;
+      }
+    }
+  }
+
+  .ProductShortDescription {
+    border-bottom: 1px solid $color-light-gray;
+    font-size: 16px;
+  }
+
+  .ProductOption__variants.ProductOption__variants--list {
+    @include media-query($mobile) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .ProductInfo__preheading {
+    margin: 0;
+    text-transform: uppercase;
+    color: $color-primary-1;
+  }
+
+  .ProductHeading {
+    &__title {
+      line-height: 1.6;
+      color: $color-muted-gray;
+      font-size: 30px;
+    }
+
+    &__price {
+      color: $color-primary-1;
+      font-family: $font-primary;
+      font-size: 22px;
+      font-weight: normal;
+    }
+  }
+
+  .ProductOverview__quantity-add {
+    flex-wrap: wrap;
+
+    @include media-query($mobile) {
+      justify-content: center;
+    }
+
+    .Button {
+      margin: 0 20px 15px 0;
+
+      @include media-query($mobile) {
+        margin: 0 10px 15px;
+      }
+    }
+  }
+}

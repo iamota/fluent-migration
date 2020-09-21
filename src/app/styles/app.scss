@@ -19,6 +19,7 @@
 
 // Groups
 // @import './components/groups/MyGroup';
+
 @import './components/groups/CollectionFilters';
 @import './components/groups/CollectionSort';
 
@@ -27,6 +28,7 @@
 @import './components/units/Button';
 
 // Components
+@import './components/containers/ProductOverview';
 @import './components/ShoppableImage';
 @import './components/MobileMenu';
 @import './components/VerticalLine';
