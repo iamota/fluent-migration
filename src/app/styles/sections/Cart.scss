@@ -1,6 +1,11 @@
 .StickyCheckout {
   &__subtotal {
     margin-bottom: 10px;
+
+    @include media-query($mobile) {
+      display: block;
+      height: auto;
+    }
   }
 
   &__items {
@@ -13,17 +18,42 @@
     &-detail {
       font-size: 15px;
     }
+
+    &--mobile {
+      color: #000 !important;
+      float: left;
+
+      & + [data-cart-total] {
+        float: right;
+        line-height: 33px;
+      }
+    }
   }
 
   &__value {
     font-family: $font-primary;
     font-size: 20px;
     font-weight: 400;
+
+    @include media-query($mobile) {
+      @include clearfix;
+    }
   }
 
   &__taxes {
     text-align: center;
     padding-top: 10px;
+
+    @include media-query($mobile) {
+      padding-top: 0;
+    }
+  }
+
+  &__button {
+    &--mobile {
+      width: 100%;
+      margin-top: 5px;
+    }
   }
 }
 
