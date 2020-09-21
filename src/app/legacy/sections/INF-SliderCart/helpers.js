@@ -126,6 +126,7 @@ const processDiscountDescription = (item, html) => {
 };
 
 const processQuantities = (item, html, disabled = false) => {
+  console.log(`CUSTOM CART CODE`);
   if (html.indexOf('##QUANTITIES##') === -1) {
     return html;
   }

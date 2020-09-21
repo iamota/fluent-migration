@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import updateFreeGift from './updateFreeGift';
 import { get } from 'lodash-es';
+import updateFreeGift from './updateFreeGift';
 import { 
   generateImageTag, 
   formatPrice, 
