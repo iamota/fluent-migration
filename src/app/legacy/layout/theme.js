@@ -66,8 +66,9 @@ $(document).ready(() => {
   ThankYouPods();  
 
   const disabled_components = [`SliderCart`];
-  
+
   _.each(Infinite, (component) => {    
+    console.log(`!!! ${component.name}`);
     if (disabled_components.indexOf(component.name) > -1) { return; }
     component();
   });
