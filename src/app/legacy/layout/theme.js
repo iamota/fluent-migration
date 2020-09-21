@@ -27,6 +27,7 @@ import { FormIframe } from '../components/FormWithIframe';
 import AnnouncementBar from '../components/AnnouncementBar';
 
 import ThankYouPods from '../sections/ThankYouPods';
+import {SliderCart} from '../sections/INF-SliderCart';
 
 import youtubeIframeApi from '../utils/youtubeIframeApi';
 import flickityiOS13Fix from '../utils/flickityiOS13Fix';
@@ -62,11 +63,15 @@ $(document).ready(() => {
   RecentArticlesCarosuel();
   FormIframe();
   AnnouncementBar();
-  ThankYouPods();
+  ThankYouPods();  
 
-  _.each(Infinite, (component) => {
+  _.each(Infinite, (component) => {    
+    const disabled_components = [`SliderCart`];
+    if (disabled_components.indexOf(component.name) > -1) { return; }
     component();
   });
+
+  SliderCart();
 
   
   // *** Auto-generated imports will be executed below. DO NOT EDIT THIS LINE! ***
