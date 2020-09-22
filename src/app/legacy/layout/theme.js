@@ -28,6 +28,7 @@ import AnnouncementBar from '../components/AnnouncementBar';
 
 import ThankYouPods from '../sections/ThankYouPods';
 import Upsell from '../components/Upsell/';
+import Header from '../sections/INF-Header/';
 
 import youtubeIframeApi from '../utils/youtubeIframeApi';
 import flickityiOS13Fix from '../utils/flickityiOS13Fix';
@@ -64,6 +65,7 @@ $(document).ready(() => {
   FormIframe();
   AnnouncementBar();
   ThankYouPods();
+  Header();
   
   _.each(Infinite, (component) => {
     component();

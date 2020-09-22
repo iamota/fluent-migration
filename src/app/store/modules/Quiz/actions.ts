@@ -7,6 +7,12 @@ import ProductActions from '@INF/modules/Products/actions';
 import { SESSION_EXPIRED } from '../../../components/containers/Quiz/config';
 import { QuizActionContext } from './';
 
+declare global {
+  interface Window {
+    kit_event: Event;
+  }
+}
+
 export default defineActions({
   previousStep(context, step): void {
     const { commit, dispatch } = QuizActionContext(context);  
@@ -58,6 +64,11 @@ export default defineActions({
 
       if (localStorageExists) {
         localStorage.setItem(`kit_data`, JSON.stringify(session_object));
+      }
+      const kit_event: Event = window.kit_event;
+
+      if (kit_event) {
+        document.dispatchEvent(kit_event);
       }
 
       commit.setProductId(product_data.id);
