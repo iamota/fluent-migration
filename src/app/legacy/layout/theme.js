@@ -69,7 +69,11 @@ $(document).ready(() => {
     component();
   });
   
-  Upsell();
+  if (window.location.hash === '#cart') { 
+    setTimeout(() => Upsell(), 1000);
+  } else {
+    Upsell();
+  }
   
   // *** Auto-generated imports will be executed below. DO NOT EDIT THIS LINE! ***
 

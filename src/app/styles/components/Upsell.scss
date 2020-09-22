@@ -1,6 +1,13 @@
 .Upsell {
+  @include transition(opacity);
+
+  opacity: 0;
   background: #f6f6f6;
   padding: 40px 0;
+
+  &--loaded {
+    opacity: 1;
+  }
 
   &__heading {
     text-align: center;

@@ -33,6 +33,6 @@ export default function(toggle) {
   window.focusedContainer = $('[data-cart]').get(0);
   $('[data-state]').addClass('State--cart-open');
   $(document).trigger('scroll');  
-  setTimeout(() => Upsell(), 1000);
+  setTimeout(() => Upsell(), 100);
   return $(document).trigger('cartDidOpen');
 }
