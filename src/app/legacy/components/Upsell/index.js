@@ -1,7 +1,17 @@
 import $ from 'jquery';
+import init from './init';
+
 
 export default () => {
-  if ($(`[data-upsell]`).length === 0) { return; }
+  let upsell_carousel = null;
 
+  const $container = $(`[data-upsell-container]`);
+  if ($container.length === 0) { return; }
+  
+  if (upsell_carousel) {
+    return;
+  }
   console.log(`Upsell init`);
+  
+  upsell_carousel = init($container);
 };

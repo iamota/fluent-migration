@@ -1,6 +1,6 @@
-<div class="Upsell" data-upsell-items>
-  <h3 class="h2">{{ 'cart.general.upsell' | t }}</h3>
-  <div class="Upsell__products">
+<div class="Upsell" data-upsell-container>
+  <h3 class="h5 Upsell__heading">{{ 'cart.general.upsell' | t }}</h3>
+  <div class="Upsell__products" data-upsell-items>
     {%- for product in collections[section.settings.upsell_collection].products -%}
       {% include 'ProductTile', product: product %}
     {%- endfor -%}

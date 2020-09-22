@@ -3,6 +3,7 @@ import { disableBodyScroll } from 'body-scroll-lock';
 import { setTempFocus } from 'infinite/scripts/core/INF-setTempFocus';
 import closeAllMenus from 'infinite/scripts/core/INF-closeAllMenus';
 import adjustPositioning from './adjustPositioning';
+import Upsell from '../../components/Upsell/';
 
 export default function(toggle) {
   // Is the cart already open?
@@ -31,6 +32,7 @@ export default function(toggle) {
   setTempFocus($('[data-cart]'));
   window.focusedContainer = $('[data-cart]').get(0);
   $('[data-state]').addClass('State--cart-open');
-  $(document).trigger('scroll');
+  $(document).trigger('scroll');  
+  setTimeout(() => Upsell(), 1000);
   return $(document).trigger('cartDidOpen');
 }
