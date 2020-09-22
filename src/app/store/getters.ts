@@ -11,4 +11,4 @@ export default defineGetters<State>()({
   //   const { state } = rootGetterContext(args);
   //   state.ModuleName.something; // entire state, including modules
   // }, 
-});
+}); 
