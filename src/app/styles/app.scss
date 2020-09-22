@@ -28,11 +28,13 @@
 @import './components/units/Button';
 
 // Components
+@import './components/containers/ProductOverview';
 @import './components/ShoppableImage';
 @import './components/MobileMenu';
 @import './components/VerticalLine';
 @import './components/groups/ProductTile';
 @import './components/groups/Carousel';
+@import './components/Upsell';
 
 // @import './components/Keen-ui-overrides';
 @import './components/Modal';
@@ -58,15 +60,12 @@
 @import './CMS/CMS-Blockquote';
 @import './CMS/CMSModules';
 @import './CMS/CMS-Banner';
-
-// @import './CMS/CMS-Buttons';
-
 @import './CMS/CMS-Collection';
 @import './CMS/CMS-EmbeddedContent';
-
-// @import './CMS/CMS-Grid';
 @import './CMS/CMS-HeadingText';
 
+// @import './CMS/CMS-Buttons';
+// @import './CMS/CMS-Grid';
 // @import './CMS/CMS-Pods';
 // @import './CMS/CMS-RelatedContent';
 // @import './CMS/CMS-SplitContent';

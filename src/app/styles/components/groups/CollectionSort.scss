@@ -30,6 +30,7 @@
   }
 
   .Select input {
+    border-radius: 23px;
     background: white;
 
     @include media-query($mobile) {
@@ -37,6 +38,10 @@
       width: 100px;
       line-height: 30px;
     }
+  }
+
+  .Select .Select__icon {
+    margin-bottom: 16px;
   }
 
   .Select--mobile {

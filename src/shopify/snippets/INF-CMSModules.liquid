@@ -1,0 +1,29 @@
+{%- capture metafield_modules -%}{%- include 'CMS__MetafieldConvert' -%}{%- endcapture -%}
+{%- assign metafield_text_length = metafield_modules | strip | size -%}
+
+{%- capture object_content -%}
+  {% comment %} {{ object.content }} {% endcomment %}
+  {% comment %} {{ object.description }} {% endcomment %}
+{%- endcapture -%}
+
+{%- capture content -%}
+  {%- unless metafield_text_length > 0 and object_content contains 'data-cms-module-' -%}
+    {{ object_content }}
+  {%- endunless -%}
+  
+  {{ metafield_modules }}
+{%- endcapture -%}
+
+{% unless content == blank %}
+  {%- include 'INF-CMSModuleLoader' -%}
+  
+  {%- if wrap -%}
+    <div class="rte MainRte">
+  {%- endif -%}
+    <div class="Animate Animate--fade-in">
+      {{ content }}
+    </div>
+  {%- if wrap -%}
+    </div>
+  {%- endif -%}
+{% endunless %}

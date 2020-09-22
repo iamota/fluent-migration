@@ -12,6 +12,14 @@
   "products": {
     "assessment": {
       "take_the_quiz_cta": "Take the Quiz"
+    },
+    "product": {
+      "quantity": "QTY"
+    }
+  },
+  "cart": {
+    "general": {
+      "upsell": "You may also like"
     }
   }
 }
