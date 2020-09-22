@@ -68,4 +68,11 @@
   .QuickView__button {
     bottom: 20px;
   }
+
+  &:hover,
+  &:focus {
+    .ProductTile__title a {
+      color: $color-gray;
+    }
+  }
 }
