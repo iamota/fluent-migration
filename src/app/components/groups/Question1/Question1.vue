@@ -7,6 +7,7 @@
         label="First name" 
         design="legacy" 
         placeholder="Enter first name"
+        spellcheck="false"
         required 
         :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]" 
         @keypress.native.enter.prevent="nextStep"
