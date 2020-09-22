@@ -1,6 +1,10 @@
 .ContentArea {
   .ContentBlock {
 
+    &__text {
+      padding: 20px 30px;
+    }
+
     &__paragraph {
 
       ul {

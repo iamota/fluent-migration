@@ -6,7 +6,7 @@
 
 .product-color-chest-congestion-cough,
 .gradient-option-1 {
-  @include gradient(135deg, $color-secondary-4, $color-secondary-3);
+  @include gradient(135deg, $color-secondary-3, $color-secondary-4);
 }
 
 .product-color-cough {
@@ -15,7 +15,7 @@
 
 .product-color-head-congestion,
 .gradient-option-2 {
-  @include gradient(135deg, $color-secondary-6, $color-secondary-5);
+  @include gradient(135deg, $color-secondary-5, $color-secondary-6);
 }
 
 .product-color-nasal-congestion-severe {
@@ -29,15 +29,15 @@
 .product-color-cold-all-in-one-day,
 .product-color-cold-all-in-one-night,
 .gradient-option-3 {
-  @include gradient(135deg, $color-secondary-8, $color-secondary-7);
+  @include gradient(135deg, $color-secondary-7, $color-secondary-8);
 }
 
 .product-color-cold-flu-severe-day,
 .product-color-cold-flu-severe-night {
-  @include gradient(135deg, $color-secondary-6, $color-secondary-5);
+  @include gradient(135deg, $color-secondary-5, $color-secondary-6);
 }
 
 .product-color-adult-fever-pain,
 .product-color-childrens-fever-pain-acetaminophen {
-  @include gradient(135deg, $color-secondary-6, $color-secondary-5);
+  @include gradient(135deg, $color-secondary-5, $color-secondary-6);
 }
