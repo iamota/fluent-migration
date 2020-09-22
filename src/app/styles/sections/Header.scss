@@ -67,7 +67,21 @@
   .IconToggle {
     display: inline-block;
   }
+
+  [data-recommended-text],
+  [data-recommended-link] {
+    animation: fadeIn 1s ease-in;
+  }
 }
+
+@keyframes fadeIn {
+  0%{
+		opacity: 0;
+  }
+  100% {
+		opacity: 1;
+  }
+} 
 
 .NavList {
   &__heading {
