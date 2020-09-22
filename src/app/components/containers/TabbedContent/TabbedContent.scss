@@ -1,4 +1,5 @@
 @import '~@INF/styles';
+@import '../../../styles/variables';
 
 .TabbedContent {
   // Add your styles here
@@ -19,9 +20,13 @@
     font-size: 10pt;
     font-weight: bold;
 
+    &:hover {
+      color: $color-primary-1;
+    }
+
     &.is-selected {
-      border-color: #3cb4e5;
-      color: #3cb4e5;
+      border-color: $color-primary-1;
+      color: $color-primary-1;
     }
 
     &:not(:first-child) {
