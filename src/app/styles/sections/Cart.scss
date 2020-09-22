@@ -1,0 +1,126 @@
+.StickyCheckout {
+  &__subtotal {
+    margin-bottom: 10px;
+
+    @include media-query($mobile) {
+      display: block;
+      height: auto;
+    }
+  }
+
+  &__items {
+    text-transform: none;
+    line-height: 30px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+
+    &-detail {
+      font-size: 15px;
+    }
+
+    &--mobile {
+      float: left;
+      color: #000 !important;
+
+      & + [data-cart-total] {
+        float: right;
+        line-height: 33px;
+      }
+    }
+  }
+
+  &__value {
+    font-family: $font-primary;
+    font-size: 20px;
+    font-weight: 400;
+
+    @include media-query($mobile) {
+      @include clearfix;
+    }
+  }
+
+  &__taxes {
+    padding-top: 10px;
+    text-align: center;
+
+    @include media-query($mobile) {
+      padding-top: 0;
+    }
+  }
+
+  &__button {
+    &--mobile {
+      margin-top: 5px;
+      width: 100%;
+    }
+  }
+}
+
+.SliderCart {
+  &__taxes {
+    display: none;
+  }
+}
+
+
+.CartProduct {
+  position: relative;
+
+  &__image {
+    flex-basis: 120px;
+
+    @include media-query($mobile) {
+      flex-basis: 110px;
+    }
+
+    img {
+      width: 120px;
+
+      @include media-query($mobile) {
+        width: 110px;
+      }
+    }
+  }
+
+  &__title {
+    color: #000 !important;
+    font-size: 16px;
+  }
+
+  &__price {
+    color: $color-primary-1;
+  }
+
+  &__quantity {
+    &--hidden {
+      display: none;
+    }
+  }
+
+  .Quantity {
+    &__button,
+    &__input {
+      background: transparent;
+    }
+
+    &__input {
+      border-right: none;
+      border-left: none;
+    }
+  }
+
+  &__remove {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  &__info {
+    padding-right: 30px;
+
+    @include media-query($mobile) {
+      padding-right: 20px;
+    }
+  }
+}
