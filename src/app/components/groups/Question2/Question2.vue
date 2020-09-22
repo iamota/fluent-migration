@@ -7,6 +7,7 @@
         label="Age" 
         design="legacy"
         placeholder="Age"
+        inputmode="numeric"
         required
         :rules="[`integer('Please input age as an integer.')`, `validNumericalAge`]"
         @keypress.native.enter.prevent="nextStep"
