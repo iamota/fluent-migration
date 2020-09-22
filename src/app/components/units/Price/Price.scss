@@ -10,5 +10,9 @@
 
   &__sold-out {
     color: $color-secondary-11;
+
+    @include media-query($mobile) {
+      display: block;
+    }
   }
 }
