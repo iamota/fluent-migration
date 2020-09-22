@@ -24,7 +24,7 @@
     width: 55%;
     height: 100%;
 
-    @include media-query($mobile) {
+    @include media-query($tablet-down) {
       width: 75%;
     }
   }
