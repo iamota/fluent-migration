@@ -1,6 +1,5 @@
 [data-cms-module] {
   position: relative;
-  transform: translateZ(-100px);
 }
 
 [data-module-bg] {
@@ -54,6 +53,7 @@
 }
 
 .rte .CMS-Module {
+  transform: translateZ(-100px);
   margin: 0 auto;
   max-width: 2560px;
 
