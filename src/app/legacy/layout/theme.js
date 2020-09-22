@@ -11,10 +11,10 @@ import 'flickity-imagesloaded';
 import 'flickity-as-nav-for';
 import '../sections/product';
 
-import * as Infinite from 'infinite/scripts';
 
 import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
 import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
+import * as Infinite from '../';
 import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
 import VerticalLineHook from '../CMS/Hooks/VerticalLineHook';
 import HeadingContentHook from '../CMS/Hooks/HeadingContentHook';
@@ -62,7 +62,7 @@ $(document).ready(() => {
   RecentArticlesCarosuel();
   FormIframe();
   AnnouncementBar();
-  ThankYouPods();
+  ThankYouPods();  
 
   _.each(Infinite, (component) => {
     component();
