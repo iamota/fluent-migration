@@ -23,8 +23,7 @@
         name="add"
         class="Button Button--primary"
         :class="{
-          'Button--disabled': !product.product_data.available,
-          'Button--loading': cart_loading
+          'Button--disabled': !product.product_data.available          
         }"
         data-add-to-cart
       >        
