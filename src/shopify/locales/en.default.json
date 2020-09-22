@@ -5,6 +5,9 @@
     }
   },
   "collections": {
+    "general": {
+      "filter_clear_all": "all"
+    },
     "kit": {
       "recommend_label": "Recommended for You"
     }

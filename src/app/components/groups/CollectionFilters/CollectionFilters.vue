@@ -1,7 +1,7 @@
 <template>
   <div>
     <div :class="collection_filters_class">
-      <div class="CollectionFilters__item CollectionFilters__item--label" @click="toggleFilters">{{ 'collections.general.filter_heading' | t }}</div>
+      <div class="CollectionFilters__item CollectionFilters__item--label" @click="toggleFilters">{{ 'collections.general.filter_heading' | t }}</div>      
       <div v-for="(category, i) in categories" :key="i" :class="{CollectionFilters__item: true, [`CollectionFilters__item--${category}`]: true}">
         <ul>          
           <li class="CollectionFilters__category">
@@ -15,6 +15,9 @@
               ref="filterContainer"
               :class="{'CollectionFilters__list-values': true, 'CollectionFilters__list-values--active': selected_category === category && display_values === true}"
             >
+              <li v-if="enable_clear" class="CollectionFilters__clear-all">
+                <Anchor href="#" role="button" @click.native.prevent="handleClearAll()">{{ 'collections.general.filter_clear_all' | t }}</Anchor>
+              </li>
               <li
                 v-for="(value, index) in getCategoryValues(category)"
                 :key="index"
@@ -33,10 +36,7 @@
             </ul>
           </li>
         </ul>
-      </div>
-      <div v-if="enable_clear && current_tags.length > 0" class="CollectionFilters__clear-all">
-        <Anchor href="#" role="button" @click.native.prevent="handleClearAll()">{{ 'collections.general.filter_clear_all' | t }}</Anchor>
-      </div>      
+      </div>           
     </div>
     <ul v-if="debug">
       <li>
