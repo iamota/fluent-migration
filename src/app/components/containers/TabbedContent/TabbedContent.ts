@@ -19,13 +19,13 @@ export default CarouselContainers.extend({
       return titles;
     },
     selectedTab(): number {
-      return this.$store.state.Carousels.TabbedCarousel ? this.$store.state.Carousels.TabbedCarousel.selected_index : 0;
+      return this.$store.state.Carousels[`TabbedContent--nav`] ? this.$store.state.Carousels[`TabbedContent--nav`].selected_index : 0;
     },
   },
   watch: {
     selectedTab(index): void {
       // @ts-ignore
-      this.$refs.TabbedCarouselContent.select(index);
+      this.$refs.TabbedContentDisplay.select(index);
     },
   },
 });

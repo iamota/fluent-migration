@@ -37,4 +37,12 @@
   &__body {
     text-align: left;
   }
+
+  &__content {
+    pointer-events: none;
+
+    a {
+      pointer-events: all;
+    }
+  }
 }

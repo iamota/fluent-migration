@@ -2,11 +2,11 @@
   <Section v-bind="$props" :css_variables="cssVariables">
     <template v-if="tabs.length > 0">
       <Carousel
-        :id="`TabbedCarousel`"
+        id="TabbedContent--nav"
         class="TabbedContent__tabs"
         v-bind="mobile_props"
         cell_align="left"
-        as_nav_for="#TabbedCarousel--content"
+        as_nav_for="#TabbedContent--display"
         :draggable="true"
       >
         <Slide
@@ -20,11 +20,12 @@
         </Slide>
       </Carousel>
       <Carousel
-        :id="`TabbedCarousel--content`"
-        ref="TabbedCarouselContent"
+        id="TabbedContent--display"
+        ref="TabbedContentDisplay"
         class="TabbedContent__content"
         v-bind="mobile_props"
         :fade="true"
+        :drag_threshold="999"
       >
         <Slide
           v-for="(tab_data, index) in tabs"
