@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import init from './init';
 
-let upsell_carousel = null;
+let upsell_carousel = null; 
 
 export default () => { 
 
