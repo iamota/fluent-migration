@@ -50,7 +50,9 @@
       <div class="SliderCart__contents">
         <div class="SliderCart__taxes">{{ 'cart.general.shipping_at_checkout' | t }}</div>
         <div class="SliderCart__products" data-cart-products></div>
-        {% include 'Upsell' %}
+        {%- if section.settings.upsell_collection -%}          
+          {% include 'Upsell' %}
+        {%- endif -%}
         {% include 'SliderCart__bottom' %}
       </div>
     </form>
