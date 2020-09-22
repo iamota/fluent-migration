@@ -1,0 +1,16 @@
+.ProductImages {
+  &__thumb {
+    .ProductImages__image {
+      transform: all 0.2s;
+      opacity: 0.5;
+    }
+
+    &.is-selected {
+      .ProductImages__image {
+        opacity: 1;
+        border-width: 2px;
+        border-color: $color-primary-1;
+      }
+    }
+  }
+}
