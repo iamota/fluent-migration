@@ -36,6 +36,7 @@
     data-gift-variant="{{ gift.variants.first.id }}"
     {% endif %}
   >
+    <div id="fsb_placeholder"></div>
     <div class="SliderCart__aria-heading" role="heading" aria-level="1" id="sliderCartHeading">{{ 'cart.general.title' | t }}</div>
     <form action="/cart" method="post" novalidate id="cart_form">
       <div class="StickyCheckout" data-sticky-checkout>
