@@ -103,7 +103,6 @@
 
     input {
       &:focus + label {
-        border-color: $color-gray;
         box-shadow: 0 0 12px $color-light-gray;
       }
 
