@@ -1,0 +1,146 @@
+<section id="section{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="INF-SliderCart">
+
+  <style>
+    .StickyCheckout {
+      background: {{ section.settings.checkout_background_color }};
+      color: {{ section.settings.checkout_primary_color }};
+    }
+    .StickyCheckout__taxes,
+    .StickyCheckout__items--mobile,
+    .SliderCart__taxes,
+    .SliderCart__empty-message {
+      color: {{ section.settings.checkout_secondary_color }};
+    }
+  </style>
+
+  {% if section.settings.enable_free_gift %}
+    {% assign gift = all_products[section.settings.product] %}
+  {% endif %}
+
+  {%- if section.settings.external_close -%}
+  <div class="Modal__close SliderCart__close-button {% if settings.preheader_enabled %}SliderCart__close-button--has-preheader{% endif %}" data-close-modal>
+    {% include 'CloseIcon' %}
+  </div>
+  {%- endif -%}
+
+  {%- include 'get-initial-cart' -%}
+  <div class="SliderCart {% if initial_cart_item_count == 0 %}SliderCart--empty{% endif %}" 
+    data-cart 
+    data-gift-enabled="{{ section.settings.enable_free_gift }}"
+    aria-hidden="true"
+    data-prevent-tab 
+    role="dialog" 
+    aria-labelledby="sliderCartHeading" 
+    {% if section.settings.enable_free_gift %}
+    data-gift-threshold="{{ section.settings.threshold }}" 
+    data-gift-variant="{{ gift.variants.first.id }}"
+    {% endif %}
+  >
+    <div class="SliderCart__aria-heading" role="heading" aria-level="1" id="sliderCartHeading">{{ 'cart.general.title' | t }}</div>
+    <form action="/cart" method="post" novalidate id="cart_form">
+      <div class="StickyCheckout" data-sticky-checkout>
+        {% include 'INF-StickyCheckout' %}
+      </div>
+      <div class="StickyCheckout StickyCheckout--placeholder" data-prevent-tab aria-hidden="true">
+        {% include 'INF-StickyCheckout' %}
+      </div>
+
+      <div class="SliderCart__empty-message">{{ 'cart.general.empty' | t }}</div>
+
+      <div class="SliderCart__contents">
+        <div class="SliderCart__taxes">{{ 'cart.general.shipping_at_checkout' | t }}</div>
+        <div class="SliderCart__products" data-cart-products></div>
+        {% include 'SliderCart__bottom' %}
+      </div>
+    </form>
+
+    {%- if section.settings.enable_free_gift -%}
+      {%- include 'INF-FreeGift' -%}
+    {%- endif -%}
+    
+    <div class="SliderCart__product-template" tabindex="-1" aria-hidden="true" data-cart-product-template data-no-selectric>{% include 'CartProduct' %}</div>
+  </div>
+
+  <script>
+    window.cart = {
+      original_total_price: 0,
+      total_price: 0,
+      total_discount: 0,
+      total_weight: 0,
+      item_count: 0,
+      items: [],
+      items_subtotal_price: 0,
+      cart_level_discount_applications: []
+    };
+  </script>
+</section>
+
+{% schema %}
+  {
+    "name": "Slider Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "label": "Enable external close button",
+        "id": "external_close",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Sticky Checkout"
+      },
+      {
+        "type": "color",
+        "id": "checkout_primary_color",
+        "label": "Primary text color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "checkout_secondary_color",
+        "label": "Secondary text color",
+        "default": "#888"
+      },
+      {
+        "type": "color",
+        "id": "checkout_background_color",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Upsell"
+      },
+      {
+        "type": "collection",
+        "id": "upsell_collection",
+        "label": "Upsell collection"
+      },
+      {
+        "type": "header",
+        "content": "Free Gift"
+      },
+      {
+        "type": "paragraph",
+        "content": "A free gift can automatically be added to cart at a specific price threshold. Note: you must enable a matching Shopify script or you will be automatically adding a full-priced item to the customer's cart!"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_free_gift",
+        "label": "Enable free gift?",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "threshold",
+        "label": "Price Threshold",
+        "info": "Enter the value in dollars without symbols. For example, $100.00 would be entered as '100'"
+      },
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Gift Item"
+      }
+    ]
+  }
+{% endschema %}
