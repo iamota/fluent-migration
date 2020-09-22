@@ -18,6 +18,13 @@
 
   &__text {
     color: $color-secondary-1;
+
+    &--kit-ready {
+      display: inline-block;
+      max-width: 150px;
+      line-height: 1.25;
+      vertical-align: middle;
+    }
   }
 
   &__icon {
