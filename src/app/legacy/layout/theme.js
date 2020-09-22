@@ -27,6 +27,7 @@ import { FormIframe } from '../components/FormWithIframe';
 import AnnouncementBar from '../components/AnnouncementBar';
 
 import ThankYouPods from '../sections/ThankYouPods';
+import Upsell from '../components/Upsell';
 
 import youtubeIframeApi from '../utils/youtubeIframeApi';
 import flickityiOS13Fix from '../utils/flickityiOS13Fix';
@@ -62,7 +63,8 @@ $(document).ready(() => {
   RecentArticlesCarosuel();
   FormIframe();
   AnnouncementBar();
-  ThankYouPods();  
+  ThankYouPods();
+  Upsell();
 
   _.each(Infinite, (component) => {
     component();
