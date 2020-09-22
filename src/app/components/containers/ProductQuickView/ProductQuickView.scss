@@ -35,3 +35,7 @@
     transform: translateY(-50%) scale(0.75);
   }
 }
+
+#QuickView .Modal__content {
+  min-height: 488px;
+}
