@@ -27,6 +27,7 @@ import { FormIframe } from '../components/FormWithIframe';
 import AnnouncementBar from '../components/AnnouncementBar';
 
 import ThankYouPods from '../sections/ThankYouPods';
+import Upsell from '../components/Upsell/';
 
 import youtubeIframeApi from '../utils/youtubeIframeApi';
 import flickityiOS13Fix from '../utils/flickityiOS13Fix';
@@ -62,12 +63,17 @@ $(document).ready(() => {
   RecentArticlesCarosuel();
   FormIframe();
   AnnouncementBar();
-  ThankYouPods();  
-
+  ThankYouPods();
+  
   _.each(Infinite, (component) => {
     component();
   });
-
+  
+  if (window.location.hash === '#cart') { 
+    setTimeout(() => Upsell(), 1000);
+  } else {
+    Upsell();
+  }
   
   // *** Auto-generated imports will be executed below. DO NOT EDIT THIS LINE! ***
 

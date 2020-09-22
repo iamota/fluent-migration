@@ -16,5 +16,10 @@
     "product": {
       "quantity": "QTY"
     }
+  },
+  "cart": {
+    "general": {
+      "upsell": "You may also like"
+    }
   }
 }

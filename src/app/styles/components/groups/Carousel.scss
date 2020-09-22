@@ -1,6 +1,10 @@
 .flickity-button.flickity-button {
   background: $color-primary-1;
 
+  @include media-query($small) {
+    transform: translateY(-50%) scale(0.7);
+  }
+
   &::after {
     position: absolute;
     top: 0;

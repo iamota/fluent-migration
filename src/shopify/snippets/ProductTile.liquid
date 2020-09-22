@@ -4,7 +4,7 @@
 {%- endif -%}
 
 {%- assign should_animate = false -%}
-{%- if section.settings.animation != 'none' -%}
+{%- if section.settings.animation and section.settings.animation != 'none' -%}
   {%- unless carousel or prevent_animation -%}
     {%- assign should_animate = true -%}
   {%- endunless -%}
