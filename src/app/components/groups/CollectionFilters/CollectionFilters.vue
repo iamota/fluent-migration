@@ -18,7 +18,7 @@
               <li
                 v-for="(value, index) in getCategoryValues(category)"
                 :key="index"
-                :class="categoryValueClass(value)"                
+                :class="{...categoryValueClass(value), disabled: available_tags.indexOf(value.tag_name) === -1}"
               >
                 <div v-if="available_tags.indexOf(value.tag_name) > -1">
                   <Anchor href="#" @click.native.prevent="handleFilterItemClick(value.link)">{{ value.text }}</Anchor>

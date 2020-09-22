@@ -61,15 +61,17 @@
         display: none;
       }
 
-      &:hover,
-      &:focus,
-      &.active {
-        border-color: $color-primary-1;
-        background: $color-light-gray-alt-2;
-        font-weight: normal;
+      &:not(.disabled) {
+        &:hover,
+        &:focus,
+        &.active {
+          border-color: $color-primary-1;
+          background: $color-light-gray-alt-2;
+          font-weight: normal;
 
-        a {
-          color: $color-primary-1;
+          a {
+            color: $color-primary-1;
+          }
         }
       }
     }
