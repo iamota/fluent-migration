@@ -3,7 +3,7 @@
 
   @include media-query($mobile) {
     width: 100%;
-    top: auto;
+    top: 149px;
   }
 
   &__subtotal {
@@ -161,10 +161,15 @@
 
 #fsb_placeholder {
   position: fixed;
-  width: 100%;
+  width: 500px;
   z-index: 1;
 
   @include media-query($mobile) {
-    position: static;
+    // position: static;
+    width: 100%;
+  }
+
+  &--placeholder {
+    height: 44px;
   }
 }
