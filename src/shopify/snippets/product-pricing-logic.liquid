@@ -21,11 +21,15 @@
     {% comment %} {{ 'products.product.from_text_html' | t: price: price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %} {% endcomment %}
     From {{ price }}{% if settings.show_currency %} <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
   {%- else -%}
+  {%- unless product.available -%}
+    <span class="Price__unavailable">{{ product.price | money }}</span>{% if settings.show_currency %}  <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+  {%- else -%}
     {{ product.price | money }}{% if settings.show_currency %}  <span class="Price__currency">{{ shop.currency }}</span>{% endif %}
+  {%- endunless -%}
   {%- endif -%}
   
 {%- endif -%}
 
 {%- unless product.available -%}
-  {{ 'products.product.sold_out' | t }}
+  <span class="Price__sold-out">{{ 'products.product.sold_out' | t }}</span>
 {%- endunless -%}

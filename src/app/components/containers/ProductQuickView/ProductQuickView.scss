@@ -1,0 +1,37 @@
+@import '~@INF/styles';
+@import '../../../styles/variables';
+@import '../../../styles/components/containers/ProductOverview';
+
+.ProductQuickView {
+  @extend %product_overview;
+
+  &__cta {
+    text-decoration: underline;
+    line-height: 1.6;
+    color: $color-primary-1;
+    font-weight: bold;
+
+    &:visited,
+    &:active {
+      color: $color-primary-1;
+    }
+  }
+
+  &__cta-container {
+    margin: 0 0 20px;
+    border-bottom: 1px solid $color-light-gray;
+    padding: 0 0 30px;
+  }
+
+  .ProductInfo {
+    padding-top: 0;
+  }
+
+  .ProductShortDescription {
+    border: none;
+  }
+
+  .flickity-prev-next-button {
+    transform: translateY(-50%) scale(0.75);
+  }
+}

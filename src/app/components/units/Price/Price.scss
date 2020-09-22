@@ -1,0 +1,14 @@
+@import '~@INF/styles';
+@import '../../../styles/variables';
+
+.Price {
+  &__unavailable {
+    text-decoration: line-through;
+    color: $color-light-gray-alt-3;
+    font-size: 14px;
+  }
+
+  &__sold-out {
+    color: $color-secondary-11;
+  }
+}
