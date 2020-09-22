@@ -3,7 +3,7 @@ import init from './init';
 
 let upsell_carousel = null;
 
-export default () => {
+export default () => { 
 
   const $container = $(`[data-upsell-container]`);
   if ($container.length === 0) { return; }
