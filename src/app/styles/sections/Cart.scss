@@ -2,7 +2,7 @@
   top: 76px; // To display Hextom FSB, which has 44px height, plus 32px padding-top of the SliderCart
 
   @include media-query($mobile) {
-    width: 100%;
+    // width: 100%;
     top: 149px;
   }
 
@@ -65,16 +65,16 @@
 }
 
 .SliderCart {
-  @include media-query($mobile) {
-    transform: translateX(100%);
-    width: 100%;
-  }
+  // @include media-query($mobile) {
+  //   transform: translateX(100%);
+  //   width: 100%;
+  // }
 
-  .State--cart-open & {
-    @include media-query($mobile) {
-      transform: translateX(0);
-    }
-  }
+  // .State--cart-open & {
+  //   @include media-query($mobile) {
+  //     transform: translateX(0);
+  //   }
+  // }
 
   &__taxes {
     display: none;
@@ -165,8 +165,7 @@
   z-index: 1;
 
   @include media-query($mobile) {
-    // position: static;
-    width: 100%;
+    width: 320px;
   }
 
   &--placeholder {
