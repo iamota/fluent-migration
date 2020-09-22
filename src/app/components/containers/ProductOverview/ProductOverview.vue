@@ -3,7 +3,7 @@
     <div class="ProductOverview__grid">
       <ProductImages :product_data_id="product_id" v-bind="$props" />
       <div class="ProductInfo">
-        <ProductHeading
+        <ProductHeading 
           :product_data_id="product_id"
           v-bind="$props"
           :authorized="authorized"
