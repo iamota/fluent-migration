@@ -3,6 +3,7 @@
 
   @include media-query($mobile) {
     // width: 100%;
+
     top: 149px;
   }
 
@@ -75,7 +76,6 @@
   //     transform: translateX(0);
   //   }
   // }
-
   &__taxes {
     display: none;
   }
@@ -141,6 +141,7 @@
     &__input {
       border-right: none;
       border-left: none;
+      width: 48px;
     }
   }
 
@@ -161,8 +162,9 @@
 
 #fsb_placeholder {
   position: fixed;
-  width: 500px;
   z-index: 1;
+  width: 500px;
+  width: 100%;
 
   @include media-query($mobile) {
     width: 320px;
