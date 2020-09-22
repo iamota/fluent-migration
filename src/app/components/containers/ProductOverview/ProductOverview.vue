@@ -21,7 +21,8 @@
           v-if="!informational && !assessment || assessment && authorized"
           class="ProductOverview__quantity-add"
         >
-          <ProductQuantity            
+          <ProductQuantity
+            v-if="!assessment"
             :product_data_id="product_id"
             v-bind="$props"
           />
