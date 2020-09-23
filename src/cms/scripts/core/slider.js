@@ -99,16 +99,14 @@ const hookedBuildSliders = (selector, container, settings, getOverrides) => {
     
     const $slider = $(slider);
     const default_settings = hookedGetDefaultSettings($slider);
-    const content_aware_settings = allSlidesVisible($slider)
-      ? {
-        wrap_around: false,
-        draggable: false,
-      }
-      : {}; 
+    const all_slides_visible = allSlidesVisible($slider);
+    const tablet_down = (window.innerWidth < theme.breakpoints.tablet);
+    const content_aware_settings = {};
+    if (all_slides_visible && !tablet_down) { return false; }
 
     const overrides = getOverrides($slider);
 
-    const active_settings = window.innerWidth < theme.breakpoints.tablet
+    const active_settings = tablet_down
       ? hookedFormatKeys({ ...default_settings.mobile, ...settings.mobile, ...content_aware_settings, ...overrides.mobile }) 
       : hookedFormatKeys({ ...default_settings.desktop, ...settings.desktop, ...content_aware_settings, ...overrides.desktop });
 

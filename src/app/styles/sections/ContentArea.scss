@@ -3,6 +3,10 @@
 
     &__text {
       padding: 20px 30px;
+
+      @include media-query($mobile) {
+        padding: 0;
+      }
     }
 
     &__paragraph {
