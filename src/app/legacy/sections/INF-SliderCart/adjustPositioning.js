@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 export default function() {
   const $slider_cart = $('[data-cart]');
-  const $sticky_checkout = $('[data-sticky-checkout]');
+  const $sticky_checkout_wrapper = $('[data-sticky-checkout-wrapper]');
   const $header = $('[data-header]');
   const $pre_header = $('[data-pre-header]');
   // This is seriously the coolest scrollbar detection ever...so simple
@@ -23,7 +23,7 @@ export default function() {
   }
   
   $slider_cart.css('padding-top', height_above);
-  $sticky_checkout.css({
+  $sticky_checkout_wrapper.css({
     'padding-right': 20 + scrollbar_width,
   });
   // setTimeout(() => {

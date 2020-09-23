@@ -36,15 +36,19 @@
     data-gift-variant="{{ gift.variants.first.id }}"
     {% endif %}
   >
-    <div id="fsb_placeholder"></div>
-    <div id="fsb_placeholder--placeholder"></div>
     <div class="SliderCart__aria-heading" role="heading" aria-level="1" id="sliderCartHeading">{{ 'cart.general.title' | t }}</div>
     <form action="/cart" method="post" novalidate id="cart_form">
       <div class="StickyCheckout" data-sticky-checkout>
-        {% include 'INF-StickyCheckout' %}
+        <div id="fsb_placeholder"></div>
+        <div class="StickyCheckout__wrapper" data-sticky-checkout-wrapper>
+          {% include 'INF-StickyCheckout' %}
+        </div>
       </div>
       <div class="StickyCheckout StickyCheckout--placeholder" data-prevent-tab aria-hidden="true">
-        {% include 'INF-StickyCheckout' %}
+        <div id="fsb_placeholder--placeholder"></div>
+        <div class="StickyCheckout__wrapper">
+          {% include 'INF-StickyCheckout' %}
+        </div>
       </div>
 
       {% comment %} <div class="SliderCart__empty-message">{{ 'cart.general.empty' | t }}</div> {% endcomment %}

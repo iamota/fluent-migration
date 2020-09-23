@@ -32,17 +32,17 @@ export default function(toggle) {
   setTempFocus($('[data-cart]'));
   window.focusedContainer = $('[data-cart]').get(0);
   $('[data-state]').addClass('State--cart-open');
-  const $sticky_checkout = $('[data-sticky-checkout]');
-  setTimeout(() => {
-    $sticky_checkout.css({
-      position: 'relative',
-    });
-  }, 10);
-  setTimeout(() => {
-    $sticky_checkout.css({
-      position: 'fixed',
-    });
-  }, 50);
+  // const $sticky_checkout = $('[data-sticky-checkout]');
+  // setTimeout(() => {
+  //   $sticky_checkout.css({
+  //     position: 'relative',
+  //   });
+  // }, 10);
+  // setTimeout(() => {
+  //   $sticky_checkout.css({
+  //     position: 'fixed',
+  //   });
+  // }, 50);
   $(document).trigger('scroll');  
   setTimeout(() => Upsell(), 100);
   return $(document).trigger('cartDidOpen');

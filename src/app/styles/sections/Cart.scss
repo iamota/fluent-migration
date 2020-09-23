@@ -1,10 +1,15 @@
 .StickyCheckout {
-  top: 76px; // To display Hextom FSB, which has 44px height, plus 32px padding-top of the SliderCart
+  // top: 76px; // To display Hextom FSB, which has 44px height, plus 32px padding-top of the SliderCart
 
-  @include media-query($mobile) {
-    // width: 100%;
+  // @include media-query($mobile) {
+  //   // width: 100%;
 
-    top: 149px;
+  //   top: 149px;
+  // }
+  padding: 0;
+
+  &__wrapper {
+    padding: 20px;
   }
 
   &__subtotal {
@@ -165,13 +170,14 @@
 }
 
 #fsb_placeholder {
-  position: fixed;
-  z-index: 1;
-  width: 500px;
+  // position: fixed;
+  // z-index: 1;
+  // width: 500px;
 
-  @include media-query($mobile) {
-    width: 320px;
-  }
+  // @include media-query($mobile) {
+  //   width: 320px;
+  // }
+  height: 44px;
 
   &--placeholder {
     height: 44px;
