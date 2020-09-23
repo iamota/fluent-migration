@@ -168,7 +168,6 @@
   position: fixed;
   z-index: 1;
   width: 500px;
-  width: 100%;
 
   @include media-query($mobile) {
     width: 320px;
