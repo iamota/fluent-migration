@@ -1,5 +1,7 @@
 
 .NavBar {
+  align-items: center;  // IE11 fix
+
   @include grid {
     &--center-logo .NavBar__logo {
       @include grid-item(2);
@@ -23,12 +25,19 @@
       display: inline-block;
       max-width: 150px;
       line-height: 1.25;
-      vertical-align: middle;
+      // vertical-align: middle;
     }
   }
 
+  &__icons { // IE 11 fix
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
   &__icon {
-    vertical-align: middle;
+    // vertical-align: middle;
 
     &--user {
       font-size: 0;
