@@ -126,21 +126,19 @@ const processDiscountDescription = (item, html) => {
 };
 
 const processQuantities = (item, html, disabled = false) => {
+  const quantity_class = `CartProduct__quantity--hidden`;
+
   if (html.indexOf('##QUANTITIES##') === -1) {
-    return html;
+    return disabled
+      ? html.replace(`[[ quantity_class ]]`, quantity_class)
+      : html;
   }
   
   
   const updated_html = html.split(`##QUANTITIES##`);
-  let quantity_class = ``;
   let quantities;
   let max_quantity = 10;
-  
-  
-  if (disabled) {    
-    quantity_class = `CartProduct__quantity--hidden`;
-  }
-
+    
   if (max_quantity < item.quantity) {
     max_quantity = item.quantity;
   }
@@ -157,7 +155,9 @@ const processQuantities = (item, html, disabled = false) => {
 
   updated_html[1] = quantities;
 
-  return updated_html.join(``).replace(`[[ quantity_class ]]`, quantity_class);
+  return disabled
+  ? updated_html.join(``).replace(`[[ quantity_class ]]`, quantity_class)
+  : updated_html.join(``).replace(`[[ quantity_class ]]`, ``);  
 };
 
 export {
