@@ -24,6 +24,10 @@
     }
   }
 
+  &:disabled {
+    display: none;
+  }
+
   svg {
     display: none;
   }

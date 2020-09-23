@@ -33,6 +33,28 @@
       }
     }
 
+    &__clear-all {
+      padding: 0;
+
+      a,
+      a:focus {
+        display: block;
+        margin-right: 10px;
+        border: 1px solid $color-light-gray;
+        border-radius: 25px;
+        background: transparent;
+        padding: 6px 12px;
+        text-transform: capitalize;
+        line-height: 1;
+        color: $color-gray;
+        font-size: 14px;
+
+        @include media-query($tablet) {
+          margin-right: 5px;
+        }
+      }
+    }
+
     &__value {
       margin-right: 10px;
       border: 1px solid $color-light-gray;
@@ -42,6 +64,10 @@
       text-transform: capitalize;
       line-height: 1;
       font-size: 14px;
+
+      @include media-query($tablet) {
+        margin-right: 5px;
+      }
 
       p,
       a,
@@ -81,6 +107,10 @@
       text-transform: none;
       line-height: 1;
       font-size: 14px;
+
+      @include media-query($tablet) {
+        padding: 0 5px;
+      }
 
       &--label {
         padding-left: 0;
