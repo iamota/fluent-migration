@@ -14,14 +14,15 @@ export default function() {
       // Mobile and header isn't hidden via headroom
       height_above = $header.height();
     }
-  } else if ($pre_header.height() > 0 && $pre_header.css('transform') === 'none' && !$pre_header.hasClass('PreHeader--hide-desktop')) {
+  // } else if ($pre_header.height() > 0 && $pre_header.css('transform') === 'none' && !$pre_header.hasClass('PreHeader--hide-desktop')) {
+  } else if ($pre_header.height() > 0 && !$pre_header.hasClass('PreHeader--hide-desktop')) {
     // Desktop with preheader and preheader isn't hidden via headroom
     height_above = $pre_header.height();
   } else if ($header.css('transform') === 'none') {
     // Desktop without preheader and main header isn't hidden via headroom
     height_above = $header.height();
   }
-  
+ 
   $slider_cart.css('padding-top', height_above);
   $sticky_checkout_wrapper.css('padding-right', 20 + scrollbar_width);
   $pre_header.css('right', scrollbar_width);
