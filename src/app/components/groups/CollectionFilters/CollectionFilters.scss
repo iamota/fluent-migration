@@ -48,6 +48,10 @@
         line-height: 1;
         color: $color-gray;
         font-size: 14px;
+
+        @include media-query($tablet) {
+          margin-right: 5px;
+        }
       }
     }
 
@@ -60,6 +64,10 @@
       text-transform: capitalize;
       line-height: 1;
       font-size: 14px;
+
+      @include media-query($tablet) {
+        margin-right: 5px;
+      }
 
       p,
       a,
@@ -99,6 +107,10 @@
       text-transform: none;
       line-height: 1;
       font-size: 14px;
+
+      @include media-query($tablet) {
+        padding: 0 5px;
+      }
 
       &--label {
         padding-left: 0;
