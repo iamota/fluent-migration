@@ -8,6 +8,11 @@
   }
 
 
+  &__Props:not(.flickity-enabled) {
+    display: flex;
+    justify-content: center;
+  }
+
   &__Prop {
     display: inline-block;
     transform: translateZ(-100px);
