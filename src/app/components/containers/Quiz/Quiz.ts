@@ -14,6 +14,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      next_step: `question1`,
       validators: {
         validZipCode: (zipcode: string): string => {
           const date_regex = /^\d{5}(?:[-\s]\d{4})?$/;
@@ -108,10 +109,7 @@ export default Vue.extend({
     //   }
     // },
   },
-  methods: {
-    back(): void {
-      store.dispatch.Quiz.nextStep(`question17`);
-    },
+  methods: {    
     // handleSubmit(): void {      
     //   // @ts-ignore
     //   document.quizKlaviyo[0].action = `https://manage.kmail-lists.com/subscriptions/subscribe`;
@@ -122,7 +120,8 @@ export default Vue.extend({
     //   }, 1500);
     // },
     startQuiz(): void {
-      store.commit.Quiz.setStep(`question1`);
+      // store.commit.Quiz.setStep(`question1`);
+      store.dispatch.Quiz.nextStep(this.next_step);
     },    
   },
 });
