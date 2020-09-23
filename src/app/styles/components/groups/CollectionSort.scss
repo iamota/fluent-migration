@@ -1,4 +1,6 @@
 .CollectionSort[class~='CollectionSort'] {
+  top: 3px;
+
   @include media-query($mobile) {
     --input-height: 40px;
 
@@ -34,9 +36,12 @@
     background: white;
 
     @include media-query($mobile) {
-      opacity: 0;
+      border: none;
       width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
       line-height: 30px;
+      white-space: nowrap;
     }
   }
 
