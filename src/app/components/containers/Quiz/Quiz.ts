@@ -120,8 +120,10 @@ export default Vue.extend({
     //   }, 1500);
     // },
     startQuiz(): void {
-      // store.commit.Quiz.setStep(`question1`);
-      store.dispatch.Quiz.nextStep(this.next_step);
+      store.commit.Quiz.setStep(`question1`);
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: `smooth` });
+      }, 1);  
     },    
   },
 });
