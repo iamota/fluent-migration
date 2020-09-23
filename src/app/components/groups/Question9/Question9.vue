@@ -9,7 +9,7 @@
           value="6"
           inline 
         />
-        <Radio 
+        <Radio
           name="family_symptom_duration" 
           label="7 days or more" 
           value="7" 
