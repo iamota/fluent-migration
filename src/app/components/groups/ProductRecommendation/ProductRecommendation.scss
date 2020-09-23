@@ -24,7 +24,11 @@
     width: 55%;
     height: 100%;
 
-    @include media-query($tablet-down) {
+    @include media-query($tablet) {
+      width: 60%;
+    }
+
+    @include media-query($mobile) {
       width: 75%;
     }
   }
@@ -78,12 +82,20 @@
     @include grid(6) {
       .ProductRecommendation__pod {
         @include grid-item(4);
+
+        @include media-query($tablet-down) {
+          @include grid-item(6);
+        }
       }
 
       .ProductTile {
         @include grid-item(2);
 
         padding-bottom: 0;
+
+        @include media-query($tablet-down) {
+          @include grid-item(6);
+        }
 
         .QuickView__button {
           display: none;
