@@ -32,6 +32,13 @@ export default function(toggle) {
   setTempFocus($('[data-cart]'));
   window.focusedContainer = $('[data-cart]').get(0);
   $('[data-state]').addClass('State--cart-open');
+  const $sticky_checkout = $('[data-sticky-checkout]');
+  setTimeout(() => {
+    // Hextom FSB is 44 px tall; Set 'top' to fix Safari's 'interact' bug
+    $sticky_checkout.css({
+      top: 44 + 32,
+    });
+  }, 0);
   $(document).trigger('scroll');  
   setTimeout(() => Upsell(), 100);
   return $(document).trigger('cartDidOpen');

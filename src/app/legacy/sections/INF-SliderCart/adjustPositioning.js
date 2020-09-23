@@ -23,11 +23,15 @@ export default function() {
   }
   
   $slider_cart.css('padding-top', height_above);
-  // Hextom FSB is 44 px tall; Set 'top' to fix Safari's 'interact' bug
   $sticky_checkout.css({
     'padding-right': 20 + scrollbar_width,
-    top: 44 + height_above,
   });
+  // setTimeout(() => {
+  //   // Hextom FSB is 44 px tall; Set 'top' to fix Safari's 'interact' bug
+  //   $sticky_checkout.css({
+  //     top: 44 + height_above,
+  //   });
+  // }, 50);
   $pre_header.css('right', scrollbar_width);
   $header.css('right', scrollbar_width);
 

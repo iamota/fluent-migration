@@ -1,11 +1,11 @@
 .StickyCheckout {
-  top: 76px; // To display Hextom FSB, which has 44px height, plus 32px padding-top of the SliderCart
+  // top: 76px; // To display Hextom FSB, which has 44px height, plus 32px padding-top of the SliderCart
 
-  @include media-query($mobile) {
-    // width: 100%;
+  // @include media-query($mobile) {
+  //   // width: 100%;
 
-    top: 149px;
-  }
+  //   top: 149px;
+  // }
 
   &__subtotal {
     margin-bottom: 10px;
