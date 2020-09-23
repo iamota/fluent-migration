@@ -35,13 +35,12 @@ export default function(toggle) {
   const $sticky_checkout = $('[data-sticky-checkout]');
   setTimeout(() => {
     $sticky_checkout.css({
-      top: 0,
+      position: 'relative',
     });
   }, 10);
   setTimeout(() => {
-    // Hextom FSB is 44 px tall; Set 'top' to fix Safari's 'interact' bug
     $sticky_checkout.css({
-      top: 44 + 32,
+      position: 'fixed',
     });
   }, 50);
   $(document).trigger('scroll');  
