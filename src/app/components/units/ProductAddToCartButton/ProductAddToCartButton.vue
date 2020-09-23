@@ -6,7 +6,7 @@
       <input
         v-if="assessment"
         type="hidden"
-        name="properties[Assessment]"
+        name="properties[_Assessment]"
         value="true"
       >
       

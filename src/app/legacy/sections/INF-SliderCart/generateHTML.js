@@ -16,7 +16,7 @@ export default function(cart = window.cart) {
 
   $.each(cart.items, (i, cart_item) => {
     // Deep clone the cart_item so we can make our modifications without affecting the original
-    const assessment_item = get(cart_item, `properties.Assessment`, false);
+    const assessment_item = get(cart_item, `properties._Assessment`, false);
     let item = JSON.parse(JSON.stringify(cart_item));    
     item = generateImageTag(item);
     item = formatPrice(item);
