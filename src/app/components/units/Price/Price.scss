@@ -2,17 +2,10 @@
 @import '../../../styles/variables';
 
 .Price {
-  &__unavailable {
-    text-decoration: line-through;
+  &__unavailable,
+  &__compare-at,
+  &__sold-out {
     color: $color-light-gray-alt-3;
     font-size: 14px;
-  }
-
-  &__sold-out {
-    color: $color-secondary-11;
-
-    @include media-query($mobile) {
-      display: block;
-    }
   }
 }
