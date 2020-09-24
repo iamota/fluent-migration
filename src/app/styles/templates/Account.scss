@@ -30,7 +30,15 @@
 }
 
 .MyOrders {
-  .Order__details__heading {
-    font-size: 16px;
+  .Order__details {
+    font-size: 14px;
+
+    p {
+      font-size: 14px;
+    }
+
+    &__heading {
+      font-size: 16px;
+    }
   }
 }
