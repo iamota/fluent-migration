@@ -90,6 +90,15 @@
 
   .ProductOptions {
     border-top: 1px solid $color-light-gray;
+
+    .Button--sold-out {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      label {
+        pointer-events: none;
+      }
+    }
   }
 
   .ProductOption__variants.ProductOption__variants--list {
