@@ -12,7 +12,7 @@ declare global {
   interface Window {
     kit_event: Event;
   }
-}
+} 
 
 export default defineActions({
   previousStep(context, step): void {
