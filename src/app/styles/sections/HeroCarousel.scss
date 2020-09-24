@@ -71,7 +71,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(1.2, 1.5);
+        transform: translate3D(-50%, -50%, 0) scale(1.2, 1.5);
         height: 100%;
         width: 100%;
         border: 1px solid #ffffff;
@@ -85,11 +85,11 @@
 
 @keyframes radiate {
   0%{
-    transform: translate(-50%, -50%) scale(.95, .9);
+    transform: translate3D(-50%, -50%, 0) scale(.95, .9);
 		opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) scale(1.2, 1.5);
+    transform: translate3D(-50%, -50%, 0) scale(1.2, 1.5);
 		opacity: 0;
   }
 } 
