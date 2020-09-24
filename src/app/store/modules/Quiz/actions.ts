@@ -1,5 +1,6 @@
 import { defineActions } from 'direct-vuex';
 import $ from 'jquery';
+import { find } from 'lodash-es';
 import store from '@INF/store';
 import ProductGetters from '@INF/modules/Products/getters';
 import ProductMutations from '@INF/modules/Products/mutations';
@@ -50,7 +51,7 @@ export default defineActions({
       commit.setProductHandle(response.kit.shopify_product_handle);           
       
       const product_data = await dispatch.getProduct(state.product_handle);
-      const selected_variant_id = product_data.variants[0].id;
+      const selected_variant_id = find(product_data.variants, { available: true }) ? find(product_data.variants, { available: true }).id : product_data.variants[0].id;
       const variant_table: GenericObject = {};
 
       const session_object = {
