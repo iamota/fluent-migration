@@ -3,4 +3,28 @@
     border-radius: 30px;
   }
 
+  .Anchor {
+    display: inline-block;
+    min-width: 170px;
+    text-align: center;
+    color: $color-primary-1;
+
+    &:hover {
+      color: $color-primary-2;
+    }
+  }
+}
+
+.AccountRegister {
+  .Input--material-filled .Input__control {
+    border-radius: 30px;
+  }
+
+  .Anchor {
+    color: $color-primary-1;
+
+    &:hover {
+      color: $color-primary-2;
+    }
+  }
 }
