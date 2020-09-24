@@ -8,7 +8,7 @@
         type="hidden"
         name="properties[_Assessment]"
         value="true"
-      >
+      > 
       
       <input
         v-for="(property, i) in getters.properties" 
