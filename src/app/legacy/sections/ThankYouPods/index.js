@@ -11,7 +11,13 @@ export default () => {
   
   setTimeout(() => {
     standardizeHeights($grid_item_selector, child_selectors); 
-    window.dispatchEvent(new CustomEvent(`resize`));
+    if (typeof (Event) === `function`) {
+      window.dispatchEvent(new CustomEvent(`resize`));      
+    } else {
+      const event = document.createEvent(`Event`);  
+      event.initEvent(`resize`, true, true);
+      document.dispatchEvent(event);
+    }
   }, 100);
 };
 
