@@ -83,6 +83,11 @@ $(document).ready(() => {
   $(window).trigger('resize');
   $(window).trigger('scroll');
 
+  // Fixes weird issue with iPhone SE devices on CMS pages not displaying content.
+  setTimeout(() => {
+    $(window).trigger('scroll');
+  }, 1500);
+
   $(document).on('shopify:section:load', () => {
     $(window).trigger('scroll');
     $(window).trigger('resize');
