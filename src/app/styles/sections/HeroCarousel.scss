@@ -66,20 +66,20 @@
     &__button {
       position: relative;
 
-      &::after {
-        content: '';
-        position: absolute;
-        // top: 50%;
-        // left: 50%;
-        // transform: translate(-50%, -50%) scale(1.2, 1.5);
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        border: 1px solid #ffffff;
-        border-radius: $button-border-radius;
-        animation: radiate 1.5s forwards infinite;
-        pointer-events: none;
+      &.radiate { 
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(1.2, 1.5);
+          height: 100%;
+          width: 100%;
+          border: 1px solid #ffffff;
+          border-radius: $button-border-radius;
+          animation: radiate 1.5s forwards infinite;
+          pointer-events: none;
+        }
       }
     }
   }
@@ -87,14 +87,10 @@
 
 @keyframes radiate {
   0%{
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%) scale(.95, .9);
 		opacity: 1;
   }
   100% {
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%) scale(1.2, 1.5);
 		opacity: 0;
   }

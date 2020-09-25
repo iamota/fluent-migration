@@ -25,6 +25,7 @@ import ShoppableImage from '../components/ShoppableImage';
 import RecentArticlesCarosuel from '../components/RecentArticlesCarousel';
 import { FormIframe } from '../components/FormWithIframe';
 import AnnouncementBar from '../components/AnnouncementBar';
+import RadiateButton from '../components/RadiateButton';
 
 import ThankYouPods from '../sections/ThankYouPods';
 import Upsell from '../components/Upsell/';
@@ -66,6 +67,7 @@ $(document).ready(() => {
   AnnouncementBar();
   ThankYouPods();
   Header();
+  RadiateButton();
   
   _.each(Infinite, (component) => {
     component();
