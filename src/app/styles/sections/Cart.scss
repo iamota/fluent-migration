@@ -104,6 +104,7 @@
   }
 
   &__image {
+    display: block;
     flex-basis: 120px;
 
     @include media-query($mobile) {
