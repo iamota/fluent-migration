@@ -1,0 +1,302 @@
+{%- capture orders_title -%}
+  {% include 'INF-translation', translate: 'customer.account.orders', default: 'My Orders' %}
+{%- endcapture -%}
+
+<section 
+  id="section{{ section.id }}" 
+  data-section-id="{{ section.id }}" 
+  data-section-type="INF-MyOrders" 
+  class="Section Section--{{ section.settings.width }} Section--{{ section.settings.width--mobile }}" 
+  style="{% if section.settings.use_background %}background: {{ section.settings.background }};{% endif %}"
+>
+  <div class="Section__container">
+    <h2 id="MyOrders__table-desc" class="MyOrders__title">{{ orders_title }}</h2>
+    {% paginate customer.orders by 20 %}
+      {% if customer.orders.size != 0 %}
+        <div class="MyOrders"
+             role="table"
+             aria-label="{{ 'customer.orders.title' | t }}"
+             aria-describedby="MyOrders__table-desc"        
+        >          
+          <div class="MyOrders__header--wrapper" role="rowgroup">
+            <div class="MyOrders__header" role="row">
+              <div class="h5 Order__column Order__date" role="columnheader">{{ 'customer.orders.date' | t }}</div>
+              <div class="h5 Order__column Order__number" role="columnheader">{{ 'customer.orders.order_number' | t }}</div>
+              <div class="h5 Order__column Order__total" role="columnheader">{{ 'customer.orders.total' | t }}</div>
+              <div class="h5 Order__column Order__status" role="columnheader">{{ 'customer.orders.fulfillment_status' | t }}</div>
+              <div class="Order__column Order__actions" role="columnheader"></div>
+            </div>
+          </div>
+          <div class="MyOrders__list" role="rowgroup">
+            {% for order in customer.orders %}
+              <div class="Order" data-order="{{ order.name }}" role="row">
+                <div class="Order__collapsed-info">
+                  <div class="Order__column Order__date" role="cell">{{ order.created_at | date: "%m/%d/%y" }}</div>
+                  <div class="Order__column Order__number" role="cell"><a tabindex="0" role="button" aria-label="{% include 'INF-translation', translate: 'customer.account.view_details', default: 'View Details' %} - {{order.name}}" data-view-order-details-link>{{order.name}}</a></div>
+                  <div class="Order__column Order__total" role="cell">{{ order.total_price | money }}{% if settings.show_currency %} <span class="Order__currency">{{ shop.currency }}</span>{% endif %}</div>
+                  <div class="Order__column Order__status" role="cell">{{ order.fulfillment_status_label }}</div>
+                  <div class="Order__column Order__mobile-status" role="cell"><label>{{ 'customer.orders.fulfillment_status' | t }}:</label> {{ order.fulfillment_status_label }}</div>
+                  <div class="Order__column Order__actions" role="cell">
+                    <button class="Button Order__button Order__details-button" data-view-order-details-button>
+                      <span data-collapsed-text>{% include 'INF-translation', translate: 'customer.account.view_details', default: 'View Details' %}</span>
+                      <span style="display: none;" data-expanded-text>{% include 'INF-translation', translate: 'customer.account.hide_details', default: 'Hide Details' %}</span>
+                    </button>
+                  </div>                  
+                </div>
+                <div class="Order__expanded-info" aria-expanded="false" aria-hidden="true" data-prevent-tab data-order-details>
+                  <div data-order-details-height>
+                    <div class="Order__details">
+                      <div class="Order__shipping">
+                        <h3 class="h5 Order__details__heading">{{ 'customer.order.shipping_address' | t }}</h3>
+                        <div class="address">
+                          {{ order.shipping_address | format_address }}
+                        </div>
+                      </div>
+                      <div class="Order__payment">
+                        <h3 class="h5 Order__details__heading">{{ 'customer.order.payment_method' | t }}</h3>
+                        
+                        {% assign payment_method = order.transactions | first %}
+                        {% assign payment_type = payment_method.payment_details.credit_card_company %}
+                        {% assign short_type = null %}
+
+                        {%- if payment_method.gateway == 'gift_card' -%}
+                          <span>Gift Card</span>
+                        {%- else -%}
+                          <div class="Order__card-icon">
+                            {% case payment_type %}
+                              {% when 'American Express' %}
+                                {% assign short_type = 'AMEX' %}
+                                <i class="Order__payment-icon fab fa-cc-amex"></i>
+                              {% when 'Visa' %}
+                                <i class="Order__payment-icon fab fa-cc-visa"></i>
+                              {% when 'Mastercard' %}
+                                {% assign short_type = 'MC' %}
+                                <i class="Order__payment-icon fab fa-cc-mastercard"></i>
+                              {% when 'Discover' %}
+                                {% assign short_type = 'DS' %}
+                                <i class="Order__payment-icon fab fa-cc-discover"></i>
+                              {% when 'PayPal' %}
+                                <i class="Order__payment-icon fab fa-cc-paypal"></i>
+                              {% when 'Apple Pay' %}
+                                <i class="Order__payment-icon fab fa-cc-apple-pay"></i>
+                              {% when 'Bogus' %}
+                                <i class="Order__payment-icon fab fa-cc-paypal"></i>
+                            {% endcase %}
+                          </div>
+
+                          <div class="Order__card-number">
+                            {% if short_type != null %}
+                              {{ short_type }}
+                            {% else %}
+                              {{ payment_type | upcase }}
+                            {% endif %}
+
+                            <span> {{ payment_method.payment_details.credit_card_number }}</span>
+                          </div>
+                        {%- endif -%}                        
+                      </div>
+
+                      <div class="Order__summary">
+                        <h3 class="h5 Order__details__heading">{{ 'customer.order.summary' | t }}</h3>
+                        <table cellspacing="0" cellpadding="0">
+                          <tr class="Order__summary-row">
+                            <td>{{ 'customer.order.subtotal' | t }}</td>
+                            <td>{{ order.subtotal_price | money }}{% if settings.show_currency %} <span class="Order__currency">{{ shop.currency }}</span>{% endif %}</td>
+                          </tr>
+
+                          {% for shipping_method in order.shipping_methods %}
+                            <tr class="Order__summary-row">
+                              <td>{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</td>
+                              <td>{{ shipping_method.price | money }}{% if settings.show_currency %} <span class="Order__currency">{{ shop.currency }}</span>{% endif %}</td>
+                            </tr>
+                          {% endfor %}
+
+                          {% for discount in order.discounts %}
+                            <tr class="Order__summary-row Order__summary-row--discount">
+                              <td>{{ 'customer.order.discount' | t }}</td>
+                              <td>{{ discount.savings | money }}{% if settings.show_currency %} <span class="Order__currency">{{ shop.currency }}</span>{% endif %}</td>
+                            </tr>
+                          {% endfor %}
+
+                          {% for tax_line in order.tax_lines %}
+                            <tr class="Order__summary-row">
+                              <td>{{ tax_line.title }} ({{ tax_line.rate_percentage }}%)</td>
+                              <td>{{ tax_line.price | money }}{% if settings.show_currency %} <span class="Order__currency">{{ shop.currency }}</span>{% endif %}</td>
+                            </tr>
+                          {% endfor %}
+
+                          <tr class="Order__summary-row Order__summary-row--total">
+                            <td>{{ 'customer.order.total' | t }}</td>
+                            <td>{{ order.total_price | money }}{% if settings.show_currency %} <span class="Order__currency">{{ shop.currency }}</span>{% endif %}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="Order__items">
+                      {% for item in order.line_items %}
+                        <div class="OrderItem">
+                        {% comment %} If the image has no alt text provided, item.product.title will be used by Shopify.  Filters such as "escape" or "strip_html" don't work on the alt text here. {% endcomment %}
+                          <div class="OrderItem__image"><a href="{{ item.product.url }}" role="presentation"><img src="{{ item | img_url: '420x' }}" alt="{{ item.image.alt }}"></a></div>
+                          <div class="OrderItem__details">
+                            <a class="CartProduct__title" href="{{ item.product.url }}">{{ item.product.title }}</a>
+                            {% if item.variant.title != 'Default Title' %}
+                              <div class="CartProduct__options">{{ item.variant.title }}</div>
+                            {% endif %}
+                            <div class="CartProduct__price ">{{ item.line_price | money }}{% if settings.show_currency %} <span class="CartProduct__currency">{{ shop.currency }}</span>{% endif %}</div>
+                            <div class="OrderItem__quantity"><label class="OrderItem__quantity-label">{{ 'cart.label.quantity' | t }}</label> {{ item.quantity }}</div>
+                          </div>
+                          <div class="OrderItem__fulfillment">
+                            {% if item.fulfillment %}                              
+                              {{ 'customer.order.shipped_on' | t }} 
+                              {{ item.fulfillment.created_at | date: '%m/%d/%y' }} 
+                              {{ 'customer.order.via' | t }} 
+                              {{ item.fulfillment.tracking_company }} 
+                              {% if item.fulfillment.tracking_number %}
+                                ({% if item.fulfillment.tracking_url %}<a href="{{ item.fulfillment.tracking_url }}" target="_blank">{% endif %}{{ item.fulfillment.tracking_number }}{% if item.fulfillment.tracking_url %}</a>{% endif %})
+                              {% endif %}
+                              {%- comment -%}
+                              {% if item.fulfillment.tracking_url %}
+                                <a class="Button OrderItem__button OrderItem__button-track" href="{{ item.fulfillment.tracking_url }}">
+                                  {{ 'customer.order.track_shipment' | t }}
+                                </a>
+                              {% endif %}
+                              {%- endcomment -%}                              
+                            {% else %}
+                              {{ 'customer.order.preparing' | t }} 
+                            {% endif %}
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <p>{{ 'customer.orders.none' | t }}</p>
+      {% endif %}
+
+      {% if paginate.pages > 1 %}
+        {% include 'pagination', aria_label: orders_title %}
+      {% endif %}
+
+    {% endpaginate %}
+  </div>
+
+  <style>
+    #section{{ section.id }} .Section__container {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    @media only screen and (max-width: {{ settings.grid_mobile_max }}) {
+      #section{{ section.id }} .Section__container {
+        padding-top: {{ section.settings.padding_top--mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom--mobile }}px;
+      }      
+    }
+  </style>
+</section>
+
+{% schema %}
+  {
+    "name": "My Orders",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_background",
+        "label": "Use background color",
+        "default": false,
+        "info": "Check this to use a custom section background color."
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Desktop :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "fixed",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "full"
+          },
+          {
+            "label": "Fixed",
+            "value": "fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Padding",
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Padding",
+        "default": 50
+      },
+      {
+        "type": "header",
+        "content": "Mobile :: Settings"
+      },
+      {
+        "type": "select",
+        "id": "width--mobile",
+        "label": "Width",
+        "default": "mobile-full",
+        "options": [
+          {
+            "label": "Full (Edge-to-Edge)",
+            "value": "mobile-full"
+          },
+          {
+            "label": "Fixed",
+            "value": "mobile-fixed"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Padding",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom--mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Padding",
+        "default": 40
+      }
+    ]
+  }
+{% endschema %}
