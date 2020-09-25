@@ -11,7 +11,6 @@
         :validators="validators"
         target="form-quiz"
       >        
-         
         <transition-group :name="slide_back ? 'slideback' : 'slide'">
           <div v-if="currentStep === `starter`" key="introduction">
             <Heading class="Quiz__heading" v-bind="$props" />     
