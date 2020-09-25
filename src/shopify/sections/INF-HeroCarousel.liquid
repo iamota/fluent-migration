@@ -157,7 +157,7 @@
 
                   {%- if block.settings.cta != '' -%}
                     {% unless block.settings.cta_style == 'text' %}
-                    <a class="HeroSlide__button Button Button--{{ block.settings.cta_style }}" {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">
+                    <a class="HeroSlide__button Button Button--{{ block.settings.cta_style }}" {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} {% if block.settings.cta_radiate %}data-button-radiate{% endif %} aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">
                       {{ block.settings.cta }}
                     </a>
                     {% else %}
@@ -349,7 +349,7 @@
                 {%- endif -%}
                   {%- if cta--mobile != '' -%}
                     {%- unless cta_style--mobile == 'text' -%}
-                    <a class="HeroSlide__button Button Button--{{ cta_style--mobile }}" {% if url--mobile %}href="{{ url--mobile }}"{% endif %} aria-label="{{ cta_aria_label--mobile | default: cta--mobile }}">
+                    <a class="HeroSlide__button Button Button--{{ cta_style--mobile }}" {% if url--mobile %}href="{{ url--mobile }}"{% endif %} {% if block.settings.cta_radiate %}data-button-radiate{% endif %}  aria-label="{{ cta_aria_label--mobile | default: cta--mobile }}">
                       {{ cta--mobile }}
                     </a>
                     {%- else -%}
@@ -1203,6 +1203,13 @@
                 "label": "Paragraph (Bold)"
               }
             ]
+          },
+          {
+            "label": "Button 1 radiate",
+            "id": "cta_radiate",
+            "type": "checkbox",
+            "default": true,
+            "info": "Radiate effect will not display on text link"
           },
           {
             "label": "Button text 1",
