@@ -8,6 +8,7 @@ declare global {
       kit_title: string;
       kit_body: string;
       token: string;
+      slide_back: boolean;
     }
   }
 }
@@ -20,6 +21,7 @@ const state: Quiz.State = {
   product_id: 0,
   product_handle: `dev-test-product-do-not-delete`,
   token: ``,
+  slide_back: false,
 };
 
 export default state;

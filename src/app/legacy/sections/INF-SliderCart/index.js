@@ -67,7 +67,9 @@ const SliderCart = () => {
 
   // Change quantity
   $('[data-cart]').on('change', '[name="quantity"]', (e) => {
-    updateQuantity($(e.currentTarget).closest('.CartProduct').index(), $(e.currentTarget).val());
+    const $element = $(e.currentTarget);
+    if ($element.attr('data-quantity-value') === '0') { return; }
+    updateQuantity($element.closest('.CartProduct').index(), $element.val());
   });
 
   $(document).on('click keyup', '[data-quantity-plus]', (e) => {

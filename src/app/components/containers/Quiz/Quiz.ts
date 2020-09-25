@@ -49,6 +49,9 @@ export default Vue.extend({
         ...default_css_variables(this),
       };
     },
+    slide_back(): boolean {
+      return store.getters.Quiz.getSlideBack;
+    },
     currentStep(): string {
       return store.getters.Quiz.getCurrentStep;
     },
@@ -120,6 +123,7 @@ export default Vue.extend({
     //   }, 1500);
     // },
     startQuiz(): void {
+      store.commit.Quiz.setSlideBack(false);
       store.commit.Quiz.setStep(`question1`);
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: `smooth` });
