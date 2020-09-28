@@ -63,8 +63,8 @@ export default defineGetters<Quiz.State>()({
     const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);
     const patient_type = get(rootState, `Forms.quizForm.focus.value`, ``);
     const gender = get(rootState, `Forms.quizForm.gender.value`, ``);
-    const symptoms_over_6_days_self = (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`);
-    const symptoms_over_6_days_family = (get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== `6`);
+    const symptoms_over_6_days_self = ((get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== ``));
+    const symptoms_over_6_days_family = ((get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== ``));
     const symptoms_onset_self = get(rootState, `Forms.quizForm.symptom_onset.value`, ``);
     const symptoms_onset_family = get(rootState, `Forms.quizForm.family_symptom_onset.value`, ``);
     const symptoms = get(rootState, `Forms.quizForm['symptoms[]'].value`, []);
@@ -123,8 +123,8 @@ export default defineGetters<Quiz.State>()({
     const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);
     const patient_type = get(rootState, `Forms.quizForm.focus.value`, ``);
     const gender = get(rootState, `Forms.quizForm.gender.value`, ``);
-    const symptoms_over_6_days_self = (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`);
-    const symptoms_over_6_days_family = (get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== `6`);
+    const symptoms_over_6_days_self = ((get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== ``));
+    const symptoms_over_6_days_family = ((get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== ``));
     const symptoms_onset_self = get(rootState, `Forms.quizForm.symptom_onset.value`, ``);
     const symptoms_onset_family = get(rootState, `Forms.quizForm.family_symptom_onset.value`, ``);
     const symptoms = get(rootState, `Forms.quizForm['symptoms[]'].value`, []);
