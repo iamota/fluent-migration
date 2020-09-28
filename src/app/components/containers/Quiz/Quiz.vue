@@ -10,35 +10,35 @@
         class="Quiz__form"
         :validators="validators"
         target="form-quiz"
-      >
-        <Heading class="Quiz__heading" v-if="currentStep === `starter`" v-bind="$props" />     
-        <div class="Quiz__body-text" v-if="currentStep === `starter`" v-html="body_text" />
-        <Button v-if="currentStep === `starter` && cta !== ``" :class="`Quiz__startButton Button Button__${cta_style}`" @click.native="startQuiz">{{ cta }}</Button>
-        <div class="Quiz__disclaimer" v-if="currentStep === `starter`" v-html="disclaimer_text" />
-         
-        <!-- <transition-group name="fade" mode="out-in"> -->
-        <Question1 v-if="currentStep === `question1`" key="question1" />
-        <Question2 v-if="currentStep === `question2`" key="question2" />
-        <Question3 v-if="currentStep === `question3`" key="question3" />
-        <Question4 v-if="currentStep === `question4`" key="question4" />
-        <Question5 v-if="currentStep === `question5`" key="question5" />
-        <Question6 v-if="currentStep === `question6`" key="question6" />
-        <Question7 v-if="currentStep === `question7`" key="question7" />
-        <Question8 v-if="currentStep === `question8`" key="question8" />
-        <Question9 v-if="currentStep === `question9`" key="question9" /> 
-        <Question10 v-if="currentStep === `question10`" key="question10" />        
-        <QuizProduct
-          v-if="currentStep === `kit`"
-          id="QuizProduct"
-          key="kit" 
-          option_type="list"
-          name="QuizProduct"
-          :product_data_id="product_data_id" 
-          :filmstrip="false" 
-          :arrow_opacity="0"
-        />
-        
-        <!-- </transition-group> -->
+      >        
+        <transition-group :name="slide_back ? 'slideback' : 'slide'">
+          <div v-if="currentStep === `starter`" key="introduction">
+            <Heading class="Quiz__heading" v-bind="$props" />     
+            <div class="Quiz__body-text" v-html="body_text" />
+            <Button v-if="currentStep === `starter` && cta !== ``" :class="`Quiz__startButton Button Button__${cta_style}`" @click.native="startQuiz">{{ cta }}</Button>
+            <div class="Quiz__disclaimer" v-html="disclaimer_text" />
+          </div>
+          <Question1 v-if="currentStep === `question1`" key="question1" />
+          <Question2 v-if="currentStep === `question2`" key="question2" />
+          <Question3 v-if="currentStep === `question3`" key="question3" />
+          <Question4 v-if="currentStep === `question4`" key="question4" />
+          <Question5 v-if="currentStep === `question5`" key="question5" />
+          <Question6 v-if="currentStep === `question6`" key="question6" />
+          <Question7 v-if="currentStep === `question7`" key="question7" />
+          <Question8 v-if="currentStep === `question8`" key="question8" />
+          <Question9 v-if="currentStep === `question9`" key="question9" /> 
+          <Question10 v-if="currentStep === `question10`" key="question10" />        
+          <QuizProduct
+            v-if="currentStep === `kit`"
+            id="QuizProduct"
+            key="kit" 
+            option_type="list"
+            name="QuizProduct"
+            :product_data_id="product_data_id" 
+            :filmstrip="false" 
+            :arrow_opacity="0"
+          />        
+        </transition-group>
 
         <input type="hidden" name="q3_first_name" :value="getFirstName">
         <input type="hidden" name="q4_age" :value="getAge">

@@ -22,4 +22,7 @@ export default defineMutations<Quiz.State>()({
   setBody(state, body: string) {
     state.kit_body = body;
   },
+  setSlideBack(state, value: boolean) {
+    state.slide_back = value;
+  },
 });

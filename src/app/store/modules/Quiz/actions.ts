@@ -16,12 +16,13 @@ declare global {
 
 export default defineActions({
   previousStep(context, step): void {
-    const { commit, dispatch } = QuizActionContext(context);  
+    const { commit, dispatch } = QuizActionContext(context);
+    commit.setSlideBack(true);
     commit.setStep(step);
   },
   async nextStep(context, step): Promise<void> {
     const { state, commit, dispatch, getters } = QuizActionContext(context);  
-    const response = await dispatch.getAssessment();
+    const response = await dispatch.getAssessment();    
     const goToNext = (): void => {
       try {
         window.ga(`send`, `event`, `Quiz`, `Changing Step`, `Step`, step);
@@ -30,7 +31,8 @@ export default defineActions({
       }
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: `smooth` });
-      }, 1);      
+      }, 1);  
+      commit.setSlideBack(false);    
       commit.setStep(step);
     };
     

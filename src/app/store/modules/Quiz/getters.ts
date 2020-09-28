@@ -44,6 +44,9 @@ interface Query {
 }
 
 export default defineGetters<Quiz.State>()({
+  getSlideBack(state): boolean {
+    return state.slide_back;
+  },
   getCurrentStep(state): string {
     return state.step;
   },
