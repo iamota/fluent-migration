@@ -83,6 +83,15 @@
       }
     }
   }
+
+  &--mobile {
+    &.HeroCarousel--scale {
+      @include media-query($mobile) {
+        min-height: 500px;  // For mobile carousel using the 'Scale' option, preventing underneath components from displaying before the slide image loads
+        background-color: #000;
+      }
+    }
+  }
 }
 
 @keyframes radiate {
