@@ -83,7 +83,7 @@ export default defineGetters<Quiz.State>()({
     const coughing = getSymptom(`coughing`, symptoms);
     
     const query_object: Query = {
-      first_name,
+      first_name, 
       age,
       gender,
       patient_type,
