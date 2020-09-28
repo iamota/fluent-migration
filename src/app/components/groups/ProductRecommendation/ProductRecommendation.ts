@@ -17,7 +17,6 @@ export default Vue.extend({
       image: `https://cdn.shopify.com/s/files/1/0399/0008/6429/files/Little_girl142019450_copy.png?v=1599676697`,
       gradient_class: `product-color-cold-flu-severe-day`,
       shopify_product_handle: ``,
-      cta_text: `Take the Quiz`,
       cta_link: `/pages/quiz`,
       description: `Get a personalized <strong>Symptoms Relief Kit</strong> made just for your symptoms.`,
       title: `Not feeling well?`,
@@ -35,6 +34,9 @@ export default Vue.extend({
         'ProductRecommendation--kit': this.shopify_product_handle !== ``,
       };
     },
+    recommended(): boolean {
+      return this.shopify_product_handle !== ``;
+    },
   },
   mounted(): void {
     this.checkKit();
@@ -50,7 +52,6 @@ export default Vue.extend({
 
       this.gradient_class = kit_data.gradient_class;
       this.shopify_product_handle = kit_data.shopify_product_handle;
-      this.cta_text = `Shop Now`;
       this.cta_link = `/products/${this.shopify_product_handle}`;
       this.title = `Your symptom relief kit is ready!`;
       this.description = `Based on your symptoms, 

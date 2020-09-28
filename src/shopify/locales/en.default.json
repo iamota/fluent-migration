@@ -9,12 +9,14 @@
       "filter_clear_all": "all"
     },
     "kit": {
-      "recommend_label": "Recommended for You"
+      "recommend_label": "Recommended for You",
+      "take_the_quiz_cta": "Start Assessment",
+      "shop_cta": "Shop Now"
     }
   },
   "products": {
     "assessment": {
-      "take_the_quiz_cta": "Take the Quiz"
+      "take_the_quiz_cta": "Start Assessment"
     },
     "product": {
       "quantity": "QTY"

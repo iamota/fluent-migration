@@ -5,7 +5,14 @@
         <div class="ProductRecommendation__content">
           <h3 v-html="title" />
           <p v-html="description" />
-          <Anchor :href="cta_link" class="Button Button--on-image">{{ cta_text }}</Anchor>
+          <Anchor :href="cta_link" class="Button Button--secondary">
+            <template v-if="recommended">
+              {{ 'collections.kit.shop_cta' | t }}
+            </template>
+            <template v-else>
+              {{ 'collections.kit.take_the_quiz_cta' | t }}
+            </template>
+          </Anchor>
         </div>
       </div>
     </div>
