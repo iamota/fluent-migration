@@ -9,6 +9,7 @@ declare global {
       kit_body: string;
       token: string;
       slide_back: boolean;
+      loading: boolean;
     }
   }
 }
@@ -22,6 +23,7 @@ const state: Quiz.State = {
   product_handle: `dev-test-product-do-not-delete`,
   token: ``,
   slide_back: false,
+  loading: false,
 };
 
 export default state;

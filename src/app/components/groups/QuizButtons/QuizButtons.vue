@@ -6,7 +6,12 @@
       :disabled="disabled"
       @click.native="next"
     >
-      Continue
+      <template v-if="loading">
+        <span :style="{visibility: 'hidden', fontSize: 0, position: 'absolute'}">Loading</span> <Loader size="22" color="white" />
+      </template>
+      <template v-else>
+        Continue
+      </template>
     </Button>
   </div>
 </template>

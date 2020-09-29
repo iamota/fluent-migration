@@ -25,4 +25,7 @@ export default defineMutations<Quiz.State>()({
   setSlideBack(state, value: boolean) {
     state.slide_back = value;
   },
+  setLoading(state, value: boolean) {
+    state.loading = value;
+  },
 });

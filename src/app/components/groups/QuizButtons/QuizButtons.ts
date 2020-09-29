@@ -9,6 +9,11 @@ export default Vue.extend({
     previous_step: { type: String },
     next_step: { type: String },
   },
+  computed: {
+    loading(): boolean {
+      return store.state.Quiz.loading;
+    },
+  },
   methods: {
     back(): void {
       store.dispatch.Quiz.previousStep(this.previous_step);
