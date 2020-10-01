@@ -17,26 +17,26 @@
         <Checkbox 
           class="Checkbox--Fever"
           name="symptoms[]" 
-          label="Fever &amp; Chills" 
+          label="Fever or Chills" 
           value="fever_chills"
         />
         <Checkbox 
           class="Checkbox--Shortness"
           name="symptoms[]" 
-          label="Shortness of breath" 
+          label="Shortness of Breath" 
           value="shortness_of_breath"
         />
         <QuizTemp v-show="showTemp" />
         <Checkbox 
           class="Checkbox--Joint"
           name="symptoms[]" 
-          label="Muscle &amp; Body Aches" 
+          label="Muscle or Body Aches" 
           value="body_aches"
         />
         <Checkbox 
           class="Checkbox--Exhausted"
           name="symptoms[]" 
-          label="Fatigue or exhausted" 
+          label="Fatigue or Exhaustion" 
           value="fatigue_tiredness"
         /> 
         <Checkbox 
@@ -72,7 +72,7 @@
         <Checkbox 
           class="Checkbox--Sore"
           name="symptoms[]" 
-          label="Sore throat" 
+          label="Sore Throat" 
           value="sore_throat"
         />
         <Checkbox 
