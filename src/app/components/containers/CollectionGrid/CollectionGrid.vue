@@ -4,7 +4,12 @@
       <Heading v-if="homepage" v-bind="$props" />
       <div :class="{CollectionGridContainer: true, 'CollectionGridContainer--loading': loading, 'CollectionGridContainer--without-filters': !use_filters}">    
         <CollectionFilters v-if="use_filters" :class="`template-${template_suffix}`" :enable_clear="enable_clear" />
-        <Form v-if="collection_handle === 'shop'" id="CollectionSort" class="CollectionSort">                  
+        <Form 
+          v-if="collection_handle === 'shop'" 
+          id="CollectionSort" 
+          class="CollectionSort" 
+          :class="{'CollectionSort--no-filters': !use_filters}"
+        >                  
           <Select
             name="sort_by"
             :value="getSortBy"

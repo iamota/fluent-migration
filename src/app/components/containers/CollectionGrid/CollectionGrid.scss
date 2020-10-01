@@ -1,4 +1,5 @@
 @import '~@INF/styles';
+@import '../../../styles/variables';
 
 .CollectionGrid {
   // Add your styles here
@@ -19,5 +20,130 @@
 .CollectionGridContainer {
   @include media-query($laptop-down) {
     padding: 0 0 60px;
+  }
+
+  &--without-filters {
+    padding-top: 80px;
+
+    @include media-query($small) {
+      padding-top: 60px;
+    }
+  }
+}
+
+
+.CollectionSort {
+  top: 3px;
+
+  @include media-query($mobile) {
+    --input-height: 40px;
+
+    display: block;
+    top: 0;
+    border-bottom: 1px solid $color-light-gray;
+    padding: 0;
+    width: 50%;
+    min-width: auto;
+    height: 50px;
+  }
+
+  .Form__body {
+    @include media-query($mobile) {
+      padding: 0;
+    }
+  }
+
+  .Select__control {
+    @include media-query($mobile) {
+      display: flex;
+    }
+  }
+
+  .Select label,
+  .Select input {
+    display: inline-block;
+    width: auto;
+  }
+
+  .Select input {
+    border-radius: 23px;
+    background: white;
+
+    @include media-query($mobile) {
+      border: none;
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 30px;
+      white-space: nowrap;
+    }
+  }
+
+  .Select .Select__icon {
+    margin-bottom: 16px;
+  }
+
+  .Select--mobile {
+    margin: 0;
+  }
+
+  label {
+    vertical-align: middle;
+    text-transform: capitalize;
+
+    @include media-query($mobile) {
+      margin: 0;
+      padding: 10px 0 0 20px;
+    }
+  }
+
+  &--no-filters {
+    top: 0;
+    right: 20px;
+    width: calc(100% - 40px);
+
+    &::after {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      border-bottom: 1px solid $color-light-gray;
+      width: 100%;
+      height: 1px;
+      content: '';
+
+      @include media-query($small) {
+        display: none;
+      }
+    }
+
+
+    .Form__body {
+      margin: 0 0 0 auto;
+      max-width: 260px;
+
+      @include media-query($small) {
+        max-width: none;
+      }
+    }
+
+    .Select__control {
+      @include media-query($small) {
+        justify-content: space-between;
+      }
+    }
+
+    .Select__label {
+      @include media-query($small) {
+        padding-left: 0;
+      }
+    }
+
+    .Select input {
+      @include media-query($small) {
+        padding-right: 40px;
+        width: auto;
+        text-align: right;
+      }
+    }
   }
 }
