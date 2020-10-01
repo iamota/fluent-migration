@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 const setKitInformation = () => {
-  const $recommended_text = $(`[data-recommended-text]`);
+  // const $recommended_text = $(`[data-recommended-text]`);
   const $recommended_link = $(`[data-recommended-link]`);
   const kit_information = localStorage.getItem(`kit_data`);
 
@@ -9,7 +9,7 @@ const setKitInformation = () => {
 
   const kit_data = JSON.parse(kit_information);
 
-  $recommended_text.text(`Your personalized kit is ready.`).addClass(`NavBar__text--kit-ready`);
+  // $recommended_text.text(`Your personalized kit is ready.`).addClass(`NavBar__text--kit-ready`);
   $recommended_link.attr(`href`, `/products/${kit_data.shopify_product_handle}`).text(`Shop Now`);
 };
 
