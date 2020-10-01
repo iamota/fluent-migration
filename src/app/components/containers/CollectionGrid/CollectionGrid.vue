@@ -23,7 +23,7 @@
           :desktop="String(columns_desktop)"
           :tablet="String(columns_tablet)"
           :mobile="String(columns_mobile)"
-          class="CollectionGrid"            
+          class="CollectionGrid"        
         >
           <Loader 
             v-if="loading" 
