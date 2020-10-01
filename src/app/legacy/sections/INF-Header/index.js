@@ -10,7 +10,7 @@ const setKitInformation = () => {
   const kit_data = JSON.parse(kit_information);
 
   $recommended_text.text(`Your personalized kit is ready.`).addClass(`NavBar__text--kit-ready`);
-  $recommended_link.attr(`href`, `/products/${kit_data.shopify_product_handle}`).text(`Shop Now`);
+  $recommended_link.attr(`href`, `/products/${kit_data.shopify_product_handle}`).text(`View Kit`);
 };
 
 const setKitEvent = () => {  
