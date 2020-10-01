@@ -9,19 +9,22 @@ $box-mobile-left-position: 10px;
 
 .Module-Banner {
   $banner: &;
+
   .Section__container {
     height: 100%;
   }
-  .Module-Banner {
 
+  .Module-Banner {
     &__Block {
       &--Content {
-        height: 100%;
         width: 100%;
+        height: 100%;
       }
+
       &--Content-Inner {
         width: 100%;
       }
+
       &--Media {
         img {
           @include tablet-down-only;
@@ -35,8 +38,10 @@ $box-mobile-left-position: 10px;
           display: none;
         }
       }
+
       &--Mobile {
         display: none;
+
         @include media-query($medium-down) {
           display: block;
         }
@@ -44,12 +49,12 @@ $box-mobile-left-position: 10px;
     }
 
     &__Bg-color {
-      width: 100%;
-      background-color: white;
-      height: 100%;
       position: absolute;
       top: 0;
       bottom: 0;
+      background-color: white;
+      width: 100%;
+      height: 100%;
 
       @include media-query($medium-down) {
         position: relative;
@@ -57,36 +62,50 @@ $box-mobile-left-position: 10px;
     }
 
     &__Content {
+      position: relative;
       height: 100%;
       font-size: 22px;
-      position: relative;
 
       @include media-query($medium-down) {
         font-size: 14px;
       }
 
       &--theme-light {
-        h1, h2, h3, h4, h5, h6, p, a, span, ul, li, ol {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        a,
+        span,
+        ul,
+        li,
+        ol {
           color: white;
         }
       }
     }
 
     &__Slide {
-      height: 100%;
       width: 100%;
+      height: 100%;
 
       @include media-query($medium-down) {
         height: auto;
       }
+
       &--split_content {
         #{$banner}__Columns {
           height: 100%;
+
           @include media-query($medium-down) {
             grid-auto-rows: 1fr;
           }
         }
       }
+
       &--text_heading {
         width: 100%;
       }
@@ -94,6 +113,7 @@ $box-mobile-left-position: 10px;
 
     &__Columns {
       @include grid(12, 0, 0);
+
       grid-auto-flow: dense;
     }
 
@@ -104,14 +124,17 @@ $box-mobile-left-position: 10px;
       &--left {
         @include grid-item(6, null, 1);
       }
+
       &--right {
         @include grid-item(6, null, 7);
       }
+
       &--top {
         @include media-query($medium-down) {
           grid-row-start: 1;
         }
       }
+
       &--hide {
         @include media-query($medium-down) {
           display: none;
@@ -121,18 +144,20 @@ $box-mobile-left-position: 10px;
 
     &__Overlay {
       position: absolute;
-      height: 100%;
-      width: 100%;
       top: 0;
+      width: 100%;
+      height: 100%;
 
       &--dark {
-        background: rgba(0,0,0,.3);
+        background: rgba(0, 0, 0, 0.3);
       }
+
       &--light {
-        background: rgba(255,255,255,.6);
+        background: rgba(255, 255, 255, 0.6);
       }
     }
   }
+
   .flickity {
     &-viewport {
       transition: height 0.2s;
@@ -141,8 +166,8 @@ $box-mobile-left-position: 10px;
 
   .textAlignment {
     &__center {
-      max-width: 700px;
       margin: 0 auto;
+      max-width: 880px;
     }
   }
 
