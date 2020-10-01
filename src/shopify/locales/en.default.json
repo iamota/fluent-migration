@@ -24,5 +24,18 @@
     "general": {
       "upsell": "You may also like"
     }
+  },
+  "assessment": {
+    "modals": {
+      "under_12_headline": "Your family member is under 12 years of age.",
+      "under_12_copy": "Our products are intended for use in children 12 and over.  Please consult your child's physician for appropriate care.  We hope your child gets back to health soon.",
+      "under_12_cta": "Back to Home",
+      "session_expired_headline": "Your session has timed out.",
+      "session_expired_copy": "To protect your privacy, we have ended your session.  Please feel free to restart your assessment.",
+      "session_expired_cta": "Restart Assessment",
+      "general_problem_headline": "There's a problem, please try again.",
+      "general_problem_copy": "Sorry, we've run into a problem. Feel free to try your assessment again.",
+      "general_problem_cta": "Restart Assessment"
+    }
   }
 }
