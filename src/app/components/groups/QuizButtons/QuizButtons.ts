@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import store from 'infinite/src/app/store';
-import { get } from 'lodash-es';
-import { AGE_MINIMUM } from '../../containers/Quiz/config';
   
 export default Vue.extend({
   props: {
@@ -20,13 +18,8 @@ export default Vue.extend({
     },
     next(): void {
       setTimeout(() => {
-        if (this.disabled) { return;}
-
-        const age = get(store, `state.Forms.quizForm.age.value`, null);      
-        if (age && age < AGE_MINIMUM) {
-          window.location.hash = `quiz_age_modal`;
-          return;
-        }
+        if (this.disabled) { return; }
+                
         store.dispatch.Quiz.nextStep(this.next_step);
       }, 10);
     },

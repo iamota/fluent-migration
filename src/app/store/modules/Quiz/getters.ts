@@ -1,6 +1,12 @@
 import { defineGetters } from 'direct-vuex';
 import { rootGetterContext } from '@INF/store';
 import { get } from 'lodash-es';
+import { 
+  AGE_MINIMUM, 
+  CHILD_AGE_MINIMUM, 
+  SYMPTOM_DURATION, 
+  TEMP_DEFAULT,
+} from '../../../components/containers/Quiz/config';
 import getSymptom from '../../../utils/getSymptom';
 import { QuizGetterContext } from './';
 
@@ -17,7 +23,7 @@ interface Patient {
   patient_type: string;
   symptoms_over_6_days: boolean;
   symptom_onset: string;
-  age_under_11: boolean;
+  age_under_12: boolean;
 }
 
 interface Symptoms {
@@ -60,17 +66,17 @@ export default defineGetters<Quiz.State>()({
     const { rootState } = rootGetterContext(args);
     const first_name = get(rootState, `Forms.quizForm.first_name.value`, ``);
     const age = get(rootState, `Forms.quizForm.age.value`, 0);
-    const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);
+    const age_under_12 = (get(rootState, `Forms.quizForm.family_member_age.value`, AGE_MINIMUM) < CHILD_AGE_MINIMUM);
     const patient_type = get(rootState, `Forms.quizForm.focus.value`, ``);
     const gender = get(rootState, `Forms.quizForm.gender.value`, ``);
-    const symptoms_over_6_days_self = ((get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== ``));
-    const symptoms_over_6_days_family = ((get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== ``));
+    const symptoms_over_6_days_self = ((get(rootState, `Forms.quizForm.symptom_duration.value`, SYMPTOM_DURATION) !== SYMPTOM_DURATION) && (get(rootState, `Forms.quizForm.symptom_duration.value`, SYMPTOM_DURATION) !== ``));
+    const symptoms_over_6_days_family = ((get(rootState, `Forms.quizForm.family_symptom_duration.value`, SYMPTOM_DURATION) !== SYMPTOM_DURATION) && (get(rootState, `Forms.quizForm.family_symptom_duration.value`, SYMPTOM_DURATION) !== ``));
     const symptoms_onset_self = get(rootState, `Forms.quizForm.symptom_onset.value`, ``);
     const symptoms_onset_family = get(rootState, `Forms.quizForm.family_symptom_onset.value`, ``);
     const symptoms = get(rootState, `Forms.quizForm['symptoms[]'].value`, []);
     const fever_chills = getSymptom(`fever_chills`, symptoms);
     const shortness_of_breath = getSymptom(`shortness_of_breath`, symptoms);
-    const temperature = get(rootState, `Forms.quizForm.temperature.value`, `t3`);
+    const temperature = get(rootState, `Forms.quizForm.temperature.value`, TEMP_DEFAULT);
     const fatigue_tiredness = getSymptom(`fatigue_tiredness`, symptoms);
     const body_aches = getSymptom(`body_aches`, symptoms);
     const runny_stuffy_nose = getSymptom(`runny_stuffy_nose`, symptoms);
@@ -93,7 +99,7 @@ export default defineGetters<Quiz.State>()({
       symptom_onset: patient_type === `self`
       ? symptoms_onset_self
       : symptoms_onset_family,
-      age_under_11,
+      age_under_12,
       shortness_of_breath,
       fever_chills,
       temperature,
@@ -120,17 +126,17 @@ export default defineGetters<Quiz.State>()({
     const { getters, state } = QuizGetterContext(args);
     const first_name = get(rootState, `Forms.quizForm.first_name.value`, ``);
     const age = get(rootState, `Forms.quizForm.age.value`, 0);
-    const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);
+    const age_under_12 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < CHILD_AGE_MINIMUM);
     const patient_type = get(rootState, `Forms.quizForm.focus.value`, ``);
     const gender = get(rootState, `Forms.quizForm.gender.value`, ``);
-    const symptoms_over_6_days_self = ((get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== ``));
-    const symptoms_over_6_days_family = ((get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.family_symptom_duration.value`, `6`) !== ``));
+    const symptoms_over_6_days_self = ((get(rootState, `Forms.quizForm.symptom_duration.value`, SYMPTOM_DURATION) !== SYMPTOM_DURATION) && (get(rootState, `Forms.quizForm.symptom_duration.value`, SYMPTOM_DURATION) !== ``));
+    const symptoms_over_6_days_family = ((get(rootState, `Forms.quizForm.family_symptom_duration.value`, SYMPTOM_DURATION) !== SYMPTOM_DURATION) && (get(rootState, `Forms.quizForm.family_symptom_duration.value`, SYMPTOM_DURATION) !== ``));
     const symptoms_onset_self = get(rootState, `Forms.quizForm.symptom_onset.value`, ``);
     const symptoms_onset_family = get(rootState, `Forms.quizForm.family_symptom_onset.value`, ``);
     const symptoms = get(rootState, `Forms.quizForm['symptoms[]'].value`, []);
     const fever_chills = getSymptom(`fever_chills`, symptoms);
     const shortness_of_breath = getSymptom(`shortness_of_breath`, symptoms);
-    const temperature = get(rootState, `Forms.quizForm.temperature.value`, `t3`);
+    const temperature = get(rootState, `Forms.quizForm.temperature.value`, TEMP_DEFAULT);
     const fatigue_tiredness = getSymptom(`fatigue_tiredness`, symptoms);
     const body_aches = getSymptom(`body_aches`, symptoms);
     const runny_stuffy_nose = getSymptom(`runny_stuffy_nose`, symptoms);
@@ -155,7 +161,7 @@ export default defineGetters<Quiz.State>()({
         symptom_onset: patient_type === `self`
         ? symptoms_onset_self
         : symptoms_onset_family,
-        age_under_11,
+        age_under_12,
       },
       symptoms: {
         shortness_of_breath,
