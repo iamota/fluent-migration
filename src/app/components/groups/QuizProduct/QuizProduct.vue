@@ -21,7 +21,7 @@
         />
         <div class="ProductOverview__quantity-add">
           <ProductQuantity :product_data_id="product_id" v-bind="$props" />
-          <Anchor :href="product_url" class="QuizProduct__cta Button Button--primary">View Details</Anchor>
+          <Anchor :href="product_url" class="QuizProduct__cta Button Button--secondary">View Details</Anchor>
           <ProductAddToCartButton assessment :product_data_id="product_id" v-bind="$props" />
         </div>
       </div>

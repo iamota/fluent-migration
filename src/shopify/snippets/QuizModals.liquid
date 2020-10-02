@@ -1,20 +1,5 @@
 
 <!-- Hidden modal example...not linked anywhere -->
-<div id="quiz_age_modal" class="Modal {% if settings.preheader_enabled %}Modal--has-preheader{% endif %}" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-modal>
-  <div class="Modal__close Modal__close--outside" role="button"  tabindex="0" data-close-modal>
-    {% include 'CloseIcon' %}
-  </div>
-  <div class="Modal__overlay" data-modal-overlay data-close-modal></div>
-  <div class="Modal__content" data-modal-content role="document">
-    <div class="Modal__close Modal__close--inside" role="button"  tabindex="0" data-close-modal>
-      {% include 'CloseIcon' %}
-    </div>
-    <h2 class="Modal__heading" role="heading" aria-level="1">You must be at least 11 years of age to continue.</h2>
-    <p>This modal has no link to it.  The only way you can find or open it is by manually entering <b>#quiz_age_modal</b> in the address bar.</p>
-    <a href="/" class="Button Button--primary">Back to Home</a> 
-  </div>
-</div>
-
 <div id="quiz_session_expired" class="Modal {% if settings.preheader_enabled %}Modal--has-preheader{% endif %}" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-modal>
   <div class="Modal__close Modal__close--outside" role="button"  tabindex="0" data-close-modal>
     {% include 'CloseIcon' %}
@@ -24,9 +9,9 @@
     <div class="Modal__close Modal__close--inside" role="button"  tabindex="0" data-close-modal>
       {% include 'CloseIcon' %}
     </div>
-    <h2 class="Modal__heading" role="heading" aria-level="1">Your sessions has expired.</h2>
-    <p>This modal has no link to it.  The only way you can find or open it is by manually entering <b>#quiz_session_expired</b> in the address bar.</p>
-    <a href="/pages/quiz" class="Button Button--primary">Restart the Assessment</a>
+    <h2 class="Modal__heading" role="heading" aria-level="1">{{ 'assessment.modals.session_expired_headline' | t }}</h2>
+    <p>{{ 'assessment.modals.session_expired_copy' | t }}</p>
+    <a href="/pages/quiz" class="Button Button--primary">{{ 'assessment.modals.session_expired_cta' | t }}</a>
   </div>
 </div>
 
@@ -39,9 +24,9 @@
     <div class="Modal__close Modal__close--inside" role="button"  tabindex="0" data-close-modal>
       {% include 'CloseIcon' %}
     </div>
-    <h2 class="Modal__heading" role="heading" aria-level="1">There was a problem, try again later.</h2>
-    <p>This modal has no link to it.  The only way you can find or open it is by manually entering <b>#quiz_generic</b> in the address bar.</p>
-    <a href="/pages/quiz" class="Button Button--primary">Restart the Assessment</a>
+    <h2 class="Modal__heading" role="heading" aria-level="1">{{ 'assessment.modals.general_problem_headline' | t }}</h2>
+    <p>{{ 'assessment.modals.general_problem_copy' | t }}</p>
+    <a href="/pages/quiz" class="Button Button--primary">{{ 'assessment.modals.general_problem_cta' | t }}</a>
   </div>
 </div>
 

@@ -40,6 +40,7 @@ export default defineActions({
       if (response.token && state.token === ``) {
         commit.setToken(response.token);
       }
+      commit.setLoading(false);
       goToNext();
       return;
     }
@@ -89,6 +90,7 @@ export default defineActions({
 
       // @ts-ignore
       store.original.registerModule([`Products`, product_data.id], { namespaced: true, state: product_state, mutations: ProductMutations, actions: ProductActions, getters: ProductGetters });
+      commit.setLoading(false);
       goToNext(); 
       return;     
     }
@@ -123,9 +125,10 @@ export default defineActions({
     });
   }, 
   getAssessment(context): Promise<GenericObject> {
-    const { getters, state } = QuizActionContext(context);  
+    const { commit, getters, state } = QuizActionContext(context);  
     return new Promise(async (resolve) => {
       try {
+        commit.setLoading(true);
         const data = JSON.stringify(getters.getAssessmentInfo);
         const response = await $.ajax({
           type: `POST`,
@@ -136,10 +139,10 @@ export default defineActions({
             withCredentials: true,
           },
           data,
-        });
+        });        
         resolve(response);
       } catch (error) {
-        console.log(`ERROR: `, error);
+        commit.setLoading(false);        
         if (error && error.status === SESSION_EXPIRED) {
           // Session Expired
           window.location.hash = `quiz_session_expired`;

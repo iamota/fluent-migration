@@ -26,5 +26,15 @@
     "general": {
       "upsell": "You may also like"
     }
+  },
+  "assessment": {
+    "modals": {
+      "session_expired_headline": "Your session has timed out.",
+      "session_expired_copy": "To protect your privacy, we have ended your session.  Please feel free to restart your assessment.",
+      "session_expired_cta": "Restart Assessment",
+      "general_problem_headline": "There's a problem, please try again.",
+      "general_problem_copy": "Sorry, we've run into a problem. Feel free to try your assessment again.",
+      "general_problem_cta": "Restart Assessment"
+    }
   }
 }

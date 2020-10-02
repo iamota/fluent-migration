@@ -1,6 +1,6 @@
 <template>
   <div class="Quiz__slide Question6 Radio--longtext">
-    <h3 class="Quiz__heading h1">How long have you had your symptoms?</h3>   
+    <h3 class="Quiz__heading h1">Please tell us how long you have been experiencing symptoms.</h3>   
     <div class="Quiz__content">
       <Grid expand>
         <Radio 

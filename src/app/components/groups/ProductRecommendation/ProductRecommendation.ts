@@ -14,7 +14,8 @@ export default Vue.extend({
   },
   data(): GenericObject {
     return {
-      image: `https://cdn.shopify.com/s/files/1/0399/0008/6429/files/Little_girl142019450_copy.png?v=1599676697`,
+      image: `https://cdn.shopify.com/s/files/1/0399/0008/6429/files/pcp_disrupter_1_1.jpeg?v=1601600246`,
+      image_mobile: `https://cdn.shopify.com/s/files/1/0399/0008/6429/files/pcp_disrupter_1_m.jpeg?v=1601600731`,
       gradient_class: `product-color-cold-flu-severe-day`,
       shopify_product_handle: ``,
       cta_link: `/pages/quiz`,
@@ -37,6 +38,13 @@ export default Vue.extend({
     recommended(): boolean {
       return this.shopify_product_handle !== ``;
     },
+    background_image(): string {
+      if (window.innerWidth <= window.INF.settings.breakpoints.tablet) {
+        return this.image_mobile;
+      }
+
+      return this.image;
+    },
   },
   mounted(): void {
     this.checkKit();
@@ -57,6 +65,8 @@ export default Vue.extend({
       this.description = `Based on your symptoms, 
       we’ve set you up with the <strong>${kit_data.product.title}</strong>`;
       this.product = kit_data.product;
+      this.image = kit_data.image_src_desktop;
+      this.image_mobile = kit_data.image_src_mobile;
     },
   },
 });
