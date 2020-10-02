@@ -2,7 +2,7 @@
   <div class="Quiz__slide Question10">
     <Heading
       name="Question10" 
-      heading="Pleaset tell us about the symptoms..."
+      :heading="heading"
       heading_class="Quiz__heading  h1"
       subheading="(Select all that apply)"
       subheading_class="pbold" 

@@ -12,6 +12,11 @@ export default Vue.extend({
     isMyself(): boolean {
       return store.state.Forms.quizForm.focus.value === `self`;
     },
+    heading(): string {
+      return this.isMyself
+        ? `Do you have any of the following symptoms?`
+        : `Please tell us about the symptoms...`;
+    },
     showTemp(): boolean {
       const symptoms = get(store, `state.Forms.quizForm['symptoms[]'].value`, []);
       if (symptoms.length === 0) { return false; }
