@@ -1,6 +1,6 @@
 <template>
   <div class="ProductHeading" :class="{[`ProductHeading--${breakpoint}`]: true}">
-    <h5 v-if="product.product_data.type !== '' && !informational && !assessment || assessment && authorized" class="ProductHeading__pre-title">{{ product.product_data.type }}</h5>
+    <!-- <h5 v-if="product.product_data.type !== '' && !informational && !assessment || assessment && authorized" class="ProductHeading__pre-title">{{ product.product_data.type }}</h5> -->
     <h1 class="ProductHeading__title">{{ product.product_data.title }}</h1>
     <Price 
       v-if="!informational && !assessment || assessment && authorized"
