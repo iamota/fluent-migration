@@ -18,7 +18,6 @@ export default Vue.extend({
       image_mobile: `https://cdn.shopify.com/s/files/1/0399/0008/6429/files/pcp_disrupter_1_m.jpeg?v=1601600731`,
       gradient_class: `product-color-cold-flu-severe-day`,
       shopify_product_handle: ``,
-      cta_text: `Take Assessment`,
       cta_link: `/pages/quiz`,
       description: `Get a personalized <strong>Symptoms Relief Kit</strong> made just for your symptoms.`,
       title: `Not feeling well?`,
@@ -35,6 +34,9 @@ export default Vue.extend({
       return {
         'ProductRecommendation--kit': this.shopify_product_handle !== ``,
       };
+    },
+    recommended(): boolean {
+      return this.shopify_product_handle !== ``;
     },
     background_image(): string {
       if (window.innerWidth <= window.INF.settings.breakpoints.tablet) {
@@ -58,7 +60,6 @@ export default Vue.extend({
 
       this.gradient_class = kit_data.gradient_class;
       this.shopify_product_handle = kit_data.shopify_product_handle;
-      this.cta_text = `Shop Now`;
       this.cta_link = `/products/${this.shopify_product_handle}`;
       this.title = `Your symptom relief kit is ready!`;
       this.description = `Based on your symptoms, 
