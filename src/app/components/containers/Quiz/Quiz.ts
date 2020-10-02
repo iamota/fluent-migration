@@ -29,15 +29,14 @@ export default Vue.extend({
           }
           return ``;
         },
-        validNumericalAge: (age: string): string => {
-          const age_number = parseInt(age);
-          // const focus = get(store, `state.Forms.quizForm.focus.value`, ``);
+        validNumericalAge: (age: string, question_number: string): string => {
+          console.log(question_number);
+          const age_number = parseInt(age);          
           if (age_number > 120 || age_number < 1) {
             return `Please input an age that is between 1 and 120`;
+          } else if (store.state.Quiz.step === `question2` && age_number < 18) {
+            return `We cannot accept input from anyone under the age of 18. Thank you for your interest!`;
           }
-          // if (focus !== `other` && age_number < 18) {
-          //   return `We cannot accept input from anyone under the age of 18. Thank you for your interest!`;
-          // }
           return ``;
         },
       },

@@ -10,7 +10,7 @@ export default Vue.extend({
   },
   computed: {
     isDisabled(): boolean {
-      return !store.state.Forms.quizForm.family_member_age || store.state.Forms.quizForm.family_member_age.value === ``;
+      return !store.state.Forms.quizForm.family_member_age || store.state.Forms.quizForm.family_member_age.value === `` || store.state.Forms.quizForm.family_member_age.errors.length > 0;
     },  
   },
   methods: {

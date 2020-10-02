@@ -1,20 +1,5 @@
 
 <!-- Hidden modal example...not linked anywhere -->
-<div id="quiz_age_modal" class="Modal {% if settings.preheader_enabled %}Modal--has-preheader{% endif %}" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-modal>
-  <div class="Modal__close Modal__close--outside" role="button"  tabindex="0" data-close-modal>
-    {% include 'CloseIcon' %}
-  </div>
-  <div class="Modal__overlay" data-modal-overlay data-close-modal></div>
-  <div class="Modal__content" data-modal-content role="document">
-    <div class="Modal__close Modal__close--inside" role="button"  tabindex="0" data-close-modal>
-      {% include 'CloseIcon' %}
-    </div>
-    <h2 class="Modal__heading" role="heading" aria-level="1">{{ 'assessment.modals.under_12_headline' | t }}</h2>
-    <p>{{ 'assessment.modals.under_12_copy' | t }}</p>
-    <a href="/" class="Button Button--primary">{{ 'assessment.modals.under_12_cta' | t }}</a> 
-  </div>
-</div>
-
 <div id="quiz_session_expired" class="Modal {% if settings.preheader_enabled %}Modal--has-preheader{% endif %}" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-modal>
   <div class="Modal__close Modal__close--outside" role="button"  tabindex="0" data-close-modal>
     {% include 'CloseIcon' %}

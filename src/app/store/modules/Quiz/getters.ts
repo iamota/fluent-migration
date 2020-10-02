@@ -17,7 +17,7 @@ interface Patient {
   patient_type: string;
   symptoms_over_6_days: boolean;
   symptom_onset: string;
-  age_under_11: boolean;
+  age_under_12: boolean;
 }
 
 interface Symptoms {
@@ -60,7 +60,7 @@ export default defineGetters<Quiz.State>()({
     const { rootState } = rootGetterContext(args);
     const first_name = get(rootState, `Forms.quizForm.first_name.value`, ``);
     const age = get(rootState, `Forms.quizForm.age.value`, 0);
-    const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);
+    const age_under_12 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 12);
     const patient_type = get(rootState, `Forms.quizForm.focus.value`, ``);
     const gender = get(rootState, `Forms.quizForm.gender.value`, ``);
     const symptoms_over_6_days_self = ((get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== ``));
@@ -93,7 +93,7 @@ export default defineGetters<Quiz.State>()({
       symptom_onset: patient_type === `self`
       ? symptoms_onset_self
       : symptoms_onset_family,
-      age_under_11,
+      age_under_12,
       shortness_of_breath,
       fever_chills,
       temperature,
@@ -120,7 +120,7 @@ export default defineGetters<Quiz.State>()({
     const { getters, state } = QuizGetterContext(args);
     const first_name = get(rootState, `Forms.quizForm.first_name.value`, ``);
     const age = get(rootState, `Forms.quizForm.age.value`, 0);
-    const age_under_11 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 11);
+    const age_under_12 = (get(rootState, `Forms.quizForm.family_member_age.value`, 18) < 12);
     const patient_type = get(rootState, `Forms.quizForm.focus.value`, ``);
     const gender = get(rootState, `Forms.quizForm.gender.value`, ``);
     const symptoms_over_6_days_self = ((get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== `6`) && (get(rootState, `Forms.quizForm.symptom_duration.value`, `6`) !== ``));
@@ -155,7 +155,7 @@ export default defineGetters<Quiz.State>()({
         symptom_onset: patient_type === `self`
         ? symptoms_onset_self
         : symptoms_onset_family,
-        age_under_11,
+        age_under_12,
       },
       symptoms: {
         shortness_of_breath,
