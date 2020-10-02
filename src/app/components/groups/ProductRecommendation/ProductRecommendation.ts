@@ -6,7 +6,7 @@ interface KitData {
   image_src_mobile: string | unknown;
   shopify_product_handle: string;
   product: GenericObject;
-}
+} 
   
 export default Vue.extend({
   props: {
