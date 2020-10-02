@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import store from '@INF/store';
-import { get } from 'lodash-es';
+import { AGE_MINIMUM, AGE_INPUT_MAX, AGE_INPUT_MINIMUM } from './config';
 import { default_props, default_css_variables } from './Quiz.defaults';
 
 export default Vue.extend({
@@ -29,13 +29,12 @@ export default Vue.extend({
           }
           return ``;
         },
-        validNumericalAge: (age: string, question_number: string): string => {
-          console.log(question_number);
+        validNumericalAge: (age: string): string => {
           const age_number = parseInt(age);          
-          if (age_number > 120 || age_number < 1) {
+          if (age_number > AGE_INPUT_MAX || age_number < AGE_INPUT_MINIMUM) {
             return `Please input an age that is between 1 and 120`;
-          } else if (store.state.Quiz.step === `question2` && age_number < 18) {
-            return `We cannot accept input from anyone under the age of 18. Thank you for your interest!`;
+          } else if (store.state.Quiz.step === `question2` && age_number < AGE_MINIMUM) {
+            return `We cannot accept input from anyone under the age of ${AGE_MINIMUM}. Thank you for your interest!`;
           }
           return ``;
         },
