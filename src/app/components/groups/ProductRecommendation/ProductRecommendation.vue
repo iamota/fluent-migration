@@ -1,6 +1,6 @@
 <template>
   <div v-if="collection_handle === 'shop'" class="ProductRecommendation" :class="container_class">
-    <div class="ProductRecommendation__pod" :style="{ backgroundImage: `url(${image})` }">
+    <div class="ProductRecommendation__pod" :style="{ backgroundImage: `url(${background_image})` }">
       <div class="ProductRecommendation__overlay" :class="overlay_class">
         <div class="ProductRecommendation__content">
           <h3 v-html="title" />
