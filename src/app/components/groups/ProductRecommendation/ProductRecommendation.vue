@@ -5,7 +5,7 @@
         <div class="ProductRecommendation__content">
           <h3 v-html="title" />
           <p v-html="description" />
-          <Anchor :href="cta_link" class="Button Button--on-image">{{ cta_text }}</Anchor>
+          <Anchor :href="cta_link" class="Button Button--secondary">{{ cta_text }}</Anchor>
         </div>
       </div>
     </div>
