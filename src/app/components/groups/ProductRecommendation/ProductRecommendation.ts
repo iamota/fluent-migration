@@ -18,7 +18,7 @@ export default Vue.extend({
       image_mobile: `https://cdn.shopify.com/s/files/1/0399/0008/6429/files/pcp_disrupter_1_m.jpeg?v=1601600731`,
       gradient_class: `product-color-cold-flu-severe-day`,
       shopify_product_handle: ``,
-      cta_link: `/pages/quiz`,
+      cta_link: `/pages/assessment`,
       description: `Get a personalized <strong>Symptoms Relief Kit</strong> made just for your symptoms.`,
       title: `Not feeling well?`,
       product: {},

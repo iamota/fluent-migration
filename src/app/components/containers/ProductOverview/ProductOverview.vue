@@ -39,7 +39,7 @@
         >
           <p class="ProductOverview__lockout--title">{{ assessment_text_title }}</p>
           <p>{{ assessment_text_description }}</p>
-          <Anchor class="Button Button--primary" href="/pages/quiz">{{ 'products.assessment.take_the_quiz_cta' | t }}</Anchor>
+          <Anchor class="Button Button--primary" href="/pages/assessment">{{ 'products.assessment.take_the_quiz_cta' | t }}</Anchor>
         </div>
       </div>
     </div>
