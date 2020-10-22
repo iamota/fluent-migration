@@ -10,7 +10,7 @@ let index = ``;
 const extractImage = (content, link) => {
   const shoppable_html = shoppableWrapper(content, true);
   const common_attrs = `class="Module-${module_name}__Image" style="height:${content.max_height}px"`;
-  const html = content.shoppable_image.is_shoppable 
+  const html = content.shoppable_image.is_shoppable || link === ``
     ? `<div ${common_attrs}>
         ${shoppable_html}
        </div>`
