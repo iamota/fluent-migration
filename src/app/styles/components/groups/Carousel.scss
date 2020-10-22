@@ -1,0 +1,47 @@
+.flickity-button.flickity-button {
+  background: $color-primary-1;
+
+  @include media-query($small) {
+    transform: translateY(-50%) scale(0.7);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: var(--flickity-button-image);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 48%;
+    width: 100%;
+    height: 100%;
+    content: '';
+  }
+
+  &.previous {
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:disabled {
+    display: none;
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+.PreHeader .flickity-button.flickity-button {
+  background: inherit;
+
+  &::after {
+    display: none;
+  }
+
+  svg {
+    fill: $color-primary-1;
+    display: block;
+  }
+}

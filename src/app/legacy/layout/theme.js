@@ -11,17 +11,25 @@ import 'flickity-imagesloaded';
 import 'flickity-as-nav-for';
 import '../sections/product';
 
-import * as Infinite from 'infinite/scripts';
 
-import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
 import { hooks } from 'infinite/cms/scripts/core/CMS-Hooks';
+import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
+import * as Infinite from '../';
+import { initModules, runPreRenderers, runRenderers } from '../CMS/module-loader';
+import VerticalLineHook from '../CMS/Hooks/VerticalLineHook';
+import HeadingContentHook from '../CMS/Hooks/HeadingContentHook';
+import PodsContentHook from '../CMS/Hooks/PodsContentHook';
 
 import RteVideo from '../components/rte-video';
 import ShoppableImage from '../components/ShoppableImage';
 import RecentArticlesCarosuel from '../components/RecentArticlesCarousel';
-import SimpleCarousel from 'infinite/cms/scripts/components/SimpleCarousel/index';
+import { FormIframe } from '../components/FormWithIframe';
+import AnnouncementBar from '../components/AnnouncementBar';
+import RadiateButton from '../components/RadiateButton';
 
 import ThankYouPods from '../sections/ThankYouPods';
+import Upsell from '../components/Upsell/';
+import Header from '../sections/INF-Header/';
 
 import youtubeIframeApi from '../utils/youtubeIframeApi';
 import flickityiOS13Fix from '../utils/flickityiOS13Fix';
@@ -43,7 +51,10 @@ $(document).ready(() => {
   initModules();
   runPreRenderers();
   // *** ALL Module Hooks must be executed below this line
+  VerticalLineHook();
   console.log(hooks);
+  HeadingContentHook();
+  PodsContentHook();
   // Run Module Renderers
   runRenderers();
 
@@ -52,18 +63,32 @@ $(document).ready(() => {
   ShoppableImage();
   SimpleCarousel();
   RecentArticlesCarosuel();
+  FormIframe();
+  AnnouncementBar();
   ThankYouPods();
-
+  Header();
+  RadiateButton();
+  
   _.each(Infinite, (component) => {
     component();
   });
-
+  
+  if (window.location.hash === '#cart') { 
+    setTimeout(() => Upsell(), 1000);
+  } else {
+    Upsell();
+  }
   
   // *** Auto-generated imports will be executed below. DO NOT EDIT THIS LINE! ***
 
   // Fire resize and scroll on page load and section load
   $(window).trigger('resize');
   $(window).trigger('scroll');
+
+  // Fixes weird issue with iPhone SE devices on CMS pages not displaying content.
+  setTimeout(() => {
+    $(window).trigger('scroll');
+  }, 1500);
 
   $(document).on('shopify:section:load', () => {
     $(window).trigger('scroll');

@@ -1,0 +1,7 @@
+@import '~@INF/styles';
+@import '../../../styles/variables';
+@import '../../../styles/components/containers/ProductOverview';
+
+.ProductOverview {
+  @extend %product_overview;
+}

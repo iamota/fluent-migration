@@ -1,5 +1,14 @@
 .Module-EmbeddedContent {
-    .Module-EmbeddedContent {
+  .Module-EmbeddedContent {
     text-align: center;
+  }
+
+}
+
+#terms-of-use {
+  .Module-EmbeddedContent {
+    ol:not(.flickity-page-dots) {
+      margin-left: 0;
+    }
   }
 }

@@ -1,0 +1,154 @@
+@import '~@INF/styles';
+@import '../../../styles/variables';
+
+.CollectionGrid {
+  // Add your styles here
+
+  transform: translateZ(-100px);
+
+  .Overlay__content {
+    @include media-query($mobile) {
+      padding: 0;
+    }
+  }
+
+  &.Grid {
+    padding: 0 20px;
+  }
+}
+
+.CollectionGridContainer {
+  @include media-query($laptop-down) {
+    padding: 0 0 60px;
+  }
+
+  &--without-filters {
+    padding-top: 80px;
+
+    &::after {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      border-bottom: 1px solid $color-light-gray;
+      width: calc(100% - 40px);
+      height: 1px;
+      content: '';
+
+      @include media-query($small) {
+        display: none;
+      }
+    }
+
+    @include media-query($small) {
+      padding-top: 50px;
+    }
+  }
+}
+
+
+.CollectionSort {
+  top: 3px;
+
+  @include media-query($mobile) {
+    --input-height: 40px;
+
+    display: block;
+    top: 0;
+    border-bottom: 1px solid $color-light-gray;
+    padding: 0;
+    width: 50%;
+    min-width: auto;
+    height: 50px;
+  }
+
+  .Form__body {
+    @include media-query($mobile) {
+      padding: 0;
+    }
+  }
+
+  .Select__control {
+    @include media-query($mobile) {
+      display: flex;
+    }
+  }
+
+  .Select label,
+  .Select input {
+    display: inline-block;
+    width: auto;
+  }
+
+  .Select input {
+    border-radius: 23px;
+    background: white;
+
+    @include media-query($mobile) {
+      border: none;
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 30px;
+      white-space: nowrap;
+    }
+  }
+
+  .Select .Select__icon {
+    margin-bottom: 16px;
+  }
+
+  .Select--mobile {
+    margin: 0;
+  }
+
+  label {
+    vertical-align: middle;
+    text-transform: capitalize;
+
+    @include media-query($mobile) {
+      margin: 0;
+      padding: 10px 0 0 20px;
+    }
+  }
+
+  &--no-filters {
+    top: 0;
+    right: 20px;
+
+    @include media-query($small) {
+      width: calc(100% - 40px);
+      height: 40px;
+    }
+
+    .Form__body {
+      margin: 0 0 0 auto;
+
+      @include media-query($small) {
+        max-width: none;
+      }
+    }
+
+    .Select__control {
+      @include media-query($small) {
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .Select__label {
+      @include media-query($small) {
+        padding: 0;
+      }
+    }
+
+    .Select input {
+      background-color: transparent;
+
+      @include media-query($small) {
+        padding: 0 40px 0 0;
+        width: auto;
+        text-align: right;
+      }
+    }
+  }
+}

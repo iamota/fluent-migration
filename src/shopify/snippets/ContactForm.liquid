@@ -1,0 +1,104 @@
+{%- assign details = section.settings.details | default: page.content -%}
+
+{% form 'contact', class: "Form ContactForm" %}
+  {% if form.posted_successfully? %}
+    <h2 class="h3 Section__heading Register__heading">{{ 'contact.form.post_success_title' | t }}</h2>
+    <div class="ContactPage__details ContactPage__details--centered">{{ 'contact.form.post_success' | t }}</div>
+  {% else %}
+    {% unless section.settings.heading == blank %}<h2 class="h3 Section__heading Register__heading">{{ section.settings.heading }}</h2>{% endunless %}
+    {% unless details == blank %}<div class="ContactPage__details rte">{{ details }}</div>{% endunless %}
+  {% endif %}
+
+  {{ form.errors | default_errors }}
+
+  <div class="Form__input-group">
+    <div class="Form__input-item">
+      <label for="ContactFormName" class="Form__label Form__required {% unless section.settings.show_labels %} label-hidden{% endunless %}">{{ 'contact.form.name' | t }}</label>
+      <div class="Form__input-wrapper">
+        <input type="text"
+          name="contact[name]"
+          id="ContactFormName"
+          class="Form__input"
+          required
+          {% comment %} placeholder="{{ 'contact.form.name' | t }}" {% endcomment %}
+          value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+      </div>
+    </div>
+    <div class="Form__input-item">
+      <label for="ContactFormEmail" class="Form__label Form__required {% unless section.settings.show_labels %} label-hidden{% endunless %}">{{ 'contact.form.email' | t }}</label>
+      <div class="Form__input-wrapper">
+        <input type="email"
+          name="contact[email]"
+          id="ContactFormEmail"
+          class="Form__input"
+          required
+          {% comment %} placeholder="{{ 'contact.form.email' | t }}" {% endcomment %}
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          spellcheck="false"
+          autocomplete="off"
+          autocapitalize="off">
+      </div>
+    </div>
+    <div class="Form__input-item">
+      <label for="ContactFormPhone" class="Form__label {% unless section.settings.show_labels %} label-hidden{% endunless %}">{{ 'contact.form.phone' | t }}</label>
+      <div class="Form__input-wrapper">
+        <input type="tel"
+          name="contact[phone]"
+          id="ContactFormPhone"
+          class="Form__input"
+          {% comment %} placeholder="{{ 'contact.form.phone' | t }}" {% endcomment %}
+          value="{% if form[phone] %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          pattern="[0-9\-]*">
+      </div>
+    </div>
+  </div>
+
+  <div class="Form__input-group">
+    <div class="Form__input-item">
+      <label for="ContactFormReason" class="Form__label Form__required {% unless section.settings.show_labels %} label-hidden{% endunless %}">Reason for contact</label>
+      <div class="Form__input-wrapper">
+        <select 
+          type="text"
+          name="contact[reason]"
+          id="ContactFormReason"
+          required
+          class="Form__input">
+          <option value="Order Status">Order Status</option>  
+          <option value="Questions about our Products">Questions about our Products</option>  
+          <option value="Return/Exchange">Return/Exchange</option>  
+          <option value="Feedback">Feedback</option>  
+          <option value="Press">Press</option>  
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="Form__input-group">
+    <div class="Form__input-item">
+      <label for="ContactFormMessage" class="Form__label {% unless section.settings.show_labels %} label-hidden{% endunless %}">{{ 'contact.form.message' | t }}</label>
+      <div class="Form__input-wrapper">
+        <textarea rows="10"
+          name="contact[body]"
+          id="ContactFormMessage"
+          class="Form__input"
+          {% comment %} placeholder="{{ 'contact.form.message' | t }}"> {% endcomment %}
+          placeholder="Write any details that will help our team assist you.">
+          {%- if form.body -%}
+            {{- form.body -}}
+          {%- endif -%}
+        </textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="Form__submit-group Form__submit-group--centered">
+    {% comment %} <input type="submit" value="{{ 'contact.form.send' | t }}" class="ContactForm__button Button Button--{{ section.settings.button_style }}"> {% endcomment %}
+    <input type="submit" value="Submit" class="ContactForm__button Button Button--{{ section.settings.button_style }}">
+    {% unless section.settings.closing_info == blank %}
+      <div class="Form__closing-info">
+        {{ section.settings.closing_info }}
+      </div> 
+    {% endunless %}
+  </div>
+
+{% endform %}

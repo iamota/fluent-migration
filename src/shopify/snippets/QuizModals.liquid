@@ -1,0 +1,47 @@
+
+<!-- Hidden modal example...not linked anywhere -->
+<div id="quiz_session_expired" class="Modal {% if settings.preheader_enabled %}Modal--has-preheader{% endif %}" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-modal>
+  <div class="Modal__close Modal__close--outside" role="button"  tabindex="0" data-close-modal>
+    {% include 'CloseIcon' %}
+  </div>
+  <div class="Modal__overlay" data-modal-overlay data-close-modal></div>
+  <div class="Modal__content" data-modal-content role="document">
+    <div class="Modal__close Modal__close--inside" role="button"  tabindex="0" data-close-modal>
+      {% include 'CloseIcon' %}
+    </div>
+    <h2 class="Modal__heading" role="heading" aria-level="1">{{ 'assessment.modals.session_expired_headline' | t }}</h2>
+    <p>{{ 'assessment.modals.session_expired_copy' | t }}</p>
+    <a href="/pages/quiz" class="Button Button--primary">{{ 'assessment.modals.session_expired_cta' | t }}</a>
+  </div>
+</div>
+
+<div id="quiz_generic" class="Modal {% if settings.preheader_enabled %}Modal--has-preheader{% endif %}" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-modal>
+  <div class="Modal__close Modal__close--outside" role="button"  tabindex="0" data-close-modal>
+    {% include 'CloseIcon' %}
+  </div>
+  <div class="Modal__overlay" data-modal-overlay data-close-modal></div>
+  <div class="Modal__content" data-modal-content role="document">
+    <div class="Modal__close Modal__close--inside" role="button"  tabindex="0" data-close-modal>
+      {% include 'CloseIcon' %}
+    </div>
+    <h2 class="Modal__heading" role="heading" aria-level="1">{{ 'assessment.modals.general_problem_headline' | t }}</h2>
+    <p>{{ 'assessment.modals.general_problem_copy' | t }}</p>
+    <a href="/pages/quiz" class="Button Button--primary">{{ 'assessment.modals.general_problem_cta' | t }}</a>
+  </div>
+</div>
+
+<div id="quiz_no_recommendation" class="Modal {% if settings.preheader_enabled %}Modal--has-preheader{% endif %}" role="dialog" aria-modal="true" aria-hidden="true" data-prevent-tab data-modal>
+  <div class="Modal__close Modal__close--outside" role="button"  tabindex="0" data-close-modal>
+    {% include 'CloseIcon' %}
+  </div>
+  <div class="Modal__overlay" data-modal-overlay data-close-modal></div>
+  <div class="Modal__content" data-modal-content role="document">
+    <div class="Modal__close Modal__close--inside" role="button"  tabindex="0" data-close-modal>
+      {% include 'CloseIcon' %}
+    </div>
+    <h2 class="Modal__heading" role="heading" aria-level="1">Sorry, we don't currently have a recommendation based on your symptoms.</h2>
+    <p>This modal has no link to it.  The only way you can find or open it is by manually entering <b>#quiz_no_recommendation</b> in the address bar.</p>
+    <a href="/pages/quiz" class="Button Button--primary">Restart the Assessment</a>
+    <a href="/collections/all" class="Button Button--primary">Shop Our Products</a>
+  </div>
+</div>

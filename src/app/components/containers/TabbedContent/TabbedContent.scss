@@ -1,0 +1,48 @@
+@import '~@INF/styles';
+@import '../../../styles/variables';
+
+.TabbedContent {
+  // Add your styles here
+  &__tabs {
+    border-bottom: 1px solid #b2b2b2;
+    text-align: left;
+  }
+
+  &__tab {
+    display: inline-block;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #565656;
+    font-size: 10pt;
+    font-weight: bold;
+
+    &:hover {
+      color: $color-primary-1;
+    }
+
+    &.is-selected {
+      border-color: $color-primary-1;
+      color: $color-primary-1;
+    }
+
+    &:not(:first-child) {
+      margin-left: 60px;
+    }
+  }
+
+  &__body {
+    text-align: left;
+  }
+
+  &__content {
+    pointer-events: none;
+
+    a {
+      pointer-events: all;
+    }
+  }
+}

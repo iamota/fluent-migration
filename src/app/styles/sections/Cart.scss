@@ -1,0 +1,172 @@
+.StickyCheckout {
+  padding: 0;
+
+  &__wrapper {
+    padding: 20px;
+  }
+
+  &__subtotal {
+    margin-bottom: 10px;
+
+    @include media-query($mobile) {
+      display: block;
+      height: auto;
+    }
+  }
+
+  &__items {
+    text-transform: none;
+    line-height: 30px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+
+    &-detail {
+      font-size: 15px;
+    }
+
+    &--mobile {
+      float: left;
+      color: #000 !important;
+
+      & + [data-cart-total] {
+        float: right;
+        line-height: 33px;
+      }
+    }
+  }
+
+  &__value {
+    font-family: $font-primary;
+    font-size: 20px;
+    font-weight: 400;
+
+    @include media-query($mobile) {
+      @include clearfix;
+    }
+  }
+
+  &__taxes {
+    padding-top: 10px;
+    text-align: center;
+
+    @include media-query($mobile) {
+      padding-top: 0;
+    }
+  }
+
+  &__button {
+    &--mobile {
+      margin-top: 5px;
+      width: 100%;
+    }
+  }
+}
+
+.SliderCart {
+  // @include media-query($mobile) {
+  //   transform: translateX(100%);
+  //   width: 100%;
+  // }
+
+  // .State--cart-open & {
+  //   @include media-query($mobile) {
+  //     transform: translateX(0);
+  //   }
+  // }
+  &__taxes {
+    display: none;
+  }
+
+  &__contents {
+    padding: 0;
+  }
+
+  &__products {
+    padding: 0 20px;
+  }
+
+  &__bottom {
+    padding: 0 20px;
+  }
+
+  &__button {
+    margin-bottom: 20px;
+  }
+}
+
+
+.CartProduct {
+  position: relative;
+
+  &:last-of-type() {
+    border-bottom: none;
+  }
+
+  &__image {
+    display: block;
+    flex-basis: 120px;
+
+    @include media-query($mobile) {
+      flex-basis: 110px;
+    }
+
+    img {
+      width: 120px;
+
+      @include media-query($mobile) {
+        width: 110px;
+      }
+    }
+  }
+
+  &__title {
+    color: #000 !important;
+    font-size: 16px;
+  }
+
+  &__price {
+    color: $color-primary-1;
+  }
+
+  &__quantity {
+    &--hidden {
+      display: none;
+    }
+  }
+
+  .Quantity {
+    &__button,
+    &__input {
+      background: transparent;
+    }
+
+    &__input {
+      border-right: none;
+      border-left: none;
+      width: 48px;
+    }
+  }
+
+  &__remove {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  &__info {
+    padding-right: 30px;
+
+    @include media-query($mobile) {
+      padding-right: 20px;
+    }
+  }
+}
+
+#fsb_placeholder {
+  height: 44px;
+
+  &--placeholder {
+    height: 44px;
+  }
+}

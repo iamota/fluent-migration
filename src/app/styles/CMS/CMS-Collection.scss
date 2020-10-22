@@ -5,9 +5,35 @@
     }
   }
 
-  .ProductTile__image {
-    img {
-      display: block;
+  .ProductTile {
+    margin: $grid-gutter 0;
+    border-radius: 5px;
+    background: transparent;
+    padding: 20px;
+    padding-bottom: 90px;
+    width: 33%;
+
+    @include media-query($mobile) {
+      margin: 0;
+      padding-bottom: 20px;
+      width: var(--tile-width);
+    }
+
+    &:hover {
+      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+      background-color: $color-secondary-1;
+
+      @include media-query($mobile) {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .CollectionCarousel {
+    padding: 0 60px;
+
+    @include media-query($mobile) {
+      padding: 0 45px;
     }
   }
 }

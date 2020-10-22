@@ -12,7 +12,7 @@
     ContentBlock 
     ContentBlock--{{ block.settings.image_position }} 
     ContentBlock--{{ block.settings.image_text_split }}
-    {% if block.settings.animation != 'none' %}Animate Animate--{{ block.settings.animation }}{% endif %}
+    {% if block.settings.animation != 'none' %}Animate Animate--{{ block.settings.animation }}{% endif %} 
   " 
   {{ block.shopify_attributes }}
 >
@@ -28,12 +28,12 @@
   <div class="ContentBlock__text">
     <div class="ContentBlock__wrapper">
       <{{ heading_type | strip_newlines }}>
-        {% if block.settings.preheading != '' %}<span class="ContentBlock__preheading {{ block.settings.preheading_class }}">{{ block.settings.preheading }}</span>{% endif %}
-        {% if block.settings.heading != '' %}<span class="ContentBlock__heading {{ block.settings.heading_class }}">{{ block.settings.heading }}</span>{% endif %}
-        {% if block.settings.subheading != '' %}<span class="ContentBlock__subheading {{ block.settings.subheading_class }}">{{ block.settings.subheading }}</span>{% endif %}
+        {%- if block.settings.preheading != '' -%}<span class="ContentBlock__preheading {{ block.settings.preheading_class }}">{{ block.settings.preheading }}</span>{%- endif -%}
+        {%- if block.settings.heading != '' -%}<span class="ContentBlock__heading {{ block.settings.heading_class }}">{{ block.settings.heading }}</span>{%- endif -%}
+        {%- if block.settings.subheading != '' -%}<span class="ContentBlock__subheading {{ block.settings.subheading_class }}">{{ block.settings.subheading }}</span>{%- endif -%}
       </{{ heading_type | strip_newlines }}>
-      {% if block.settings.paragraph != '' %}<div class="ContentBlock__paragraph">{{ block.settings.paragraph }}</div>{% endif %}
-      {% if block.settings.cta != '' %}<a href="{{ block.settings.url }}" class="ContentBlock__button Button Button--{{ block.settings.cta_style }}" {% if block.settings.cta_tracking %}onclick="{{ block.settings.cta_tracking }}"{% endif %} aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">{{ block.settings.cta }}</a>{% endif %}   
+      {%- if block.settings.paragraph != '' -%}<div class="ContentBlock__paragraph">{{ block.settings.paragraph }}</div>{%- endif -%}
+      {%- if block.settings.cta != '' -%}<a href="{{ block.settings.url }}" class="ContentBlock__button Button Button--{{ block.settings.cta_style }}" {% if block.settings.cta_tracking %}onclick="{{ block.settings.cta_tracking }}"{% endif %} aria-label="{{ block.settings.cta_aria_label | default: block.settings.cta }}">{{ block.settings.cta }}</a>{%- endif -%}   
     </div>
   </div>
   {% if block.settings.image_position == 'right' or block.settings.image_position == 'center-bottom' %}{{ image }}{% endif %}
@@ -68,7 +68,8 @@
 
     @media only screen and (max-width: {{ settings.grid_tablet_max }}) {
       #block{{ block.id}} {
-        margin-top: 0;
+        {% comment %} margin-top: 0; {% endcomment %}
+        margin-top: calc({{ block.settings.margin_top--mobile }}px + 30px);
       }
     }
 
@@ -82,7 +83,7 @@
       #block{{ block.id }} .ContentBlock__image .ContentBlock__wrapper,
       #block{{ block.id }} .ContentBlock__text .ContentBlock__wrapper {
         width: 100%;
-        text-align: center;
+        {% comment %} text-align: center; {% endcomment %}
       }
     }
   </style>

@@ -1,7 +1,6 @@
-{% comment %}
 <style>
   :root {
-    --my-custom-variable: {{ settings.my_custom_setting }};
+    --user-icon: url('{{ 'user.png' | asset_img_url: '40x' }}');
+    --flickity-button-image: url('{{ 'ARROW_white.svg' | file_url }}');
   }
 </style>
-{% endcomment %}

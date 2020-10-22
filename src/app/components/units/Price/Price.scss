@@ -1,0 +1,11 @@
+@import '~@INF/styles';
+@import '../../../styles/variables';
+
+.Price {
+  &__unavailable,
+  &__compare-at,
+  &__sold-out {
+    color: $color-light-gray-alt-3;
+    font-size: 14px;
+  }
+}

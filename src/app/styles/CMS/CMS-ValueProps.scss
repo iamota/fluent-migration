@@ -1,0 +1,56 @@
+.Module-ValueProps {
+  &__Headings {
+    margin-bottom: 80px;
+
+    @include media-query($mobile) {
+      margin-bottom: 40px;
+    }
+  }
+
+
+  &__Props:not(.flickity-enabled) {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__Prop {
+    display: inline-block;
+    transform: translateZ(-100px);
+    padding: 0 40px;
+    width: 320px;
+    vertical-align: top;
+    text-align: center;
+
+    @include media-query($mobile) {
+      width: 100%;
+    }
+
+    &--Icon {
+      max-width: 120px;
+      max-height: 120px;
+    }
+
+    &--Title {
+      font-weight: bold;
+    }
+
+    &--Link {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+
+  .flickity-page-dots {
+    bottom: -15px;
+  }
+
+  .flickity-prev-next-button {
+    &.previous {
+      left: 0;
+    }
+
+    &.next {
+      right: 0;
+    }
+  }
+}

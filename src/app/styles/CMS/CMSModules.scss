@@ -1,64 +1,85 @@
 [data-cms-module] {
   position: relative;
+
+  [data-cms-module] {
+    transform: translateZ(-100px);
+  }
 }
 
 [data-module-bg] {
   position: absolute;
+  z-index: -1;
   width: 100%;
   height: 100%;
+
   .Module__Bg {
     &--dual {
-      @include clearfix();
+      @include clearfix;
     }
+
     &--full {
       width: 100%;
       height: 100%;
     }
+
     &--split {
+      display: inline-block;
       width: 50%;
       height: 100%;
-      display: inline-block;
-      &[data-split="left"] {
+
+      &[data-split='left'] {
         float: left;
       }
-      &[data-split="right"] {
+
+      &[data-split='right'] {
         float: right;
       }
     }
   }
-  [data-type="image"] {
+
+  [data-type='image'] {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
   }
+
   [data-image-hide-desktop] {
     @include mobile-only;
   }
+
   [data-image-hide-mobile] {
     @include tablet-up-only;
   }
 }
 
 .rte .CMS-Module {
-  max-width: 2560px;
+  transform: translateZ(-100px);
   margin: 0 auto;
+  max-width: 2560px;
+
   img {
     margin: 0;
   }
+
   .textAlignment {
     &__left {
       text-align: left;
-      h2, h3, h4 {
+
+      h2,
+      h3,
+      h4 {
         padding: 0;
       }
     }
+
     &__center {
       text-align: center;
     }
+
     &__right {
       text-align: right;
     }
@@ -66,27 +87,35 @@
     @include media-query($tablet-down) {
       &--mobile__left {
         text-align: left;
-        h2, h3, h4 {
+
+        h2,
+        h3,
+        h4 {
           padding: 0;
         }
       }
+
       &--mobile__center {
         text-align: center;
       }
+
       &--mobile__right {
         text-align: right;
       }
     }
   }
+
   .Alignment {
     &__Target {
       display: table;
       width: 100%;
       height: 100%;
     }
+
     &__Node {
       display: table-cell;
     }
+
     &__top {
       &-left {
         .Alignment__Node {
@@ -94,12 +123,14 @@
           text-align: left;
         }
       }
+
       &-center {
         .Alignment__Node {
           vertical-align: top;
           text-align: center;
         }
       }
+
       &-right {
         .Alignment__Node {
           vertical-align: top;
@@ -107,6 +138,7 @@
         }
       }
     }
+
     &__center {
       &-left {
         .Alignment__Node {
@@ -114,12 +146,14 @@
           text-align: left;
         }
       }
+
       &-center {
         .Alignment__Node {
           vertical-align: middle;
           text-align: center;
         }
       }
+
       &-right {
         .Alignment__Node {
           vertical-align: middle;
@@ -127,6 +161,7 @@
         }
       }
     }
+
     &__bottom {
       &-left {
         .Alignment__Node {
@@ -134,12 +169,14 @@
           text-align: left;
         }
       }
+
       &-center {
         .Alignment__Node {
           vertical-align: bottom;
           text-align: center;
         }
       }
+
       &-right {
         .Alignment__Node {
           vertical-align: bottom;
@@ -148,18 +185,20 @@
       }
     }
   }
+
   &__Image {
     &--max-height {
+      position: relative;
+      width: 100%;
       height: 100vh;
       max-height: 600px;
-      width: 100%;
-      position: relative;
       overflow: hidden;
+
       img {
         position: absolute;
-        width: 100%;
         top: 50%;
         transform: translateY(-50%);
+        width: 100%;
         pointer-events: none;
       }
     }

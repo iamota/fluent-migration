@@ -1,0 +1,1 @@
+export default (module_name, data, text_alignment, text_alignment_mobile) => { return null; };

@@ -10,5 +10,5 @@ export default defineGetters<State>()({
   // complexGetter (...args: any) {
   //   const { state } = rootGetterContext(args);
   //   state.ModuleName.something; // entire state, including modules
-  // },
+  // }, 
 });

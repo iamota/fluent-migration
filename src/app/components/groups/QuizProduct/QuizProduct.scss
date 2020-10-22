@@ -1,0 +1,157 @@
+@import '~@INF/styles';
+@import '../../src/app/styles/variables';
+
+.QuizProduct {
+  @include media-query($mobile) {
+    margin-top: -50px;
+  }
+
+  &__preheading {
+    text-transform: uppercase;
+    color: $color-blue-1;
+
+    @include media-query($mobile) {
+      font-size: 16px;
+    }
+  }
+
+  &__body-text {
+    margin: 0 0 80px;
+
+    @include media-query($mobile) {
+      margin-bottom: 30px;
+      padding: 0;
+    }
+  }
+
+  .Section__container {
+    padding: 0;
+  }
+
+  .ProductOverview__grid {
+    text-align: left;
+
+    .ProductInfo,
+    .ProductImages {
+      grid-column: span 6;
+
+      @include media-query($mobile) {
+        grid-column: span 12;
+      }
+    }
+  }
+
+  .ProductOption {
+    margin-bottom: 40px;
+
+    @include media-query($mobile) {
+      margin-bottom: 10px;
+    }
+
+    &__name {
+      margin-bottom: 12px;
+      font-size: 12px;
+
+      @include media-query($mobile) {
+        text-align: center;
+      }
+    }
+
+    .Button {
+      margin: 0 20px 15px 0;
+      border-width: 1px;
+      background-color: transparent;
+      padding: 0;
+
+      @include media-query($mobile) {
+        margin: 0 10px 15px;
+      }
+
+      label {
+        padding: 10px 45px;
+        color: black;
+      }
+    }
+
+    .Button--selected {
+      border-width: 2px;
+      border-color: $color-primary-1;
+
+      label {
+        color: $color-primary-1;
+      }
+    }
+  }
+
+  .ProductShortDescription {
+    max-height: 150px;
+    text-overflow: ellipsis;
+  }
+
+  .ProductOptions {
+    border-top: 1px solid $color-light-gray;
+
+    .Button--sold-out {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      label {
+        pointer-events: none;
+      }
+    }
+  }
+
+  .ProductOption__variants.ProductOption__variants--list {
+    @include media-query($mobile) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .ProductInfo__preheading {
+    margin: 0;
+    text-transform: uppercase;
+    color: $color-primary-1;
+  }
+
+  .ProductHeading {
+    &__title {
+      line-height: 1.6;
+      color: $color-muted-gray;
+      font-size: 30px;
+    }
+
+    &__price {
+      color: $color-primary-1;
+      font-family: $font-primary;
+      font-size: 22px;
+      font-weight: normal;
+    }
+  }
+
+  .ProductOverview__quantity-add {
+    flex-wrap: wrap;
+
+    @include media-query($mobile) {
+      justify-content: center;
+    }
+
+    .Button {
+      margin: 0 20px 15px 0;
+
+      @include media-query($mobile) {
+        margin: 0 10px 15px;
+      }
+    }
+  }
+
+  .QuizProduct__cta {
+    margin-right: 20px;
+  }
+
+  .ProductImages__thumbs,
+  .ProductQuantity,
+  .flickity-button {
+    display: none;
+  }
+}

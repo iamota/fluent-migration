@@ -1,0 +1,70 @@
+{%- assign form_id = 'newsletterForm' -%}
+{%- if placeholder -%}
+  {%- assign form_id = 'newsletterPlaceholderForm' -%}
+{%- endif -%}
+
+{%- assign form_submitted = false -%}
+{%- assign classes = "Form Newsletter__form" -%}
+{%- assign success_classes = "Form Newsletter__form Form--submitted" -%}
+{%- assign error_classes = "Form Newsletter__form Form--has-errors" -%}
+{%- capture newsletter_form -%}
+  {% form 'customer', class: classes, id: form_id %}
+    <div class="Newsletter__errors-container">
+      <ul class="errors">
+        <li>{% include 'INF-translation', translate: 'general.newsletter_form.invalid_email', default: 'Email is invalid' %}</li>
+      </ul>
+    </div>
+    <div class="Newsletter__success">
+      <p class="{{ section.settings.success_heading_style }} Newsletter__success-message">{{ 'general.newsletter_form.confirmation' | t }}</p>
+    </div>
+    {% if form.posted_successfully? %}
+      {%- assign form_submitted = true -%}
+      {%- assign successful_submit = true -%}
+    {% elsif form.errors != blank %}
+      {%- assign form_submitted = true -%}
+      {%- assign successful_submit = false -%}
+    {% endif %}
+
+    <input type="hidden" name="contact[tags]" value="newsletter">
+
+    <div class="Form__input-group">
+      <div class="Form__input-item">
+        <label {% unless placeholder %}for="Email"{% endunless %} class="Form__label">
+          {% include 'INF-translation', translate: 'general.newsletter_form.email_label', default: 'Email' %}
+        </label>
+        <div class="Form__input-wrapper">
+          <input type="email"
+            name="contact[email]"
+            {% unless placeholder %}id="Email"{% endunless %}
+            class="Form__input"
+            value="{% if customer %}{{ customer.email }}{% endif %}"
+            placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+            autocapitalize="off"
+            required
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="Form__submit-group">
+      <input 
+        class="Button Button--{{ section.settings.cta_style }}" 
+        type="submit" 
+        name="submit"
+        value="{{ 'general.newsletter_form.submit' | t }}"
+        {% unless placeholder %}id="Subscribe" {% endunless %}
+      >
+    </div>
+    </div>
+  {% endform %}
+{%- endcapture -%}
+
+{%- if form_submitted -%}
+  {%- if successful_submit -%}
+    {%- assign newsletter_form = newsletter_form | replace: classes, success_classes -%}
+  {%- else -%}
+    {%- assign newsletter_form = newsletter_form | replace: classes, error_classes -%}
+  {%- endif -%}
+{%- endif -%}
+
+{{ newsletter_form }}

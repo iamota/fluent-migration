@@ -14,7 +14,7 @@
       </a>
     </div>
 
-    {% comment %} <div class="MobileBar__left" data-mobile-bar-left>
+    <div class="MobileBar__left" data-mobile-bar-left>
       <div class="MobileBar__icon Hamburger" tabindex="0" role="button" 
         aria-label="{% include 'INF-translation', translate: 'layout.navigation.title', default: 'Navigation' %}" 
         data-aria-label-closed="{% include 'INF-translation', translate: 'layout.navigation.title', default: 'Navigation' %}" 
@@ -28,19 +28,41 @@
           <span></span>
         </span>
       </div>
-    </div> {% endcomment %}
+    </div>
 
     <div class="MobileBar__right">
-      <a class="Button Button--primary" href="/pages/quiz">Take our survey</a>
+      {%- if shop.customer_accounts_enabled -%}
+        {% comment %} <a class="NavBar__icon" href="/account"><i aria-label="{{ 'customer.account.title' | t }}" class="{{ settings.fa }} fa-user"></i></a> {% endcomment %}
+        <a class="MobileBar__icon MobileBar__icon--user" href="/account">
+          <span aria-label="{{ 'customer.account.title' | t }}" class="MobileBar__icon-image">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" xml:space="preserve">
+              <style type="text/css">
+                .st0{fill:none;stroke-width:1.5;stroke-miterlimit:10;}
+                .st1{fill:none;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;}
+              </style>
+              <g>
+                <circle class="st0" cx="10" cy="10" r="9.3"/>
+                <path class="st1" d="M15.8,15.1c-0.4-0.7-1.6-2.9-3.3-3.6c-0.3-0.1-0.4-0.5,0-1c0.6-0.6,1.1-1.2,1.1-3.2c0-2.1-1-4.2-3.6-4.2
+                  S6.4,5.3,6.4,7.4c0,2,0.5,2.6,1.1,3.2c0.4,0.5,0.4,0.8,0,1c-1.6,0.7-2.9,2.8-3.3,3.6"/>
+              </g>
+            </svg>
+          </span>
+        </a>
+      {%- endif -%}
+      {% comment %} <a class="Button Button--primary" href="/pages/quiz">Take our survey</a> {% endcomment %}
       {% comment %} {%- capture search_label -%}
         {% include 'INF-translation', translate: 'general.search.title', default: 'Search our store' %}
-      {%- endcapture -%}
+      {%- endcapture -%}{% endcomment %}
       {%- capture cart_label -%}
         {% include 'INF-translation', translate: 'cart.general.title', default: 'Shopping cart' %}
       {%- endcapture -%}
-      <span class="MobileBar__icon MobileBar__icon--search">{%- include 'INF-IconToggle', icon: 'fa-search', direction: 'down', data: 'data-search-toggle', aria_label: search_label -%}</span>
-      <span class="MobileBar__icon">{%- include 'INF-IconToggle', icon: settings.cart_icon, direction: 'right', data: 'data-cart-toggle', aria_label: cart_label -%}</span> {% endcomment %}
-    </div>
-    
+      {% comment %} <span class="MobileBar__icon MobileBar__icon--search">{%- include 'INF-IconToggle', icon: 'fa-search', direction: 'down', data: 'data-search-toggle', aria_label: search_label -%}</span> {% endcomment %}
+      <span class="MobileBar__icon">{%- include 'INF-IconToggle', icon: settings.cart_icon, direction: 'right', data: 'data-cart-toggle', aria_label: cart_label -%}</span> 
+    </div>    
+  </div>
+
+  <div class="MobileBar__bottom">
+    <span class="MobileBar__bottom-text" data-recommended-text></span>
+    <a class="Button Button--primary" href="/pages/quiz" data-recommended-link>Feeling Sick?</a>
   </div>
 </header>

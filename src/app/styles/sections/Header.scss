@@ -1,65 +1,232 @@
 
 .NavBar {
+  align-items: center;  // IE11 fix
+
   @include grid {
-    &__logo {
-      @include grid-item(3);
+    &--center-logo .NavBar__logo {
+      @include grid-item(2);
     }
 
-    &__secondary,
-    &__icons,
-    &__search {
-      @include grid-item(3);
+    &--center-logo .NavBar__icons {
+      @include grid-item(5);
     }
 
     &--single-linklist {
       .NavBar__primary {
-        @include grid-item(6);
+        @include grid-item(5);
+      }
+    }
+  }
+
+  &__text {
+    color: $color-secondary-1;
+
+    &--kit-ready {
+      display: inline-block;
+      max-width: 150px;
+      line-height: 1.25;
+      // vertical-align: middle;
+    }
+  }
+
+  &__icons { // IE 11 fix
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__icon {
+    // vertical-align: middle;
+
+    &--user {
+      font-size: 0;
+    }
+
+    &-image {
+      display: inline-block;
+      width: 22px;
+
+      // background-image: var(--user-icon);
+      // background-image: url('https://cdn.shopify.com/s/files/1/0399/0008/6429/files/user-circle.svg?v=1599770456');
+      // background-position: center;
+      // background-repeat: no-repeat;
+      // background-size: contain;
+      .st0,
+      .st1 {
+        stroke: $color-secondary-1;
+      }
+    }
+
+    &:hover {
+      .NavBar__icon-image {
+        .st0,
+        .st1 {
+          stroke: #aaa;
+        }
+      }
+    }
+  }
+
+  .Button {
+    margin: 0 10px;
+    padding: 0 20px;
+  }
+
+  .IconToggle {
+    display: inline-block;
+  }
+
+  [data-recommended-text],
+  [data-recommended-link] {
+    animation: fadeIn 1s ease-in;
+  }
+}
+
+@keyframes fadeIn {
+  0%{
+		opacity: 0;
+  }
+  100% {
+		opacity: 1;
+  }
+} 
+
+.NavList {
+  &__heading {
+    > a {
+      padding: 0 18px;
+    }
+  }
+}
+
+// .MobileLogo {
+//   left: 10px;
+//   transform: none;
+//   transform: translateY(-50%);
+// }
+
+// .MobileBar__right {
+//   margin-right: 10px;
+
+//   .Button {
+//     margin-bottom: 4px;
+//   }
+// }
+.MobileBar {
+  height: 60px;
+  line-height: 60px;
+
+  &__icon {
+    vertical-align: middle;
+    color: $color-secondary-1;
+    font-size: 23px;
+
+    &--user {
+      margin-right: 8px;
+      font-size: 0;
+
+      .st0,
+      .st1 {
+        stroke: $color-secondary-1;
+      }
+    }
+
+    &-image {
+      display: inline-block;
+      width: 26px;
+    }
+  }
+
+  .IconToggle {
+    display: inline-block;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px 10px;
+    background: $color-primary-3;
+    color: $color-secondary-1;
+
+    .Button {
+      line-height: 31px;
+      font-size: 16px;
+    }
+  }
+
+  &__bottom-text {
+    margin-right: 5px;
+
+    @media (max-width: '320px') {
+      font-size: 12px;
+    }
+  }
+
+  .IconToggle {
+    display: inline-block;
+  }
+}
+
+// .template-page-quiz,
+// .template-page-thank-you {
+//   .NavBar__icons,
+//   .NavBar__primary {
+//     display: none;
+//   }
+
+//   .NavBar__logo {
+//     grid-column: span 12;
+//     text-align: center;
+
+//     &-image {
+//       width: 250px;
+//     }
+//   }
+
+//   .MobileBar__right {
+//     display: none;
+//   }
+
+//   .MobileLogo {
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 250px;
+
+//     &__image {
+//       width: 180px;
+//     }
+//   }
+// }
+.Announcements {
+  .flickity-prev-next-button {
+    @include transition(background 0.5s);
+  }
+
+  &.flickity-enabled {
+    .Announcement {
+      opacity: 0;
+
+      &.is-selected {
+        opacity: 1;
       }
     }
   }
 }
 
-.MobileLogo {
-  left: 10px;
-  transform: none;
-  transform: translateY(-50%);
-}
-
-.MobileBar__right {
-  margin-right: 10px;
-
-  .Button {
-    margin-bottom: 4px;
-  }
-}
-
-.template-page-quiz,
-.template-page-thank-you {
-  .NavBar__icons,
-  .NavBar__primary {
-    display: none;
+.Announcements {
+  .flickity-prev-next-button {
+    @include transition(background 0.5s);
   }
 
-  .NavBar__logo {
-    grid-column: span 12;
-    text-align: center;
+  &.flickity-enabled {
+    .Announcement {
+      opacity: 0;
 
-    &-image {
-      width: 250px;
-    }
-  }
-
-  .MobileBar__right {
-    display: none;
-  }
-
-  .MobileLogo {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 250px;
-
-    &__image {
-      width: 180px;
+      &.is-selected {
+        opacity: 1;
+      }
     }
   }
 }

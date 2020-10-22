@@ -1,0 +1,111 @@
+.HeroCarousel {
+  .Overlay {
+    height: 100%;
+    width: 64%;
+    margin: 0 0 0 auto;
+    position: relative;
+    border-top-left-radius: 300px;
+    border-bottom-left-radius: 300px;
+    @include gradient(135deg, $color-secondary-7, $color-secondary-8);
+
+    @include media-query($mobile) {
+      height: auto;
+      width: 100%;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;      
+    }
+
+    &--left {
+      .Overlay {
+        &__content {
+          padding: 0 80px 0 130px;
+          margin-left: 0;
+          max-width: 755px;
+
+          @include media-query($mobile) {
+            padding: 20px 20px 50px;
+            text-align: center;
+            margin-left: unset;
+            max-width: unset;
+          }
+        }
+      }
+    }
+
+    &__content {
+      @include media-query($mobile) {
+        position: static;
+        transform: none;
+      }
+    }
+  }
+
+  .HeroSlide {
+
+    &__paragraph {
+      @include media-query($mobile) {
+        margin-top: 20px;
+      }
+    }
+
+    &__buttons {
+      @include media-query($mobile) {
+        text-align: center;
+      }
+    }
+
+    &__link {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 45px;
+      margin: 20px 10px 0 10px;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    &__button {
+      position: relative;
+
+      &.radiate { 
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(1.2, 1.5);
+          height: 100%;
+          width: 100%;
+          border: 1px solid #ffffff;
+          border-radius: $button-border-radius;
+          animation: radiate 1.5s forwards infinite;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  &--mobile {
+    &.HeroCarousel--scale {
+      @include media-query($mobile) {
+        min-height: 500px;  // For mobile carousel using the 'Scale' option, preventing underneath components from displaying before the slide image loads
+        background-color: #000;
+      }
+    }
+  }
+}
+
+@keyframes radiate {
+  0%{
+    transform: translate(-50%, -50%) scale(.95, .9);
+		opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2, 1.5);
+		opacity: 0;
+  }
+} 
+
+// Needs to disable the style below inside of Infinite if want to use "crop" on mobile
+// .HeroCarousel--crop .flickity-viewport {
+//   height: 100% !important;
+// }

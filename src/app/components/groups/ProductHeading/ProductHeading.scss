@@ -1,0 +1,10 @@
+@import '~@INF/styles';
+@import '../../../styles/variables.scss';
+
+.ProductHeading {
+  &__pre-title {
+    text-transform: uppercase;
+    color: $color-primary-1;
+    font-size: 14px;
+  }
+}
