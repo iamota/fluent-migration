@@ -17,7 +17,7 @@
       /> 
       <Radio 
         name="temperature" 
-        label="100.4º+ F" 
+        label="100.4º F +" 
         value="t1"
         inline 
         checked 
