@@ -26,6 +26,9 @@
         </div>
       </div>
     </div>
+    <div class="QuizProduct__disclaimer">
+      <p>{{ "assessment.product.disclaimer" | t }}</p>
+    </div>
   </Section>
 </template>
 

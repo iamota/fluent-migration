@@ -24,6 +24,15 @@
     }
   }
 
+  &__disclaimer {
+    p {
+      margin: 0 auto;
+      max-width: 680px;
+      font-size: 14px;
+      font-style: italic;
+    }
+  }
+
   .Section__container {
     padding: 0;
   }

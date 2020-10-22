@@ -35,6 +35,9 @@
       "general_problem_headline": "There's a problem, please try again.",
       "general_problem_copy": "Sorry, we've run into a problem. Feel free to try your assessment again.",
       "general_problem_cta": "Restart Assessment"
+    },
+    "product": {
+      "disclaimer": "If you think you have been exposed to a person with known or suspected COVID-19, please consult a licensed healthcare provider for further assessment and visit the CDC for more information. You should NOT use the Fluent Assessment if you are experiencing a medical emergency. In the event of a medical emergency, please call 911."
     }
   }
 }
