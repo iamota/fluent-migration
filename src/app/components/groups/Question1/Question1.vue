@@ -9,7 +9,7 @@
         placeholder="Enter first name"
         spellcheck="false"
         required 
-        :rules="[`alpha`, `minLength(3)`, `maxLength(20)`]" 
+        :rules="[`alpha`, `minLength(2)`, `maxLength(20)`]" 
         @keypress.native.enter.prevent="nextStep"
       />
     </div> 
