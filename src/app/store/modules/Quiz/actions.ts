@@ -35,6 +35,17 @@ export default defineActions({
       commit.setSlideBack(false);    
       commit.setStep(step);
     };
+
+    const trackQuiz = (): void => {
+      const tracking_data = {
+        type: `conversion`,
+        data: {
+          send_to: `AW-606295050/xjXXCIruudoBEIqojaEC`,
+        },
+      };
+      
+      store.dispatch.Analytics.trackEvent(tracking_data);
+    };
     
     if (response && response.type === `advance`) {
       if (response.token && state.token === ``) {
@@ -91,6 +102,7 @@ export default defineActions({
       // @ts-ignore
       store.original.registerModule([`Products`, product_data.id], { namespaced: true, state: product_state, mutations: ProductMutations, actions: ProductActions, getters: ProductGetters });
       commit.setLoading(false);
+      trackQuiz();
       goToNext(); 
       return;     
     }
@@ -101,6 +113,7 @@ export default defineActions({
 
       if (!redirect_url) { return; }
 
+      trackQuiz();
       window.location.href = `${response.path}?${query_string}`;
     }
   },
