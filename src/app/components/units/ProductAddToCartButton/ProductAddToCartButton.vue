@@ -26,6 +26,7 @@
           'Button--disabled': !product.product_data.available          
         }"
         data-add-to-cart
+        @click="onClick"
       >        
         <span v-if="product.product_data.available">
           {{ 'products.product.add_to_cart' | t }}

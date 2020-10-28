@@ -123,6 +123,15 @@ export default Vue.extend({
     startQuiz(): void {
       store.commit.Quiz.setSlideBack(false);
       store.commit.Quiz.setStep(`question1`);
+
+      const tracking_data = {
+        type: `conversion`,
+        data: {
+          send_to: `AW-606295050/bMLDCK2-_eEBEIqojaEC`,
+        },
+      };
+
+      store.dispatch.Analytics.trackEvent(tracking_data);
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: `smooth` });
       }, 1);  

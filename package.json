@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@types/google.analytics": "0.0.40",
+    "@types/gtag.js": "0.0.3",
     "infinite": "git+ssh://git@gitlab.lucidfusion.com:lucidfusion/infinite-v3/framework.git#fluent"
   }
 }

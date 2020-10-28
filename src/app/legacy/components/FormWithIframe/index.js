@@ -1,3 +1,5 @@
+import store from 'infinite/src/app/store';
+
 const FormIframe = () => {
   // the data selector isn't necessary for this logic, but we don't want to hijack people's forms that already have scripts
   $(document).on('submit', 'form[target][data-form-with-iframe]', (e) => {
@@ -14,6 +16,15 @@ const FormIframe = () => {
       $forms.find('input[type="submit"]').attr('disabled', 'disabled');
       $form.find('input[type="email"]').blur();
     });
+    
+    const tracking_data = {
+      type: `conversion`,
+      data: {
+        send_to: `AW-606295050/xjXXCIruudoBEIqojaEC`,
+      },
+    };
+
+    store.dispatch.Analytics.trackEvent(tracking_data);
   });
 };
 
