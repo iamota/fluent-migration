@@ -40,7 +40,7 @@ export default defineActions({
       const tracking_data = {
         type: `conversion`,
         data: {
-          send_to: `AW-606295050/xjXXCIruudoBEIqojaEC`,
+          send_to: `AW-606295050/bMLDCK2-_eEBEIqojaEC`,
         },
       };
       
