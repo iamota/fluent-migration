@@ -37,6 +37,8 @@ export default defineActions({
     };
 
     const trackQuiz = (): void => {
+
+      // Google
       const tracking_data = {
         type: `conversion`,
         data: {
@@ -45,6 +47,9 @@ export default defineActions({
       };
       
       store.dispatch.Analytics.trackEvent(tracking_data);
+
+      // LinkedIn
+      store.dispatch.Analytics.linkedInPixel(`https://px.ads.linkedin.com/collect/?pid=2890969&conversionId=3060818&fmt=gif`);
     };
     
     if (response && response.type === `advance`) {
