@@ -24,7 +24,15 @@ const FormIframe = () => {
       },
     };
 
+    const pintrk_data = {
+      type: `signup`,
+      data: {
+        lead_type: `Newsletter`,
+      },
+    };
+
     store.dispatch.Analytics.trackEvent(tracking_data);
+    store.dispatch.Analytics.trackPinterest(pintrk_data);
   });
 };
 
