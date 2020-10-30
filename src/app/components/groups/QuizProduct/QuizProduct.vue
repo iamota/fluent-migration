@@ -17,6 +17,7 @@
         <ProductOptions 
           v-if="product.product_data.variants.length > 1" 
           :product_data_id="product_id" 
+          option_type="select"
           v-bind="$props" 
         />
         <div class="ProductOverview__quantity-add">
