@@ -39,7 +39,7 @@
         >
           <p class="ProductOverview__lockout--title">{{ assessment_text_title }}</p>
           <p>{{ assessment_text_description }}</p>
-          <Anchor class="Button Button--primary" href="/pages/quiz">{{ 'products.assessment.take_the_quiz_cta' | t }}</Anchor>
+          <Anchor class="Button Button--primary" href="/pages/assessment">{{ 'products.assessment.take_the_quiz_cta' | t }}</Anchor>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@
           fill: rgba({{ arrow_color_mobile | hex_to_rgba(arrow_opacity_mobile / 100) }});
         } 
       }
-      <!-- eslint-enable -->
+      <!-- eslint-enable --> 
     </component>
   </Section>
 </template>

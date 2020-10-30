@@ -17,6 +17,7 @@
         <ProductOptions 
           v-if="product.product_data.variants.length > 1" 
           :product_data_id="product_id" 
+          option_type="select"
           v-bind="$props" 
         />
         <div class="ProductOverview__quantity-add">
@@ -25,6 +26,9 @@
           <ProductAddToCartButton assessment :product_data_id="product_id" v-bind="$props" />
         </div>
       </div>
+    </div>
+    <div class="QuizProduct__disclaimer">
+      <p>{{ "assessment.product.disclaimer" | t }}</p>
     </div>
   </Section>
 </template>

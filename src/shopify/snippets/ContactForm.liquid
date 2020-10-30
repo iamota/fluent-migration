@@ -48,7 +48,7 @@
           class="Form__input"
           {% comment %} placeholder="{{ 'contact.form.phone' | t }}" {% endcomment %}
           value="{% if form[phone] %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          pattern="[0-9\-]*">
+          >
       </div>
     </div>
   </div>

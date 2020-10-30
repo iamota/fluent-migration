@@ -86,6 +86,7 @@
 
     @include media-query($mobile) {
       margin-bottom: 10px;
+      text-align: center;
     }
 
     &__name {
@@ -94,6 +95,13 @@
 
       @include media-query($mobile) {
         text-align: center;
+      }
+    }
+
+    &--select {
+      @include media-query($small) {
+        float: none;
+        margin: 0 auto;
       }
     }
 
@@ -129,6 +137,28 @@
       label {
         pointer-events: none;
       }
+    }
+
+    .Select__field {
+      border-width: 2px;
+      border-color: $color-primary;
+      background: transparent;
+      color: $color-primary;
+    }
+
+    .Select__label {
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      color: $color-gray;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .Select__icon {
+      margin: 0;
+      border: none;
+      background: url(https://cdn.shopify.com/s/files/1/0399/0008/6429/files/chevron_blue.svg?v=1604015782) no-repeat center;
+      height: 20px;
     }
   }
 
