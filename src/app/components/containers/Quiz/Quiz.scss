@@ -75,7 +75,6 @@
   &__slide {
     // position: absolute;
     // width: 100%;
-
     .Quiz__heading {
       margin-bottom: 30px;
     }
@@ -124,6 +123,27 @@
           @include media-query($mobile) {
             margin: 2%;
           }
+        }
+      }
+
+      &__input {
+        &:checked ~ .Radio__text-input {
+          width: 130px;
+        }
+      }
+
+      &__text-input {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transition: width 240ms ease-in-out;
+
+        input.Input__field {
+          border: none;
+          border-bottom: 1px solid $color-gray;
+          border-radius: 0;
+          height: 35px;
+          text-align: left;
         }
       }
 

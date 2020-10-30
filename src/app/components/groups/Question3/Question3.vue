@@ -19,6 +19,7 @@
           name="gender" 
           label="Other" 
           value="other" 
+          text_input
           inline 
         />
       </Grid>
