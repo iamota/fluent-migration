@@ -62,7 +62,7 @@
           fill: rgba({{ arrow_color_mobile | hex_to_rgba(arrow_opacity_mobile / 100) }});
         } 
       }
-      <!-- eslint-enable -->
+      <!-- eslint-enable --> 
     </component>
   </Section>
 </template>
