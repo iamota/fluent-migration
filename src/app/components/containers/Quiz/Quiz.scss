@@ -130,7 +130,7 @@
         &:checked ~ .Radio__text-input {
           width: 130px;
 
-          @include media-query($laptop) {
+          @include media-query($laptop-down) {
             width: 100px;
           }
 
@@ -209,6 +209,12 @@
         label,
         input:checked + label {
           color: $color-red;
+        }
+
+        .Input__error {
+          @include media-query($laptop-down) {
+            font-size: 9px;
+          }
         }
       }
     }

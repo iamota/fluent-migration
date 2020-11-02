@@ -21,7 +21,7 @@
           value="other"
           :class="{[`Radio--error`]: gender_text_error}" 
           text_input
-          text_input_rules="alpha" 
+          text_input_rules="alpha('Alpha characters only')" 
           inline 
         /> 
       </Grid>
