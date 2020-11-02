@@ -21,7 +21,7 @@
           value="other" 
           text_input
           inline 
-        />
+        /> 
       </Grid>
     </div>
     <QuizButtons 
