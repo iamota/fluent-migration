@@ -129,6 +129,14 @@
       &__input {
         &:checked ~ .Radio__text-input {
           width: 130px;
+
+          @include media-query($laptop-down) {
+            width: 100px;
+          }
+
+          @include media-query($mobile) {
+            width: 130px;
+          }
         }
       }
 
@@ -144,6 +152,10 @@
           border-radius: 0;
           height: 35px;
           text-align: left;
+        }
+
+        .Input__error-icon {
+          display: none;
         }
       }
 
@@ -190,6 +202,19 @@
 
         &::after {
           display: none;
+        }
+      }
+
+      &--error {
+        label,
+        input:checked + label {
+          color: $color-red;
+        }
+
+        .Input__error {
+          @include media-query($laptop-down) {
+            font-size: 9px;
+          }
         }
       }
     }
@@ -281,6 +306,24 @@
         &:checked + label::before {
           padding-top: 5px;
         }
+      }
+    }
+
+    &.Radio--longtext .Radio--error {
+      label,
+      input:checked + label {
+        color: $color-red;
+      }
+
+      label::after,
+      input:checked + label::after {
+        border-color: $color-red;
+      }
+
+      label::before,
+      input:checked + label::before {
+        border-color: $color-red !important;
+        background-color: $color-red;
       }
     }
 
