@@ -20,6 +20,7 @@
           label="Other" 
           value="other" 
           text_input
+          :text_input_rules="[`alpha`, `minLength(2)`, `maxLength(20)`]" 
           inline 
         /> 
       </Grid>

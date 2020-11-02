@@ -129,6 +129,14 @@
       &__input {
         &:checked ~ .Radio__text-input {
           width: 130px;
+
+          @include media-query($laptop) {
+            width: 100px;
+          }
+
+          @include media-query($mobile) {
+            width: 130px;
+          }
         }
       }
 
