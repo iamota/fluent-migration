@@ -153,6 +153,10 @@
           height: 35px;
           text-align: left;
         }
+
+        .Input__error-icon {
+          display: none;
+        }
       }
 
       &:last-child label {
@@ -198,6 +202,13 @@
 
         &::after {
           display: none;
+        }
+      }
+
+      &--error {
+        label,
+        input:checked + label {
+          color: $color-red;
         }
       }
     }
@@ -289,6 +300,24 @@
         &:checked + label::before {
           padding-top: 5px;
         }
+      }
+    }
+
+    &.Radio--longtext .Radio--error {
+      label,
+      input:checked + label {
+        color: $color-red;
+      }
+
+      label::after,
+      input:checked + label::after {
+        border-color: $color-red;
+      }
+
+      label::before,
+      input:checked + label::before {
+        border-color: $color-red !important;
+        background-color: $color-red;
       }
     }
 

@@ -2,6 +2,11 @@
 
 .Question3.Quiz__slide {
   // CSS
+  &.Radio--longtext .Radio label::after {
+    top: -25px;
+    height: 75px;
+  }
+
   .Quiz__heading {
     margin-bottom: 50px;
   }

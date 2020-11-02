@@ -18,9 +18,10 @@
         <Radio 
           name="gender" 
           label="Other" 
-          value="other" 
+          value="other"
+          :class="{[`Radio--error`]: gender_text_error}" 
           text_input
-          :text_input_rules="[`alpha`, `minLength(2)`, `maxLength(20)`]" 
+          text_input_rules="alpha" 
           inline 
         /> 
       </Grid>
