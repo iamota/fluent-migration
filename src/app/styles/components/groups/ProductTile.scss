@@ -2,6 +2,10 @@
   position: relative;
   padding-bottom: 65px;
 
+  .ProductsCarousel & {
+    padding-bottom: 65px;
+  }
+
   @include media-query($tablet-down) {
     padding-bottom: 0;
   }

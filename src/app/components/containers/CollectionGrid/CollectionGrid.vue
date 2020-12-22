@@ -31,7 +31,7 @@
             size="100"
             :name="loader_style"
           />
-          <ProductRecommendation :collection_handle="collection_handle" />
+          <!-- <ProductRecommendation :collection_handle="collection_handle" /> -->
           <template v-if="template_suffix === 'information'">
             <InformationProductTile 
               v-for="product in getProducts"
@@ -59,7 +59,12 @@
           :current_page="current_page"
           :total_pages="total_pages"
         />
-        <Button v-if="display_load_more" type="secondary" class="CollectionGrid__button" @click.native="handleLoadMore()" >
+        <Button
+          v-if="display_load_more"
+          type="secondary"
+          class="CollectionGrid__button"
+          @click.native="handleLoadMore()"
+        >
           {{ infinite_scroll_cta }}
           <Loader
             v-show="loading_more"             
