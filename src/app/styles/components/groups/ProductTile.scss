@@ -3,7 +3,7 @@
   padding-bottom: 65px;
 
   .ProductsCarousel & {
-    padding-bottom: 65px;
+    padding-bottom: 65px !important;
   }
 
   @include media-query($tablet-down) {
